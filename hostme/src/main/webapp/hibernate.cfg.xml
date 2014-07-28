@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		
+		<property name="hbm2ddl.auto">update</property>
+		<mapping class="com.softserve.edu.entity.Contact" />
+		<mapping class="com.softserve.edu.entity.User" />
+		<mapping class="com.softserve.edu.entity.Hostel" />
+		<mapping class="com.softserve.edu.entity.Image" />
+		<mapping class="com.softserve.edu.entity.Status" />
+		<mapping class="com.softserve.edu.entity.Language" />
+		<mapping class="com.softserve.edu.entity.Request" />
+		<mapping class="com.softserve.edu.entity.Gender" />
+			</session-factory>
+</hibernate-configuration>
