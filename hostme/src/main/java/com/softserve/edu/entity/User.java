@@ -24,12 +24,14 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 /**
- * This claaa represents data for User object. It uses Hibernate to map java class User to database table USER.
+ * This claaa represents data for User object. It uses Hibernate to map java
+ * class User to database table USER.
  * 
  * @author Lv-117
  */
 @Entity
-@Table(name = "USER", uniqueConstraints = { @UniqueConstraint(columnNames = { "user_id", "login", "email" }) })
+@Table(name = "USER", schema = "hostme", uniqueConstraints = { @UniqueConstraint(columnNames = {
+		"user_id", "login", "email" }) })
 public class User {
 
 	@Id
@@ -46,7 +48,7 @@ public class User {
 	private String lastName;
 	@Enumerated(EnumType.STRING)
 	@Column(name = "gender", nullable = false)
-	private Gender gender = Gender.UNSPECIFIED;
+	private Gender gender;
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "birth_date")
 	private Calendar birthday;
@@ -242,9 +244,11 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", login=" + login + ", password=" + password + ", firstName=" + firstName
-				+ ", lastName=" + lastName + ", gender=" + gender + ", birthday=" + birthday + ", email=" + email
-				+ ", about=" + about + ", country=" + country + ", region=" + region + "]";
+		return "User [userId=" + userId + ", login=" + login + ", password="
+				+ password + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", gender=" + gender + ", birthday=" + birthday
+				+ ", email=" + email + ", about=" + about + ", country="
+				+ country + ", region=" + region + "]";
 	}
 
 }

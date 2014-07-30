@@ -33,15 +33,14 @@ public abstract class AbstractGenericDao<E, I extends Serializable> implements
 	public List<E> getAll() {
 		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
+		transaction.commit();
 		return null;
 	}
 
 	@Override
 	public Integer create(E entity) {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
 		Integer id = (Integer) session.save(entity);
-		transaction.commit();
 		return id;
 	}
 

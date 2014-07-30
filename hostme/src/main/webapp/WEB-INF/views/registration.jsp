@@ -6,6 +6,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript"  src="resources/js/bootstrap-datepicker.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/datepicker.css">
 </head>
 <body>
 	<div class="container">
@@ -20,7 +22,7 @@
 
 
 
-		<form:form method="post" action="registration" modelAttribute="user">
+		<form:form method="post" action="registration" modelAttribute="user" id="registration_form" >
 			<div class="row">
 				<div class="form-group">
 					<form:label path="firstName"
@@ -64,10 +66,10 @@
 							<label for="female"
 								class="col-sm-1 col-sm-offset-1 control-label"> Female</label> <span
 								class="input-group-addon"> <form:radiobutton
-									path="gender" value="Female" />
+									path="gender" value="FEMALE" />
 							</span> <label for="male" class="col-sm-1 col-sm-offset-1 control-label">
 								Male</label> <span class="input-group-addon"> <form:radiobutton
-									path="gender" value="Male" />
+									path="gender" value="MALE" />
 							</span> <span> </span>
 
 
@@ -103,7 +105,7 @@
 					</label>
 					<div class="col-sm-5">
 						<form:input path="email" type="text" class="form-control"
-							id="email" placeholder="some.email@gmail.com" />
+							id="email" placeholder="some.email@gmail.com" onclick="validate()" />
 					</div>
 				</div>
 			</div>
@@ -113,7 +115,7 @@
 						class="col-sm-2 col-sm-offset-1 control-label"><h4>Date
 							of Birth</h4> </label>
 					<div class="col-sm-5">
-						<form:input path="birthday" type="text" class="form-control"
+						<form:input path="birthday" type="text" class="datepicker form-control"
 							id="dateOfBirth" placeholder="MM/dd/yyyy" />
 					</div>
 				</div>
@@ -123,6 +125,26 @@
 	</div>
 	<script type="text/javascript">
 		$('#myModal').modal('show');
+		$(document).ready(function () {
+
+    $('#registration_form').validate({ 
+        rules: {
+            firstName: {
+                required: true,
+                email: true
+            },
+            lastName: {
+                required: true,
+                minlength: 5
+            }
+        }
+    });
+
+});
+		
 	</script>
+	<script type="text/javascript">
+	$('.datepicker').datepicker();
+</script>
 </body>
 </html>
