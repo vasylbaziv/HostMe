@@ -17,8 +17,12 @@
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="about.html">About</a></li>
-				<li><a href="<c:url value='registration' />"> Registration</a>
 				</li>
+				
+
+				<li><a href="<c:url value='registration' />"> Registration</a></li>
+                <li><a href="<c:url value='search' />"> Search</a></li>
+                <li><a href="<c:url value='profile' />"> Profile</a></li>
 				<li><a href="<c:url value='login' />">Login</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">Help <b class="caret"></b></a>
