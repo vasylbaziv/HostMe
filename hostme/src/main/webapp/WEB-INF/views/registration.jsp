@@ -1,13 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script type="text/javascript"  src="resources/js/bootstrap-datepicker.js"></script>
-<link rel="stylesheet" type="text/css" href="resources/css/datepicker.css">
+<script type="text/javascript"
+	src="resources/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="resources/js/jquery.validate.js"></script>
+<script type="text/javascript" src="resources/js/validation.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="resources/css/datepicker.css">
 </head>
 <body>
 	<div class="container">
@@ -22,16 +28,18 @@
 
 
 
-		<form:form method="post" action="registration" modelAttribute="user" id="registration_form" >
+		<form:form method="post" action="registration" modelAttribute="user"
+			id="registrationForm">
 			<div class="row">
 				<div class="form-group">
-					<form:label path="firstName"
+					<label for="firstName"
 						class="col-sm-2 col-sm-offset-1 control-label">
 						<h4>First Name</h4>
-					</form:label>
+					</label>
 					<div class="col-sm-5">
 						<form:input path="firstName" type="text" class="form-control"
-							id="firstName" placeholder="First Name" />
+							id="firstName" placeholder="Last Name" />
+							</p>
 					</div>
 				</div>
 			</div>
@@ -44,6 +52,8 @@
 					<div class="col-sm-5">
 						<form:input path="lastName" type="text" class="form-control"
 							id="lastName" placeholder="Last Name" />
+							<p class="text-danger">
+							</p>
 					</div>
 				</div>
 			</div>
@@ -94,7 +104,7 @@
 						class="col-sm-2 col-sm-offset-1 control-label"><h4>Repeat
 							password</h4> </label>
 					<div class="col-sm-5">
-						<input path="repeatPassword" type="text" class="form-control"
+						<input path="repeatPassword" type="password" class="form-control"
 							id="repeatPassword" placeholder="Password" />
 					</div>
 				</div>
@@ -105,7 +115,8 @@
 					</label>
 					<div class="col-sm-5">
 						<form:input path="email" type="text" class="form-control"
-							id="email" placeholder="some.email@gmail.com" onclick="validate()" />
+							id="email" placeholder="some.email@gmail.com"
+							onclick="validate()" />
 					</div>
 				</div>
 			</div>
@@ -115,36 +126,21 @@
 						class="col-sm-2 col-sm-offset-1 control-label"><h4>Date
 							of Birth</h4> </label>
 					<div class="col-sm-5">
-						<form:input path="birthday" type="text" class="datepicker form-control"
-							id="dateOfBirth" placeholder="MM/dd/yyyy" />
+						<form:input path="birthday" type="text"
+							class="datepicker form-control" id="dateOfBirth"
+							placeholder="MM/dd/yyyy" pattern="MM/dd/yyyy" />
 					</div>
 				</div>
 			</div>
-			<button type="submit" value="Submit">Submit</button>
+			<div class="form-group">
+				<div class="col-sm-offset-7 col-sm-2">
+					<button type="submit" class="btn btn-primary">Sign up</button>
+				</div>
+			</div>
 		</form:form>
 	</div>
 	<script type="text/javascript">
-		$('#myModal').modal('show');
-		$(document).ready(function () {
-
-    $('#registration_form').validate({ 
-        rules: {
-            firstName: {
-                required: true,
-                email: true
-            },
-            lastName: {
-                required: true,
-                minlength: 5
-            }
-        }
-    });
-
-});
-		
+		$('.datepicker').datepicker();
 	</script>
-	<script type="text/javascript">
-	$('.datepicker').datepicker();
-</script>
 </body>
 </html>

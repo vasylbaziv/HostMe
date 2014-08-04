@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.softserve.edu.dao.GenericDao;
 
-
-
 public abstract class AbstractGenericDao<E, I extends Serializable> implements
 		GenericDao<E, I> {
 
@@ -25,10 +23,14 @@ public abstract class AbstractGenericDao<E, I extends Serializable> implements
 		this.entityClass = entityClass;
 	}
 
+
 	@Autowired
 	private SessionFactory sessionFactory;
 
-	
+	protected SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
 	@Override
 	public List<E> getAll() {
 		Session session = sessionFactory.getCurrentSession();
@@ -46,7 +48,7 @@ public abstract class AbstractGenericDao<E, I extends Serializable> implements
 
 	@Override
 	public E read(I id) {
-		Session session =sessionFactory.getCurrentSession();
+		Session session = sessionFactory.getCurrentSession();
 		Transaction transaction = session.beginTransaction();
 		@SuppressWarnings("unchecked")
 		E fetchedEntity = (E) session.get(entityClass, id);

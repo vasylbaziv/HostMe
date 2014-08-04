@@ -1,8 +1,8 @@
-package com.softserve.edu.dao;
+package com.softserve.edu.service;
 
 import com.softserve.edu.entity.User;
 
-public interface UserDao extends GenericDao<User, Integer> {
+public interface LoginService {
 	public User getUserByEmail(String email);
 
 	public User getUserByLogin(String login);

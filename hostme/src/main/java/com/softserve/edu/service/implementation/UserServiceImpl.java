@@ -1,4 +1,4 @@
-package com.softserve.edu.service;
+package com.softserve.edu.service.implementation;
 
 import java.util.List;
 
@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.softserve.edu.dao.UserDao;
 import com.softserve.edu.entity.User;
+import com.softserve.edu.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -44,5 +45,6 @@ public class UserServiceImpl implements UserService {
 		User user = userDaoImpl.read(id);
 		userDaoImpl.delete(user);
 	}
+
 
 }

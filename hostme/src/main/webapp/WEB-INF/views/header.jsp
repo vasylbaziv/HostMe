@@ -11,7 +11,7 @@
 					class="icon-bar"></span>
 			</button>
 
-			<a class="navbar-brand" href="index.html">Host Me</a>
+			<a class="navbar-brand" href="index">Host Me</a>
 		</div>
 
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -19,7 +19,7 @@
 				<li><a href="about.html">About</a></li>
 				<li><a href="<c:url value='registration' />"> Registration</a>
 				</li>
-				<li><a href="login.php">Login</a></li>
+				<li><a href="<c:url value='login' />">Login</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">Help <b class="caret"></b></a>
 					<ul class="dropdown-menu">

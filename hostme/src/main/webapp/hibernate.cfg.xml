@@ -4,6 +4,8 @@
 "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
+		<mapping class="com.softserve.edu.entity.UserRole" />
+		<mapping class="com.softserve.edu.entity.Role" />
 		<mapping class="com.softserve.edu.entity.User" />
 		<mapping class="com.softserve.edu.entity.Hostel" />
 		<mapping class="com.softserve.edu.entity.Image" />
@@ -11,5 +13,5 @@
 		<mapping class="com.softserve.edu.entity.Language" />
 		<mapping class="com.softserve.edu.entity.Request" />
 		<mapping class="com.softserve.edu.entity.Gender" />
-			</session-factory>
+	</session-factory>
 </hibernate-configuration>

@@ -43,7 +43,7 @@ public class Hostel {
 	@Column(name = "notes", length = 1000)
 	private String notes;
 	@ManyToOne
-	@JoinColumn(name = "owner_fk")
+	@JoinColumn(name = "user_id")
 	private User owner;
 	@OneToMany(mappedBy = "hostel", fetch = FetchType.LAZY, orphanRemoval = true)
 	@Cascade({ CascadeType.DELETE, CascadeType.PERSIST, CascadeType.SAVE_UPDATE })

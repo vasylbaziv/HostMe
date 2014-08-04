@@ -34,32 +34,10 @@ public class RegistrationController {
 			BindingResult bindingResult) {
 		String birthday = (String) bindingResult.getFieldValue("birthday");
 		String gender = (String) bindingResult.getFieldValue("gender");
-		user.setBirthday(toDateFormat(birthday));
-		for (Gender temporaryGender : Gender.values()) {
-			if (gender.equalsIgnoreCase(temporaryGender.toString())) {
-				user.setGender(temporaryGender);
-				break;
 
-			} else {
-				user.setGender(Gender.UNSPECIFIED);
-			}
-
-		}
-		registrationService.register(user);
+		registrationService.register(user,birthday,gender);
 		return "index";
 	}
-
-	private Calendar toDateFormat(String inputValue) {
-		Calendar birthday = null;
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		try {
-			sdf.getCalendar().setTime(sdf.parse(inputValue));
-			birthday = sdf.getCalendar();
-
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-		return birthday;
-	}
+	
 
 }

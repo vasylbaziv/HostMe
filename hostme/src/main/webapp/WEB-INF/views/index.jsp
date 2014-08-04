@@ -131,7 +131,6 @@
 					ligula, id</blockquote>
 			</div>
 		</div>
-
 		<script type="text/javascript">
 			$('#myCarousel').carousel({
 				interval : 5000

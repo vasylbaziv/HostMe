@@ -15,30 +15,36 @@ import com.softserve.edu.service.ContactService;
 
 @Controller
 public class ContactController {
-    
-    @Autowired
-    private ContactService contactService;
 
-    @RequestMapping(value ="/index", method = RequestMethod.GET)
-    public String listContacts(Map<String, Object> map) {
-        return "index";
-    }
+	@Autowired
+	private ContactService contactService;
 
-    @RequestMapping("/")
-    public String home() {
-        return "redirect:/index";
-    }
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public String listContacts(Map<String, Object> map) {
+		return "index";
+	}
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String addContact(@ModelAttribute("contact") Contact contact,
-            BindingResult result) {
-        contactService.addContact(contact);
-        return "redirect:/index";
-    }
+	@RequestMapping("/")
+	public String home() {
+		return "redirect:/index";
+	}
 
-    @RequestMapping("/delete/{contactId}")
-    public String deleteContact(@PathVariable("contactId") Integer contactId) {
-        contactService.removeContact(contactId);
-        return "redirect:/index";
-    }
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String addContact(@ModelAttribute("contact") Contact contact,
+			BindingResult result) {
+		contactService.addContact(contact);
+		return "redirect:/index";
+	}
+
+	@RequestMapping("/logout")
+	public String logout(){
+		return "index";
+		
+	}
+	
+	@RequestMapping("/delete/{contactId}") public String deleteContact(
+			@PathVariable("contactId") Integer contactId) {
+		contactService.removeContact(contactId);
+		return "redirect:/index";
+	}
 }
