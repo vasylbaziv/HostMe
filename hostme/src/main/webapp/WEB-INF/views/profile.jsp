@@ -18,7 +18,7 @@
                 <div class="row text-center">
                     <br> <br>
                     <h2>Nina Dobrev</h2>
-                    <img src="nina.jpg" style="width: 200px;"></img> <br />
+                    <img src="resources/images/nina.jpg" style="width: 200px;"></img> <br />
                     <a href="#" class="btn btn-link">edit photo</a>
                 </div>
             </div>

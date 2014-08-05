@@ -26,7 +26,7 @@
                     <h4>User image</h4>
                 </div>
                 <div class="col-md-7">
-                    <img src="john.jpg"
+                    <img src="resources/images/john.jpg"
                         style="width: 200px; margin-top: 10px; margin-bottom: 10px;"></img>
                 </div>
             </div>
