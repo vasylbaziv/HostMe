@@ -41,7 +41,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 		return birthday;
 	}
 
-	private Gender getGender(String gender) {
+	public Gender getGender(String gender) {
 		for (Gender temporaryGender : Gender.values()) {
 			if (gender.equalsIgnoreCase(temporaryGender.toString())) {
 				return temporaryGender;

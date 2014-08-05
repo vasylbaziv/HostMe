@@ -7,7 +7,9 @@
 
 
 <global-method-security secured-annotations="enabled" />
-<http access-denied-page="/error403.jsp">
+
+
+<http auto-config="true" use-expressions="false" access-denied-page="/error.jsp">
 
 		<intercept-url pattern="/index*" access="ROLE_ADMIN" />
 		<intercept-url pattern="/add*" access="ROLE_ADMIN" />
