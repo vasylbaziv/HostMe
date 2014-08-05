@@ -23,9 +23,9 @@
 
             <div class="row">
                 <div class="col-md-12">
-                    <img src="hostel1sm.jpg"
+                    <img src="resources/images/hostel1sm.jpg"
                         style="margin-top: 10px; margin-bottom: 10px;"></img>
-                    <img src="hostel2sm.jpg"
+                    <img src="resources/images/hostel2sm.jpg"
                         style="margin: 10px 0px 10px 20px;"></img>
                 </div>
             </div>
