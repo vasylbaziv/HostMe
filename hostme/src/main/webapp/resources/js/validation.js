@@ -43,11 +43,23 @@ $(document).ready(
 					// group
 				}
 			});
+			$('#loginForm').validate({
+				rules : {
+					j_username : {
+						minlength : 3,
+						required : true
+					},
+					j_password : {
+						minlength : 3,
+						required : true
+					}
+				}
+			});
 
 			$('#registrationForm').validate({
 				rules : {
 					lastName : {
-						minlength : 6,
+						minlength : 2,
 						required : true
 					},
 					firstName : {
@@ -56,15 +68,15 @@ $(document).ready(
 					},
 
 					login : {
-						minlength : 6,
+						minlength : 3,
 						required : true
 					},
 					password : {
-						minlength : 6,
+						minlength : 3,
 						required : true
 					},
 					repeatPassword : {
-						minlength : 6,
+						minlength : 3,
 						required : true
 					},
 					email : {

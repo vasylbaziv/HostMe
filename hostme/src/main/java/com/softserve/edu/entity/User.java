@@ -64,9 +64,6 @@ public class User {
 	@ManyToOne
 	@JoinColumn(name = "role_id")
 	private Role role;
-	@Enumerated(EnumType.STRING)
-	@Column(name = "role", nullable = false)
-	private UserRole userRole;
 
 	/**
 	 * Contains languages owned by this user
@@ -257,13 +254,7 @@ public class User {
 		this.role = role;
 	}
 
-	public UserRole getUserRole() {
-		return userRole;
-	}
 
-	public void setUserRole(UserRole userRole) {
-		this.userRole = userRole;
-	}
 
 	@Override
 	public String toString() {

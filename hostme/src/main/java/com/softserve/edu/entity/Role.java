@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-@Deprecated
 @Entity
 @Table(name = "ROLE", schema = "hostme", uniqueConstraints = { @UniqueConstraint(columnNames = { "role_id" }) })
 public class Role {

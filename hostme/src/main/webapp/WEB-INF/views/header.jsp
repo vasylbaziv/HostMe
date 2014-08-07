@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="security"
+	uri="http://www.springframework.org/security/tags"%>
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
@@ -17,13 +21,19 @@
 		<div class="collapse navbar-collapse navbar-ex1-collapse">
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="about.html">About</a></li>
-				</li>
-				
 
-				<li><a href="<c:url value='registration' />"> Registration</a></li>
-                <li><a href="<c:url value='search' />"> Search</a></li>
-                <li><a href="<c:url value='profile' />"> Profile</a></li>
-				<li><a href="<c:url value='login' />">Login</a></li>
+
+				<security:authorize access="! isAuthenticated()">
+					<li><a href="<c:url value='registration' />"> Registration</a></li>
+				</security:authorize>
+				<li><a href="<c:url value='search' />"> Search</a></li>
+				<li><a href="<c:url value='profile' />"> Profile</a></li>
+				<security:authorize access="! isAuthenticated()">
+					<li><a href="<c:url value='login' />">Login</a></li>
+				</security:authorize>
+				<security:authorize access="isAuthenticated()">
+					<li><a href="<spring:url value="logout"/>">Logout</a></li>
+				</security:authorize>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown">Help <b class="caret"></b></a>
 					<ul class="dropdown-menu">

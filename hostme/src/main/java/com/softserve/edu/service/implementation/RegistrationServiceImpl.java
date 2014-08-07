@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +18,7 @@ import com.softserve.edu.service.RegistrationService;
 
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
+	private final int USER=1;
 
 	@Autowired
 	private UserDao userDao;
@@ -57,9 +59,10 @@ public class RegistrationServiceImpl implements RegistrationService {
 		user.setGender(getGender(gender));
 		user.setBirthday(toDateFormat(date));
 		Role registeredUser = new Role();
-		registeredUser.setId(1);
+		registeredUser.setId(USER);
 		user.setRole(registeredUser);
-		user.setUserRole(UserRole.USER);
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		user.setPassword(encoder.encode(user.getPassword()));
 		register(user);
 
 	}

@@ -8,8 +8,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript" src="resources/js/jquery.validate.js"></script>
+<script type="text/javascript" src="resources/js/validation.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
@@ -50,27 +52,81 @@
 
 	<!-- 	</div> -->
 
-
+<!-- Just now we have this login form like trial version in next commit i*ll make it a modal form  -->
 	<div class="container">
-		<form:form method="post" action="login" modelAttribute="user"
-			id="loginForm" style="margin-top: 50px;">
-
-			<div class="input-group col-md-8">
-				<label for="login">Enter your login:</label>
-				<form:input type="text" class="form-control" path="login"
-					placeholder="Login" />
+		<div class="row">
+			<div class="col-md-8 col-sm-offset-1">
+				<h1
+					style="padding-top: 50px; border-bottom-style: solid; border-color: #CCCCFF; border-width: 5px">
+					Sign in <small>Just a trial login, modal form is coming
+						soon</small>
+				</h1>
 			</div>
-			<div class="input-group col-md-8">
-				<label for="login">Enter your password:</label>
-				<form:input path="password" type="password" class="form-control"
-					id="password" placeholder="Password" />
+		</div>
+		<c:if test="${param.success eq true }">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-2">
+					<h4 class="success_registration">You have registered!
+						Congrats!Now you must log in!</h4>
+				</div>
+			</div>
+		</c:if>
+		<c:if test="${param.error eq true }">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-2">
+					<h4 class="error">Wrong login or password! Try again!</h4>
+				</div>
+			</div>
+		</c:if>
+		<c:if test="${param.logout eq true }">
+			<div class="row">
+				<div class="col-md-6 col-md-offset-2">
+					<h4 class="error">You have logged out! To veiw content please log in!</h4>
+				</div>
+			</div>
+		</c:if>
+
+		<form class="form-signin" role="form"
+			action="<c:url value='j_spring_security_check'/>" method="POST"
+			id="loginForm">
+			<div class="form-group">
+				<div class="row">
+					<label for="login" class="col-sm-1 col-sm-offset-1 control-label">
+						<h4>Login</h4>
+					</label>
+					<div class="col-sm-5">
+						<input type="text" name="j_username" class="form-control"
+							placeholder="Login" required autofocus id="login">
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="row">
+					<label for="password"
+						class="col-sm-1 col-sm-offset-1 control-label">
+						<h4>Password</h4>
+					</label>
+					<div class="col-sm-5">
+						<input type="password" name="j_password" class="form-control"
+							placeholder="Password" required id="password">
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-offset-5 col-sm-2">
+
+					<button class="btn btn-primary btn-block " type="submit">Sign
+						in</button>
+				</div>
 			</div>
 
+		</form>
 
-			<button type="button" class="btn btn-default">Close</button>
-			<button type="submit" class="btn btn-primary">Sign in</button>
-		</form:form>
 	</div>
 
+
 </body>
+
 </html>

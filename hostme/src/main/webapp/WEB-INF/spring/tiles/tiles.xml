@@ -8,8 +8,8 @@
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
 	</definition>
-		
-		
+
+
 	<definition name="*" extends="baseLayout">
 		<put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
 	</definition>
