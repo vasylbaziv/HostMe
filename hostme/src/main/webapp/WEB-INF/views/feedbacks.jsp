@@ -24,7 +24,7 @@
         <div class="row" style="margin-bottom: 40px">
             <div class="col-md-8" style="margin-top: 40px">
                 <div>
-                    <img src="traveller1.jpg"
+                    <img src="resources/images/traveller1.jpg"
                         style="width: 100px; float: left; margin: 0px 40px 0px 10px"></img>
                 </div>
 
@@ -36,7 +36,7 @@
 
             <div class="col-md-9" style="margin-top: 40px">
                 <div>
-                    <img src="traveller2.png"
+                    <img src="resources/images/traveller2.png"
                         style="width: 100px; float: left; margin: 0px 40px 0px 10px"></img>
                 </div>
 
@@ -49,7 +49,7 @@
 
             <div class="col-md-8" style="margin-top: 40px">
                 <div>
-                    <img src="traveller4.jpg"
+                    <img src="resources/images/traveller3.jpg"
                         style="height: 110px; width: 100px; float: left; margin: 0px 40px 0px 10px"></img>
                 </div>
 
