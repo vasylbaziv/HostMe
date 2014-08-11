@@ -40,7 +40,7 @@ $(document).ready(
 				success : function(element) {
 					$(element).closest('.control-group').removeClass('error');
 					element.parents().eq(1).removeClass('has-error');
-					element.parents().eq(0).addClass('has-success');
+					element.parents().eq(1).addClass('has-success');
 
 					// remove
 					// the
