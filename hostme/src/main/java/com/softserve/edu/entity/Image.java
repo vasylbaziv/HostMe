@@ -22,8 +22,8 @@ public class Image {
 	@JoinColumn(name = "user_fk")
 	private User user;
 	@ManyToOne
-	@JoinColumn(name = "hostel_fk")
-	private Hostel hostel;
+	@JoinColumn(name = "hosting_fk")
+	private Hosting hosting;
 	@ManyToOne
 	@JoinColumn(name = "feedback_fk")
 	private Feedback feedback;
@@ -60,12 +60,12 @@ public class Image {
 		this.user = user;
 	}
 
-	public Hostel getHostel() {
-		return hostel;
+	public Hosting getHosting() {
+		return hosting;
 	}
 
-	public void setHostel(Hostel hostel) {
-		this.hostel = hostel;
+	public void setHosting(Hosting hosting) {
+		this.hosting = hosting;
 	}
 
 	public Feedback getFeedback() {

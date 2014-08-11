@@ -6,10 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class HostelController {
+public class HostingController {
 
-    @RequestMapping(value = "/hostel", method = RequestMethod.GET)
+    @RequestMapping(value = "/hosting", method = RequestMethod.GET)
     public String hostelShow(Model model) {
-            return "hostel";
+            return "hosting";
     }
 }

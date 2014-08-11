@@ -26,8 +26,8 @@ public class Feedback {
 	@Column(name = "description", nullable = false, length = 1000)
 	private String description;
 	@ManyToOne
-	@JoinColumn(name = "hostel_fk", nullable = false)
-	private Hostel hostel;
+	@JoinColumn(name = "hosting_fk", nullable = false)
+	private Hosting hosting;
 	@ManyToOne
 	@JoinColumn(name = "author_fk", nullable = false)
 	private User author;
@@ -67,12 +67,12 @@ public class Feedback {
 		this.description = description;
 	}
 
-	public Hostel getHostel() {
-		return hostel;
+	public Hosting getHosting() {
+		return hosting;
 	}
 
-	public void setHostel(Hostel hostel) {
-		this.hostel = hostel;
+	public void setHosting(Hosting hosting) {
+		this.hosting = hosting;
 	}
 
 	public User getAuthor() {

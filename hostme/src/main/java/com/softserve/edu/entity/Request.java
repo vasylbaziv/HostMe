@@ -15,7 +15,7 @@ import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
 /**
- * This class represents request for <code>hostel</code> and is created by <code>author</code>.
+ * This class represents request for <code>hosting</code> and is created by <code>author</code>.
  * 
  * @author Lv-117
  */
@@ -37,8 +37,8 @@ public class Request {
 	@Column(name = "notes", length = 800)
 	private String notes;
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "hostel_fk", nullable = false)
-	private Hostel hostel;
+	@JoinColumn(name = "hosting_fk", nullable = false)
+	private Hosting hosting;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "user_fk", nullable = false)
 	private User author;
@@ -94,13 +94,13 @@ public class Request {
 		this.notes = notes;
 	}
 
-	public Hostel getHostel() {
-		return hostel;
+	public Hosting getHosting() {
+		return hosting;
 	}
 
-	public void setHostel(Hostel hostel) {
-		if (this.hostel != hostel)
-			this.hostel = hostel;
+	public void setHosting(Hosting hosting) {
+		if (this.hosting != hosting)
+			this.hosting = hosting;
 	}
 
 	public User getAuthor() {

@@ -81,7 +81,7 @@ public class User {
 	 * Contains hosting apartments owned by this user
 	 */
 	@OneToMany(mappedBy = "owner", orphanRemoval = true, fetch = FetchType.LAZY)
-	private Set<Hostel> hostels = new HashSet<Hostel>();
+	private Set<Hosting> hostings = new HashSet<Hosting>();
 	/**
 	 * Contains requests submitted by this user
 	 */
@@ -195,8 +195,8 @@ public class User {
 		return languages;
 	}
 
-	public Set<Hostel> getHostels() {
-		return hostels;
+	public Set<Hosting> getHostings() {
+		return hostings;
 	}
 
 	public Set<Image> getImages() {
@@ -225,10 +225,10 @@ public class User {
 		}
 	}
 
-	public void addHostel(Hostel hostel) {
-		if (hostel != null && !hostels.contains(hostel)) {
-			hostels.add(hostel);
-			hostel.setOwner(this);
+	public void addHosting(Hosting hosting) {
+		if (hosting != null && !hostings.contains(hosting)) {
+			hostings.add(hosting);
+			hosting.setOwner(this);
 		}
 	}
 
