@@ -18,7 +18,7 @@ import com.softserve.edu.service.RegistrationService;
 
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
-	private final int USER=1;
+	private final int USER = 1;
 
 	@Autowired
 	private UserDao userDao;
@@ -66,4 +66,31 @@ public class RegistrationServiceImpl implements RegistrationService {
 		register(user);
 
 	}
+
+	@Override
+	@Transactional
+	public User getUserByEmail(String email) {
+		User user = null;
+		try {
+			user = userDao.getUserByEmail(email);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+
+	@Override
+	@Transactional
+	public User getUserByLogin(String login) {
+		User user = null;
+		try {
+			user = userDao.getUserByLogin(login);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+
 }

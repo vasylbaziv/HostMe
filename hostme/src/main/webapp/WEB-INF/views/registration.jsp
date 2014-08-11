@@ -12,6 +12,7 @@
 	src="resources/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="resources/js/jquery.validate.js"></script>
 <script type="text/javascript" src="resources/js/validation.js"></script>
+<script type="text/javascript" src="resources/js/registration.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="resources/css/datepicker.css">
 </head>
@@ -21,7 +22,7 @@
 			<div class="col-md-8 col-sm-offset-1">
 				<h1
 					style="padding-top: 50px; border-bottom-style: solid; border-color: #CCCCFF; border-width: 5px">
-					Registration <small>Don't be shy to join us</small>
+					Registration <small>Don't be shy to join us </small>
 				</h1>
 			</div>
 		</div>
@@ -39,7 +40,7 @@
 					<div class="col-sm-5">
 						<form:input path="firstName" type="text" class="form-control"
 							id="firstName" placeholder="Last Name" />
-							</p>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -52,16 +53,15 @@
 					<div class="col-sm-5">
 						<form:input path="lastName" type="text" class="form-control"
 							id="lastName" placeholder="Last Name" />
-							<p class="text-danger">
-							</p>
+						<p class="text-danger"></p>
 					</div>
 				</div>
 			</div>
 			<div class="row">
-				<div class="form-group">
+				<div class="form-group" id="trial">
 					<label for="login" class="col-sm-2  col-sm-offset-1 control-label"><h4>Login</h4>
 					</label>
-					<div class="col-sm-5">
+					<div class="col-sm-5" id="test1">
 						<form:input path="login" type="text" class="form-control"
 							id="login" placeholder="Login" />
 					</div>
@@ -87,6 +87,11 @@
 					</div>
 				</div>
 			</div>
+
+
+
+
+
 			<div class="row">
 				<div class="form-group">
 					<label for="password"
@@ -94,17 +99,21 @@
 					</label>
 					<div class="col-sm-5">
 						<form:input path="password" type="password" class="form-control"
-							id="password" placeholder="Password" />
+							id="password" placeholder="Password" onclick="checkLoginIdentity()"/>
 					</div>
 				</div>
 			</div>
+
+
+
+
 			<div class="row">
 				<div class="form-group">
 					<label for="repeatPassword"
 						class="col-sm-2 col-sm-offset-1 control-label"><h4>Repeat
 							password</h4> </label>
 					<div class="col-sm-5">
-						<input path="repeatPassword" type="password" class="form-control"
+						<input name="repeatPassword" type="password" class="form-control"
 							id="repeatPassword" placeholder="Password" />
 					</div>
 				</div>
@@ -113,10 +122,11 @@
 				<div class="form-group">
 					<label for="email" class="col-sm-2 col-sm-offset-1 control-label"><h4>Email</h4>
 					</label>
-					<div class="col-sm-5">
+					<div class="col-sm-5" id="test2">
 						<form:input path="email" type="text" class="form-control"
 							id="email" placeholder="some.email@gmail.com"
-							onclick="validate()" />
+							onclick="checkIdenticalPasswords()" />
+						<div id="loading_indicator"></div>
 					</div>
 				</div>
 			</div>
@@ -128,7 +138,8 @@
 					<div class="col-sm-5">
 						<form:input path="birthday" type="text"
 							class="datepicker form-control" id="dateOfBirth"
-							placeholder="MM/dd/yyyy" pattern="MM/dd/yyyy" />
+							placeholder="MM/dd/yyyy" pattern="MM/dd/yyyy"
+							onclick="checkEmailIdentity()" />
 					</div>
 				</div>
 			</div>
@@ -141,6 +152,7 @@
 	</div>
 	<script type="text/javascript">
 		$('.datepicker').datepicker();
+		
 	</script>
 </body>
 </html>

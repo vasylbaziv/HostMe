@@ -52,7 +52,7 @@
 
 	<!-- 	</div> -->
 
-<!-- Just now we have this login form like trial version in next commit i*ll make it a modal form  -->
+	<!-- Just now we have this login form like trial version in next commit i*ll make it a modal form  -->
 	<div class="container">
 		<div class="row">
 			<div class="col-md-8 col-sm-offset-1">
@@ -81,7 +81,8 @@
 		<c:if test="${param.logout eq true }">
 			<div class="row">
 				<div class="col-md-6 col-md-offset-2">
-					<h4 class="error">You have logged out! To veiw content please log in!</h4>
+					<h4 class="error">You have logged out! To veiw content please
+						log in!</h4>
 				</div>
 			</div>
 		</c:if>
@@ -110,10 +111,11 @@
 					<div class="col-sm-5">
 						<input type="password" name="j_password" class="form-control"
 							placeholder="Password" required id="password">
-						</p>
+
 					</div>
 				</div>
 			</div>
+			<input type="checkbox" name="_spring_security_remember_me" />
 			<div class="row">
 				<div class="col-sm-offset-5 col-sm-2">
 

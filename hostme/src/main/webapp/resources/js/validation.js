@@ -8,11 +8,14 @@ $(document).ready(
 					if (element.parent().hasClass('input-prepend')
 							|| element.parent().hasClass('input-append')) {
 						error.insertAfter(element.parent());
+//						element.parent().addClass('has-error');
 						// else just place the validation message
 						// immediatly
 						// after the input
 					} else {
 						error.insertAfter(element);
+//						element.parent().addClass('has-error');
+
 					}
 				},
 				errorElement : "small", // contain the error msg in a
@@ -21,7 +24,10 @@ $(document).ready(
 				// tag in a
 				// div
 				highlight : function(element) {
-					$(element).closest('.control-group').addClass('error'); // add
+					$(element).parent().addClass('has-error');
+					
+
+					// add
 					// the
 					// Bootstrap
 					// error
@@ -32,7 +38,11 @@ $(document).ready(
 					// group
 				},
 				success : function(element) {
-					$(element).closest('.control-group').removeClass('error');// remove
+					$(element).closest('.control-group').removeClass('error');
+					element.parents().eq(1).removeClass('has-error');
+					element.parents().eq(0).addClass('has-success');
+
+					// remove
 					// the
 					// Boostrap
 					// error
@@ -86,4 +96,3 @@ $(document).ready(
 				}
 			});
 		});
-
