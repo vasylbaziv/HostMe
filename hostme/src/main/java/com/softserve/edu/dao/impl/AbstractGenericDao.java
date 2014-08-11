@@ -49,10 +49,8 @@ public abstract class AbstractGenericDao<E, I extends Serializable> implements
 	@Override
 	public E read(I id) {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
 		@SuppressWarnings("unchecked")
 		E fetchedEntity = (E) session.get(entityClass, id);
-		transaction.commit();
 		return fetchedEntity;
 	}
 
