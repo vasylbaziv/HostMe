@@ -11,17 +11,38 @@
 	<url>http://maven.apache.org</url>
 	<!-- - - - properties - - - -->
 	<properties>
-		<org.springframework-version>3.2.9.RELEASE</org.springframework-version>
-		<org.hibernate-version>3.6.10.Final</org.hibernate-version>
-		<!-- <org.hibernate-version>4.3.5.Final</org.hibernate-version> -->
+		<org.hibernate-version>4.3.5.Final</org.hibernate-version>
+		<org.springframework.social>1.1.0.RELEASE</org.springframework.social>
 	</properties>
 	<!-- - - - dependencies - - - -->
 	<dependencies>
-	<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>${org.hibernate-version}</version>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.3.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-core</artifactId>
+			<version>${org.springframework.social}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-web</artifactId>
+			<version>${org.springframework.social}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-config</artifactId>
+			<version>${org.springframework.social}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.social</groupId>
+			<artifactId>spring-social-security</artifactId>
+			<version>${org.springframework.social}</version>
+		</dependency>
+
+
 		<dependency>
 			<!-- - - - tests - - - -->
 			<groupId>junit</groupId>
@@ -35,14 +56,8 @@
 			<version>5.1.31</version> </dependency> -->
 		<!-- - - - Hibernate - - - -->
 		<!-- - - - Web - - - -->
-		<!--
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
-			<scope>provided</scope>
-		</dependency>
-		-->
+		<!-- <dependency> <groupId>javax.servlet</groupId> <artifactId>servlet-api</artifactId> 
+			<version>2.5</version> <scope>provided</scope> </dependency> -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
@@ -144,6 +159,11 @@
 			<groupId>org.codehaus.jackson</groupId>
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.13</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.3.5.Final</version>
 		</dependency>
 	</dependencies>
 	<!-- - - - Build - - - -->

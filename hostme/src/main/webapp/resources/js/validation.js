@@ -20,9 +20,6 @@ $(document).ready(
 				},
 				errorElement : "small", // contain the error msg in a
 				// small tag
-				wrapper : "div", // wrap the error message and small
-				// tag in a
-				// div
 				highlight : function(element) {
 					$(element).parent().addClass('has-error');
 					
@@ -39,8 +36,8 @@ $(document).ready(
 				},
 				success : function(element) {
 					$(element).closest('.control-group').removeClass('error');
-					element.parents().eq(1).removeClass('has-error');
-					element.parents().eq(1).addClass('has-success');
+					element.parents().eq(0).removeClass('has-error');
+					element.parents().eq(0).addClass('has-success');
 
 					// remove
 					// the
