@@ -102,8 +102,7 @@
                                     <td>Ukraine</td>
                                     <td>Lviv</td>
                                     <td>Lviv</td>
-                                    <td><a href="hostel.html">52
-                                            V.Velykoho Street</a></td>
+                                    <td><a href="hostel.html">${UserHostings.address}</a></td>
                                     <td>*****</td>
                                 </tr>
                                 <tr>
