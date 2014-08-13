@@ -21,10 +21,10 @@
 			modelAttribute="hosting" id="hostingCreationForm">
 			<div class="row">
 				<div class="form-group">
-					<label for="Country" class="col-lg-2 control-label"><h4>Country</h4>
+					<label for="country" class="col-lg-2 control-label"><h4>Country</h4>
 					</label>
 					<div class="col-lg-5">
-						<select class="form-control" name="Country" id="Country">
+						<select class="form-control" name="country" id="country">
 							<!--Countries from the DB-->
 							<option>Ukraine</option>
 							<option>France</option>
@@ -36,10 +36,10 @@
 			</div>
 			<div class="row">
 				<div class="form-group">
-					<label for="Region" class="col-lg-2 control-label"><h4>Region</h4>
+					<label for="region" class="col-lg-2 control-label"><h4>Region</h4>
 					</label>
 					<div class="col-lg-5">
-						<select class="form-control" name="Region" id="Region">
+						<select class="form-control" name="region" id="region">
 							<!--Regions from the DB-->
 							<option>Cherkasy Oblast</option>
 							<option>Chernihiv Oblast</option>
@@ -51,21 +51,21 @@
 			</div>
 			<div class="row">
 				<div class="form-group">
-					<label for="City" class="col-lg-2 control-label"><h4>City</h4>
+					<label for="city" class="col-lg-2 control-label"><h4>City</h4>
 					</label>
 					<div class="col-lg-5">
-						<input name="City" type="text" class="form-control" id="City"
+						<input name="city" type="text" class="form-control" id="city"
 							placeholder="City (e.g. Lviv)">
 					</div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group">
-					<label for="Address" class="col-lg-2 control-label"><h4>Address</h4>
+					<label for="address" class="col-lg-2 control-label"><h4>Address</h4>
 					</label>
 					<div class="col-lg-5">
-						<input name="Address" type="text" class="form-control"
-							id="Address" placeholder="Address (e.g. Pasternaka Str., 5)">
+						<input name="address" type="text" class="form-control"
+							id="address" placeholder="Address (e.g. Pasternaka Str., 5)">
 					</div>
 				</div>
 			</div>
@@ -74,7 +74,7 @@
 					<label for="Address" class="col-lg-2 control-label"><h4>Number
 							of people</h4> </label>
 					<div class="col-lg-2">
-						<select class="form-control" name="Min" id="Min">
+						<select class="form-control" name="min" id="min">
 							<option>Min</option>
 							<option>1</option>
 							<option>2</option>
@@ -99,7 +99,7 @@
 						</select>
 					</div>
 					<div class="col-lg-2">
-						<select class="form-control" name="Max" id="Max">
+						<select class="form-control" name="max" id="max">
 							<option>Max</option>
 							<option>1</option>
 							<option>2</option>
@@ -146,7 +146,7 @@
 							allowed</h4> </label>
 					<div class="col-lg-4">
 						<label class="checkbox"> <input checked type="checkbox"
-							id="smoking">
+							name="smoking" id="smoking">
 						</label>
 					</div>
 				</div>
@@ -157,7 +157,7 @@
 							allowed</h4> </label>
 					<div class="col-lg-4">
 						<label class="checkbox"> <input checked type="checkbox"
-							id="family">
+							name="family" id="family">
 						</label>
 					</div>
 				</div>
@@ -168,7 +168,7 @@
 							allowed</h4> </label>
 					<div class="col-lg-4">
 						<label class="checkbox"> <input checked type="checkbox"
-							id="children">
+							name="children" id="children">
 						</label>
 					</div>
 				</div>
@@ -179,7 +179,7 @@
 					</label>
 					<div class="col-lg-4">
 						<label class="checkbox"> <input checked type="checkbox"
-							id="pets">
+							name="pets" id="pets">
 						</label>
 					</div>
 				</div>
@@ -193,8 +193,7 @@
 					<label for="Notes" class="col-lg-2 control-label"><h4>Add
 							some notes</h4> </label>
 					<div class="col-lg-5">
-						<textarea name="notes" class="form-control" id="Address" rows="3">
-					</textarea>
+						<textarea name="notes" class="form-control" id="notes" rows="3"></textarea>
 					</div>
 				</div>
 			</div>
