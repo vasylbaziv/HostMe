@@ -57,9 +57,7 @@ public abstract class AbstractGenericDao<E, I extends Serializable> implements
 	@Override
 	public void update(E entity) {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
 		session.update(entity);
-		transaction.commit();
 	}
 
 	@Override
