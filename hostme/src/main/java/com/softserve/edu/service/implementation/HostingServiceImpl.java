@@ -28,4 +28,10 @@ public class HostingServiceImpl implements HostingService {
         return hostingDao.getUserHostings();
     }
 
+    @Override
+    @Transactional
+    public Hosting getHosting(int id) {
+        return hostingDao.read(id);
+    }
+
 }
