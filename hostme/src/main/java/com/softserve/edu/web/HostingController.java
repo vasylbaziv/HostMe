@@ -66,9 +66,9 @@ public class HostingController {
 			@ModelAttribute("pets") String pets,
 			@ModelAttribute("notes") String notes, BindingResult bindingResult) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		String name = auth.getName();
-		System.out.print(name);
-		//hostingService.addHosting();
+		String login = auth.getName();
+		hostingService.addHosting(login, country, region, city, address, min, max, gender, 
+				smoking, family, children, pets, notes);
 		return "redirect:/profile";
 	}
 }

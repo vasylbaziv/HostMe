@@ -18,12 +18,19 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 @Entity
-@Table(name = "HOSTING", uniqueConstraints = { @UniqueConstraint(columnNames = { "address", "hosting_id" }) })
+@Table(name = "HOSTING", uniqueConstraints = { @UniqueConstraint(columnNames = {
+		"address", "hosting_id" }) })
 public class Hosting {
 	@Id
 	@GeneratedValue
 	@Column(name = "hosting_id", unique = true, nullable = false)
 	private Integer hostingId;
+	@Column(name = "country", length = 50, nullable = false)
+	private String country;
+	@Column(name = "region", length = 50, nullable = false)
+	private String region;
+	@Column(name = "city", length = 50, nullable = false)
+	private String city;
 	@Column(name = "address", length = 150, nullable = false, unique = true)
 	private String address;
 	@Column(name = "min_guests")
@@ -57,7 +64,8 @@ public class Hosting {
 	public Hosting() {
 	}
 
-	public Hosting(String address, Integer minNumberOfGuests, Integer maxNumberOfGuests, Boolean children, Boolean pets,
+	public Hosting(String address, Integer minNumberOfGuests,
+			Integer maxNumberOfGuests, Boolean children, Boolean pets,
 			Boolean smoking, Boolean family, Gender gender, String notes) {
 		super();
 		this.address = address;
@@ -193,11 +201,38 @@ public class Hosting {
 		}
 	}
 
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
 	@Override
 	public String toString() {
-		return "Hosting [hostingId=" + hostingId + ", address=" + address + ", minNumberOfGuests=" + minNumberOfGuests
-				+ ", maxNumberOfGuests=" + maxNumberOfGuests + ", children=" + children + ", pets=" + pets
-				+ ", smoking=" + smoking + ", family=" + family + ", gender=" + gender + ", notes=" + notes + "]";
+		return "Hosting [hostingId=" + hostingId + ", address=" + address
+				+ ", minNumberOfGuests=" + minNumberOfGuests
+				+ ", maxNumberOfGuests=" + maxNumberOfGuests + ", children="
+				+ children + ", pets=" + pets + ", smoking=" + smoking
+				+ ", family=" + family + ", gender=" + gender + ", notes="
+				+ notes + "]";
 	}
 
 }
