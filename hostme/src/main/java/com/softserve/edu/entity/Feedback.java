@@ -26,10 +26,10 @@ public class Feedback {
 	@Column(name = "description", nullable = false, length = 1000)
 	private String description;
 	@ManyToOne
-	@JoinColumn(name = "hosting_fk", nullable = false)
+	@JoinColumn(name = "hosting_id", nullable = false)
 	private Hosting hosting;
 	@ManyToOne
-	@JoinColumn(name = "author_fk", nullable = false)
+	@JoinColumn(name = "author_id", nullable = false)
 	private User author;
 	@OneToMany(mappedBy = "feedback", fetch = FetchType.LAZY, orphanRemoval = true)
 	private Set<Image> images = new HashSet<Image>();

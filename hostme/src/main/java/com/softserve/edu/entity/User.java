@@ -70,7 +70,7 @@ public class User {
 	 */
 	@ManyToMany
 	@Cascade({ CascadeType.DELETE, CascadeType.PERSIST })
-	@JoinTable(name = "user_languages", joinColumns = @JoinColumn(name = "user_fk"), inverseJoinColumns = @JoinColumn(name = "language_fk"))
+	@JoinTable(name = "user_languages", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "language_id"))
 	private Set<Language> languages = new HashSet<Language>();
 	/**
 	 * Contains images uploaded by this user

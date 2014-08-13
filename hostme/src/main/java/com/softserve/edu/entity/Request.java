@@ -37,10 +37,10 @@ public class Request {
 	@Column(name = "notes", length = 800)
 	private String notes;
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "hosting_fk", nullable = false)
+	@JoinColumn(name = "hosting_id", nullable = false)
 	private Hosting hosting;
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "user_fk", nullable = false)
+	@JoinColumn(name = "user_id", nullable = false)
 	private User author;
 
 	public Request() {

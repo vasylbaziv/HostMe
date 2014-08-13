@@ -22,7 +22,7 @@
 			<div class="row">
 				<div class="form-group">
 					<label for="Country" class="col-lg-2 control-label"><h4>Country</h4>
-					</label>2
+					</label>
 					<div class="col-lg-5">
 						<select class="form-control" name="Country" id="Country">
 							<!--Countries from the DB-->

@@ -19,13 +19,13 @@ public class Image {
 	@Column(name = "link", nullable = false, unique = true)
 	private String link;
 	@ManyToOne
-	@JoinColumn(name = "user_fk")
+	@JoinColumn(name = "user_id")
 	private User user;
 	@ManyToOne
-	@JoinColumn(name = "hosting_fk")
+	@JoinColumn(name = "hosting_id")
 	private Hosting hosting;
 	@ManyToOne
-	@JoinColumn(name = "feedback_fk")
+	@JoinColumn(name = "feedback_id")
 	private Feedback feedback;
 
 	public Image() {

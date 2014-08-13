@@ -33,6 +33,4 @@ public class RegistrationController {
 		registrationService.register(user,birthday,gender);
 		return "redirect:/login?success=true";
 	}
-	
-
 }

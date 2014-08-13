@@ -7,7 +7,7 @@
 		<mapping class="com.softserve.edu.entity.UserRole" />
 		<mapping class="com.softserve.edu.entity.Role" />
 		<mapping class="com.softserve.edu.entity.User" />
-		<mapping class="com.softserve.edu.entity.Hostel" />
+		<mapping class="com.softserve.edu.entity.Hosting" />
 		<mapping class="com.softserve.edu.entity.Image" />
 		<mapping class="com.softserve.edu.entity.Status" />
 		<mapping class="com.softserve.edu.entity.Language" />
