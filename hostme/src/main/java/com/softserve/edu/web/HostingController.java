@@ -19,7 +19,7 @@ public class HostingController {
 	private HostingService hostingService;
 
 	@RequestMapping(value = "/hosting", method = RequestMethod.GET)
-	public String hostelShow(Model model) {
+	public String hostingShow(Model model) {
 		return "hosting";
 	}
 
