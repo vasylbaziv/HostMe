@@ -80,7 +80,7 @@ public class User {
 	/**
 	 * Contains hosting apartments owned by this user
 	 */
-	@OneToMany(mappedBy = "owner", orphanRemoval = true, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "owner", orphanRemoval = true, fetch = FetchType.EAGER)
 	private Set<Hosting> hostings = new HashSet<Hosting>();
 	/**
 	 * Contains requests submitted by this user

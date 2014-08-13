@@ -14,5 +14,7 @@ public interface UserService {
 	public User getUser(Integer id);
 
 	public void removeUser(Integer id);
+	
+	public void initilizeUserLanguages(User user);
 
 }

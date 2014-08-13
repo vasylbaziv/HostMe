@@ -84,4 +84,10 @@ public class HostingServiceImpl implements HostingService {
 			return new Boolean(false);
 	}
 
+    @Override
+    @Transactional
+    public Hosting getHosting(int id) {
+        return hostingDao.read(id);
+    }
+
 }

@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -45,8 +47,9 @@ public class Hosting {
 	private Boolean smoking;
 	@Column(name = "family")
 	private Boolean family;
-	@Column(name = "gender")
-	private Gender gender = Gender.UNSPECIFIED;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "gender", nullable = false)
+	private Gender gender;
 	@Column(name = "notes", length = 1000)
 	private String notes;
 	@ManyToOne
