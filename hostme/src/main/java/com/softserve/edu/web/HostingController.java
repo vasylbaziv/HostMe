@@ -1,9 +1,16 @@
 package com.softserve.edu.web;
 
-import src.main.java.com.softserve.edu.entity.Hosting;
-import src.main.java.com.softserve.edu.entity.User;
-import src.main.java.com.softserve.edu.service.HostingService;
-import src.main.java.com.softserve.edu.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import com.softserve.edu.entity.Hosting;
+import com.softserve.edu.entity.User;
+import com.softserve.edu.service.HostingService;
+import com.softserve.edu.service.UserService;
 
 
 @Controller
