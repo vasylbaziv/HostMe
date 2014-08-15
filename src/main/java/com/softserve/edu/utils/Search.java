@@ -1,4 +1,4 @@
-package com.softserve.edu.auxiliarybean;
+package com.softserve.edu.utils;
 
 /**
  * Created by john_darkwood on 11.08.2014.

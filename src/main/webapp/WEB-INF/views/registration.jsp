@@ -30,7 +30,7 @@
 
 
 		<form:form method="post" action="registration" modelAttribute="user"
-			id="registrationForm">
+			id="registrationForm" onsubmit="validateForm(event)">
 			<div class="row">
 				<div class="form-group">
 					<label for="firstName"
@@ -63,7 +63,7 @@
 					</label>
 					<div class="col-sm-5" id="test1">
 						<form:input path="login" type="text" class="form-control"
-							id="login" placeholder="Login" />
+							id="login" placeholder="Login" onblur="checkLoginIdentity()" />
 					</div>
 				</div>
 			</div>
@@ -99,7 +99,7 @@
 					</label>
 					<div class="col-sm-5">
 						<form:input path="password" type="password" class="form-control"
-							id="password" placeholder="Password" onclick="checkLoginIdentity()"/>
+							id="password" placeholder="Password" />
 					</div>
 				</div>
 			</div>
@@ -114,7 +114,7 @@
 							password</h4> </label>
 					<div class="col-sm-5">
 						<input name="repeatPassword" type="password" class="form-control"
-							id="repeatPassword" placeholder="Password" />
+							id="repeatPassword" placeholder="Password" onblur="checkIdenticalPasswords()"/>
 					</div>
 				</div>
 			</div>
@@ -124,8 +124,8 @@
 					</label>
 					<div class="col-sm-5" id="test2">
 						<form:input path="email" type="text" class="form-control"
-							id="email" placeholder="some.email@gmail.com"
-							onclick="checkIdenticalPasswords()" />
+							id="email" placeholder="some.email@gmail.com" onblur="checkEmailIdentity()"
+							 />
 						<div id="loading_indicator"></div>
 					</div>
 				</div>
@@ -139,7 +139,7 @@
 						<form:input path="birthday" type="text"
 							class="datepicker form-control" id="dateOfBirth"
 							placeholder="MM/dd/yyyy" pattern="MM/dd/yyyy"
-							onclick="checkEmailIdentity()" />
+							 />
 					</div>
 				</div>
 			</div>

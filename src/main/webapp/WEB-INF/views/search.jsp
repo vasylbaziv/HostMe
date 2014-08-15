@@ -6,6 +6,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript" src="resources/js/request.js"></script>
 </head>
 <body>
 <div class="container">
@@ -142,12 +143,13 @@
                             <td>${hosting.region}</td>
                             <td>${hosting.city}</td>
 
-                            <td><a href="<c:url value="hosting?hostingId=6&&userId=2" />">${hosting.address}</a></td>
+
+                            <td><a href="<c:url value="hosting/${hosting.hostingId}/2" />">${hosting.address}</a></td>
                             <td>
                                 <a href="<c:url value='hoster?hosterId=2' />">${hosting.owner.firstName} ${hosting.owner.lastName}</a>
                             </td>
                             <td>
-                                <button class="btn btn-success" onclick="test()">Send
+                                <button class="btn btn-success" onclick="test(${hosting.hostingId})">Send
                                     Request
                                 </button>
                                 <div class="btn">Some div</div>
@@ -155,20 +157,31 @@
                         </tr>
                     </c:forEach>
                 </table>
-            </c:if>
+                </c:if>
+
+				<%-- 		<td><a href="<c:url value="hosting?hostingId=6&&userId=2" />">52
+								V.Velykoho Street</a></td>
+						<td><a href="<c:url value='hoster?hosterId=2' />">John
+								Snow</a></td>
+						<td><button class="btn btn-success" onclick="sendRequest()">Send
+								Request</button>
+							<div class="btn" id="loading_indicator">Some div</div></td>
+					</tr>
+ --%>
 
         </div>
     </div>
 </div>
 <script type="text/javascript">
-    function test() {
-        var a = $('.btn-success').parent().siblings('td:has(a)').eq(0);
+    function test(id) {
+    	console.log(id);
+        /* var a = $('.btn-success').parent().siblings('td:has(a)').eq(0);
         var b = a.children().attr('href');
         alert(b.replace('hosting?userId=', ""));
 
         var a = $('.btn-success').parent().siblings('td:has(a)').eq(1);
         var b = a.children().attr('href');
-        alert(b.replace('hoster?userId=', ""));
+        alert(b.replace('hoster?userId=', "")); */
     }
 </script>
 </body>

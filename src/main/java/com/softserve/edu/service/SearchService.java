@@ -1,9 +1,9 @@
 package com.softserve.edu.service;
 
-import com.softserve.edu.auxiliarybean.Search;
-import com.softserve.edu.entity.Hosting;
-
 import java.util.List;
+
+import com.softserve.edu.entity.Hosting;
+import com.softserve.edu.utils.Search;
 
 /**
  * Created by john_darkwood on 28.07.2014.

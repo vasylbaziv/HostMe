@@ -15,8 +15,8 @@ function checkIdenticalPasswords() {
 	var password = $('#password');
 	var repeatedPassword = $('#repeatPassword');
 	if (password.val() != repeatedPassword.val()) {
-		password.parent().addClass('has-error')
-		repeatedPassword.parent().addClass('has-error')
+		password.parent().addClass('has-error');
+		repeatedPassword.parent().addClass('has-error');
 		if ($('#mismatch').length) {
 			$('#mismatch').show();
 
@@ -26,10 +26,12 @@ function checkIdenticalPasswords() {
 			;
 
 		}
+		return true;
 	} else {
-		password.parent().removeClass('has-error')
-		repeatedPassword.parent().removeClass('has-error')
+		password.parent().removeClass('has-error');
+		repeatedPassword.parent().removeClass('has-error');
 		$('#mismatch').hide();
+		return false;
 
 	}
 	;
@@ -58,17 +60,20 @@ function checkEmailIdentity() {
 					error.attr("id", "emailError");
 					error.insertAfter(email);
 				}
+				return true;
+				
 			} else if (validateEmail(email) && email.val() > 3) {
 				email.parent().removeClass('has-error');
 				email.parent().addClass('has-succes');
 				$('#emailError').hide();
 
 			} else {
-				$('#emailError').hide()
+				$('#emailError').hide();
 
 			}
 		}
 	});
+	return false;
 }
 
 function testAJAX() {
@@ -126,12 +131,16 @@ function checkLoginIdentity() {
 					error.attr("id", "loginError");
 					error.insertAfter(login);
 				}
+				
+				return 1;
 			} else if (hasClass(login, 'has-error') && login.val() > 2) {
 				login.parent().removeClass('has-error');
 				login.parent().addClass('has-success');
 				$('#loginError').hide();
+				return 0;
 			} else {
 				$('#loginError').hide();
+				return 0;
 
 			}
 		}

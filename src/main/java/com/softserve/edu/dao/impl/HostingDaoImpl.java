@@ -1,14 +1,19 @@
 package com.softserve.edu.dao.impl;
 
-import com.softserve.edu.auxiliarybean.Search;
-import com.softserve.edu.dao.HostingDao;
-import com.softserve.edu.entity.Hosting;
-import org.hibernate.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+import com.softserve.edu.dao.HostingDao;
+import com.softserve.edu.entity.Hosting;
+import com.softserve.edu.utils.Search;
 
 @Repository
 public class HostingDaoImpl extends AbstractGenericDao<Hosting, Integer> implements HostingDao {
@@ -40,7 +45,7 @@ public class HostingDaoImpl extends AbstractGenericDao<Hosting, Integer> impleme
 
 
     public List<Hosting> getList(Search... parameters) {
-        List<Hosting> hostings;
+        List<Hosting> hostings = new ArrayList<>();
         Session session = sessionFactory.getCurrentSession();
         Criteria cr = session.createCriteria(Hosting.class, "hosting");
 
@@ -53,18 +58,18 @@ public class HostingDaoImpl extends AbstractGenericDao<Hosting, Integer> impleme
 
         //add criterias
         for (Search parameter : parameters) {
-            if ((parameter.getName() == "country" || parameter.getName() == "region") && !parameter.getValue().isEmpty()) {
+            if (((parameter.getName() == "country") || (parameter.getName() == "region")) && (parameter.getValue() != "")) {
                 cr.add(Restrictions.eq(parameter.getName(), parameter.getValue()));
             }
-            if ((parameter.getName() == "pets" || parameter.getName() == "children" || parameter.getName() == "family"
-                    || parameter.getName() == "smoking") && !parameter.getValue().isEmpty()) {
+            if (((parameter.getName() == "pets") || (parameter.getName() == "children") || (parameter.getName() == "family")
+                    || (parameter.getName() == "smoking")) && (parameter.getValue() != "")) {
                 cr.add(Restrictions.eq(parameter.getName(), Boolean.parseBoolean(parameter.getValue())));
             }
-            if (parameter.getName() == "minNumberOfGuests" && !parameter.getValue().isEmpty()) {
+            if ((parameter.getName() == "minNumberOfGuests") && (parameter.getValue() != "")) {
                 min = parameter.getName();
                 valueMin = parameter.getValue();
             }
-            if (parameter.getName() == "maxNumberOfGuests" && !parameter.getValue().isEmpty()) {
+            if ((parameter.getName() == "maxNumberOfGuests") && (parameter.getValue() != "")) {
                 max = parameter.getName();
                 valueMax = parameter.getValue();
             }
@@ -89,3 +94,4 @@ public class HostingDaoImpl extends AbstractGenericDao<Hosting, Integer> impleme
         return hostings;
     }
 }
+
