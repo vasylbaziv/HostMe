@@ -6,7 +6,8 @@
 <link rel="stylesheet" type="text/css"
 	href="resources/css/bootstrap.css">
 <link rel="stylesheet" type="text/css" href="resources/css/style.css">
-<link rel="stylesheet" type="text/css" href="resources/css/AdminLTE.css">
+<link rel="stylesheet" type="text/css" href="resources/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="resources/css/ionicons.css">
 <script src="resources/js/jquery-2.1.1.js"></script>
 <script src="resources/js/bootstrap.js"></script>
 </head>

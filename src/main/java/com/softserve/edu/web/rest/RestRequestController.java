@@ -8,9 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 public class RestRequestController {
 	@RequestMapping("response")
 	public Boolean processUserRequest(
-			@RequestParam(value = "userId") int userId,
-			@RequestParam(value = "hostingId") int hostingId) {
+			@RequestParam(value="id")int id) {
 		boolean result = false;
+		System.out.println(id);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return result;
 

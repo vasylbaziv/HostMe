@@ -6,7 +6,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="bootstrap.css">
+<link rel="stylesheet" type="text/css"
+	href="resources/css/daterangepicker-bs3.css">
+<script type="text/javascript" src="resources/js/daterangepicker.js"></script>
 </head>
 <body>
 	<div class="container">
@@ -117,9 +119,9 @@
 			</div>
 
 
-			<div class="row col-md-12" style="padding: 10px 0px 30px 0px;">
+			<div class="row " style="padding: 10px 0px 30px 0px;">
 
-				<div class="col-md-6">
+				<div class="col-md-offset-2 col-md-8">
 					<div class="box box-solid">
 						<div class="box-header">
 							<h3 class="box-title">Wanna send some request,man?</h3>
@@ -128,59 +130,39 @@
 						<div class="box-body">
 							<div class="box-group" id="accordion">
 								<!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-								<div class="panel box box-primary">
+								<div class="panel box box-success">
 									<div class="box-header">
 										<h4 class="box-title">
 											<a data-toggle="collapse" data-parent="#accordion"
-												href="#collapseOne" class="collapsed"> Choose your date nigga </a>
+												href="#collapseOne" class="collapsed"> Choose your date
+												nigga </a>
 										</h4>
 									</div>
 									<div id="collapseOne" class="panel-collapse collapse"
 										style="height: 0px;">
-										<div class="box-body"><div class="form-group">
-                                        <label>Date range:</label>
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-calendar"></i>
-                                            </div>
-                                            <input type="text" class="form-control pull-right" id="reservation">
-                                        </div><!-- /.input group -->
-                                    </div></div>
-									</div>
-								</div>
-								<div class="panel box box-danger">
-									<div class="box-header">
-										<h4 class="box-title">
-											<a data-toggle="collapse" data-parent="#accordion"
-												href="#collapseTwo" class="collapsed"> Collapsible Group
-												Danger </a>
-										</h4>
-									</div>
-									<div id="collapseTwo" class="panel-collapse collapse"
-										style="height: 0px;">
-										<div class="box-body">Anim pariatur cliche
-											reprehenderit, enim eiusmod high life accusamus terry
-											richardson ad squid. 3 wolf moon officia aute, non cupidatat
-											skateboard dolor brunch. Food truck quinoa nesciunt laborum
-											eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on
-											it squid single-origin coffee nulla assumenda shoreditch et.
-											Nihil anim keffiyeh helvetica, craft beer labore wes anderson
-											cred nesciunt sapiente ea proident. Ad vegan excepteur
-											butcher vice lomo. Leggings occaecat craft beer
-											farm-to-table, raw denim aesthetic synth nesciunt you
-											probably haven't heard of them accusamus labore sustainable
-											VHS.</div>
+										<div class="box-body">
+											<div class="form-group">
+												<label>Date and time range:</label>
+												<div class="input-group">
+													<div class="input-group-addon">
+														<i class="fa fa-clock-o"></i>
+													</div>
+													<input type="text" class="form-control pull-right"
+														id="reservationtime">
+												</div>
+												<!-- /.input group -->
+											</div>
+										</div>
 									</div>
 								</div>
 								<div class="panel box box-success">
 									<div class="box-header">
 										<h4 class="box-title">
 											<a data-toggle="collapse" data-parent="#accordion"
-												href="#collapseThree" class="collapsed"> Collapsible
-												Group Success </a>
+												href="#collapseTwo" class="collapsed"> Some extra wishes? </a>
 										</h4>
 									</div>
-									<div id="collapseThree" class="panel-collapse collapse"
+									<div id="collapseTwo" class="panel-collapse collapse"
 										style="height: 0px;">
 										<div class="box-body">Anim pariatur cliche
 											reprehenderit, enim eiusmod high life accusamus terry
@@ -209,5 +191,14 @@
 		</div>
 
 	</div>
+	<script type="text/javascript">
+	 $(function() {
+		$('#reservationtime').daterangepicker({
+			timePicker : true,
+			timePickerIncrement : 30,
+			format : 'MM/DD/YYYY h:mm A'
+		});
+	 });
+	</script>
 </body>
 </html>
