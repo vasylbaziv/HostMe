@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.softserve.edu.entity.Hosting;
+import com.softserve.edu.entity.Request;
 import com.softserve.edu.entity.User;
 import com.softserve.edu.service.HostingService;
 import com.softserve.edu.service.UserService;
@@ -81,6 +82,8 @@ public class HostingController {
 		model.addAttribute("user", user);
 		Hosting hosting = hostingService.getHosting(hostingId);
 		model.addAttribute("hosting", hosting);
+		Request request = new Request();
+		model.addAttribute("request",request);
 		return "hosting";
 	}
 

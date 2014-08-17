@@ -139,8 +139,8 @@
 
 
 								<td><a
-									href="<c:url value="hosting?hostingId=${hosting.hostingId}&&userId=${userId}" />">${hosting.address}</a></td>
-								<td><a href="<c:url value='hoster?hosterId=2' />">${hosting.owner.firstName}
+									href="<c:url value="hosting?hostingId=${hosting.hostingId}&&userId=${hosting.owner.userId}" />">${hosting.address}</a></td>
+								<td><a href="<c:url value='hoster?hosterId=${hosting.owner.userId }' />">${hosting.owner.firstName}
 										${hosting.owner.lastName}</a></td>
 								<td>
 									<button id ="a" class="btn btn-success"

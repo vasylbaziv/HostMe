@@ -4,6 +4,8 @@ import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,17 +17,19 @@ import javax.persistence.TemporalType;
 import javax.persistence.UniqueConstraint;
 
 /**
- * This class represents request for <code>hosting</code> and is created by <code>author</code>.
+ * This class represents request for <code>hosting</code> and is created by
+ * <code>author</code>.
  * 
  * @author Lv-117
  */
 @Entity
-@Table(name = "REQUEST", uniqueConstraints = { @UniqueConstraint(columnNames = { "request_id"}) })
+@Table(name = "REQUEST", uniqueConstraints = { @UniqueConstraint(columnNames = { "request_id" }) })
 public class Request {
 	@Id
 	@GeneratedValue
 	@Column(name = "request_id", unique = true, nullable = false)
-	private Long requestId;
+	private Integer requestId;
+	@Enumerated(EnumType.STRING)
 	@Column(name = "status", nullable = false)
 	private Status status;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -46,7 +50,8 @@ public class Request {
 	public Request() {
 	}
 
-	public Request(Status status, Calendar beginDate, Calendar endDate, String notes) {
+	public Request(Status status, Calendar beginDate, Calendar endDate,
+			String notes) {
 		super();
 		this.status = status;
 		this.beginDate = beginDate;
@@ -54,11 +59,11 @@ public class Request {
 		this.notes = notes;
 	}
 
-	public Long getRequestId() {
+	public Integer getRequestId() {
 		return requestId;
 	}
 
-	public void setRequestId(Long requestId) {
+	public void setRequestId(Integer requestId) {
 		this.requestId = requestId;
 	}
 
@@ -114,8 +119,9 @@ public class Request {
 
 	@Override
 	public String toString() {
-		return "Request [requestId=" + requestId + ", status=" + status + ", beginDate=" + beginDate + ", endDate="
-				+ endDate + ", notes=" + notes + "]";
+		return "Request [requestId=" + requestId + ", status=" + status
+				+ ", beginDate=" + beginDate + ", endDate=" + endDate
+				+ ", notes=" + notes + "]";
 	}
 
 }
