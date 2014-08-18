@@ -68,7 +68,7 @@ public class User {
 	/**
 	 * Contains languages owned by this user
 	 */
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@Cascade({ CascadeType.DELETE, CascadeType.PERSIST })
 	@JoinTable(name = "user_languages", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "language_id"))
 	private Set<Language> languages = new HashSet<Language>();
