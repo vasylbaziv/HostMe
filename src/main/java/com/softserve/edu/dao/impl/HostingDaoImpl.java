@@ -58,18 +58,18 @@ public class HostingDaoImpl extends AbstractGenericDao<Hosting, Integer> impleme
 
         //add criterias
         for (Search parameter : parameters) {
-            if (((parameter.getName() == "country") || (parameter.getName() == "region")) && (parameter.getValue() != "")) {
+            if ((parameter.getName().equals("country" || parameter.getName().equals("region")) && !parameter.getValue().isEmpty()) {
                 cr.add(Restrictions.eq(parameter.getName(), parameter.getValue()));
             }
-            if (((parameter.getName() == "pets") || (parameter.getName() == "children") || (parameter.getName() == "family")
-                    || (parameter.getName() == "smoking")) && (parameter.getValue() != "")) {
+            if ((parameter.getName().equals("pets") || parameter.getName().equals("children") || parameter.getName().equals("family")
+                    || parameter.getName().equals("smoking")) && !parameter.getValue().isEmpty()) {
                 cr.add(Restrictions.eq(parameter.getName(), Boolean.parseBoolean(parameter.getValue())));
             }
-            if ((parameter.getName() == "minNumberOfGuests") && (parameter.getValue() != "")) {
+            if (parameter.getName().equals("minNumberOfGuests") && !parameter.getValue().isEmpty()) {
                 min = parameter.getName();
                 valueMin = parameter.getValue();
             }
-            if ((parameter.getName() == "maxNumberOfGuests") && (parameter.getValue() != "")) {
+            if (parameter.getName().equals("maxNumberOfGuests") && !parameter.getValue().isEmpty()) {
                 max = parameter.getName();
                 valueMax = parameter.getValue();
             }
@@ -82,7 +82,7 @@ public class HostingDaoImpl extends AbstractGenericDao<Hosting, Integer> impleme
         }
 
         for (Search parameter : parameters) {
-            if (parameter.getValue() == "") {
+            if (parameter.getValue().isEmpty()) {
                 hostings = listAllHostels();
             }
         }
