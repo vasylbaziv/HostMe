@@ -19,16 +19,24 @@ public class RequestDaoImpl extends AbstractGenericDao<Request, Long> implements
 		super(Request.class);
 	}
 
-	private String FROM_REQUEST = "From Request  WHERE ";
+	private String FROM_REQUEST = "From Request   WHERE ";
 
 	@Override
 	public boolean checkRequest(Request request)
 			throws RequestAlreadySentException {
 		StringBuilder builder = new StringBuilder();
-		builder.append("end_date=").append(request.getEndDate().getTime());
-		builder.append("begin_date=").append(request.getBeginDate().getTime());
-		builder.append("hosting_id=").append(
+		builder.append(FROM_REQUEST);
+		Timestamp timestamp = new Timestamp(request.getEndDate().getTimeInMillis());
+		builder.append("end_date='").append(timestamp);
+		builder.append("' AND ");
+		builder.append("begin_date='").append(new Timestamp(request.getBeginDate().getTimeInMillis()));
+		builder.append("' AND ");
+		builder.append("hosting_id='").append(
 				request.getHosting().getHostingId());
+		builder.append("' AND ");
+		builder.append("user_id='");
+		builder.append(request.getAuthor().getUserId());
+		builder.append("'");
 		Query query = getSessionFactory().getCurrentSession().createQuery(
 				builder.toString());
 		ArrayList<Request> existingRequests = (ArrayList<Request>) query.list();

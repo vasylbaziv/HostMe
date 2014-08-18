@@ -12,8 +12,12 @@
 <script src="resources/js/bootstrap.js"></script>
 </head>
 <body>
+
 	<tiles:insertAttribute name="header" />
+	<div class="wrapper row-offcanvas row-offcanvas-left" style="min-height: 593px;">
+	<tiles:insertAttribute name="sidebar"/>
 	<tiles:insertAttribute name="body" />
-	<tiles:insertAttribute name="footer" />
+	</div>
+<%-- 	<tiles:insertAttribute name="footer" /> --%>
 </body>
 </html>

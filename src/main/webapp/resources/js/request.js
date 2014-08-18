@@ -22,7 +22,7 @@ function sendRequest(id, element) {
 		"class" : "btn btn-success"
 	});
 	var failRequest = $("<span/>", {
-		html : "Cannot be sent",
+		html : "Already was Sent",
 		"class" : "btn btn-danger"
 	});
 
@@ -42,7 +42,7 @@ function sendRequest(id, element) {
 
 		success : function(response) {
 			element.nextSibling.style.display = "none";
-			if (response) {
+			if (response=="Request send") {
 				successRequest.insertAfter(element);
 			} else {
 				failRequest.insertAfter(element);
