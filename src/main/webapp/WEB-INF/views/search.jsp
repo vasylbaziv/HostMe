@@ -32,21 +32,50 @@
 								<input type="checkbox"> <label>Women</label>
 							</div>
 							<div class="checkbox">
-								<form:checkbox path="family" value="true" />
-								<label>Family</label>
-							</div>
-						</div>
-						<div class="right" style="float: left; width: 23%">
-							<div class="checkbox">
-								<form:checkbox path="children" value="true" />
-								<label>Children</label>
-							</div>
-							<div class="checkbox">
-								<form:checkbox path="pets" value="true" />
-								<label>Pets</label>
-							</div>
-							<div class="checkbox">
-								<form:checkbox path="smoking" value="true" />
+								<c:choose>
+                                					<c:when test="${family eq true}">
+                                    						<form:checkbox path="family" value="true" checked="true"/>
+                                					</c:when>
+                                					<c:otherwise>
+                                    						<form:checkbox path="family" value="true"/>
+                                					</c:otherwise>
+                            					</c:choose>
+                            					<label>Family</label>
+                        				</div>
+                				 </div>
+                    				<div class="right" style="float: left; width: 23%">
+                        				<div class="checkbox">
+                            					<c:choose>
+                                					<c:when test="${children eq true}">
+                                    						<form:checkbox path="children" value="true" checked="true"/>
+                                					</c:when>
+                                					<c:otherwise>
+                                    						<form:checkbox path="children" value="true"/>
+                                					</c:otherwise>
+                            					</c:choose>
+
+                            					<label>Children</label>
+                        				</div>
+                        				<div class="checkbox">
+                            					<c:choose>
+                                					<c:when test="${pets eq true}">
+                                    						<form:checkbox path="pets" value="true" checked="true"/>
+                                					</c:when>
+                                					<c:otherwise>
+                                    						<form:checkbox path="pets" value="true"/>
+                                					</c:otherwise>
+                            					</c:choose>
+                            					<label>Pets</label>
+                        				</div>
+                        				<div class="checkbox">
+                            					<c:choose>
+                                					<c:when test="${smoking eq true}">
+                                    						<form:checkbox path="smoking" value="true" checked="true"/>
+                                					</c:when>
+                                					<c:otherwise>
+                                    						<form:checkbox path="smoking" value="true"/>
+                                					</c:otherwise>
+                            					</c:choose>
 								<label>Smoking</label>
 							</div>
 						</div>
@@ -64,7 +93,7 @@
 							<div class="select">
 								<form:select path="country" class="select"
 									style="margin: 7px 0; width: 100px; height: 25px">
-									<form:option value=""></form:option>
+									<form:option value="${country}"></form:option>
 									<form:option value="Ukraine"></form:option>
 									<form:option value="USA"></form:option>
 									<form:option value="Canada"></form:option>
@@ -72,7 +101,7 @@
 								<br>
 								<form:select path="region" class="select"
 									style="margin: 10px 0; width: 100px; height: 25px">
-									<form:option value=""></form:option>
+									<form:option value="${region}"></form:option>
 									<form:option value="Kyiv"></form:option>
 									<form:option value="Lviv"></form:option>
 									<form:option value="Kharkiv"></form:option>
@@ -80,7 +109,7 @@
 								<br>
 								<form:select path="maxNumberOfGuests" class="select"
 									style="margin: 12px 0; width: 100px; height: 25px">
-									<form:option value=""></form:option>
+									<form:option value="${count}"></form:option>
 									<form:option value="1"></form:option>
 									<form:option value="2"></form:option>
 									<form:option value="3"></form:option>
