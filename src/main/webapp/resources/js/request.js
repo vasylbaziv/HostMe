@@ -1,4 +1,6 @@
 function sendRequest(id, element) {
+
+
 	var loader = $("<img/>", {
 		src : "resources/images/ajax-loader.gif"
 	});
@@ -13,14 +15,16 @@ function sendRequest(id, element) {
 
 	$.ajax({
 		url : 'response',
-		data : {
-			"id" : id,
-		},
 		beforeSend : function() {
 			console.log('start');
 			element.style.display = "none";
 			loader.insertAfter(element);
 
+		},
+		data : {
+			beginDate : $('#beginDate').val(),
+			endDate : $('#endDate').val(),
+			hostingId : id,
 		},
 
 		success : function(response) {

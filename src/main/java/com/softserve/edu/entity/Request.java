@@ -1,5 +1,6 @@
 package com.softserve.edu.entity;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 import javax.persistence.Column;
@@ -24,7 +25,7 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "REQUEST", uniqueConstraints = { @UniqueConstraint(columnNames = { "request_id" }) })
-public class Request {
+public class Request  implements Serializable{
 	@Id
 	@GeneratedValue
 	@Column(name = "request_id", unique = true, nullable = false)

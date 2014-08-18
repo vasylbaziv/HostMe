@@ -21,6 +21,10 @@
 		<form:form method="get" action="searchhosts" commandName="host">
 			<div class="row">
 				<div class="col-md-8">
+					<h4>
+						From <input type="date" name="availability" id="beginDate"> To <input
+							type="date" name="availability" id="endDate">
+					</h4>
 					<div class="checkbox_cnt">
 						<label><h4>Select special requirements:</h4></label>
 
@@ -169,12 +173,14 @@
 
 								<td><a
 									href="<c:url value="hosting?hostingId=${hosting.hostingId}&&userId=${hosting.owner.userId}" />">${hosting.address}</a></td>
-								<td><a href="<c:url value='hoster?hosterId=${hosting.owner.userId }' />">${hosting.owner.firstName}
+								<td><a
+									href="<c:url value='hoster?hosterId=${hosting.owner.userId }' />">${hosting.owner.firstName}
 										${hosting.owner.lastName}</a></td>
 								<td>
-									<button id ="a" class="btn btn-success"
-										onclick="sendRequest(${hosting.hostingId},this)">Send Request</button>
-										
+									<button id="a" class="btn btn-success"
+										onclick="sendRequest(${hosting.hostingId},this)">Send
+										Request</button>
+
 								</td>
 							</tr>
 						</c:forEach>

@@ -1,16 +1,19 @@
 package com.softserve.edu.web.rest;
 
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class RestRequestController {
-	@RequestMapping("response")
+	@RequestMapping(value = "/response", method = RequestMethod.GET)
 	public Boolean processUserRequest(
-			@RequestParam(value="id")int id) {
+			@RequestParam(value = "beginDate") long beginDate,
+			@RequestParam(value = "endDate") long endDate,
+			@RequestParam(value = "hostingId") int hostingId) {
+		
 		boolean result = false;
-		System.out.println(id);
 		try {
 			Thread.sleep(1000);
 		} catch (InterruptedException e) {

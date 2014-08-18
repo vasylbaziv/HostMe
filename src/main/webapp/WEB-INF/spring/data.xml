@@ -36,9 +36,8 @@ http://www.springframework.org/schema/util/spring-util.xsd">
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="packagesToScan" value="com.softserve.edu.entity" />
-		<!-- <property name="configurationClass">
-			<value>org.hibernate.cfg.AnnotationConfiguration</value>
-		</property> -->
+		<!-- <property name="configurationClass"> <value>org.hibernate.cfg.AnnotationConfiguration</value> 
+			</property> -->
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.show_sql">true</prop>
@@ -48,5 +47,19 @@ http://www.springframework.org/schema/util/spring-util.xsd">
 				<prop key="hibernate.connection.charSet">UTF-8</prop>
 			</props>
 		</property>
+	</bean>
+	<!-- Configure to plugin JSON as request and response in method handler -->
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="jsonMessageConverter" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Configure bean to convert JSON to POJO and vice versa -->
+	<bean id="jsonMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 	</bean>
 </beans>
