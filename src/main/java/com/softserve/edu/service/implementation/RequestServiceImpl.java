@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.softserve.edu.dao.RequestDao;
 import com.softserve.edu.entity.Request;
+import com.softserve.edu.entity.exceptions.RequestAlreadySentException;
 import com.softserve.edu.service.RequestService;
 
 @Service
@@ -19,4 +20,10 @@ public class RequestServiceImpl implements RequestService {
 		requestDao.create(request);
 	}
 
+	@Override
+	@Transactional
+	public void checkRequest(Request request)
+			throws RequestAlreadySentException {
+		requestDao.checkRequest(request);
+	}
 }

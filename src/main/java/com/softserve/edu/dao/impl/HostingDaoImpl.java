@@ -58,7 +58,7 @@ public class HostingDaoImpl extends AbstractGenericDao<Hosting, Integer> impleme
 
         //add criterias
         for (Search parameter : parameters) {
-            if ((parameter.getName().equals("country" || parameter.getName().equals("region")) && !parameter.getValue().isEmpty()) {
+            if ((parameter.getName().equals("country") || parameter.getName().equals("region")) && !parameter.getValue().isEmpty()) {
                 cr.add(Restrictions.eq(parameter.getName(), parameter.getValue()));
             }
             if ((parameter.getName().equals("pets") || parameter.getName().equals("children") || parameter.getName().equals("family")

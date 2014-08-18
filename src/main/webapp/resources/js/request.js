@@ -1,16 +1,29 @@
-function sendRequest(id, element) {
+$(function() {
+	$('#reservationtime').daterangepicker({
+		timePicker : true,
+		timePickerIncrement : 30,
+		format : 'MM/DD/YYYY h:mm A'
+	});
 
+});
+
+function sendRequest(id, element) {
+	var dateRange = $('#reservationtime').val().split(' - ');
+	var beginDate = Date.parse(dateRange[0]);
+	var endDate = Date.parse(dateRange[1]);
 
 	var loader = $("<img/>", {
-		src : "resources/images/ajax-loader.gif"
+		src : "resources/images/ajax-loader.gif",
+		style:"width:30px;  display: block; margin-left: auto; margin-right: auto;"
+		
 	});
 	var successRequest = $("<span/>", {
-		html : "Sent",
-		"class" : "label label-primary"
+		html : "Request is sent",
+		"class" : "btn btn-success"
 	});
 	var failRequest = $("<span/>", {
 		html : "Cannot be sent",
-		"class" : "label label-danger"
+		"class" : "btn btn-danger"
 	});
 
 	$.ajax({
@@ -22,15 +35,15 @@ function sendRequest(id, element) {
 
 		},
 		data : {
-			beginDate : $('#beginDate').val(),
-			endDate : $('#endDate').val(),
+			'beginDate' : beginDate,
+			'endDate' : endDate,
 			hostingId : id,
 		},
 
 		success : function(response) {
 			element.nextSibling.style.display = "none";
 			if (response) {
-				console.log('true');
+				successRequest.insertAfter(element);
 			} else {
 				failRequest.insertAfter(element);
 
