@@ -42,7 +42,14 @@ public class SearchController {
 		Search srchfamily = new Search("family", family);
 		Search srchMinCount = new Search("minNumberOfGuests", count);
 		Search srchMaxCount = new Search("maxNumberOfGuests", count);
-		map.put("host", new Hosting());
+		map.put("country", country);
+        	map.put("region", region);
+        	map.put("pets", Boolean.parseBoolean(pets));
+        	map.put("children", Boolean.parseBoolean(children));
+        	map.put("smoking", Boolean.parseBoolean(smoking));
+        	map.put("family", Boolean.parseBoolean(family));
+        	map.put("count", count);
+        	map.put("host", new Hosting());
 		map.put("hostsList", searchService.getList(srchcountry, srchregion,
 				srchpets, srchchildren, srchsmoking, srchfamily, srchMinCount,
 				srchMaxCount));
