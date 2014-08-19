@@ -11,13 +11,13 @@
 <script src="resources/js/jquery-2.1.1.js"></script>
 <script src="resources/js/bootstrap.js"></script>
 </head>
-<body>
+<body class="skin-blue  pace-done">
 
 	<tiles:insertAttribute name="header" />
 	<div class="wrapper row-offcanvas row-offcanvas-left" style="min-height: 593px;">
 	<tiles:insertAttribute name="sidebar"/>
 	<tiles:insertAttribute name="body" />
 	</div>
-<%-- 	<tiles:insertAttribute name="footer" /> --%>
+	<tiles:insertAttribute name="footer" />
 </body>
 </html>

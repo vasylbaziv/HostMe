@@ -148,7 +148,4 @@
 			window.location = "feedbacks";
 		});
 	</script>
-
-
->>>>>>> the next step will be integration JPA, just now we have a really bad code
 </html>
