@@ -34,8 +34,6 @@ public class HostingController {
 		hosting.setFamily(true);
 		hosting.setSmoking(true);
 		hosting.setPets(true);
-//		hosting.setMinNumberOfGuests(1);
-//		hosting.setMaxNumberOfGuests(20);
 		model.addAttribute("hosting", hosting);
 		return "hosting-creation";
 	}

@@ -9,9 +9,10 @@
 <script type="text/javascript" src="resources/js/jquery.validate.js"></script>
 <script type="text/javascript" src="resources/js/validation.js"></script>
 <script type="text/javascript" src="resources/js/countries3.js"></script>
-<script src="<c:url value="resources/js/countries3.js" />"></script>
-<script language="javascript">
-	print_country("country");
+<script type="text/javascript" src="resources/js/countries3.js" />
+">
+</script>
+
 </script>
 <link rel="stylesheet" type="text/css" href="bootstrap.css">
 </head>
@@ -34,9 +35,8 @@
 					<div class="col-lg-5">
 						<form:select class="form-control" path="country" id="country"
 							name="country"
+							onclick="print_state('region',this.selectedIndex);"
 							onchange="print_state('region',this.selectedIndex);">
-							<option>Ukraine</option>
-							<option>Spain</option>
 						</form:select>
 					</div>
 				</div>
@@ -47,8 +47,6 @@
 					</label>
 					<div class="col-lg-5">
 						<form:select class="form-control" path="region" id="region">
-							<option>Lvivska oblast</option>
-							<option>Lutska oblast</option>
 						</form:select>
 					</div>
 				</div>
@@ -58,8 +56,8 @@
 					<label for="city" class="col-lg-2 control-label"><h4>City</h4>
 					</label>
 					<div class="col-lg-5">
-						<form:input path="city" type="text" class="form-control" id="city" name="city"
-							placeholder="City (e.g. Lviv)" />
+						<form:input path="city" type="text" class="form-control" id="city"
+							name="city" placeholder="City (e.g. Lviv)" />
 					</div>
 				</div>
 			</div>
@@ -68,8 +66,9 @@
 					<label for="address" class="col-lg-2 control-label"><h4>Address</h4>
 					</label>
 					<div class="col-lg-5">
-						<form:input path="address" type="text" class="form-control" name="address"
-							id="address" placeholder="Address (e.g. Pasternaka Str., 5)" />
+						<form:input path="address" type="text" class="form-control"
+							name="address" id="address"
+							placeholder="Address (e.g. Pasternaka Str., 5)" />
 					</div>
 				</div>
 			</div>
@@ -177,7 +176,9 @@
 		<script type="text/javascript">
 			$('#myModal').modal('show');
 		</script>
-
+		<script language="javascript">
+			print_country("country");
+		</script>
 		<script type="text/javascript">
 			$("#createHosting").on("click", function() {
 				window.location = "profile";
