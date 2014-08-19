@@ -77,11 +77,10 @@ public class HostingServiceImpl implements HostingService {
 	}
 
 	private Boolean parseToBoolean(String value) {
-		System.out.println(value);
 		if (value.equals("on"))
-			return new Boolean(true);
+			return true;
 		else
-			return new Boolean(false);
+			return false;
 	}
 
 }

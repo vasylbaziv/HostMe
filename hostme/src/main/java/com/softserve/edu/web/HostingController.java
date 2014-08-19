@@ -19,36 +19,24 @@ public class HostingController {
 	private HostingService hostingService;
 
 	@RequestMapping(value = "/hosting", method = RequestMethod.GET)
-	public String hostelShow(Model model) {
+	public String hostingShow(Model model) {
 		return "hosting";
 	}
 
 	@RequestMapping(value = "/hosting-creation", method = RequestMethod.GET)
 	public String hostingCreationShow(Model model) {
-		String country = null;
-		String region = null;
-		String city = null;
-		String address = null;
-		String min = null;
-		String max = null;
-		String gender = null;
-		String smoking = null;
-		String family = null;
-		String children = null;
-		String pets = null;
-		String notes = null;
-		model.addAttribute("country", country);
-		model.addAttribute("region", region);
-		model.addAttribute("city", city);
-		model.addAttribute("address", address);
-		model.addAttribute("min", min);
-		model.addAttribute("max", max);
-		model.addAttribute("gender", gender);
-		model.addAttribute("smoking", smoking);
-		model.addAttribute("family", family);
-		model.addAttribute("children", children);
-		model.addAttribute("pets", pets);
-		model.addAttribute("notes", notes);
+		model.addAttribute("country", new String());
+		model.addAttribute("region", new String());
+		model.addAttribute("city", new String());
+		model.addAttribute("address", new String());
+		model.addAttribute("min", new String());
+		model.addAttribute("max", new String());
+		model.addAttribute("gender", new String());
+		model.addAttribute("smoking", new String());
+		model.addAttribute("family", new String());
+		model.addAttribute("children", new String());
+		model.addAttribute("pets", new String());
+		model.addAttribute("notes", new String());
 		return "hosting-creation";
 	}
 

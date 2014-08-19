@@ -62,6 +62,21 @@ $(document).ready(
 					}
 				}
 			});
+			
+			$('#hostingCreationForm').validate({
+				rules : {
+					city : {
+						minlength : 3,
+						required : true,
+					},
+					address : {
+						minlength : 3,
+						required : true,
+					},
+					notes : {
+					}
+				}
+			});
 
 			$('#registrationForm').validate({
 				rules : {
