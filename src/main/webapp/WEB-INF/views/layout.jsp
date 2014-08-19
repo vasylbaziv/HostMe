@@ -9,10 +9,12 @@
 <link rel="stylesheet" type="text/css"
     href="resources/css/font-awesome.css">
 <link rel="stylesheet" type="text/css" href="resources/css/ionicons.css">
+<link rel="stylesheet" type="text/css"
+    href="resources/css/minimal.css">
 <script src="resources/js/jquery-2.1.1.js"></script>
 <script src="resources/js/bootstrap.js"></script>
 <script src="resources/js/app.js"></script>
-<script src="resources/js/jquery-ui-110.3.min.js"></script>
+<script src="resources/js/jquery-ui-1.10.3.min.js"></script>
 </head>
 <body class="skin-blue  pace-done">
 

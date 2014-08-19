@@ -10,6 +10,7 @@
 <head>
 <script type="text/javascript" src="resources/js/jquery.validate.js"></script>
 <script type="text/javascript" src="resources/js/validation.js"></script>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Login</title>
 </head>
@@ -53,80 +54,103 @@
 	<!-- 	</div> -->
 
 	<!-- Just now we have this login form like trial version in next commit i*ll make it a modal form  -->
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8 col-sm-offset-1">
-				<h1
-					style="padding-top: 50px; border-bottom-style: solid; border-color: #CCCCFF; border-width: 5px">
-					Sign in <small>Just a trial login, modal form is coming
-						soon</small>
-				</h1>
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog form-box ">
+			<form role="form" action="<c:url value='j_spring_security_check'/>"
+				method="POST" id="loginForm">
+				<div class="modal-content">
+					<div class="header bg-blue">
+
+						<a href="<c:url value='/index' />" type="button" class="close" >
+							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+						</a>
+						<h4 class="modal-title" id="myModalLabel">Sign In</h4>
+					</div>
+					<div class="modal-body">
+						<c:if test="${param.success eq true }">
+							<div class="row">
+								<div class="col-md-6 col-md-offset-2">
+									<h4 class="success_registration">You have registered!
+										Congrats!Now you must log in!</h4>
+								</div>
+							</div>
+						</c:if>
+						<c:if test="${param.error eq true }">
+							<div class="row">
+								<div class="col-md-6 col-md-offset-2">
+									<h4 class="error">Wrong login or password! Try again!</h4>
+								</div>
+							</div>
+						</c:if>
+						<c:if test="${param.logout eq true }">
+							<div class="row">
+								<div class="col-md-6 col-md-offset-2">
+									<h4 class="error">You have logged out! To veiw content
+										please log in!</h4>
+								</div>
+							</div>
+						</c:if>
+
+
+						<div class="body bg-gray">
+							<div class="form-group">
+								<div>
+									<input type="text" name="j_username" class="form-control"
+										placeholder="Login" required autofocus id="login">
+								</div>
+							</div>
+							<div class="form-group">
+
+								<div>
+									<input type="password" name="j_password" class="form-control"
+										placeholder="Password" required id="password">
+
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label class="text-blue" for="remember">Remember me?</label> <input
+									id="remember" type="checkbox" class="minimal"
+									name="_spring_security_remember_me" />
+							</div>
+							<div class="row">
+								<div class="col-sm-offset-5 col-sm-2"></div>
+							</div>
+						</div>
+
+
+
+
+					</div>
+					<div class="modal-footer">
+						<a href="<c:url value='/index' />" type="button" class="btn btn-primary btn-block"
+							>Close</a>
+						<button class="btn btn-primary btn-block " type="submit">Sign
+							in</button>
+
+					</div>
+
+				</div>
+			</form>
+			<div class="margin text-center">
+				<span style="color: white;">Sign in using social networks</span> <br>
+				<button class="btn bg-light-blue btn-circle">
+					<i class="fa fa-facebook"></i>
+				</button>
+				<button class="btn bg-aqua btn-circle">
+					<i class="fa fa-twitter"></i>
+				</button>
+				<button class="btn bg-red btn-circle">
+					<i class="fa fa-google-plus"></i>
+				</button>
+
 			</div>
 		</div>
-		<c:if test="${param.success eq true }">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-2">
-					<h4 class="success_registration">You have registered!
-						Congrats!Now you must log in!</h4>
-				</div>
-			</div>
-		</c:if>
-		<c:if test="${param.error eq true }">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-2">
-					<h4 class="error">Wrong login or password! Try again!</h4>
-				</div>
-			</div>
-		</c:if>
-		<c:if test="${param.logout eq true }">
-			<div class="row">
-				<div class="col-md-6 col-md-offset-2">
-					<h4 class="error">You have logged out! To veiw content please
-						log in!</h4>
-				</div>
-			</div>
-		</c:if>
-
-		<form class="form-signin" role="form"
-			action="<c:url value='j_spring_security_check'/>" method="POST"
-			id="loginForm">
-			<div class="form-group">
-				<div class="row">
-					<label for="login" class="col-sm-1 col-sm-offset-1 control-label">
-						<h4>Login</h4>
-					</label>
-					<div class="col-sm-5">
-						<input type="text" name="j_username" class="form-control"
-							placeholder="Login" required autofocus id="login">
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="row">
-					<label for="password"
-						class="col-sm-1 col-sm-offset-1 control-label">
-						<h4>Password</h4>
-					</label>
-					<div class="col-sm-5">
-						<input type="password" name="j_password" class="form-control"
-							placeholder="Password" required id="password">
-
-					</div>
-				</div>
-			</div>
-			<input type="checkbox" name="_spring_security_remember_me" />
-			<div class="row">
-				<div class="col-sm-offset-5 col-sm-2">
-
-					<button class="btn btn-primary btn-block " type="submit">Sign
-						in</button>
-				</div>
-			</div>
-
-		</form>
-
 	</div>
+	<script type="text/javascript">
+	$('#myModal').modal('show');
+	</script>
 
 
 </body>
