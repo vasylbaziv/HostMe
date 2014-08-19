@@ -6,7 +6,13 @@
 	uri="http://www.springframework.org/security/tags"%>
 	
 	
-	<nav class="navbar navbar-static-top" role="navigation">
+<header class="header">
+            <a href="index.html" class="logo">
+                <!-- Add the class icon to your logo image or logo icon to add the margining -->
+               Host Me
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->
                 <a href="#" class="navbar-btn sidebar-toggle" data-toggle="offcanvas" role="button">
                     <span class="sr-only">Toggle navigation</span>
@@ -30,7 +36,7 @@
                                         <li><!-- start message -->
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="../../img/avatar3.png" class="img-circle" alt="User Image">
+                                                    <img src="img/avatar3.png" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
                                                     Support Team
@@ -42,7 +48,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="../../img/avatar2.png" class="img-circle" alt="user image">
+                                                    <img src="img/avatar2.png" class="img-circle" alt="user image">
                                                 </div>
                                                 <h4>
                                                     AdminLTE Design Team
@@ -54,7 +60,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="../../img/avatar.png" class="img-circle" alt="user image">
+                                                    <img src="img/avatar.png" class="img-circle" alt="user image">
                                                 </div>
                                                 <h4>
                                                     Developers
@@ -66,7 +72,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="../../img/avatar2.png" class="img-circle" alt="user image">
+                                                    <img src="img/avatar2.png" class="img-circle" alt="user image">
                                                 </div>
                                                 <h4>
                                                     Sales Department
@@ -78,7 +84,7 @@
                                         <li>
                                             <a href="#">
                                                 <div class="pull-left">
-                                                    <img src="../../img/avatar.png" class="img-circle" alt="user image">
+                                                    <img src="img/avatar.png" class="img-circle" alt="user image">
                                                 </div>
                                                 <h4>
                                                     Reviewers
@@ -213,7 +219,7 @@
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
-                                    <img src="../../img/avatar3.png" class="img-circle" alt="User Image">
+                                    <img src="img/avatar3.png" class="img-circle" alt="User Image">
                                     <p>
                                         Jane Doe - Web Developer
                                         <small>Member since Nov. 2012</small>
@@ -245,48 +251,6 @@
                     </ul>
                 </div>
             </nav>
-
-<!-- <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"> -->
-<!-- 	<div class="container"> -->
-<!-- 		<div class="navbar-header"> -->
-<!-- 			<button type="button" class="navbar-toggle" data-toggle="collapse" -->
-<!-- 				data-target=".navbar-ex1-collapse"> -->
-<!-- 				<span class="sr-only">Toggle navigation</span> <span -->
-<!-- 					class="icon-bar"></span> <span class="icon-bar"></span> <span -->
-<!-- 					class="icon-bar"></span> -->
-<!-- 			</button> -->
-
-<!-- 			<a class="navbar-brand" href="index">Host Me</a> -->
-<!-- 		</div> -->
-
-<!-- 		<div class="collapse navbar-collapse navbar-ex1-collapse"> -->
-<!-- 			<ul class="nav navbar-nav navbar-right"> -->
-<!-- 				<li><a href="about.html">About</a></li> -->
+        </header>
 
 
-<%-- 				<security:authorize access="! isAuthenticated()"> --%>
-<%-- 					<li><a href="<c:url value='registration' />"> Registration</a></li> --%>
-<%-- 				</security:authorize> --%>
-<%-- 				<li><a href="<c:url value='search' />"> Search</a></li> --%>
-<%-- 				<li><a href="<c:url value='profile' />"> Profile</a></li> --%>
-<%-- 				<security:authorize access="! isAuthenticated()"> --%>
-<%-- 					<li><a href="<c:url value='login' />">Login</a></li> --%>
-<%-- 				</security:authorize> --%>
-<%-- 				<security:authorize access="isAuthenticated()"> --%>
-<%-- 					<li><a href="<spring:url value="logout"/>">Logout</a></li> --%>
-<%-- 				</security:authorize> --%>
-<!-- 				<li class="dropdown"><a href="#" class="dropdown-toggle" -->
-<!-- 					data-toggle="dropdown">Help <b class="caret"></b></a> -->
-<!-- 					<ul class="dropdown-menu"> -->
-<!-- 						<li><a href="portfolio-1-col.html">How to do this</a></li> -->
-<!-- 						<li><a href="portfolio-2-col.html">How to do that</a></li> -->
-<!-- 						<li><a href="portfolio-3-col.html">How to do</a></li> -->
-<!-- 						<li><a href="portfolio-4-col.html">How to do nothing</a></li> -->
-
-<!-- 					</ul></li> -->
-<!-- 			</ul> -->
-<!-- 		</div> -->
-
-<!-- 	</div> -->
-
-<!-- </nav> -->

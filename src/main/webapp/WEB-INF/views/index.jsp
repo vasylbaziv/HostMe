@@ -12,47 +12,6 @@
 </head>
 <body>
     <div id="pageUp"></div>
-
-
-    <!--Carousel-->
-    <div id="myCarousel" class="carousel slide">
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0"
-                class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-            <li data-target="#myCarousel" data-slide-to="3"></li>
-        </ol>
-        <div class="carousel-inner" style="margin-top: 40px">
-            <div class="item active">
-                <div class="fill">
-                    <img src="resources/images/picture.jpg" class="displayed">
-                </div>
-            </div>
-            <div class="item">
-                <div class="fill">
-                    <img src="resources/images/picture2.jpg" class="displayed">
-                </div>
-            </div>
-            <div class="item">
-                <div class="fill">
-                    <img src="resources/images/picture3.jpg" class="displayed">
-                </div>
-            </div>
-            <div class="item">
-                <div class="fill">
-                    <img src="resources/images/picture4.jpg" class="displayed">
-                </div>
-            </div>
-        </div>
-        <a class="left carousel-control" href="#myCarousel"
-            data-slide="prev"> <span class="icon-prev"></span>
-        </a> <a class="right carousel-control" href="#myCarousel"
-            data-slide="next"> <span class="icon-next"></span>
-        </a>
-    </div>
-    <!--Carousel-->
-
     <div class="container" style="text-align: justify;">
 
         <div class="row" style="margin-top: 10px">
