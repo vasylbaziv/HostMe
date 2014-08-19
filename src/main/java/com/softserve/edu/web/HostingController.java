@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.softserve.edu.entity.Gender;
 import com.softserve.edu.entity.Hosting;
 import com.softserve.edu.entity.Request;
 import com.softserve.edu.entity.User;
@@ -27,51 +28,24 @@ public class HostingController {
 
 	@RequestMapping(value = "/hosting-creation", method = RequestMethod.GET)
 	public String hostingCreationShow(Model model) {
-		String country = null;
-		String region = null;
-		String city = null;
-		String address = null;
-		String min = null;
-		String max = null;
-		String gender = null;
-		String smoking = null;
-		String family = null;
-		String children = null;
-		String pets = null;
-		String notes = null;
-		model.addAttribute("country", country);
-		model.addAttribute("region", region);
-		model.addAttribute("city", city);
-		model.addAttribute("address", address);
-		model.addAttribute("min", min);
-		model.addAttribute("max", max);
-		model.addAttribute("gender", gender);
-		model.addAttribute("smoking", smoking);
-		model.addAttribute("family", family);
-		model.addAttribute("children", children);
-		model.addAttribute("pets", pets);
-		model.addAttribute("notes", notes);
+		Hosting hosting = new Hosting();
+		hosting.setGender(Gender.UNSPECIFIED);
+		hosting.setChildren(true);
+		hosting.setFamily(true);
+		hosting.setSmoking(true);
+		hosting.setPets(true);
+//		hosting.setMinNumberOfGuests(1);
+//		hosting.setMaxNumberOfGuests(20);
+		model.addAttribute("hosting", hosting);
 		return "hosting-creation";
 	}
 
 	@RequestMapping(value = "/hosting-creation", method = RequestMethod.POST)
-	public String addHosting(@ModelAttribute("country") String country,
-			@ModelAttribute("region") String region,
-			@ModelAttribute("city") String city,
-			@ModelAttribute("address") String address,
-			@ModelAttribute("min") String min,
-			@ModelAttribute("max") String max,
-			@ModelAttribute("gender") String gender,
-			@ModelAttribute("smoking") String smoking,
-			@ModelAttribute("family") String family,
-			@ModelAttribute("children") String children,
-			@ModelAttribute("pets") String pets,
-			@ModelAttribute("notes") String notes, BindingResult bindingResult) {
-		Authentication auth = SecurityContextHolder.getContext()
+	public String addHosting(@ModelAttribute("hosting") Hosting hosting ){
+		/*Authentication auth = SecurityContextHolder.getContext()
 				.getAuthentication();
-		String login = auth.getName();
-		hostingService.addHosting(login, country, region, city, address, min,
-				max, gender, smoking, family, children, pets, notes);
+		String login = auth.getName();*/
+		hostingService.addHosting(hosting);
 		return "redirect:/profile";
 	}
 

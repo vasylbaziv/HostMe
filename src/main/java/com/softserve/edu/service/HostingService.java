@@ -12,8 +12,4 @@ public interface HostingService {
 
 	public List<Hosting> getUserHostings();
 
-	public void addHosting(String login, String country, String region,
-			String city, String address, String min, String max, String gender,
-			String smoking, String family, String children, String pets,
-			String notes);
 }
