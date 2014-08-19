@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.softserve.edu.entity.Contact;
+import com.softserve.edu.entity.User;
 import com.softserve.edu.service.ContactService;
 
 @Controller
@@ -20,7 +22,9 @@ public class ContactController {
 	private ContactService contactService;
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public String listContacts(Map<String, Object> map) {
+	public String listContacts(Model map) {
+		User user = new User();
+		map.addAttribute("user",user);
 		return "index";
 	}
 

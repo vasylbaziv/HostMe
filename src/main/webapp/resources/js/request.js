@@ -12,18 +12,24 @@ function sendRequest(id, element) {
 	var beginDate = Date.parse(dateRange[0]);
 	var endDate = Date.parse(dateRange[1]);
 
-	var loader = $("<img/>", {
-		src : "resources/images/ajax-loader.gif",
-		style:"width:30px;  display: block; margin-left: auto; margin-right: auto;"
-		
+	var check = $('<i/>', {
+		'class' : "fa fa-check"
 	});
-	var successRequest = $("<span/>", {
+	var loader = $(
+			"<img/>",
+			{
+				src : "resources/images/ajax-loader.gif",
+				style : "width:30px;  display: block; margin-left: auto; margin-right: auto;"
+
+			});
+
+	var successRequest = $("<p/>", {
 		html : "Request is sent",
-		"class" : "btn btn-success"
+		"class" : "text-green"
 	});
-	var failRequest = $("<span/>", {
-		html : "Already was Sent",
-		"class" : "btn btn-danger"
+	var failRequest = $("<p/>", {
+		html : "Duplicate Request",
+		"class" : "text-red"
 	});
 
 	$.ajax({
@@ -42,8 +48,9 @@ function sendRequest(id, element) {
 
 		success : function(response) {
 			element.nextSibling.style.display = "none";
-			if (response=="Request send") {
+			if (response == "Request send") {
 				successRequest.insertAfter(element);
+
 			} else {
 				failRequest.insertAfter(element);
 
