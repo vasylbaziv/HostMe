@@ -45,12 +45,12 @@ public class HostingDaoImpl extends AbstractGenericDao<Hosting, Integer> impleme
 
 
     public List<Hosting> getList(Search... parameters) {
-        List<Hosting> hostings = new ArrayList<>();
         Session session = sessionFactory.getCurrentSession();
         Criteria cr = session.createCriteria(Hosting.class, "hosting");
 
         //Join
         cr.setFetchMode("hosting.user", FetchMode.JOIN);
+        
         String min = new String();
         String valueMin = new String();
         String max = new String();
@@ -65,33 +65,23 @@ public class HostingDaoImpl extends AbstractGenericDao<Hosting, Integer> impleme
                     || parameter.getName().equals("smoking")) && !parameter.getValue().isEmpty()) {
                 cr.add(Restrictions.eq(parameter.getName(), Boolean.parseBoolean(parameter.getValue())));
             }
-            if (parameter.getName().equals("minNumberOfGuests") && !parameter.getValue().isEmpty()) {
-                min = parameter.getName();
-                valueMin = parameter.getValue();
-            }
-            if (parameter.getName().equals("maxNumberOfGuests") && !parameter.getValue().isEmpty()) {
-                max = parameter.getName();
-                valueMax = parameter.getValue();
-            }
-            if ((valueMax != null) && (valueMin != null)) {
-                try {
-                    cr.add(Restrictions.and(Restrictions.ge(min, Integer.parseInt(valueMin)),
-                            Restrictions.le(max, Integer.parseInt(valueMax))));
-                } catch (NumberFormatException e) {};
-            }
-        }
-
-        for (Search parameter : parameters) {
-            if (parameter.getValue().isEmpty()) {
-                hostings = listAllHostels();
+            if (parameter.getName().equals("minNumberOfGuests") ||parameter.getName().equals("maxNumberOfGuests")) {
+                if (parameter.getName().equals("minNumberOfGuests") && !parameter.getValue().isEmpty()) {
+                    min = parameter.getName();
+                    valueMin = parameter.getValue();
+                }
+                if (parameter.getName().equals("maxNumberOfGuests") && !parameter.getValue().isEmpty()) {
+                    max = parameter.getName();
+                    valueMax = parameter.getValue();
+                }
+                if (!valueMax.isEmpty() && !valueMin.isEmpty()) {
+                    cr.add(Restrictions.and(Restrictions.ge(max, Integer.parseInt(valueMax)),
+                            Restrictions.le(min, Integer.parseInt(valueMin))));
+                }
             }
         }
-
-        if (hostings.isEmpty()) {
-            hostings = cr.list();
-        }
-
-        return hostings;
+        
+        return cr.list();
     }
 }
 
