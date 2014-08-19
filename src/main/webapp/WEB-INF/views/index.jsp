@@ -12,8 +12,8 @@
 </head>
 <body>
 
-    
-    
+
+
     <section class="content-header">
     <h1>
         Dashboard <small>Control panel</small>
@@ -22,9 +22,81 @@
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Dashboard</li>
     </ol>
-    </section> 
+    </section>
+
+    <section class="content"> 
     
-    <section class="content"> <!-- Small boxes (Stat box) -->
+     <!-- Main row -->
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="box box-solid">
+                <div class="box-header">
+                    <h3 class="box-title">Carousel</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div id="carousel-example-generic"
+                        class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-example-generic"
+                                data-slide-to="0" class=""></li>
+                            <li data-target="#carousel-example-generic"
+                                data-slide-to="1" class="active"></li>
+                            <li data-target="#carousel-example-generic"
+                                data-slide-to="2" class=""></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item">
+                                <img
+                                    src="resources/images/index-hosting1.jpg"
+                                    alt="First slide">
+                                <div class="carousel-caption">
+                                    First Slide</div>
+                            </div>
+                            <div class="item active">
+                                <img
+                                    src="resources/images/index-hosting2.jpg"
+                                    alt="Second slide">
+                                <div class="carousel-caption">
+                                    Second Slide</div>
+                            </div>
+                            <div class="item">
+                                <img
+                                    src="resources/images/index-hosting3.jpg"
+                                    alt="Third slide">
+                                <div class="carousel-caption">
+                                    Third Slide</div>
+                            </div>
+                        </div>
+                        <a class="left carousel-control"
+                            href="#carousel-example-generic"
+                            data-slide="prev"> <span
+                            class="glyphicon glyphicon-chevron-left"></span>
+                        </a> <a class="right carousel-control"
+                            href="#carousel-example-generic"
+                            data-slide="next"> <span
+                            class="glyphicon glyphicon-chevron-right"></span>
+                        </a>
+                    </div>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+
+
+        <!-- Left col -->
+
+        <!-- /.Left col -->
+
+        <!-- right col -->
+
+        <!-- right col -->
+    </div>
+    <!-- /.row (main row) --> 
+    
+    <!-- Small boxes (Stat box) -->
     <div class="row">
         <div class="col-lg-3 col-xs-6">
             <!-- small box -->
@@ -95,19 +167,8 @@
     </div>
     <!-- /.row --> 
     
-    <!-- Main row -->
-    <div class="row">
-        <!-- Left col -->
-        
-        <!-- /.Left col -->
-        
-        <!-- right col -->
+    </section>
 
-        <!-- right col -->
-    </div>
-    <!-- /.row (main row) --> 
-    </section> 
-    
     </aside>
 </body>
 </html>
