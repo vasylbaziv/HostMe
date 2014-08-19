@@ -12,80 +12,82 @@
 	href="resources/css/daterangepicker-bs3.css">
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-8">
-				<h1
-					style="padding-top: 50px; border-bottom-style: solid; border-color: #EEEEEE; border-width: 5px">
-					Search <small>Find your hostel</small>
-				</h1>
-			</div>
-		</div>
+	<section class="content-header">
+	<h1>
+		Search <small>Find your hostel</small>
+	</h1>
+	<ol class="breadcrumb">
+		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+		<li class="active">Dashboard</li>
+	</ol>
+	</section>
+	<section class="content">
+	<div class="row">
 		<form:form method="get" action="searchhosts" commandName="host">
 			<div class="row">
 				<div class="col-md-8">
 					<p>Select date range you want to search</p>
-						<input name="timeRange" type="text" class="form-control pull-right"
-						id="reservationtime"/>
-						<div class="checkbox_cnt">
-							<label><h4>Select special requirements:</h4></label>
+					<input name="timeRange" type="text" class="form-control pull-right"
+						id="reservationtime" />
+					<div class="checkbox_cnt">
+						<label><h4>Select special requirements:</h4></label>
 
-							<div class="left" style="float: right; width: 77%">
-								<div class="checkbox">
-									<input type="checkbox"> <label>Men</label>
-								</div>
-								<div class="checkbox">
-									<input type="checkbox"> <label>Women</label>
-								</div>
-								<div class="checkbox">
-									<c:choose>
-										<c:when test="${family eq true}">
-											<form:checkbox path="family" value="true" checked="true" />
-										</c:when>
-										<c:otherwise>
-											<form:checkbox path="family" value="true" />
-										</c:otherwise>
-									</c:choose>
-									<label>Family</label>
-								</div>
+						<div class="left" style="float: right; width: 77%">
+							<div class="checkbox">
+								<input type="checkbox"> <label>Men</label>
 							</div>
-							<div class="right" style="float: left; width: 23%">
-								<div class="checkbox">
-									<c:choose>
-										<c:when test="${children eq true}">
-											<form:checkbox path="children" value="true" checked="true" />
-										</c:when>
-										<c:otherwise>
-											<form:checkbox path="children" value="true" />
-										</c:otherwise>
-									</c:choose>
-
-									<label>Children</label>
-								</div>
-								<div class="checkbox">
-									<c:choose>
-										<c:when test="${pets eq true}">
-											<form:checkbox path="pets" value="true" checked="true" />
-										</c:when>
-										<c:otherwise>
-											<form:checkbox path="pets" value="true" />
-										</c:otherwise>
-									</c:choose>
-									<label>Pets</label>
-								</div>
-								<div class="checkbox">
-									<c:choose>
-										<c:when test="${smoking eq true}">
-											<form:checkbox path="smoking" value="true" checked="true" />
-										</c:when>
-										<c:otherwise>
-											<form:checkbox path="smoking" value="true" />
-										</c:otherwise>
-									</c:choose>
-									<label>Smoking</label>
-								</div>
+							<div class="checkbox">
+								<input type="checkbox"> <label>Women</label>
+							</div>
+							<div class="checkbox">
+								<c:choose>
+									<c:when test="${family eq true}">
+										<form:checkbox path="family" value="true" checked="true" />
+									</c:when>
+									<c:otherwise>
+										<form:checkbox path="family" value="true" />
+									</c:otherwise>
+								</c:choose>
+								<label>Family</label>
 							</div>
 						</div>
+						<div class="right" style="float: left; width: 23%">
+							<div class="checkbox">
+								<c:choose>
+									<c:when test="${children eq true}">
+										<form:checkbox path="children" value="true" checked="true" />
+									</c:when>
+									<c:otherwise>
+										<form:checkbox path="children" value="true" />
+									</c:otherwise>
+								</c:choose>
+
+								<label>Children</label>
+							</div>
+							<div class="checkbox">
+								<c:choose>
+									<c:when test="${pets eq true}">
+										<form:checkbox path="pets" value="true" checked="true" />
+									</c:when>
+									<c:otherwise>
+										<form:checkbox path="pets" value="true" />
+									</c:otherwise>
+								</c:choose>
+								<label>Pets</label>
+							</div>
+							<div class="checkbox">
+								<c:choose>
+									<c:when test="${smoking eq true}">
+										<form:checkbox path="smoking" value="true" checked="true" />
+									</c:when>
+									<c:otherwise>
+										<form:checkbox path="smoking" value="true" />
+									</c:otherwise>
+								</c:choose>
+								<label>Smoking</label>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="row">
@@ -196,51 +198,51 @@
 			<div class="row">
 				<div class="col-md-8" style="margin-top: 20px;">
 					<div class="bottom">
-						<input type="submit" value="Search" />
-						</button>
+						<input type="submit" value="Search">Search
 					</div>
 				</div>
 			</div>
 		</form:form>
+	</div>
 
-		<div class="row">
-			<div class="col-md-8" style="margin-bottom: 30px; margin-top: 35px;">
-				<c:if test="${!empty hostsList}">
-					<table class="table table-hover">
-						<thead>
-							<tr style="background-color: #f9f9f9">
-								<th>Country</th>
-								<th>Region</th>
-								<th>City</th>
-								<th>Address</th>
-								<th>Hoster</th>
-							</tr>
-						</thead>
-						<c:forEach items="${hostsList}" var="hosting">
-							<tr>
-								<td>${hosting.country}</td>
-								<td>${hosting.region}</td>
-								<td>${hosting.city}</td>
+	<div class="row">
+		<div class="col-md-8" style="margin-bottom: 30px; margin-top: 35px;">
+			<c:if test="${!empty hostsList}">
+				<table class="table table-hover">
+					<thead>
+						<tr style="background-color: #f9f9f9">
+							<th>Country</th>
+							<th>Region</th>
+							<th>City</th>
+							<th>Address</th>
+							<th>Hoster</th>
+						</tr>
+					</thead>
+					<c:forEach items="${hostsList}" var="hosting">
+						<tr>
+							<td>${hosting.country}</td>
+							<td>${hosting.region}</td>
+							<td>${hosting.city}</td>
 
 
-								<td><a
-									href="<c:url value="hosting?hostingId=${hosting.hostingId}&&userId=${hosting.owner.userId}" />">${hosting.address}</a></td>
-								<td><a
-									href="<c:url value='hoster?hosterId=${hosting.owner.userId }' />">${hosting.owner.firstName}
-										${hosting.owner.lastName}</a></td>
-								<td>
-									<button id="a" class="btn btn-primary"
-										onclick="sendRequest(${hosting.hostingId},this)">Send
-										Request</button>
+							<td><a
+								href="<c:url value="hosting?hostingId=${hosting.hostingId}&&userId=${hosting.owner.userId}" />">${hosting.address}</a></td>
+							<td><a
+								href="<c:url value='hoster?hosterId=${hosting.owner.userId }' />">${hosting.owner.firstName}
+									${hosting.owner.lastName}</a></td>
+							<td>
+								<button id="a" class="btn btn-primary"
+									onclick="sendRequest(${hosting.hostingId},this)">Send
+									Request</button>
 
-								</td>
-							</tr>
-						</c:forEach>
-					</table>
-				</c:if>
+							</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</c:if>
 
-			</div>
 		</div>
 	</div>
+	</section>
 </body>
 </html>
