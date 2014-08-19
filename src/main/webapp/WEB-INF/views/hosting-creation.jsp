@@ -6,6 +6,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<script type="text/javascript" src="resources/js/jquery.validate.js"></script>
+<script type="text/javascript" src="resources/js/validation.js"></script>
+<script type="text/javascript" src="resources/js/countries3.js"></script>
+<script src="<c:url value="resources/js/countries3.js" />"></script>
+<script language="javascript">
+	print_country("country");
+</script>
 <link rel="stylesheet" type="text/css" href="bootstrap.css">
 </head>
 <body>
@@ -18,17 +25,17 @@
 			</div>
 		</div>
 		<form:form method="post" action="hosting-creation"
-			modelAttribute="hosting" id="hostingCreationForm">
+			onsubmit="validateForm(event)" modelAttribute="hosting"
+			id="hostingCreationForm">
 			<div class="row">
 				<div class="form-group">
 					<label for="country" class="col-lg-2 control-label"><h4>Country</h4>
 					</label>
 					<div class="col-lg-5">
-						<form:select class="form-control" path="country" id="country">
-							<!-- 							Countries from the DB -->
+						<form:select class="form-control" path="country" id="country"
+							name="country"
+							onchange="print_state('region',this.selectedIndex);">
 							<option>Ukraine</option>
-							<option>France</option>
-							<option>Italy</option>
 							<option>Spain</option>
 						</form:select>
 					</div>
@@ -40,11 +47,8 @@
 					</label>
 					<div class="col-lg-5">
 						<form:select class="form-control" path="region" id="region">
-							Regions from the DB
-							<option>Cherkasy Oblast</option>
-							<option>Chernihiv Oblast</option>
-							<option>Chernivtsi Oblast</option>
-							<option>Dnipropetrovsk Oblast</option>
+							<option>Lvivska oblast</option>
+							<option>Lutska oblast</option>
 						</form:select>
 					</div>
 				</div>
@@ -54,7 +58,7 @@
 					<label for="city" class="col-lg-2 control-label"><h4>City</h4>
 					</label>
 					<div class="col-lg-5">
-						<form:input path="city" type="text" class="form-control" id="city"
+						<form:input path="city" type="text" class="form-control" id="city" name="city"
 							placeholder="City (e.g. Lviv)" />
 					</div>
 				</div>
@@ -64,7 +68,7 @@
 					<label for="address" class="col-lg-2 control-label"><h4>Address</h4>
 					</label>
 					<div class="col-lg-5">
-						<form:input path="address" type="text" class="form-control"
+						<form:input path="address" type="text" class="form-control" name="address"
 							id="address" placeholder="Address (e.g. Pasternaka Str., 5)" />
 					</div>
 				</div>
@@ -77,16 +81,16 @@
 						<form:select class="form-control" path="minNumberOfGuests"
 							id="min">
 							<c:forEach var="i" begin="1" end="20">
-   							<option>${i}</option>
-   							</c:forEach>
+								<option>${i}</option>
+							</c:forEach>
 						</form:select>
 					</div>
 					<div class="col-lg-2">
 						<form:select class="form-control" path="maxNumberOfGuests"
 							id="max">
 							<c:forEach var="i" begin="1" end="20" step="1" varStatus="loop">
-   							<option>${loop.end - i + loop.begin}</option>
-   							</c:forEach>
+								<option>${loop.end - i + loop.begin}</option>
+							</c:forEach>
 						</form:select>
 					</div>
 				</div>

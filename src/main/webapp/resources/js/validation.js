@@ -62,7 +62,7 @@ $(document).ready(
 					}
 				}
 			});
-
+			
 			$('#registrationForm').validate({
 				rules : {
 					lastName : {
@@ -89,6 +89,19 @@ $(document).ready(
 					email : {
 						required : true,
 						email : true
+					}
+				}
+			});
+			
+			$('#hostingCreationForm').validate({
+				rules : {
+					city : {
+						minlength : 2,
+						required : true
+					},
+					address : {
+						minlength : 3,
+						required : true
 					}
 				}
 			});

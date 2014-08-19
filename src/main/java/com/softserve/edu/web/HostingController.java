@@ -42,9 +42,6 @@ public class HostingController {
 
 	@RequestMapping(value = "/hosting-creation", method = RequestMethod.POST)
 	public String addHosting(@ModelAttribute("hosting") Hosting hosting ){
-		/*Authentication auth = SecurityContextHolder.getContext()
-				.getAuthentication();
-		String login = auth.getName();*/
 		hostingService.addHosting(hosting);
 		return "redirect:/profile";
 	}
