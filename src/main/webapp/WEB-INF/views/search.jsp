@@ -99,43 +99,93 @@
 							<div class="select">
 								<form:select path="country" class="select"
 									style="margin: 7px 0; width: 100px; height: 25px">
-									<form:option value="${country}"></form:option>
-									<form:option value="Ukraine"></form:option>
-									<form:option value="USA"></form:option>
-									<form:option value="Canada"></form:option>
+									<c:choose>
+                                    						<c:when test="${not empty country}">
+                                        						<form:option value="${country}"></form:option>
+                                        						<form:option value=""></form:option>
+                                        						<form:option value="Ukraine"></form:option>
+                                        						<form:option value="USA"></form:option>
+                                        						<form:option value="Canada"></form:option>
+                                    						</c:when>
+                                    						<c:otherwise>
+                                        						<form:option value=""></form:option>
+                                        						<form:option value="Ukraine"></form:option>
+                                        						<form:option value="USA"></form:option>
+                                        						<form:option value="Canada"></form:option>
+                                    						</c:otherwise>
+                                					</c:choose>
 								</form:select>
 								<br>
 								<form:select path="region" class="select"
 									style="margin: 10px 0; width: 100px; height: 25px">
-									<form:option value="${region}"></form:option>
-									<form:option value="Kyiv"></form:option>
-									<form:option value="Lviv"></form:option>
-									<form:option value="Kharkiv"></form:option>
+									<c:choose>
+                                    						<c:when test="${not empty region}">
+                                        						<form:option value="${region}"></form:option>
+                                        						<form:option value=""></form:option>
+                                        						<form:option value="Kyiv"></form:option>
+                                        						<form:option value="Lviv"></form:option>
+                                        						<form:option value="Kharkiv"></form:option>
+                                    						</c:when>
+                                    						<c:otherwise>
+                                        						<form:option value=""></form:option>
+                                        						<form:option value="Kyiv"></form:option>
+                                        						<form:option value="Lviv"></form:option>
+                                        						<form:option value="Kharkiv"></form:option>
+                                    						</c:otherwise>
+                                					</c:choose>
 								</form:select>
 								<br>
 								<form:select path="maxNumberOfGuests" class="select"
 									style="margin: 12px 0; width: 100px; height: 25px">
-									<form:option value="${count}"></form:option>
-									<form:option value="1"></form:option>
-									<form:option value="2"></form:option>
-									<form:option value="3"></form:option>
-									<form:option value="4"></form:option>
-									<form:option value="5"></form:option>
-									<form:option value="6"></form:option>
-									<form:option value="7"></form:option>
-									<form:option value="8"></form:option>
-									<form:option value="9"></form:option>
-									<form:option value="10"></form:option>
-									<form:option value="11"></form:option>
-									<form:option value="12"></form:option>
-									<form:option value="13"></form:option>
-									<form:option value="14"></form:option>
-									<form:option value="15"></form:option>
-									<form:option value="16"></form:option>
-									<form:option value="17"></form:option>
-									<form:option value="18"></form:option>
-									<form:option value="19"></form:option>
-									<form:option value="20"></form:option>
+									<c:choose>
+                                						<c:when test="${not empty count}">
+                                    							<form:option value="${count}"></form:option>
+                                    							<form:option value=""></form:option>
+                                    							<form:option value="1"></form:option>
+                                    							<form:option value="2"></form:option>
+                                    							<form:option value="3"></form:option>
+                                    							<form:option value="4"></form:option>
+                                    							<form:option value="5"></form:option>
+                                    							<form:option value="6"></form:option>
+                                    							<form:option value="7"></form:option>
+                                    							<form:option value="8"></form:option>
+                                    							<form:option value="9"></form:option>
+                                    							<form:option value="10"></form:option>
+                                    							<form:option value="11"></form:option>
+                                    							<form:option value="12"></form:option>
+                                    							<form:option value="13"></form:option>
+                                    							<form:option value="14"></form:option>
+                                    							<form:option value="15"></form:option>
+                                    							<form:option value="16"></form:option>
+                                    							<form:option value="17"></form:option>
+                                    							<form:option value="18"></form:option>
+                                    							<form:option value="19"></form:option>
+                                    							<form:option value="20"></form:option>
+                                						</c:when>
+                                						<c:otherwise>
+                                    							<form:option value=""></form:option>
+                                    							<form:option value="1"></form:option>
+                                    							<form:option value="2"></form:option>
+                                    							<form:option value="3"></form:option>
+                                    							<form:option value="4"></form:option>
+                                    							<form:option value="5"></form:option>
+                                    							<form:option value="6"></form:option>
+                                    							<form:option value="7"></form:option>
+                                    							<form:option value="8"></form:option>
+                                    							<form:option value="9"></form:option>
+                                    							<form:option value="10"></form:option>
+                                    							<form:option value="11"></form:option>
+                                    							<form:option value="12"></form:option>
+                                    							<form:option value="13"></form:option>
+                                    							<form:option value="14"></form:option>
+                                    							<form:option value="15"></form:option>
+                                    							<form:option value="16"></form:option>
+                                    							<form:option value="17"></form:option>
+                                    							<form:option value="18"></form:option>
+                                    							<form:option value="19"></form:option>
+                                    							<form:option value="20"></form:option>
+                                						</c:otherwise>
+                            						</c:choose>
 								</form:select>
 							</div>
 						</div>
@@ -146,7 +196,7 @@
 			<div class="row">
 				<div class="col-md-8" style="margin-top: 20px;">
 					<div class="bottom">
-						<input type="submit" value="Search">Search
+						<input type="submit" value="Search" />
 						</button>
 					</div>
 				</div>
