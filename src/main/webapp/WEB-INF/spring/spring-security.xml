@@ -10,7 +10,7 @@
 
 	<http use-expressions="true" auto-config="true">
 
-		<intercept-url pattern="/index" access="hasAnyRole('USER','ADMIN')" />
+		<intercept-url pattern="/index" access="permitAll" />
 		<intercept-url pattern="/hoster" access="hasRole('USER')" />
 		<intercept-url pattern="/hostel" access="hasRole('USER')" />
 		<intercept-url pattern="/edit-profile" access="hasRole('USER')" />

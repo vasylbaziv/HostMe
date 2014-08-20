@@ -17,45 +17,8 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <body>
-	<!-- 	<div class="modal" id="loginModal"> -->
-	<!-- 		<div class="modal-dialog"> -->
-	<!-- 			<div class="modal-content"> -->
-	<!-- 				<div class="modal-header"> -->
-	<!-- 					<button type="button" class="close" data-dismiss="modal" -->
-	<!-- 						aria-hidden="true">×</button> -->
-	<!-- 					<h2 class="modal-title">Log in</h2> -->
-
-	<!-- 				</div> -->
-	<!-- 				<form method="post" action="loginController" id="loginForm"> -->
-	<!-- 					<div class="modal-body "> -->
-	<!-- 						<div class="te"> -->
-
-	<!-- 							<div class="input-group col-md-8"> -->
-	<!-- 								<label for="login">Enter your login:</label> <input type="text" -->
-	<!-- 									class="form-control" name="login" placeholder="Login"> -->
-	<!-- 							</div> -->
-	<!-- 							<div class="input-group col-md-8"> -->
-	<!-- 								<label for="login">Enter your password:</label> <input -->
-	<!-- 									type="password" class="form-control" name="password" -->
-	<!-- 									placeholder="Password"> -->
-	<!-- 							</div> -->
-
-	<!-- 						</div> -->
-	<!-- 					</div> -->
-	<!-- 					<div class="modal-footer"> -->
-	<!-- 						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
-	<!-- 						<button type="submit" class="btn btn-primary">Sign in</button> -->
-	<!-- 					</div> -->
-	<!-- 				</form> -->
-	<!-- 			</div> -->
-
-	<!-- 		</div> -->
-
-	<!-- 	</div> -->
-
-	<!-- Just now we have this login form like trial version in next commit i*ll make it a modal form  -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
+		aria-labelledby="myModalLabel" data-backdrop="static" aria-hidden="true">
 		<div class="modal-dialog form-box ">
 			<form role="form" action="<c:url value='j_spring_security_check'/>"
 				method="POST" id="loginForm">

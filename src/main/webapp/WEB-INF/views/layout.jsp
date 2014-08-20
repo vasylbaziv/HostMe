@@ -26,6 +26,6 @@
             <tiles:insertAttribute name="body" />
         </aside>
     </div>
-    <tiles:insertAttribute name="footer" />
+<%--     <tiles:insertAttribute name="footer" /> --%>
 </body>
 </html>

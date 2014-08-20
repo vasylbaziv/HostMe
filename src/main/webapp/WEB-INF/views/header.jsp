@@ -5,9 +5,9 @@
 <%@ taglib prefix="security"
 	uri="http://www.springframework.org/security/tags"%>
 	
-	
+	 <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 <header class="header">
-            <a href="index.html" class="logo">
+            <a href="index" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                Host Me
             </a>
@@ -252,5 +252,6 @@
                 </div>
             </nav>
         </header>
+        
 
 
