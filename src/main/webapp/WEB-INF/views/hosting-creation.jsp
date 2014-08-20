@@ -9,9 +9,8 @@
 <script type="text/javascript" src="resources/js/jquery.validate.js"></script>
 <script type="text/javascript" src="resources/js/validation.js"></script>
 <script type="text/javascript" src="resources/js/countries3.js"></script>
-<script type="text/javascript" src="resources/js/countries3.js" >
-
-
+<script type="text/javascript" src="resources/js/countries3.js">
+	
 </script>
 <link rel="stylesheet" type="text/css" href="bootstrap.css">
 </head>
@@ -34,7 +33,6 @@
 					<div class="col-lg-5">
 						<form:select class="form-control" path="country" id="country"
 							name="country"
-							onclick="print_state('region',this.selectedIndex);"
 							onchange="print_state('region',this.selectedIndex);">
 						</form:select>
 					</div>
@@ -177,6 +175,7 @@
 		</script>
 		<script language="javascript">
 			print_country("country");
+			print_state('region',0);
 		</script>
 		<script type="text/javascript">
 			$("#createHosting").on("click", function() {
