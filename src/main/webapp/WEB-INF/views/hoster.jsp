@@ -62,15 +62,6 @@
                             <div class="col-md-9 selected">${user.email}</div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-3">Rank:</div>
-                            <div class="col-md-9 selected">
-                                <span>&#9733;</span> <span>&#9733;</span>
-                                <span>&#9733;</span> <span>&#9734;</span>
-                                <span>&#9734;</span>
-                            </div>
-                        </div>
-
                     </div>
 
                     <div class="col-md-6">
@@ -92,7 +83,6 @@
                             <th>Region</th>
                             <th>City</th>
                             <th>Address</th>
-                            <th>Rank</th>
                         </tr>
                         <c:forEach var="hosting"
                             items="${user.hostings}">
@@ -102,7 +92,6 @@
                                 <td>${hosting.city}</td>
                                 <td><a
                                     href=<c:url value="hosting?hostingId=${hosting.hostingId}&&userId=${user.userId}"/>>${hosting.address}</a></td>
-                                <td>*****</td>
                             </tr>
                         </c:forEach>
 
