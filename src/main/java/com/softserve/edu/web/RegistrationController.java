@@ -21,10 +21,7 @@ public class RegistrationController {
 
 	@RequestMapping(value = "/registration", method = RequestMethod.GET)
 	public String registrationShow(Model model) {
-		User user = new User();
-		model.addAttribute("user", user);
-
-		return "registration";
+		return "redirect:/index";
 	}
 
 	@RequestMapping(value = "/registration", method = RequestMethod.POST)
