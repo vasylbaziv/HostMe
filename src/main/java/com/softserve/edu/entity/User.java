@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -31,6 +32,7 @@ import org.hibernate.annotations.CascadeType;
  * @author Lv-117
  */
 @Entity
+@NamedQuery(name="User.getByLogin",query="SELECT u FROM User u WHERE u.login=:login")
 @Table(name = "USER", schema = "hostme", uniqueConstraints = { @UniqueConstraint(columnNames = {
 		"user_id", "login", "email" }) })
 public class User {

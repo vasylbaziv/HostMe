@@ -64,7 +64,7 @@
 					</h4>
 				</div>
 				<div class="col-md-7">
-					<h4>${hosting.address}</h4>
+					<h4><a href="<c:url value='test?location=${location}'/>" >${location}</a></h4>
 				</div>
 			</div>
 

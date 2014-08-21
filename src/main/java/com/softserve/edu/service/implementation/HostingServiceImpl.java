@@ -11,27 +11,28 @@ import org.springframework.transaction.annotation.Transactional;
 import com.softserve.edu.dao.HostingDao;
 import com.softserve.edu.dao.UserDao;
 import com.softserve.edu.entity.Hosting;
+import com.softserve.edu.repository.HostingRepository;
 import com.softserve.edu.service.HostingService;
 
 @Service
 public class HostingServiceImpl implements HostingService {
+	@Autowired
+	private HostingRepository hostingRepository;
 
 	@Override
 	public void addHosting(Hosting hosting) {
-		// TODO Auto-generated method stub
+		hostingRepository.save(hosting);
 		
 	}
 
 	@Override
 	public Hosting getHosting(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return hostingRepository.findOne(id);
 	}
 
 	@Override
 	public List<Hosting> getUserHostings() {
-		// TODO Auto-generated method stub
-		return null;
+		return hostingRepository.findAll();
 	}
 
 //	@Autowired

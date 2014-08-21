@@ -1,13 +1,9 @@
 package com.softserve.edu.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,7 +35,7 @@ public class HostingController {
 	}
 
 	@RequestMapping(value = "/hosting-creation", method = RequestMethod.POST)
-	public String addHosting(@ModelAttribute("hosting") Hosting hosting ){
+	public String addHosting(@ModelAttribute("hosting") Hosting hosting) {
 		hostingService.addHosting(hosting);
 		return "redirect:/profile";
 	}
@@ -52,7 +48,12 @@ public class HostingController {
 		Hosting hosting = hostingService.getHosting(hostingId);
 		model.addAttribute("hosting", hosting);
 		Request request = new Request();
-		model.addAttribute("request",request);
+		model.addAttribute("request", request);
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(hosting.getCountry()).append(",")
+				.append(hosting.getCity()).append(",")
+				.append(hosting.getAddress());
+		model.addAttribute("location", stringBuilder.toString());
 		return "hosting";
 	}
 

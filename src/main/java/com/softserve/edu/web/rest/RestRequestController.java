@@ -28,7 +28,7 @@ public class RestRequestController {
 	private RequestDtoUtil requestDtoUtil;
 
 	@RequestMapping(value = "/response", method = RequestMethod.GET)
-	public String processUserRequest(
+	public Boolean processUserRequest(
 			@RequestParam(value = "beginDate") long beginDate,
 			@RequestParam(value = "endDate") long endDate,
 			@RequestParam(value = "hostingId") int hostingId) {
@@ -45,14 +45,14 @@ public class RestRequestController {
 		} catch (RequestCannotSendException e) {
 
 			e.printStackTrace();
-			return e.getMessage();
+			return false;
 		} catch (RequestAlreadySentException e) {
 			e.printStackTrace();
-			return e.getMessage();
+			return false;
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		return "Request send";
+		return true;
 
 	}
 

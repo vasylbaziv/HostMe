@@ -28,8 +28,7 @@ public class ProfileServiceImpl implements ProfileService {
 
 	@Override
 	public User getUserByLogin(String login) {
-		// TODO Auto-generated method stub
-		return null;
+		return userRepository.getUserByLogin(login);
 	}
 
 	@Override

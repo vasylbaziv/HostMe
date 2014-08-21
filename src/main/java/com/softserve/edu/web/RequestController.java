@@ -24,6 +24,10 @@ public class RequestController {
 	private RequestService requestService;
 	@Autowired
 	private ProfileService profileService;
+	@RequestMapping(value="/request",method=RequestMethod.GET)
+	public String requestHistoryPage(){
+		return "request-history";
+	}
 
 	@RequestMapping(value = "/request", method = RequestMethod.POST)
 	public String sendRequest(@ModelAttribute("request") Request request,

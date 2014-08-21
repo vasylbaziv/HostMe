@@ -25,17 +25,14 @@ public class RequestServiceImpl implements RequestService {
 	@Transactional
 	public boolean checkRequest(Request request)
 			throws RequestAlreadySentException {
-		try {
-			List<Request> requests = requestRepository.checkExistingRequest(
-					request.getEndDate(), request.getBeginDate(), request
-							.getHosting().getHostingId(), request.getAuthor()
-							.getUserId());
+		List<Request> requests = requestRepository.checkExistingRequest(
+				request.getEndDate(), request.getBeginDate(),
+				request.getHosting(), request.getAuthor());
 
-		} catch (NullPointerException e) {
-			return false;
+		if (!requests.isEmpty()) {
+			throw new RequestAlreadySentException();
 		}
 		return true;
-
 
 	}
 	// @Autowired

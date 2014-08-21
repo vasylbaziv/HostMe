@@ -14,10 +14,6 @@
 	<section class="sidebar">
 		<!-- Sidebar user panel -->
 		<div class="user-panel">
-			<div class="pull-left image">
-
-				<img src="../../img/avatar3.png" class="img-circle" alt="User Image">
-			</div>
 			<div class="pull-left info">
 				<p>Hello, Jane</p>
 
@@ -76,9 +72,9 @@
 					</security:authorize>
 					<li><a href="icons.html" style="margin-left: 10px;"><i
 							class="fa fa-angle-double-right"></i> Icons</a></li>
-					<li class="active"><a href="buttons.html"
+					<li class="active"><a href="<c:url value='/request' />"
 						style="margin-left: 10px;"><i class="fa fa-angle-double-right"></i>
-							Buttons</a></li>
+							Request history</a></li>
 					<li><a href="sliders.html" style="margin-left: 10px;"><i
 							class="fa fa-angle-double-right"></i> Sliders</a></li>
 					<li><a href="timeline.html" style="margin-left: 10px;"><i
