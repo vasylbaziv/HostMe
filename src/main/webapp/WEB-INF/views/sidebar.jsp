@@ -15,10 +15,13 @@
 		<!-- Sidebar user panel -->
 		<div class="user-panel">
 			<div class="pull-left image">
-				<img src="resources/images/user-avatar.jpg" class="img-circle" alt="User Image">
+				<img src="resources/images/user-avatar.jpg" class="img-circle"
+					alt="User Image">
 			</div>
 			<div class="pull-left info">
-				<p><a href="profile">${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}</a></p>
+				<p>
+					<a href="profile">${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}</a>
+				</p>
 
 				<a href="#"><i class="fa fa-circle text-success"></i> Online</a>
 			</div>
@@ -44,30 +47,27 @@
 			<li><a href="../widgets.html"> <i class="fa fa-th"></i> <span>Widgets</span>
 					<small class="badge pull-right bg-green">new</small>
 			</a></li>
-			<li class="treeview"><a href="#"> <i
-					class="fa fa-bar-chart-o"></i> <span>Charts</span> <i
-					class="fa fa-angle-left pull-right"></i>
-			</a>
-				<ul class="treeview-menu">
-					<security:authorize access="! isAuthenticated()">
-						<li><a href="<c:url value='registration' />">
-								Registration</a></li>
-					</security:authorize>
-					<security:authorize access="! isAuthenticated()">
--					<li><a href="<c:url value='login' />">Login</a></li>
--				</security:authorize>
-					<security:authorize access="isAuthenticated()">
--					<li><a href='<c:url value="logout"/>'>Logout</a></li>
--				</security:authorize>
-				</ul></li>
+
 			<li class="treeview active"><a href="#"> <i
 					class="fa fa-laptop"></i> <span>UI Elements</span> <i
 					class="fa pull-right fa-angle-down"></i>
 			</a>
 				<ul class="treeview-menu" style="display: block;">
-					<li><a href="#" data-toggle="modal"
-						data-target="#registrationModal" style="margin-left: 10px;"><i
-							class="fa fa-angle-double-right"></i> Register</a></li>
+					<security:authorize access="! isAuthenticated()">
+						<li><a href="<c:url value='login' />"
+							style="margin-left: 10px;"><i
+								class="fa fa-angle-double-right"></i>Login</a></li>
+					</security:authorize>
+					<security:authorize access="isAuthenticated()">
+						<li><a href='<c:url value="logout"/>'
+							style="margin-left: 10px;"><i
+								class="fa fa-angle-double-right"></i>Logout</a></li>
+					</security:authorize>
+					<security:authorize access="! isAuthenticated()">
+						<li><a href="#" data-toggle="modal"
+							data-target="#registrationModal" style="margin-left: 10px;"><i
+								class="fa fa-angle-double-right"></i> Register</a></li>
+					</security:authorize>
 					<li><a href="icons.html" style="margin-left: 10px;"><i
 							class="fa fa-angle-double-right"></i> Icons</a></li>
 					<li class="active"><a href="buttons.html"
