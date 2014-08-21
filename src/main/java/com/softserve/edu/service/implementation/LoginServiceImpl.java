@@ -11,19 +11,31 @@ import com.softserve.edu.service.LoginService;
 @Service
 public class LoginServiceImpl implements LoginService {
 
-	@Autowired
-	private UserDao userDaoImpl;
-
 	@Override
-	@Transactional
 	public User getUserByEmail(String email) {
-		return userDaoImpl.getUserByEmail(email);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
-	@Transactional
 	public User getUserByLogin(String login) {
-		return userDaoImpl.getUserByLogin(login);
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+//	@Autowired
+//	private UserDao userDaoImpl;
+//
+//	@Override
+//	@Transactional
+//	public User getUserByEmail(String email) {
+//		return userDaoImpl.getUserByEmail(email);
+//	}
+//
+//	@Override
+//	@Transactional
+//	public User getUserByLogin(String login) {
+//		return userDaoImpl.getUserByLogin(login);
+//	}
 
 }

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+<beans 
+xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:lang="http://www.springframework.org/schema/lang"
 	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/aop
@@ -16,11 +18,13 @@ http://www.springframework.org/schema/lang/spring-lang.xsd
 http://www.springframework.org/schema/tx
 http://www.springframework.org/schema/tx/spring-tx.xsd
 http://www.springframework.org/schema/util
-http://www.springframework.org/schema/util/spring-util.xsd">
+http://www.springframework.org/schema/util/spring-util.xsd
+http://www.springframework.org/schema/data/jpa
+    http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	<bean id="transactionManager"
-		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" ref="sessionFactory" />
+		class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="dataSource" ref="dataSource" />
 	</bean>
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
@@ -30,15 +34,11 @@ http://www.springframework.org/schema/util/spring-util.xsd">
 		p:driverClassName="${jdbc.driverClassName}" p:url="${jdbc.databaseurl}"
 		p:username="${jdbc.username}" p:password="${jdbc.password}" />
 
-
-
-	<bean id="sessionFactory"
-		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<bean id="emf"
+		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="com.softserve.edu.entity" />
-		<!-- <property name="configurationClass"> <value>org.hibernate.cfg.AnnotationConfiguration</value> 
-			</property> -->
-		<property name="hibernateProperties">
+		<property name="packagesToScan" value="com.softserve.edu.entity"/>
+		<property name="jpaProperties">
 			<props>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop>
@@ -47,7 +47,17 @@ http://www.springframework.org/schema/util/spring-util.xsd">
 				<prop key="hibernate.connection.charSet">UTF-8</prop>
 			</props>
 		</property>
+		<property name="persistenceProvider">
+		<bean class="org.hibernate.jpa.HibernatePersistenceProvider" ></bean>
+		
+		</property>
+		
+		
 	</bean>
+	
+	 <bean id="persistenceExceptionTranslationPostProcessor"
+      class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+	
 	<!-- Configure to plugin JSON as request and response in method handler -->
 	<bean
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
@@ -57,6 +67,7 @@ http://www.springframework.org/schema/util/spring-util.xsd">
 			</list>
 		</property>
 	</bean>
+	<jpa:repositories base-package="com.softserve.edu.repository" entity-manager-factory-ref="emf" />
 
 	<!-- Configure bean to convert JSON to POJO and vice versa -->
 	<bean id="jsonMessageConverter"

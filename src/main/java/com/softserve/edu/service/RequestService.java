@@ -7,6 +7,6 @@ public interface RequestService {
 
 	public void createRequest(Request request);
 
-	public void checkRequest(Request request) throws RequestAlreadySentException;
+	public boolean checkRequest(Request request) throws RequestAlreadySentException;
 
 }

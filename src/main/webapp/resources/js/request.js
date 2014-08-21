@@ -48,7 +48,7 @@ function sendRequest(id, element) {
 
 		success : function(response) {
 			element.nextSibling.style.display = "none";
-			if (response == "Request send") {
+			if (response) {
 				successRequest.insertAfter(element);
 
 			} else {

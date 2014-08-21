@@ -16,33 +16,51 @@ import com.softserve.edu.service.HostingService;
 @Service
 public class HostingServiceImpl implements HostingService {
 
-	@Autowired
-	private HostingDao hostingDao;
-
-	@Autowired
-	private UserDao userDao;
-
 	@Override
-	@Transactional
 	public void addHosting(Hosting hosting) {
-		Authentication auth = SecurityContextHolder.getContext()
-				.getAuthentication();
-		String login = auth.getName();
-		hosting.setOwner(userDao.getUserByLogin(login));
-		hostingDao.create(hosting);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	@Transactional
-	public List<Hosting> getUserHostings() {
-		return hostingDao.getUserHostings();
+	public Hosting getHosting(int id) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
+	@Override
+	public List<Hosting> getUserHostings() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Override
-    @Transactional
-    public Hosting getHosting(int id) {
-        return hostingDao.read(id);
-    }
+//	@Autowired
+//	private HostingDao hostingDao;
+//
+//	@Autowired
+//	private UserDao userDao;
+//
+//	@Override
+//	@Transactional
+//	public void addHosting(Hosting hosting) {
+//		Authentication auth = SecurityContextHolder.getContext()
+//				.getAuthentication();
+//		String login = auth.getName();
+//		hosting.setOwner(userDao.getUserByLogin(login));
+//		hostingDao.create(hosting);
+//	}
+//
+//	@Override
+//	@Transactional
+//	public List<Hosting> getUserHostings() {
+//		return hostingDao.getUserHostings();
+//	}
+//
+//
+//    @Override
+//    @Transactional
+//    public Hosting getHosting(int id) {
+//        return hostingDao.read(id);
+//    }
 
 }

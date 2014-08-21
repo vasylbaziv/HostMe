@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,7 +26,7 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "REQUEST", uniqueConstraints = { @UniqueConstraint(columnNames = { "request_id" }) })
-public class Request  implements Serializable{
+public class Request implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name = "request_id", unique = true, nullable = false)

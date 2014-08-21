@@ -13,6 +13,7 @@
 
 	<definition name="*" extends="baseLayout">
 		<put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
+		<put-attribute name="current" value="*"></put-attribute>
 	</definition>
 
 </tiles-definitions>

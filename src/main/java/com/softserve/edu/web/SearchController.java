@@ -50,9 +50,10 @@ public class SearchController {
         	map.put("family", Boolean.parseBoolean(family));
         	map.put("count", count);
         	map.put("host", new Hosting());
-		map.put("hostsList", searchService.getList(srchcountry, srchregion,
-				srchpets, srchchildren, srchsmoking, srchfamily, srchMinCount,
-				srchMaxCount));
+//		map.put("hostsList", searchService.getList(srchcountry, srchregion,
+//				srchpets, srchchildren, srchsmoking, srchfamily, srchMinCount,
+//				srchMaxCount));
+		map.put("hostsList", searchService.getAll());
 		return "search";
 	}
 

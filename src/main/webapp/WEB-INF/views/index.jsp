@@ -220,7 +220,7 @@
 				
 		
 				<div class="form-group">
-				<div class="row">
+				
 							<form:radiobutton class="radio inline"
 									path="gender" value="FEMALE" />
 									Female
@@ -228,7 +228,7 @@
 									path="gender" value="MALE" class="radio inline"/>
 									Male
 							</div>
-							</div>
+						
 				<div class="form-group">
 				<div>
 					<form:input path="email" type="text" class="form-control"
@@ -238,10 +238,11 @@
 				</div>
 				<div class="form-group">
 				<div>
-					<form:input path="birthday" type="text"
+					<input name="birthday_date" type="text"
 						class="datepicker form-control" id="dateOfBirth"
 						placeholder="MM/dd/yyyy" pattern="MM/dd/yyyy" />
 						</div>
+						<form:input path="birthday" type="hidden" id="dateMili"/>
 				</div>
 						</div>
 
@@ -252,7 +253,7 @@
 					<div class="modal-footer">
 						<a href="<c:url value='/index' />" type="button" class="btn btn-primary btn-block"
 							>Close</a>
-						<button class="btn btn-primary btn-block " type="submit">Sumbit</button>
+						<button class="btn btn-primary btn-block " type="submit" onclick='birthToMili(this)'>Sumbit</button>
 
 					</div>
 

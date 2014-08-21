@@ -1,29 +1,56 @@
 package com.softserve.edu.service.implementation;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.softserve.edu.dao.RequestDao;
 import com.softserve.edu.entity.Request;
 import com.softserve.edu.entity.exceptions.RequestAlreadySentException;
+import com.softserve.edu.repository.RequestRepository;
 import com.softserve.edu.service.RequestService;
 
 @Service
 public class RequestServiceImpl implements RequestService {
 	@Autowired
-	private RequestDao requestDao;
+	private RequestRepository requestRepository;
 
 	@Override
-	@Transactional
 	public void createRequest(Request request) {
-		requestDao.create(request);
+		requestRepository.save(request);
 	}
 
 	@Override
 	@Transactional
-	public void checkRequest(Request request)
+	public boolean checkRequest(Request request)
 			throws RequestAlreadySentException {
-		requestDao.checkRequest(request);
+		try {
+			List<Request> requests = requestRepository.checkExistingRequest(
+					request.getEndDate(), request.getBeginDate(), request
+							.getHosting().getHostingId(), request.getAuthor()
+							.getUserId());
+
+		} catch (NullPointerException e) {
+			return false;
+		}
+		return true;
+
+
 	}
+	// @Autowired
+	// private RequestDao requestDao;
+	//
+	// @Override
+	// @Transactional
+	// public void createRequest(Request request) {
+	// requestDao.create(request);
+	// }
+	//
+	// @Override
+	// @Transactional
+	// public void checkRequest(Request request)
+	// throws RequestAlreadySentException {
+	// requestDao.checkRequest(request);
+	// }
 }
