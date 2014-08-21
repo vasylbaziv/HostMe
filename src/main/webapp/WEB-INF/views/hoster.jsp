@@ -13,7 +13,7 @@
     
     <section class="content-header">
     <h1>
-        Dashboard <small>Control panel</small>
+        Hoster information
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -25,10 +25,6 @@
     <div>
         <!-- general form elements -->
         <div class="box box-primary">
-
-            <div class="box-header">
-                <h3 class="box-title">Hoster information</h3>
-            </div>
 
             <div class="box-body">
 
