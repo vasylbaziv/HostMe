@@ -20,36 +20,40 @@ import com.softserve.edu.service.RequestService;
 
 @Controller
 public class RequestController {
-	@Autowired
-	private RequestService requestService;
-	@Autowired
-	private ProfileService profileService;
-
-	@RequestMapping(value = "/request", method = RequestMethod.POST)
-	public String sendRequest(@ModelAttribute("request") Request request,
-			BindingResult bindingResult) {
-
-		Calendar calendar1 = Calendar.getInstance();
-		Calendar calendar2 = Calendar.getInstance();
-		calendar1.setTimeInMillis(Long.parseLong((String) bindingResult
-				.getFieldValue("beginDate")));
-		request.setBeginDate(calendar1);
-		calendar2.setTimeInMillis(Long.parseLong((String) bindingResult
-				.getFieldValue("endDate")));
-		request.setEndDate(calendar2);
-		request.setStatus(Status.PENDING);
-		Authentication authentication = SecurityContextHolder.getContext()
-				.getAuthentication();
-		String currentPrincipalName = authentication.getName();
-		User user = profileService.getUserByLogin(currentPrincipalName);
-		request.setAuthor(user);
-		int id = Integer.parseInt((String) bindingResult.getFieldValue("hosting"));
-		Hosting hosting = new Hosting();
-		hosting.setHostingId(id);
-		request.setHosting(hosting);
-		requestService.createRequest(request);
-		return "index";
-
-	}
-
+    @Autowired
+    private RequestService requestService;
+    @Autowired
+    private ProfileService profileService;
+    
+    @RequestMapping(value = "/request", method = RequestMethod.POST)
+    public String sendRequest(@ModelAttribute("request") Request request,
+            BindingResult bindingResult) {
+        
+        Calendar calendar1 = Calendar.getInstance();
+        Calendar calendar2 = Calendar.getInstance();
+        calendar1.setTimeInMillis(Long.parseLong((String) bindingResult
+                .getFieldValue("beginDate")));
+        request.setBeginDate(calendar1);
+        calendar2.setTimeInMillis(Long.parseLong((String) bindingResult
+                .getFieldValue("endDate")));
+        request.setEndDate(calendar2);
+        request.setStatus(Status.PENDING);
+        Authentication authentication = SecurityContextHolder.getContext()
+                .getAuthentication();
+        String currentPrincipalName = authentication.getName();
+        User user = profileService.getUserByLogin(currentPrincipalName);
+        request.setAuthor(user);
+        int id = Integer.parseInt((String) bindingResult
+                .getFieldValue("hosting"));
+        Hosting hosting = new Hosting();
+        hosting.setHostingId(id);
+        request.setHosting(hosting);
+        requestService.createRequest(request);
+        
+        StringBuilder returnString = new StringBuilder(
+                "redirect:/hosting?hostingId=");
+        return returnString.append(hosting.getHostingId()).append("&&userId=")
+                .append(user.getUserId()).toString();
+        
+    }
 }
