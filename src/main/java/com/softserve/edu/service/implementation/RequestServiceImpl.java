@@ -35,19 +35,14 @@ public class RequestServiceImpl implements RequestService {
 		return true;
 
 	}
-	// @Autowired
-	// private RequestDao requestDao;
-	//
-	// @Override
-	// @Transactional
-	// public void createRequest(Request request) {
-	// requestDao.create(request);
-	// }
-	//
-	// @Override
-	// @Transactional
-	// public void checkRequest(Request request)
-	// throws RequestAlreadySentException {
-	// requestDao.checkRequest(request);
-	// }
+
+	@Override
+	public List<Request> getAll() {
+		return requestRepository.findAll();
+	}
+
+	@Override
+	public Request getOne(int id) {
+		return requestRepository.findOne(id);
+	}
 }
