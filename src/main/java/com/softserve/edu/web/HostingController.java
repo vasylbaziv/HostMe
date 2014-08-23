@@ -1,5 +1,9 @@
 package com.softserve.edu.web;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,12 +15,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.softserve.edu.entity.Gender;
 import com.softserve.edu.entity.Hosting;
 import com.softserve.edu.entity.Request;
 import com.softserve.edu.entity.User;
 import com.softserve.edu.service.HostingService;
+import com.softserve.edu.service.ImageService;
 import com.softserve.edu.service.UserService;
 
 @Controller
@@ -25,7 +31,9 @@ public class HostingController {
 	private HostingService hostingService;
 	@Autowired
 	private UserService userService;
-
+	@Autowired
+	private ImageService imageService;
+  
 	@RequestMapping(value = "/hosting-creation", method = RequestMethod.GET)
 	public String hostingCreationShow(Model model) {
 		Hosting hosting = new Hosting();
@@ -39,8 +47,12 @@ public class HostingController {
 	}
 
 	@RequestMapping(value = "/hosting-creation", method = RequestMethod.POST)
-	public String addHosting(@ModelAttribute("hosting") Hosting hosting ){
+	public String addHosting(@ModelAttribute("hosting") Hosting hosting,
+			@RequestParam("file") MultipartFile[] files) {
+		
+		imageService.addImages(files);
 		hostingService.addHosting(hosting);
+
 		return "redirect:/profile";
 	}
 
@@ -52,7 +64,7 @@ public class HostingController {
 		Hosting hosting = hostingService.getHosting(hostingId);
 		model.addAttribute("hosting", hosting);
 		Request request = new Request();
-		model.addAttribute("request",request);
+		model.addAttribute("request", request);
 		return "hosting";
 	}
 

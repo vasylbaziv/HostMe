@@ -6,12 +6,22 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script type="text/javascript" src="resources/js/jquery.validate.js"></script>
-<script type="text/javascript" src="resources/js/validation.js"></script>
-<script type="text/javascript" src="resources/js/countries3.js"></script>
-<script type="text/javascript" src="resources/js/countries3.js">
-	
+
+<script>src = "http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" ></script>
+<script>
+$(document).ready(function() {
+    //add more file components if Add is clicked
+    $('#addFile').click(function() {
+        var fileIndex = $('#fileTable tr').children().length;
+        $('#fileTable').append(
+                '<tr><td>'+
+                '   <input type="file" name="file" />'+
+                '</td></tr>');
+    });
+     
+});
 </script>
+
 <link rel="stylesheet" type="text/css" href="bootstrap.css">
 </head>
 <body>
@@ -25,7 +35,7 @@
 		</div>
 		<form:form method="post" action="hosting-creation"
 			onsubmit="validateForm(event)" modelAttribute="hosting"
-			id="hostingCreationForm">
+			id="hostingCreationForm" enctype="multipart/form-data">
 			<div class="row">
 				<div class="form-group">
 					<label for="country" class="col-lg-2 control-label"><h4>Country</h4>
@@ -151,8 +161,14 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="exampleInputFile">Add photos of your hosting</label> <input
-					type="file" id="photo">
+				<label for="exampleInputFile">Add photos of your hosting</label> 
+				<input
+					id="addFile" type="button" value="More images" />
+				<table id="fileTable">
+					<tr>
+						<td><input name="file" type="file" /></td>
+					</tr>
+				</table>
 			</div>
 			<div class="row">
 				<div class="form-group">
@@ -168,14 +184,18 @@
 				style="margin-bottom: 30px; margin-top: 10px;">Create
 				hosting</button>
 		</form:form>
-		<script src="jquery-2.1.1.js"></script>
-		<script src="bootstrap.js"></script>
-		<script type="text/javascript">
-			$('#myModal').modal('show');
-		</script>
+
+		<script type="text/javascript" src="resources/js/jquery.validate.js"></script>
+		<script type="text/javascript" src="resources/js/validation.js"></script>
+		<script type="text/javascript" src="resources/js/countries3.js"></script>
+		<script type="text/javascript" src="resources/js/countries3.js"></script>
+<!-- 		<script src="resources/js/jquery-2.1.1.js"></script> -->
+		<script src="resources/js/bootstrap.js"></script>
+
+
 		<script language="javascript">
 			print_country("country");
-			print_state('region',0);
+			print_state('region', 0);
 		</script>
 		<script type="text/javascript">
 			$("#createHosting").on("click", function() {

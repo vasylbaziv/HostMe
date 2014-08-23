@@ -19,6 +19,10 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 	</beans:bean>
 
 
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	</beans:bean>
+
 	<beans:import resource="controllers.xml" />
 
 	<beans:bean id="tilesConfigurer"

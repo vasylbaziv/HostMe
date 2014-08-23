@@ -25,9 +25,8 @@ public class HostingServiceImpl implements HostingService {
 	@Override
 	@Transactional
 	public void addHosting(Hosting hosting) {
-		Authentication auth = SecurityContextHolder.getContext()
-				.getAuthentication();
-		String login = auth.getName();
+		String login = SecurityContextHolder.getContext().getAuthentication()
+				.getName();
 		hosting.setOwner(userDao.getUserByLogin(login));
 		hostingDao.create(hosting);
 	}
@@ -38,11 +37,10 @@ public class HostingServiceImpl implements HostingService {
 		return hostingDao.getUserHostings();
 	}
 
-
-    @Override
-    @Transactional
-    public Hosting getHosting(int id) {
-        return hostingDao.read(id);
-    }
+	@Override
+	@Transactional
+	public Hosting getHosting(int id) {
+		return hostingDao.read(id);
+	}
 
 }

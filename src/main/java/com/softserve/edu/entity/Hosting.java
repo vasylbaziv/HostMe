@@ -33,7 +33,7 @@ public class Hosting {
 	private String region;
 	@Column(name = "city", length = 50, nullable = false)
 	private String city;
-	@Column(name = "address", length = 150, nullable = false, unique = true)
+	@Column(name = "address", length = 150, nullable = false)
 	private String address;
 	@Column(name = "min_guests")
 	private Integer minNumberOfGuests;
@@ -65,21 +65,6 @@ public class Hosting {
 	private Set<Request> requests = new HashSet<Request>();
 
 	public Hosting() {
-	}
-
-	public Hosting(String address, Integer minNumberOfGuests,
-			Integer maxNumberOfGuests, Boolean children, Boolean pets,
-			Boolean smoking, Boolean family, Gender gender, String notes) {
-		super();
-		this.address = address;
-		this.minNumberOfGuests = minNumberOfGuests;
-		this.maxNumberOfGuests = maxNumberOfGuests;
-		this.children = children;
-		this.pets = pets;
-		this.smoking = smoking;
-		this.family = family;
-		this.gender = gender;
-		this.notes = notes;
 	}
 
 	public Integer getHostingId() {
