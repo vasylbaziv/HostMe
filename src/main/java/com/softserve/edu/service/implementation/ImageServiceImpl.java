@@ -24,8 +24,8 @@ public class ImageServiceImpl implements ImageService {
 	@Transactional
 	public void addImages(MultipartFile[] files, Hosting hosting) {
 		for (int i = 0; i < files.length; i++) {
-			addImage(files[i], hosting);
 			saveImage(files[i], hosting);
+			addImage(files[i], hosting);
 		}
 	}
 
@@ -54,7 +54,8 @@ public class ImageServiceImpl implements ImageService {
 	@Transactional
 	private void addImage(MultipartFile multipartFile, Hosting hosting) {
 		Image image = new Image();
-		image.setLink(filePath + multipartFile.getOriginalFilename());
+		image.setLink(filePath + hosting.getAddress()
+				+ File.separator + multipartFile.getOriginalFilename());
 		image.setHosting(hosting);
 		imageDao.create(image);
 
