@@ -50,8 +50,9 @@ public class HostingController {
 	public String addHosting(@ModelAttribute("hosting") Hosting hosting,
 			@RequestParam("file") MultipartFile[] files) {
 		
-		imageService.addImages(files);
 		hostingService.addHosting(hosting);
+		imageService.addImages(files, hosting);
+		
 
 		return "redirect:/profile";
 	}

@@ -15,7 +15,7 @@ public class Image {
 	@Id
 	@GeneratedValue
 	@Column(name = "image_id", unique = true, nullable = false)
-	private Long imageId;
+	private Integer imageId;
 	@Column(name = "link", nullable = false, unique = true)
 	private String link;
 	@ManyToOne
@@ -36,11 +36,11 @@ public class Image {
 		this.link = link;
 	}
 
-	public Long getImageId() {
+	public Integer getImageId() {
 		return imageId;
 	}
 
-	public void setImageId(Long imageId) {
+	public void setImageId(Integer imageId) {
 		this.imageId = imageId;
 	}
 
