@@ -2,14 +2,18 @@ package com.softserve.edu.web;
 
 import java.util.Calendar;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.softserve.edu.entity.Hosting;
 import com.softserve.edu.entity.Request;
@@ -27,7 +31,7 @@ public class RequestController {
     
     @RequestMapping(value = "/request", method = RequestMethod.POST)
     public String sendRequest(@ModelAttribute("request") Request request,
-            BindingResult bindingResult) {
+            BindingResult bindingResult, Model model) {
         
         Calendar calendar1 = Calendar.getInstance();
         Calendar calendar2 = Calendar.getInstance();
@@ -50,9 +54,11 @@ public class RequestController {
         request.setHosting(hosting);
         requestService.createRequest(request);
         
+        boolean requestSent = true;
+        model.addAttribute("requestSent", requestSent);
         StringBuilder returnString = new StringBuilder(
                 "redirect:/hosting?hostingId=");
-        return returnString.append(hosting.getHostingId()).append("&&userId=")
+        return returnString.append(hosting.getHostingId()).append("&userId=")
                 .append(user.getUserId()).toString();
         
     }

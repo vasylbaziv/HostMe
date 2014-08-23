@@ -11,9 +11,20 @@
     href="resources/css/daterangepicker-bs3.css">
 
 <link rel="stylesheet" type="text/css"
+    href="resources/css/datepicker3.css">
+
+<link rel="stylesheet" type="text/css"
+    href="resources/css/datepicker.css">
+
+<link rel="stylesheet" type="text/css"
     href="resources/css/bootstrap3-wysihtml5.css">
 
+<script type="text/javascript" src="resources/js/bootstrap.js"></script>
+
 <script type="text/javascript" src="resources/js/daterangepicker.js"></script>
+
+<script type="text/javascript"
+    src="resources/js/bootstrap-datepicker.js"></script>
 
 <script type="text/javascript"
     src="resources/js/bootstrap3-wysihtml5.all.min.js"></script>
@@ -72,12 +83,11 @@
                                 </div>
                             </div>
 
-                            <div class="row">
+                            <div id="UL" class="row">
                                 <div class="col-md-3">Languages:</div>
                                 <div class="col-md-9">
                                     <c:forEach items="${user.languages}"
                                         var="languages" varStatus="loop">
-
 
                                         <c:out
                                             value="${languages.language}">
@@ -129,7 +139,6 @@
                                     <a href="mailto:${user.email}">${user.email}</a>
                                 </div>
                             </div>
-
                         </div>
 
                     </div>
@@ -139,10 +148,6 @@
 
                 <div class="box-footer">
 
-
-
-
-
                     <div class="row">
                         <form:form action="request" method="post"
                             modelAttribute="request"
@@ -151,7 +156,43 @@
 
                                 <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
                                 <div class="row">
-                                    <div class="col-md-6">
+
+
+                                    <div class="col-md-4">
+                                        <div
+                                            class="panel box box-primary">
+                                            <div class="box-header">
+                                                <h4 class="box-title">
+                                                    <a
+                                                        data-toggle="collapse"
+                                                        data-parent="#accordion"
+                                                        href="#collapseCalendar"
+                                                        class="collapsed">
+                                                        Availability</a>
+                                                </h4>
+                                            </div>
+
+                                            <div id="collapseCalendar"
+                                                class="panel-collapse collapse"
+                                                style="height: 0px;">
+                                                <div class="box-body">
+                                                    <div
+                                                        class="form-group">
+
+                                                        <div
+                                                            class="input-group">
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+
+                                    <div class="col-md-4">
                                         <div class="panel box box-info">
                                             <div class="box-header">
                                                 <h4 class="box-title">
@@ -164,49 +205,53 @@
                                                         travel dates</a>
                                                 </h4>
                                             </div>
-                                        </div>
 
-                                        <div id="collapseOne"
-                                            class="panel-collapse collapse"
-                                            style="height: 0px;">
-                                            <div class="box-body">
-                                                <div class="form-group">
-                                                    <label>Date
-                                                        and time range:</label>
+
+                                            <div id="collapseOne"
+                                                class="panel-collapse collapse"
+                                                style="height: 0px;">
+                                                <div class="box-body">
                                                     <div
-                                                        class="input-group">
+                                                        class="form-group">
+                                                        <label>Date
+                                                            and time
+                                                            range:</label>
                                                         <div
-                                                            class="input-group-addon">
-                                                            <i
-                                                                class="fa fa-clock-o"></i>
-                                                        </div>
+                                                            class="input-group">
+                                                            <div
+                                                                class="input-group-addon">
+                                                                <i
+                                                                    class="fa fa-clock-o"></i>
+                                                            </div>
 
-                                                        <input
-                                                            name="timeRange"
-                                                            type="text"
-                                                            class="form-control pull-right"
-                                                            id="reservationtime" />
-                                                        <form:input
-                                                            path="endDate"
-                                                            type="hidden"
-                                                            id="endDate" />
-                                                        <form:input
-                                                            path="beginDate"
-                                                            type="hidden"
-                                                            id="beginDate" />
-                                                        <form:input
-                                                            path="hosting"
-                                                            value="${hosting.hostingId}"
-                                                            type="hidden"
-                                                            id="hosting" />
+                                                            <input
+                                                                name="timeRange"
+                                                                type="text"
+                                                                class="form-control pull-right"
+                                                                id="reservationtime" />
+                                                            <form:input
+                                                                path="endDate"
+                                                                type="hidden"
+                                                                id="endDate" />
+                                                            <form:input
+                                                                path="beginDate"
+                                                                type="hidden"
+                                                                id="beginDate" />
+                                                            <form:input
+                                                                path="hosting"
+                                                                value="${hosting.hostingId}"
+                                                                type="hidden"
+                                                                id="hosting" />
+                                                        </div>
+                                                        <!-- /.input group -->
                                                     </div>
-                                                    <!-- /.input group -->
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
-                                    <div class="col-md-6">
+
+
+                                    <div class="col-md-4">
                                         <div
                                             class="panel box box-warning">
                                             <div class="box-header">
@@ -216,8 +261,8 @@
                                                         data-parent="#accordion"
                                                         href="#collapseTwo"
                                                         class="collapsed">
-                                                        A note to the
-                                                        hoster</a>
+                                                        Write a note to
+                                                        the hoster</a>
                                                 </h4>
                                             </div>
 
@@ -234,52 +279,57 @@
                                             </div>
 
                                         </div>
+
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-md-1">
 
-                                <div>
-                                    <button onfocus="formDate()"
-                                        class="btn btn-primary">Send
-                                        request</button>
+                                        <button onfocus="formDate()"
+                                            class="btn btn-primary">Send
+                                            request</button>
+
+                                    </div>
+
+                                    <c:if test="${param.requestSent}">
+                                        <div id="myAlert"
+                                            class="col-md-4"
+                                            style="margin-left: 2em; padding-right: 3em">
+                                            <div
+                                                class="alert alert-success alert-dismissable"
+                                                style="margin-bottom: 0">
+                                                <i class="fa fa-check"></i>
+                                                <button type="button"
+                                                    class="close"
+                                                    data-dismiss="alert"
+                                                    aria-hidden="true" text-align="center"></button>
+                                                Request is successfully
+                                                sent!
+                                            </div>
+                                        </div>
+                                    </c:if>
                                 </div>
+
+
                             </div>
-
-                        </form:form>
                     </div>
-
+                    </form:form>
 
                 </div>
 
-            </div>
-        </div>
 
-
-        <div class="container">
-
-            <div class="middle-side col-md-9">
-
-
-
-                <div class="row">
-                    <div class="col-md-3">
-                        <h4 style="margin-top: 18px;">
-                            <b>Check availability</b>
-                        </h4>
-                    </div>
-                    <div class="col-md-9">
-                        <h4>
-                            From <input type="date" name="availability">
-                            To <input type="date" name="availability">
-                            <button id="avail" type="submit"
-                                class="btn btn-default"
-                                style="margin-left: 10px; margin-bottom: 3px;">Check</button>
-                        </h4>
-                    </div>
-                </div>
             </div>
 
         </div>
-    </section>
+        </div>
+
+        <script>
+                                    $(".alert").alert();
+                                    window.setTimeout(function() {
+                                        $(".alert").alert('close');
+                                    }, 5000);
+                                </script>
+
 </body>
 </html>
