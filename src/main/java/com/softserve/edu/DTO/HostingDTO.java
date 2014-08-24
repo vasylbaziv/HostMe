@@ -1,4 +1,4 @@
-package com.softserve.edu.DTO.entity;
+package com.softserve.edu.DTO;
 
 import com.softserve.edu.entity.Hosting;
 import com.softserve.edu.entity.User;
