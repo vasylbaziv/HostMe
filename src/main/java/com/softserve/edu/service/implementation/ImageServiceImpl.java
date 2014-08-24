@@ -34,7 +34,7 @@ public class ImageServiceImpl implements ImageService {
 			byte[] bytes = multipartFile.getBytes();
 
 			// Creating the directory to store file
-			File dir = new File(filePath + hosting.getAddress());
+			File dir = new File(filePath + hosting.getHostingId());
 			if (!dir.exists())
 				dir.mkdirs();
 
@@ -54,7 +54,7 @@ public class ImageServiceImpl implements ImageService {
 	@Transactional
 	private void addImage(MultipartFile multipartFile, Hosting hosting) {
 		Image image = new Image();
-		image.setLink(filePath + hosting.getAddress()
+		image.setLink(filePath + hosting.getHostingId()
 				+ File.separator + multipartFile.getOriginalFilename());
 		image.setHosting(hosting);
 		imageDao.create(image);

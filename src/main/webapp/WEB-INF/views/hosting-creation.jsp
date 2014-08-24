@@ -7,21 +7,11 @@
 <html>
 <head>
 
-<script>src = "http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" ></script>
-<script>
-$(document).ready(function() {
-    //add more file components if Add is clicked
-    $('#addFile').click(function() {
-        $('#fileTable').append(
-                '<tr><td>'+
-                '   <input type="file" name="file" />'+
-                '</td></tr>');
-    });
-     
-});
-</script>
-
-<link rel="stylesheet" type="text/css" href="bootstrap.css">
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="http://cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css">
+	
 </head>
 <body>
 	<div class="container">
@@ -159,16 +149,25 @@ $(document).ready(function() {
 					</div>
 				</div>
 			</div>
-			<div class="form-group">
-				<label for="exampleInputFile">Add photos of your hosting</label> 
-				<input
-					id="addFile" type="button" value="More images" />
-				<table id="fileTable">
-					<tr>
-						<td><input name="file" type="file" /></td>
-					</tr>
-				</table>
+			<div id="fileUpload" class="form-group">
+				<label for="exampleInputFile"><h4>Add photos of your hosting</h4></label> <br>
+				<div class="fileinput fileinput-new" data-provides="fileinput">
+					<div>
+						<span class="btn btn-default btn-file"><span
+							class="fileinput-new">Select image</span><span
+							class="fileinput-exists">Change</span><input type="file"
+							name="file"></span> <a href="#"
+							class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+							<br>
+							<div class="fileinput-preview thumbnail fileinput-exists" data-trigger="fileinput"
+						style="width: 200px; height: 150px;"></div>
+						<br>
+						<span class="fileinput-filename"></span>
+					</div>
+				</div>
 			</div>
+			<input type="button" style="width:80px" id="addFiles" class="btn" value="More...">
+			<br><br>
 			<div class="row">
 				<div class="form-group">
 					<label for="Notes" class="col-lg-2 control-label"><h4>Add
@@ -179,6 +178,7 @@ $(document).ready(function() {
 					</div>
 				</div>
 			</div>
+			<br>
 			<button type="submit" class="btn btn-primary"
 				style="margin-bottom: 30px; margin-top: 10px;">Create
 				hosting</button>
@@ -188,17 +188,13 @@ $(document).ready(function() {
 		<script type="text/javascript" src="resources/js/validation.js"></script>
 		<script type="text/javascript" src="resources/js/countries3.js"></script>
 		<script type="text/javascript" src="resources/js/countries3.js"></script>
-<!-- 		<script src="resources/js/jquery-2.1.1.js"></script> -->
-		<script src="resources/js/bootstrap.js"></script>
-
 
 		<script language="javascript">
 			print_country("country");
 			print_state('region', 0);
-		</script>
-		<script type="text/javascript">
-			$("#createHosting").on("click", function() {
-				window.location = "profile";
+			$("#addFiles").click(function(){
+				$(".fileinput:last").clone().appendTo("#fileUpload");
+				$(".fileinput:last").fileinput('clear');
 			});
 		</script>
 </body>
