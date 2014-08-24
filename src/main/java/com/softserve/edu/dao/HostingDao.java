@@ -14,5 +14,5 @@ public interface HostingDao extends GenericDao<Hosting, Integer> {
 
     public List<Hosting> getList(Search... parameters);
     
-    public Gender parsingGender(String gender)
+    public Gender parsingGender(String gender);
 }
