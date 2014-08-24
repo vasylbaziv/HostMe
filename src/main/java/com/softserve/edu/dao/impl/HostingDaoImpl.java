@@ -3,6 +3,7 @@ package com.softserve.edu.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.softserve.edu.entity.Gender;
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Session;
