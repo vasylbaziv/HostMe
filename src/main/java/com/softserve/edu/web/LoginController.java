@@ -12,6 +12,8 @@ public class LoginController {
 	 */
 	@RequestMapping("/login")
 	public String login() {
+		
+		System.out.println("Tvaruno!");
 		return "login";
 	}
 }

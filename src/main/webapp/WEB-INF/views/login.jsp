@@ -18,14 +18,15 @@
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <body>
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" data-backdrop="static" aria-hidden="true">
+		aria-labelledby="myModalLabel" data-backdrop="static"
+		aria-hidden="true">
 		<div class="modal-dialog form-box ">
 			<form role="form" action="<c:url value='j_spring_security_check'/>"
 				method="POST" id="loginForm">
 				<div class="modal-content">
 					<div class="header bg-blue">
 
-						<a href="<c:url value='/index' />" type="button" class="close" >
+						<a href="<c:url value='/index' />" type="button" class="close">
 							<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
 						</a>
 						<h4 class="modal-title" id="myModalLabel">Sign In</h4>
@@ -71,7 +72,7 @@
 
 								</div>
 							</div>
-
+							
 							<div class="form-group">
 								<label class="text-blue" for="remember">Remember me?</label> <input
 									id="remember" type="checkbox" class="minimal"
@@ -87,8 +88,8 @@
 
 					</div>
 					<div class="modal-footer">
-						<a href="<c:url value='/index' />" type="button" class="btn btn-primary btn-block"
-							>Close</a>
+						<a href="<c:url value='/index' />" type="button"
+							class="btn btn-primary btn-block">Close</a>
 						<button class="btn btn-primary btn-block " type="submit">Sign
 							in</button>
 
@@ -112,13 +113,13 @@
 		</div>
 	</div>
 	<script type="text/javascript">
-	  $(function () {
-	        $('.modal').modal({
-	            show: true,
-	            keyboard: false,
-	            backdrop: 'static'
-	        });
-	    });
+		$(function() {
+			$('.modal').modal({
+				show : true,
+				keyboard : false,
+				backdrop : 'static'
+			});
+		});
 	</script>
 
 

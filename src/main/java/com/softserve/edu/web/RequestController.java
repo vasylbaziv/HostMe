@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -149,7 +151,8 @@ public class RequestController {
 
 	@RequestMapping(value = "/request", method = RequestMethod.POST)
 	public String sendRequest(@ModelAttribute("request") Request request,
-			BindingResult bindingResult) {
+			BindingResult bindingResult,HttpServletRequest httpServletRequest) {
+		httpServletRequest.getContentLength();
 
 		Calendar calendar1 = Calendar.getInstance();
 		Calendar calendar2 = Calendar.getInstance();
