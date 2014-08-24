@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.softserve.edu.DTO.entity.HostingDTO;
+import com.softserve.edu.DTO.HostingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
