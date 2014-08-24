@@ -51,8 +51,8 @@ public class SearchController {
             Search srchMinCount = new Search("minNumberOfGuests", count);
             Search srchMaxCount = new Search("maxNumberOfGuests", count);
             Search srchGender = new Search("gender", gender);
-            Search srchDateBegin = new Search("beginDate", dateBegin);
-            Search srchDateEnd = new Search("ebdDate", dateEnd);
+            //Search srchDateBegin = new Search("beginDate", dateBegin);
+            //Search srchDateEnd = new Search("ebdDate", dateEnd);
             map.put("country", country);
             map.put("region", region);
             map.put("pets", Boolean.parseBoolean(pets));
@@ -61,13 +61,13 @@ public class SearchController {
             map.put("family", Boolean.parseBoolean(family));
             map.put("count", count);
             map.put("gender", gender);
-            map.put("date_begin", dateBegin);
-            map.put("date_end", dateEnd);
+            //map.put("date_begin", dateBegin);
+            //map.put("date_end", dateEnd);
             map.put("host", new Hosting());
             final List<HostingDTO> hostingDTOs = new LinkedList<HostingDTO>();
             final List<Hosting> hostings = searchService.getList(srchcountry, srchregion,
                 srchpets, srchchildren, srchsmoking, srchfamily, srchMinCount,
-                srchMaxCount, srchGender, srchDateBegin, srchDateEnd);
+                srchMaxCount, srchGender);
             for(Hosting hosting : hostings) {
                 hostingDTOs.add(new HostingDTO(hosting, hosting.getOwner()));
             }
