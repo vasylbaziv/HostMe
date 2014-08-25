@@ -251,7 +251,7 @@
             <%--</c:if>--%>
 
         <%--</div>--%>
-    <%--</div>
+    <%--</div>--%>
 	</section>
 	<script src="jquery-2.1.1.js"></script>
 <script src="bootstrap.js"></script>
