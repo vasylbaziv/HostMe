@@ -278,7 +278,7 @@ s_a[250]="Kosovo|Montenegro|Serbia|Vojvodina";
 s_a[251]="Central|Copperbelt|Eastern|Luapula|Lusaka|North-Western|Northern|Southern|Western";
 s_a[252]="Bulawayo|Harare|ManicalandMashonaland Central|Mashonaland East|Mashonaland West|Masvingo|Matabeleland North|Matabeleland South|Midlands";
 
-function print_country(country_id){
+function printCountry(country_id){
 	// given the id of the <select> tag as function argument, it inserts <option> tags
 	var option_str = document.getElementById(country_id);
 	var x, i=0;
@@ -287,7 +287,7 @@ function print_country(country_id){
 	}
 }
 
-function print_state(state_id, state_index){
+function printState(state_id, state_index){
 	var option_str = document.getElementById(state_id);
 	option_str.length=0;	// Fixed by Julian Woods
 	var x, i=0; state_index++;

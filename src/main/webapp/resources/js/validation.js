@@ -97,11 +97,16 @@ $(document).ready(
 				rules : {
 					city : {
 						minlength : 2,
+						maxlength : 50,
 						required : true
 					},
 					address : {
 						minlength : 3,
+						maxlength : 50,
 						required : true
+					},
+					notes : {
+						maxlength : 500
 					}
 				}
 			});

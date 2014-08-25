@@ -32,7 +32,7 @@
 					<div class="col-lg-5">
 						<form:select class="form-control" path="country" id="country"
 							name="country"
-							onchange="print_state('region',this.selectedIndex);">
+							onchange="printState('region',this.selectedIndex);">
 						</form:select>
 					</div>
 				</div>
@@ -74,18 +74,12 @@
 							of people (min and max)</h4> </label>
 					<div class="col-lg-2">
 						<form:select class="form-control" path="minNumberOfGuests"
-							id="min">
-							<c:forEach var="i" begin="1" end="20">
-								<option>${i}</option>
-							</c:forEach>
+							id="min" onchange="repopulateMax(this.selectedIndex)">
 						</form:select>
 					</div>
 					<div class="col-lg-2">
 						<form:select class="form-control" path="maxNumberOfGuests"
 							id="max">
-							<c:forEach var="i" begin="1" end="20" step="1" varStatus="loop">
-								<option>${loop.end - i + loop.begin}</option>
-							</c:forEach>
 						</form:select>
 					</div>
 				</div>
@@ -150,11 +144,11 @@
 				</div>
 			</div>
 			<div class="form-group">
-				<label for="exampleInputFile"><h4>Add photos of your
-						hosting <h5>(use Ctrl+click to select multiple images)</h5></h4></label> <br> <input type="file" name="file" class="multi"
-					multiple
-					 accept="gif|jpg|png" data-maxfile="10000"
-					data-maxsize="50000" />
+				<label for="exampleInputFile"><h4>
+						Add photos of your hosting
+						<h5>(use ctrl+click to select multiple images)</h5>
+					</h4></label> <br> <input type="file" name="file" class="multi" multiple
+					accept="gif|jpg|png" data-maxfile="10000" data-maxsize="50000" />
 			</div>
 			<div class="row">
 				<div class="form-group">
@@ -174,8 +168,39 @@
 
 
 		<script language="javascript">
-			print_country("country");
-			print_state('region', 0);
+			printCountry("country");
+			printState('region', 0);
+		</script>
+		<script language="javascript">
+			window.onload = function() {
+				maxAmount = 20;
+				minselect = document.getElementById("min"),
+						maxselect = document.getElementById("max")
+				for (var i = 1; i <= maxAmount; i++) {
+					var minoption = null, maxoption = null;
+					minoption = document.createElement("option");
+					maxoption = document.createElement("option");
+					minoption.innerHTML = i;
+					minselect.appendChild(minoption);
+					maxoption.innerHTML = maxAmount - i + 1;
+					maxselect.appendChild(maxoption);
+				}
+			};
+			function removeOptions(selectbox) {
+				var i;
+				for (i = selectbox.options.length - 1; i >= 0; i--) {
+					selectbox.remove(i);
+				}
+			}
+			function repopulateMax(selVal) {
+				removeOptions(maxselect);
+				for (var i = maxAmount; i > selVal; i--) {
+					var option = null;
+					option = document.createElement("option");
+					option.innerHTML = i;
+					maxselect.appendChild(option);
+				}
+			}
 		</script>
 </body>
 </html>
