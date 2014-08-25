@@ -9,7 +9,7 @@ public class AppTest {
     public void testTools() {
         System.out.println("\n***Start AppTest testTools()");
         Assert.assertTrue(true);
-        ;
     }
+    
 
 }

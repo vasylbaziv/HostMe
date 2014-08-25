@@ -10,13 +10,13 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "IMAGE", uniqueConstraints = { @UniqueConstraint(columnNames = { "image_id", "link" }) })
+@Table(name = "IMAGE", uniqueConstraints = { @UniqueConstraint(columnNames =  "image_id") })
 public class Image {
 	@Id
 	@GeneratedValue
 	@Column(name = "image_id", unique = true, nullable = false)
 	private Integer imageId;
-	@Column(name = "link", nullable = false, unique = true)
+	@Column(name = "link", nullable = false)
 	private String link;
 	@ManyToOne
 	@JoinColumn(name = "user_id")
