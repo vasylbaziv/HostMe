@@ -20,9 +20,7 @@ public class Feedback {
 	@Id
 	@GeneratedValue
 	@Column(name = "feedback_id", unique = true, nullable = false)
-	private Long feedbackId;
-	@Column(name = "title", nullable = false, length = 80)
-	private String title;
+	private Integer feedbackId;
 	@Column(name = "description", nullable = false, length = 1000)
 	private String description;
 	@ManyToOne
@@ -39,24 +37,15 @@ public class Feedback {
 
 	public Feedback(String title, String description) {
 		super();
-		this.title = title;
 		this.description = description;
 	}
 
-	public Long getFeedbackId() {
+	public Integer getFeedbackId() {
 		return feedbackId;
 	}
 
-	public void setFeedbackId(Long feedbackId) {
+	public void setFeedbackId(Integer feedbackId) {
 		this.feedbackId = feedbackId;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
 	}
 
 	public String getDescription() {
@@ -96,7 +85,7 @@ public class Feedback {
 
 	@Override
 	public String toString() {
-		return "Feedback [feedbackId=" + feedbackId + ", title=" + title + ", description=" + description + "]";
+		return "Feedback [feedbackId=" + feedbackId + ", description=" + description + "]";
 	}
 
 }

@@ -4,7 +4,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html style="min-height: 682px;">
 <head>
 <link rel="stylesheet" type="text/css" href="resources/css/AdminLTE.css">
@@ -15,10 +15,6 @@
     <h1>
         Hoster information
     </h1>
-    <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-    </ol>
     </section>   
     
     <section class="content">
@@ -33,8 +29,7 @@
                         <div class="row col-md-12"
                             style="padding-bottom: 5px">
                             <h4>
-                                <strong>${user.firstName}
-                                    ${user.lastName}</strong>
+                                <strong>${user.firstName}&nbsp;${user.lastName}</strong>
                             </h4>
                         </div>
 
@@ -58,11 +53,6 @@
                             <div class="col-md-9 selected">${user.email}</div>
                         </div>
 
-                    </div>
-
-                    <div class="col-md-6">
-                        <img src="resources/images/john.jpg"
-                            style="width: 150px; float:right"></img>
                     </div>
 
                 </div>
@@ -97,13 +87,6 @@
             </div>
             <!-- /.box-body -->
 
-            <div class="box-footer">
-                <div>
-                    <button id="readFeedbacks" type="submit"
-                        class="btn btn-primary">Read feedbacks</button>
-                </div>
-            </div>
-
         </div>
     </div>
     </section>
@@ -125,9 +108,5 @@
 
 <script src="jquery-2.1.1.js"></script>
 <script src="bootstrap.js"></script>
-<script type="text/javascript">
-	$("#readFeedbacks").on("click", function() {
-		window.location = "feedbacks";
-	});
-</script>
+
 </html>
