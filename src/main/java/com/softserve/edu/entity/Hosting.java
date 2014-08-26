@@ -19,6 +19,8 @@ import javax.persistence.UniqueConstraint;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "HOSTING", uniqueConstraints = { @UniqueConstraint(columnNames = {
 		"address", "hosting_id" }) })
@@ -56,11 +58,14 @@ public class Hosting {
 	@JoinColumn(name = "user_id")
 	private User owner;
 	@OneToMany(mappedBy = "hosting", fetch = FetchType.LAZY, orphanRemoval = true)
+	@JsonIgnore
 	@Cascade({ CascadeType.DELETE, CascadeType.PERSIST, CascadeType.SAVE_UPDATE })
 	private Set<Image> images = new HashSet<Image>();
 	@OneToMany(mappedBy = "hosting", fetch = FetchType.LAZY, orphanRemoval = true)
+	@JsonIgnore
 	@Cascade({ CascadeType.DELETE, CascadeType.PERSIST, CascadeType.SAVE_UPDATE })
 	private Set<Feedback> feedbacks = new HashSet<Feedback>();
+	@JsonIgnore
 	@OneToMany(mappedBy = "hosting", fetch = FetchType.LAZY)
 	private Set<Request> requests = new HashSet<Request>();
 

@@ -21,7 +21,7 @@ public class Language {
 	private Short languageId;
 	@Column(name = "language", length = 50, nullable = false, unique = true)
 	private String language;
-	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "languages")
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "languages")
 	private Set<User> users = new HashSet<User>();
 
 	public Language() {

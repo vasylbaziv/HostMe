@@ -25,6 +25,8 @@ import javax.persistence.UniqueConstraint;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * This claaa represents data for User object. It uses Hibernate to map java
  * class User to database table USER.
@@ -64,35 +66,40 @@ public class User {
 	@Column(name = "region", length = 50)
 	private String region;
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "role_id")
 	private Role role;
 
 	/**
 	 * Contains languages owned by this user
 	 */
-	@ManyToMany(fetch = FetchType.EAGER)
-	@Cascade({ CascadeType.DELETE, CascadeType.PERSIST })
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JsonIgnore
 	@JoinTable(name = "user_languages", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "language_id"))
 	private Set<Language> languages = new HashSet<Language>();
 	/**
 	 * Contains images uploaded by this user
 	 */
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = true)
+	@JsonIgnore
 	private Set<Image> images = new HashSet<Image>();
 	/**
 	 * Contains hosting apartments owned by this user
 	 */
-	@OneToMany(mappedBy = "owner", orphanRemoval = true, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "owner", orphanRemoval = true, fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Set<Hosting> hostings = new HashSet<Hosting>();
 	/**
 	 * Contains requests submitted by this user
 	 */
+	@JsonIgnore
 	@OneToMany(mappedBy = "author", orphanRemoval = true, fetch = FetchType.LAZY)
 	private Set<Request> requests = new HashSet<Request>();
 	/**
 	 * Contains feedbackas provided by this user to hosters
 	 */
 	@OneToMany(mappedBy = "author", orphanRemoval = true, fetch = FetchType.LAZY)
+	@JsonIgnore
 	private Set<Feedback> feedbacks = new HashSet<Feedback>();
 
 	public User() {

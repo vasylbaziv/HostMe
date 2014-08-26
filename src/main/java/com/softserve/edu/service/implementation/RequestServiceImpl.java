@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.softserve.edu.entity.Request;
+import com.softserve.edu.entity.User;
 import com.softserve.edu.entity.exceptions.RequestAlreadySentException;
 import com.softserve.edu.repository.RequestRepository;
 import com.softserve.edu.service.RequestService;
@@ -17,12 +18,12 @@ public class RequestServiceImpl implements RequestService {
 	private RequestRepository requestRepository;
 
 	@Override
+	@Transactional
 	public void createRequest(Request request) {
 		requestRepository.save(request);
 	}
 
 	@Override
-	@Transactional
 	public boolean checkRequest(Request request)
 			throws RequestAlreadySentException {
 		List<Request> requests = requestRepository.checkExistingRequest(
@@ -44,5 +45,11 @@ public class RequestServiceImpl implements RequestService {
 	@Override
 	public Request getOne(int id) {
 		return requestRepository.findOne(id);
+	}
+
+	@Override
+	@Transactional(timeout=1)
+	public List<Request> getloggedInUserRequest(User user) {
+		return requestRepository.mySentRequest(user);
 	}
 }

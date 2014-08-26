@@ -8,7 +8,9 @@ import com.softserve.edu.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
-	
-	public User getUserByLogin(String login);
+	@Query("SELECT us FROM User us JOIN FETCH us.languages JOIN FETCH us.hostings  WHERE us.login=:login")
+	public User getUserByLogin(@Param("login")String login);
+	@Query("SELECT us FROM User us JOIN FETCH us.languages JOIN FETCH us.hostings  WHERE us.userId=:userId")
+	public User getUserById(@Param("userId")int userId);
 
 }

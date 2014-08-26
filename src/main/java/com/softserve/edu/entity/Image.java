@@ -9,6 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "IMAGE", uniqueConstraints = { @UniqueConstraint(columnNames = { "image_id", "link" }) })
 public class Image {
@@ -19,12 +21,15 @@ public class Image {
 	@Column(name = "link", nullable = false, unique = true)
 	private String link;
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "user_id")
 	private User user;
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "hosting_id")
 	private Hosting hosting;
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "feedback_id")
 	private Feedback feedback;
 

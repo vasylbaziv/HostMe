@@ -31,7 +31,7 @@ private UserRepository userRepository;
 
 	@Override
 	public User getUser(Integer id) {
-		return userRepository.findOne(id);
+		return userRepository.getUserById(id);
 	}
 
 	@Override
