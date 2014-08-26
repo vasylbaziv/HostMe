@@ -9,60 +9,40 @@
 <link rel="stylesheet" type="text/css" href="bootstrap.css">
 </head>
 <body>
-    <div class="container" style="text-align: justify;">
 
-        <div class="row" style="margin-top: 50px">
-            <div class="col-md-9">
-                <h1
-                    style="padding-bottom: 5px; border-bottom-style: solid; border-color: #EEEEEE; border-width: 5px">
-                    <small>Feedbacks - <a href="hoster.html">John
-                            Snow</a></small>
-                </h1>
-            </div>
-        </div>
+    <section class="content-header">
+    <h1>
+        Feedbacks for <a
+            href="<c:url value='hoster?hosterId=${hosting.owner.userId}' />">${hosting.owner.firstName}&thinsp;${hosting.owner.lastName}</a>'s
+        place - <a
+            href="<c:url value="hosting?hostingId=${hosting.hostingId}&&userId=${hosting.owner.userId}" />">${hosting.address}</a>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+    </section>
 
-        <div class="row" style="margin-bottom: 40px">
-            <div class="col-md-8" style="margin-top: 40px">
-                <div>
-                    <img src="resources/images/traveller1.jpg"
-                        style="width: 100px; float: left; margin: 0px 40px 0px 10px"></img>
+    <section class="content"> <!-- general form elements -->
+    <div class="box box-primary">
+
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-12" style="margin-top: 1em;">
+                    <c:forEach items="${hosting.feedbacks}"
+                        var="feedbacks" varStatus="loop">
+                        <div class="callout callout-info">
+                            <h4>
+                                <a href="<c:url value='hoster?hosterId=${feedbacks.author.userId}' />">${feedbacks.author.firstName}&nbsp;${feedbacks.author.lastName}</a></h4>
+                            <q style="color: gray"><i><c:out
+                                        value="${feedbacks.description}"></c:out></i></q>
+                     </div>
+                    </c:forEach>
                 </div>
-
-                <h4>Johnny Doe</h4>
-                <q style="color: #BBBBBB"><i>Really enjoyed my
-                        stay at this lovely place. Location couldn't be
-                        better. Would definitely come back again!</i></q>
             </div>
-
-            <div class="col-md-9" style="margin-top: 40px">
-                <div>
-                    <img src="resources/images/traveller2.png"
-                        style="width: 100px; float: left; margin: 0px 40px 0px 10px"></img>
-                </div>
-
-                <h4>Mary Jane</h4>
-                <q style="color: #BBBBBB"><i>I had a wonderful
-                        stay at John Snow's place. Beautiful garden and
-                        swimming pool, very friendly hosting person.
-                        Best regards from New York!</i></q>
-            </div>
-
-            <div class="col-md-8" style="margin-top: 40px">
-                <div>
-                    <img src="resources/images/traveller3.jpg"
-                        style="height: 110px; width: 100px; float: left; margin: 0px 40px 0px 10px"></img>
-                </div>
-
-                <h4>Crazy rabbit</h4>
-                <q style="color: #BBBBBB"><i>It was an awsome
-                        trip. Everything about my stay was great. Lovely
-                        place, made to feel very welcome. Thanks!</i></q>
-            </div>
-        </div>
-        <div style="padding-left: 15px; margin-bottom: 50px">
-            <button type="submit" class="btn btn-primary">Send
-                Feedback</button>
         </div>
     </div>
+
+    </section>
 </body>
 </html>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.softserve.edu.entity.Feedback;
 import com.softserve.edu.entity.Gender;
 import com.softserve.edu.entity.Hosting;
 import com.softserve.edu.entity.Request;
@@ -53,6 +54,8 @@ public class HostingController {
 		stringBuilder.append(hosting.getCountry()).append(",")
 				.append(hosting.getCity()).append(",")
 				.append(hosting.getAddress());
+		Feedback feedback = new Feedback();
+		model.addAttribute("feedback", feedback);
 		model.addAttribute("location", stringBuilder.toString());
 		return "hosting";
 	}

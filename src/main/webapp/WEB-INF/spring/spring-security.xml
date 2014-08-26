@@ -9,6 +9,9 @@
 	<global-method-security secured-annotations="enabled" />
 
 	<http use-expressions="true" auto-config="true">
+	  <session-management>
+        <concurrency-control max-sessions="1" />
+    </session-management>
 
 		<intercept-url pattern="/index" access="permitAll" />
 		<intercept-url pattern="/hoster" access="hasRole('USER')" />
@@ -18,6 +21,7 @@
 		<intercept-url pattern="/hosting-creation" access="hasRole('USER')" />
 		<intercept-url pattern="/search" access="hasRole('USER')" />
 		<intercept-url pattern="/profile" access="hasRole('USER')" />
+		<intercept-url pattern="/profile" access="! isAuthenticated()" />
 		<form-login login-page="/login" authentication-failure-url="/login?error=true" />
 		<logout logout-url="/logout" logout-success-url="/login?logout=true" />
 		<!-- <form-login login-page="/login" default-target-url="/hostel" -->
