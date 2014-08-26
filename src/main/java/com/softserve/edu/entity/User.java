@@ -55,8 +55,10 @@ public class User {
 	private Calendar birthday;
 	@Column(name = "email", unique = true, length = 70)
 	private String email;
-	@Column(name = "about", length = 1000)
-	private String about;
+	@Column(name = "hobby", length = 100)
+	private String hobby;
+	@Column(name = "description", length = 100)
+	private String description;
 	@Column(name = "country", length = 50)
 	private String country;
 	@Column(name = "region", length = 50)
@@ -167,12 +169,20 @@ public class User {
 		this.email = email;
 	}
 
-	public String getAbout() {
-		return about;
+	public String getHobby() {
+		return hobby;
 	}
 
-	public void setAbout(String about) {
-		this.about = about;
+	public void setHobby(String hobby) {
+		this.hobby = hobby;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getCountry() {
@@ -254,15 +264,13 @@ public class User {
 		this.role = role;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", login=" + login + ", password="
 				+ password + ", firstName=" + firstName + ", lastName="
 				+ lastName + ", gender=" + gender + ", birthday=" + birthday
-				+ ", email=" + email + ", about=" + about + ", country="
-				+ country + ", region=" + region + "]";
+				+ ", email=" + email + ", about=" + ", country=" + country
+				+ ", region=" + region + "]";
 	}
 
 }

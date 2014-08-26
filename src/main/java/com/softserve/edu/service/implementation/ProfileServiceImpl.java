@@ -3,15 +3,12 @@ package com.softserve.edu.service.implementation;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.Set;
 
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.softserve.edu.dao.UserDao;
-import com.softserve.edu.entity.Language;
 import com.softserve.edu.entity.User;
 import com.softserve.edu.service.ProfileService;
 
@@ -32,7 +29,6 @@ public class ProfileServiceImpl implements ProfileService {
 	public User getUserByLogin(String login) {
 		return userDaoImpl.getUserByLogin(login);
 	}
-
 
 	public int calcAge(User user) {
 
@@ -56,7 +52,5 @@ public class ProfileServiceImpl implements ProfileService {
 		return new SimpleDateFormat("dd.MM.yyyy").format(user.getBirthday()
 				.getTime());
 	}
-
-	
 
 }
