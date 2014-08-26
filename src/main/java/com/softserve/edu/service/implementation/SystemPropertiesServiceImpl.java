@@ -11,12 +11,11 @@ import com.softserve.edu.service.SystemPropertiesService;
 public class SystemPropertiesServiceImpl implements SystemPropertiesService {
 
 	@Autowired
-	SystemPropertiesDao systemProperties;
-		
+	SystemPropertiesDao systemPropertiesDao;
+
 	@Override
 	@Transactional
 	public String getImagePath() {
-		return systemProperties.read(1).getImagePath();
+		return systemPropertiesDao.getPropeties("IMAGE_PATH").get(0).getValue();
 	}
-
 }

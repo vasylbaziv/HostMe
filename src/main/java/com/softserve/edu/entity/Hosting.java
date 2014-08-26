@@ -20,8 +20,7 @@ import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 @Entity
-@Table(name = "HOSTING", uniqueConstraints = { @UniqueConstraint(columnNames = {
-		"address", "hosting_id" }) })
+@Table(name = "HOSTING", uniqueConstraints = { @UniqueConstraint(columnNames = "hosting_id" ) })
 public class Hosting {
 	@Id
 	@GeneratedValue

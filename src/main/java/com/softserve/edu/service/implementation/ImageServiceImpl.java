@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.softserve.edu.dao.ImageDao;
+import com.softserve.edu.dao.SystemPropertiesDao;
 import com.softserve.edu.entity.Hosting;
 import com.softserve.edu.entity.Image;
 import com.softserve.edu.service.ImageService;

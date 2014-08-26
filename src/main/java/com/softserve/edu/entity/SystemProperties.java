@@ -8,27 +8,47 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "SYSTEM_PROPERTIES", uniqueConstraints = { @UniqueConstraint(columnNames = { "properties_id" }) })
+@Table(name = "SYSTEM_PROPERTIES", uniqueConstraints = { @UniqueConstraint(columnNames = "property_id") })
 public class SystemProperties {
 	@Id
 	@GeneratedValue
-	@Column(name = "properties_id", unique = true, nullable = false)
-	private Integer propertiesId;
-	@Column(name = "IMAGE_PATH", length = 200, nullable = false)
-	private String imagePath;
+	@Column(name = "property_id", unique = true, nullable = false)
+	private Integer propertyId;
+	@Column(name = "prop_key", length = 200, nullable = false)
+	private String propKey;
+	@Column(name = "value", length = 200, nullable = false)
+	private String value;
 
-	public String getImagePath() {
-		return imagePath;
+
+	public Integer getPropertyId() {
+		return propertyId;
 	}
 
-	public void setImagePath(String imagePath) {
-		this.imagePath = imagePath;
+
+	public void setPropertyId(Integer propertyId) {
+		this.propertyId = propertyId;
 	}
 
-	@Override
-	public String toString() {
-		return "SystemProperties [properties_id=" + propertiesId
-				+ ", imagePath=" + imagePath + "]";
+
+	public String getPropKey() {
+		return propKey;
 	}
+
+
+	public void setPropKey(String propKey) {
+		this.propKey = propKey;
+	}
+
+
+	public String getValue() {
+		return value;
+	}
+
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
+
 
 }
