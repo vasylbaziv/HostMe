@@ -23,16 +23,6 @@ public class HostingDaoImpl extends AbstractGenericDao<Hosting, Integer> impleme
     @Autowired
     private SessionFactory sessionFactory;
 
-    public List<Hosting> getUserHostings() {
-        Criteria criteria = getSessionFactory().getCurrentSession()
-                .createCriteria(Hosting.class);
-
-        //return all hostings from User (userId == 3 to be changed)
-        List<Hosting> userHostings = (List<Hosting>) criteria.createAlias("owner", "ow")
-                .add(Restrictions.eq("ow.userId",3)).list();
-        return userHostings;
-    }
-
     public List<Hosting> listAllHostels() {
         Session session = sessionFactory.getCurrentSession();
         Criteria cr = session.createCriteria(Hosting.class, "hostel");

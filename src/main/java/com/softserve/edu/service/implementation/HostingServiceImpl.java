@@ -33,12 +33,6 @@ public class HostingServiceImpl implements HostingService {
 
 	@Override
 	@Transactional
-	public List<Hosting> getUserHostings() {
-		return hostingDao.getUserHostings();
-	}
-
-	@Override
-	@Transactional
 	public Hosting getHosting(int id) {
 		return hostingDao.read(id);
 	}

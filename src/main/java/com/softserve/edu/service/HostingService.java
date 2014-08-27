@@ -10,6 +10,4 @@ public interface HostingService {
 
 	public Hosting getHosting(int id);
 
-	public List<Hosting> getUserHostings();
-
 }
