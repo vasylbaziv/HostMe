@@ -14,7 +14,7 @@
 	-moz-border-radius: 4px;
 	border-radius: 4px; /*.dow { border-top: 1px solid #ddd !important; }*/
 }
-
+/*
 .datepicker:before {
 	content: '';
 	display: inline-block;
@@ -37,6 +37,7 @@
 	top: -6px;
 	left: 7px;
 }
+ */
 
 .datepicker>div {
 	display: none;
@@ -133,6 +134,10 @@
 .datepicker td span.active:hover,.datepicker td span.active:active,.datepicker td span.active.active,.datepicker td span.active.disabled,.datepicker td span.active[disabled]
 	{
 	background-color: #ff9900;
+}
+
+.datepicker .disabled {
+	background-color: #f56954;
 }
 
 .datepicker td span.active:active,.datepicker td span.active.active {

@@ -11,15 +11,10 @@
     href="resources/css/daterangepicker-bs3.css">
 
 <link rel="stylesheet" type="text/css"
-    href="resources/css/datepicker3.css">
-
-<link rel="stylesheet" type="text/css"
     href="resources/css/datepicker.css">
 
 <link rel="stylesheet" type="text/css"
     href="resources/css/bootstrap3-wysihtml5.css">
-
-<script type="text/javascript" src="resources/js/bootstrap.js"></script>
 
 <script type="text/javascript" src="resources/js/daterangepicker.js"></script>
 
@@ -28,7 +23,6 @@
 
 <script type="text/javascript"
     src="resources/js/bootstrap3-wysihtml5.all.min.js"></script>
-<script type="text/javascript" src="resources/js/fullcalendar.js"></script>
 
 <script type="text/javascript" src="resources/js/hosting.js"></script>
 
@@ -253,8 +247,15 @@
                                                             class="form-group">
 
                                                             <div
-                                                                class="input-group">
+                                                                id="available">
 
+                                                                <form:input
+                                                                    path="beginDate"
+                                                                    type="hidden"
+                                                                    id="data-date-begin-date" />
+
+
+                                                                <div></div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -415,7 +416,26 @@
 						$(".alert").alert('close');
 					}, 5000);
 
-					$('.datepicker').datepicker();
+					var dateDisabled = [ "2014-8-5", "2014-8-7" ];
+					$(function() {
+						$('#available div')
+								.datepicker(
+										{
+											format : 'yyyy-mm-dd',
+											beforeShowDay : function(date) {
+												if ($.inArray(date
+														.getFullYear()
+														+ '-'
+														+ (date.getMonth() + 1)
+														+ '-' + date.getDate(),
+														dateDisabled) !== -1) {
+													return false;
+												}
+
+												return true;
+											}
+										});
+					});
 				</script>
 </body>
 </html>

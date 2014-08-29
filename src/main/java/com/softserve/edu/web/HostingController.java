@@ -1,5 +1,7 @@
 package com.softserve.edu.web;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -60,6 +62,13 @@ public class HostingController {
         model.addAttribute("request", request);
         Feedback feedback = new Feedback();
         model.addAttribute("feedback", feedback);
+        
+        // first steps to check the hosting availability
+        Date today = new Date();
+        Date beginDate = new Date(today.getTime() + (1000 * 60 * 60 * 24));
+        model.addAttribute("beginDate", beginDate);
+        System.out.println(beginDate);
+        
         return "hosting";
     }
     
