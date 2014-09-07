@@ -50,65 +50,6 @@
                                 <img
                                     src="resources/images/hostel2sm.jpg"
                                     style="margin: 1em 0em 1em 2em;"></img>
-                            </div>
-
-                            <div class="col-md-4"
-                                style="margin-top: 1em;">
-
-                                <form:form action="feedbacks"
-                                    method="post"
-                                    modelAttribute="feedback"
-                                    id="send_feedback_form">
-                                    <div class="panel box box-warning">
-                                        <div class="box-header">
-                                            <h4 class="box-title">
-                                                <a
-                                                    data-toggle="collapse"
-                                                    data-parent="#accordion"
-                                                    href="#collapseFeedbacks"
-                                                    class="collapsed">
-                                                    Stayed at
-                                                    ${user.firstName}&thinsp;${user.lastName}'s?</a>
-                                            </h4>
-
-                                        </div>
-                                        <div style="margin-left: 0.7em">
-                                            Send us your <a
-                                                data-toggle="collapse"
-                                                data-parent="#accordion"
-                                                href="#collapseFeedbacks">feedback</a>!
-                                        </div>
-                                        <div class="box-body">
-                                            <input type="hidden"
-                                                name="hostingId"
-                                                value="${hosting.hostingId}" />
-
-                                            <div id="collapseFeedbacks"
-                                                class="panel-collapse collapse"
-                                                style="height: 0px;">
-                                                <div class="form-group"
-                                                    style="margin-bottom: 0">
-                                                    <form:textarea
-                                                        id="description"
-                                                        path="description"
-                                                        class=" form-control"
-                                                        placeholder="Your opinion about the stay"
-                                                        style="margin-bottom:1em"></form:textarea>
-
-                                                    <button
-                                                        class="btn btn-warning">Send
-                                                        feedback</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form:form>
-
-                            </div>
-
-
-
-                            <div class="col-md-8">
 
                                 <div class="row">
                                     <div class="col-md-3">
@@ -191,17 +132,91 @@
                                     </div>
                                 </div>
 
-                                <div class="row"
-                                    style="padding-bottom: 0.5em">
-                                    <div class="col-md-10">
-                                        <h4>
-                                            Find guest reviews <a
-                                                href="<c:url value="feedbacks?hostingId=${hosting.hostingId}" />">here</a>
-                                        </h4>
+                                <div class="row">
+                                    <div class="col-md-3">Dis
+                                        dates:</div>
+                                    <div class="col-md-9">
+                                        <c:forEach
+                                            items="${disabledDate}"
+                                            var="disDate"
+                                            varStatus="loop">
+
+                                            <c:out value="${disDate}">
+                                            </c:out>
+                                            <c:if test="${!loop.last}">, </c:if>
+
+                                        </c:forEach>
                                     </div>
                                 </div>
 
-                                <div id="calendar" style="width: 100%"></div>
+
+                            </div>
+
+                            <div class="col-md-4"
+                                style="margin-top: 1em;">
+
+                                <div style="padding-bottom: 0.5em">
+                                    <input id="disabledDate"
+                                        type="hidden"
+                                        value="${disabledDate}" /> <input
+                                        id="dateNew" type="hidden"
+                                        value="${dateNew}" />
+                                    <h4>
+                                        Find guest reviews <a
+                                            href="<c:url value="feedbacks?hostingId=${hosting.hostingId}" />">here</a>
+                                    </h4>
+
+                                </div>
+
+                                <form:form action="feedbacks"
+                                    method="post"
+                                    modelAttribute="feedback"
+                                    id="send_feedback_form">
+                                    <div class="panel box box-warning">
+                                        <div class="box-header">
+                                            <h4 class="box-title">
+                                                <a
+                                                    data-toggle="collapse"
+                                                    data-parent="#accordion"
+                                                    href="#collapseFeedbacks"
+                                                    class="collapsed">
+                                                    Stayed at
+                                                    ${user.firstName}&thinsp;${user.lastName}'s?</a>
+                                            </h4>
+
+                                        </div>
+                                        <div style="margin-left: 0.7em">
+                                            Send us your <a
+                                                data-toggle="collapse"
+                                                data-parent="#accordion"
+                                                href="#collapseFeedbacks">feedback</a>!
+                                        </div>
+                                        <div class="box-body">
+                                            <input type="hidden"
+                                                name="hostingId"
+                                                value="${hosting.hostingId}" />
+
+                                            <div id="collapseFeedbacks"
+                                                class="panel-collapse collapse"
+                                                style="height: 0px;">
+                                                <div class="form-group"
+                                                    style="margin-bottom: 0">
+                                                    <form:textarea
+                                                        id="description"
+                                                        path="description"
+                                                        class=" form-control"
+                                                        placeholder="Your opinion about the stay"
+                                                        style="margin-bottom:1em"></form:textarea>
+
+                                                    <button
+                                                        class="btn btn-warning">Send
+                                                        feedback</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form:form>
+
                             </div>
                         </div>
                     </div>
@@ -249,10 +264,7 @@
                                                             <div
                                                                 id="available">
 
-                                                                <form:input
-                                                                    path="beginDate"
-                                                                    type="hidden"
-                                                                    id="data-date-begin-date" />
+
 
 
                                                                 <div></div>
@@ -416,12 +428,13 @@
 						$(".alert").alert('close');
 					}, 5000);
 
-					var dateDisabled = [ "2014-8-5", "2014-8-7" ];
+					var dateDisabled = ${nonAvailableDatesJson};
+
 					$(function() {
 						$('#available div')
 								.datepicker(
 										{
-											format : 'yyyy-mm-dd',
+											dateFormat : 'dd-mm-yyyy',
 											beforeShowDay : function(date) {
 												if ($.inArray(date
 														.getFullYear()
@@ -431,11 +444,11 @@
 														dateDisabled) !== -1) {
 													return false;
 												}
-
 												return true;
 											}
 										});
 					});
+
 				</script>
 </body>
 </html>

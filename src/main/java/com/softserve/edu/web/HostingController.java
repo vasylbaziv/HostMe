@@ -1,7 +1,5 @@
 package com.softserve.edu.web;
 
-import java.util.Date;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
 import com.softserve.edu.entity.Feedback;
 import com.softserve.edu.entity.Gender;
 import com.softserve.edu.entity.Hosting;
@@ -63,11 +62,30 @@ public class HostingController {
         Feedback feedback = new Feedback();
         model.addAttribute("feedback", feedback);
         
-        // first steps to check the hosting availability
+        // steps to check the hosting availability
+        
+        /*
+        Calendar cal = new GregorianCalendar();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-M-d");
+        dateFormat.setTimeZone(cal.getTimeZone());
+        System.out.println(dateFormat.format(cal.getTime()));
+        
+        String disabledDate = dateFormat.format(cal.getTime());
+        System.out.println(disabledDate);
+        
+        model.addAttribute("disabledDate", disabledDate.toString());
+        
         Date today = new Date();
-        Date beginDate = new Date(today.getTime() + (1000 * 60 * 60 * 24));
-        model.addAttribute("beginDate", beginDate);
-        System.out.println(beginDate);
+        Date dateNew = new Date(today.getTime() + 24 * 60 * 60 * 1000);
+        System.out.println(dateNew);
+        model.addAttribute("dateNew", dateNew);
+        */
+        
+        String nonAvailableDatesJson = new Gson().toJson(hostingService.getNonAvailableDates(hostingId));
+        model.addAttribute("nonAvailableDatesJson",nonAvailableDatesJson);
+        
+        
+        //model.addAttribute("disabledDate",hostingService.getNonAvailableDates(hostingId));        
         
         return "hosting";
     }

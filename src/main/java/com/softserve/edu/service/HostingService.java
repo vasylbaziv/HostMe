@@ -1,6 +1,6 @@
 package com.softserve.edu.service;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import com.softserve.edu.entity.Hosting;
 
@@ -9,5 +9,7 @@ public interface HostingService {
 
 
 	public Hosting getHosting(int id);
+	
+	public ArrayList<String> getNonAvailableDates(int hostingId);
 
 }
