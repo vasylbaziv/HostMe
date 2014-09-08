@@ -8,5 +8,5 @@ import com.softserve.edu.entity.exceptions.RequestAlreadySentException;
 public interface RequestDao extends GenericDao<Request, Long> {
 	public boolean checkRequest(Request request) throws RequestAlreadySentException;
 	
-	public List<Request> getAllRequestsByHostingId(int hostingId);
+	public List<Request> getAllApprovedRequestsByHostingId(int hostingId);
 }

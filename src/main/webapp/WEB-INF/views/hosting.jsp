@@ -132,24 +132,6 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-3">Dis
-                                        dates:</div>
-                                    <div class="col-md-9">
-                                        <c:forEach
-                                            items="${disabledDate}"
-                                            var="disDate"
-                                            varStatus="loop">
-
-                                            <c:out value="${disDate}">
-                                            </c:out>
-                                            <c:if test="${!loop.last}">, </c:if>
-
-                                        </c:forEach>
-                                    </div>
-                                </div>
-
-
                             </div>
 
                             <div class="col-md-4"

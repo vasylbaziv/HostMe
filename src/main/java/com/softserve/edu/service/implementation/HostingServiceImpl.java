@@ -2,6 +2,8 @@ package com.softserve.edu.service.implementation;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,15 +48,21 @@ public class HostingServiceImpl implements HostingService {
 	@Override
         @Transactional
 	public ArrayList<String> getNonAvailableDates(int hostingId) {
-	    List<Request> requests = requestDao.getAllRequestsByHostingId(hostingId);
+	    List<Request> requests = requestDao.getAllApprovedRequestsByHostingId(hostingId);
 	    
 	    ArrayList<String> nonAvailableDates = new ArrayList<String>();
 	    
-	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-M-d");
+	    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-M-d");	        
 	    
 	    for (Request item : requests) {
-	        nonAvailableDates.add(dateFormat.format(item.getBeginDate().getTime()));
-	        nonAvailableDates.add(dateFormat.format(item.getEndDate().getTime()));
+	        Date d1 = item.getBeginDate().getTime();
+	        Date d2 = item.getEndDate().getTime();
+	        
+	        Iterator<Date> i = new DateIterator(d1, d2);
+                while(i.hasNext())
+                {
+                    nonAvailableDates.add(dateFormat.format(i.next()));
+                }
             }
 	    
 	    return nonAvailableDates;

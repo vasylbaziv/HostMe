@@ -18,6 +18,7 @@ import org.springframework.stereotype.Repository;
 import com.softserve.edu.dao.RequestDao;
 import com.softserve.edu.entity.Hosting;
 import com.softserve.edu.entity.Request;
+import com.softserve.edu.entity.Status;
 import com.softserve.edu.entity.exceptions.RequestAlreadySentException;
 
 @Repository
@@ -69,10 +70,10 @@ public class RequestDaoImpl extends AbstractGenericDao<Request, Long> implements
     }
     
     @Override
-    public List<Request> getAllRequestsByHostingId(int hostingId) {
+    public List<Request> getAllApprovedRequestsByHostingId(int hostingId) {
         Session session = sessionFactory.getCurrentSession();
         Criteria cr = session.createCriteria(Request.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        cr.add(Restrictions.eq("hosting.hostingId", hostingId));
+        cr.add(Restrictions.eq("status", Status.APPROVED)).add(Restrictions.eq("hosting.hostingId", hostingId));
         
         return cr.list();
     }
