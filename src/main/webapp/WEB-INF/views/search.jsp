@@ -15,7 +15,7 @@
 <script type="text/javascript">
         $(document).ready(function () {
             $("#tdHost").click(function() {
-                window.location="http://localhost:8080/hosting?hostingId=${host.hostingId}&&userId=${host.owner.userId}";
+                window.location="hosting?hostingId=${host.hostingId}&&userId=${host.owner.userId}";
             });
             $('#myForm').submit(function (e) {
                 var country = $('#country').val();
@@ -83,7 +83,7 @@
 	</section>
 	<section class="content">
 	<div class="row">
-		<form id="myForm" method="get" action="/searchhosts">
+		<form id="myForm" method="get" action="searchhosts">
 			<div class="row">
 				<div class="col-md-8">
 					<p>Select date range you want to search</p>
