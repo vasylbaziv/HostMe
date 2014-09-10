@@ -139,7 +139,7 @@
 			<div class="row">
 				<div class="col-md-8" style="margin-top: 20px;">
 					<div class="bottom">
-						<input type="submit" value="Search"/>
+						<input type="submit" value="Search" id="search"/>
 					</div>
 				</div>
 			</div>
@@ -159,16 +159,15 @@
     </table>
 
     <div class="pagination inline" id="pagination">
-        <form id="myFormPagePrevious" method="get" action="/searchhosts" style="display: inline">
+        <form id="myFormPagePrevious" method="get" action="searchhosts" style="display: inline">
             <input type="submit" id="previousPage" value="&laquo Previous page"
                    style="display: none"/>
         </form>
-        <form id="myFormPageNext" method="get" action="/searchhosts" style="display: inline">
+        <form id="myFormPageNext" method="get" action="searchhosts" style="display: inline">
             <input type="submit" id="nextPage" value="Next Page &raquo"
                    style="display: none"/>
         </form>
         <div id="currentPage" style="display: inline"></div>
-    </div>
     </div>
 	</section>
 	<script src="jquery-2.1.1.js"></script>
