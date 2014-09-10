@@ -10,9 +10,13 @@ public class Search {
 
     //Constructors
 
-    public Search(String name, String value) {
-        this.name = name;
-        this.value = value;
+    public Search() {
+
+    }
+
+    private Search(SearchBuilder builder) {
+        this.name = builder.key;
+        this.value = builder.value;
     }
 
     //Setters and getters
@@ -22,15 +26,36 @@ public class Search {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getValue() {
         return value;
     }
 
-    public void setValue(String value) {
-        this.value = value;
+    public static class SearchBuilder {
+
+        private String key;
+        private String value;
+
+        public static void create(){
+            Search search = new Search();
+        }
+
+        public SearchBuilder() {
+
+        }
+
+        public SearchBuilder setKey(String key) {
+            this.key = key;
+            return this;
+        }
+
+        public SearchBuilder setValue(String value) {
+            this.value = value;
+            return this;
+        }
+
+        public Search build() {
+            return new Search(this);
+        }
+
     }
 }
