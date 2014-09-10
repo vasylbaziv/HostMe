@@ -29,50 +29,80 @@ public class SearchController {
 		return "search";
 	}
 
-	@RequestMapping(value = "/searchhosts",
-           method = RequestMethod.GET)
-    	public @ResponseBody
-    	String searchAll(
-            	@RequestParam(value = "country", required = false, defaultValue = "") String country,
-            	@RequestParam(value = "region", required = false, defaultValue = "") String region,
-            	@RequestParam(value = "pets", required = false, defaultValue = "") String pets,
-            	@RequestParam(value = "children", required = false, defaultValue = "") String children,
-            	@RequestParam(value = "smoking", required = false, defaultValue = "") String smoking,
-            	@RequestParam(value = "family", required = false, defaultValue = "") String family,
-            	@RequestParam(value = "maxNumberOfGuests", required = false, defaultValue = "") String count,
-            	@RequestParam(value = "gender", required = false, defaultValue = "UNSPECIFIED" ) String gender,
-            	Map<String, Object> map) {
-            Search srchcountry = new Search("country", country);
-            Search srchregion = new Search("region", region);
-            Search srchpets = new Search("pets", pets);
-            Search srchchildren = new Search("children", children);
-            Search srchsmoking = new Search("smoking", smoking);
-            Search srchfamily = new Search("family", family);
-            Search srchMinCount = new Search("minNumberOfGuests", count);
-            Search srchMaxCount = new Search("maxNumberOfGuests", count);
-            Search srchGender = new Search("gender", gender);
-            //Search srchDateBegin = new Search("beginDate", dateBegin);
-            //Search srchDateEnd = new Search("ebdDate", dateEnd);
-            map.put("country", country);
-            map.put("region", region);
-            map.put("pets", Boolean.parseBoolean(pets));
-            map.put("children", Boolean.parseBoolean(children));
-            map.put("smoking", Boolean.parseBoolean(smoking));
-            map.put("family", Boolean.parseBoolean(family));
-            map.put("count", count);
-            map.put("gender", gender);
-            //map.put("date_begin", dateBegin);
-            //map.put("date_end", dateEnd);
-            map.put("host", new Hosting());
-            final List<HostingDTO> hostingDTOs = new LinkedList<HostingDTO>();
-            final List<Hosting> hostings = searchService.getList(srchcountry, srchregion,
-                srchpets, srchchildren, srchsmoking, srchfamily, srchMinCount,
-                srchMaxCount, srchGender);
-            for(Hosting hosting : hostings) {
-                hostingDTOs.add(new HostingDTO(hosting, hosting.getOwner()));
-            }
-            Gson gson = new Gson();
-            return gson.toJson(hostingDTOs);
+	    @RequestMapping(value = "/searchhosts",
+            method = RequestMethod.GET)
+    public
+    @ResponseBody
+    String searchAll(
+            @RequestParam(value = "country", required = false, defaultValue = "") String country,
+            @RequestParam(value = "region", required = false, defaultValue = "") String region,
+            @RequestParam(value = "pets", required = false, defaultValue = "") String pets,
+            @RequestParam(value = "children", required = false, defaultValue = "") String children,
+            @RequestParam(value = "smoking", required = false, defaultValue = "") String smoking,
+            @RequestParam(value = "family", required = false, defaultValue = "") String family,
+            @RequestParam(value = "maxNumberOfGuests", required = false, defaultValue = "") String count,
+            @RequestParam(value = "gender", required = false, defaultValue = "UNSPECIFIED") String gender,
+            @RequestParam(value = "page", required = false, defaultValue = "0") Integer page,
+//            @RequestParam(value = "beginDate", required = false, defaultValue = "") String beginDate,
+//            @RequestParam(value = "endDate", required = false, defaultValue = "") String endDate,
+            Map<String, Object> map) {
+        List<Search> searchList = new ArrayList<Search>();
+        searchList.add(new Search.SearchBuilder()
+                .setKey("country")
+                .setValue(country)
+                .build());
+        searchList.add(new Search.SearchBuilder()
+                .setKey("region")
+                .setValue(region)
+                .build());
+        searchList.add(new Search.SearchBuilder()
+                .setKey("pets")
+                .setValue(pets)
+                .build());
+        searchList.add(new Search.SearchBuilder()
+                .setKey("children")
+                .setValue(children)
+                .build());
+        searchList.add(new Search.SearchBuilder()
+                .setKey("smoking")
+                .setValue(smoking)
+                .build());
+        searchList.add(new Search.SearchBuilder()
+                .setKey("family")
+                .setValue(family)
+                .build());
+        searchList.add(new Search.SearchBuilder()
+                .setKey("minNumberOfGuests")
+                .setValue(count)
+                .build());
+        searchList.add(new Search.SearchBuilder()
+                .setKey("maxNumberOfGuests")
+                .setValue(count)
+                .build());
+        searchList.add(new Search.SearchBuilder()
+                .setKey("gender")
+                .setValue(gender)
+                .build());
+//        searchList.add(new Search.SearchBuilder()
+//                .setKey("request.begin_date")
+//                .setValue(endDate)
+//                .build());
+//        searchList.add(new Search.SearchBuilder()
+//                .setKey("request.end_date")
+//                .setValue(beginDate)
+//                .build());
+        Integer pages = searchService.getCountOfPages(searchList);
+        map.put("host", new Hosting());
+
+        final List<Object> hostingDTOs = new LinkedList<>();
+        final List<Hosting> hostings = searchService.getList(searchList, page);
+        for (Hosting hosting : hostings) {
+            hostingDTOs.add(new HostingDTO(hosting, hosting.getOwner()));
         }
+        hostingDTOs.add(0, pages);
+        Gson gson = new Gson();
+
+        return gson.toJson(hostingDTOs);
+    }
 
 }
