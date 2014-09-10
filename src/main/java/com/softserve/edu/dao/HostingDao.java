@@ -8,9 +8,9 @@ import com.softserve.edu.utils.Search;
 
 public interface HostingDao extends GenericDao<Hosting, Integer> {
 
-    public List<Hosting> listAllHostels();
-
-    public List<Hosting> getList(Search... parameters);
+    public List<Hosting> getList(List<Search> listSearch, Integer page);
     
     public Gender parsingGender(String gender);
+    
+    public Integer getCountOfPages(List<Search> listSearch);    
 }
