@@ -12,62 +12,7 @@
 <script type="text/javascript" src="resources/js/search.js"></script>
 <script type="text/javascript" src="resources/js/countries.js"></script>
 <script type="text/javascript" src="resources/js/jput.min.js"></script>
-<script type="text/javascript">
-        $(document).ready(function () {
-            $("#tdHost").click(function() {
-                window.location="hosting?hostingId=${host.hostingId}&&userId=${host.owner.userId}";
-            });
-            $('#myForm').submit(function (e) {
-                var country = $('#country').val();
-                var region = $('#region').val();
-                var count = $('#count').val();
-                var pets = $('#pets').is(":checked");
-                var family = $('#family').is(":checked");
-                var smoking = $('#smoking').is(":checked");
-                var children = $('#children').is(":checked");
-                var gender = "UNSPECIFIED";
-                var dateRange = $('#reservationtime').val().split(' - ');
-                var beginDate = Date.parse(dateRange[0]);
-                var endDate = Date.parse(dateRange[1]);
-                if($('#female').is(":checked")){
-                    gender = "FEMALE";
-                }
-                if($('#male').is(":checked")) {
-                    gender = "MALE";
-                }
-                var url = $( '#myForm' ).attr( 'action' ) + "?country=" + country + "&region=" + region + "&maxNumberOfGuests="
-                        + count + "&pets=" + pets + "&family=" +  family + "&smoking=" + smoking + "&children=" + children
-                        + "&gender=" + gender;
-                //+ "&beginDate=" + beginDate + "&endDate=" + endDate;
-                $.ajax({url: url, success: function (result) {
-                    $('#searchTable tr').each(function (i, row) {
-                        if (i != 0){
-                            $(row).remove();
-                        }
-                    });
-                    var json = JSON.parse(result);
-                    for(var i = 0; i < json.length; i++) {
-                        var obj = json[i];
-                        var urlHost = "hosting?hostingId=" + obj.hostingId + "&&userId=" + obj.userId;
-                        var urlUser = "hoster?hosterId=" + obj.userId;
-                        var row = "<TR>";
-                        var buttonClass = "btn btn-primary";
-                        var oncl = "sendRequest(" + obj.hostingId + ", this)";
-                        var buttonId = "a";
-                        row += "<TD>" + obj.country + "</TD>";
-                        row += "<TD>" + obj.region + "</TD>";
-                        row += "<TD>" + obj.city + "</TD>";
-                        row += "<TD>" + "<a href=" + urlHost + ">" + obj.address + "</A></TD>";
-                        row += "<TD>" +"<a href=" + urlUser + ">" + obj.firstAndLastName + "</A></TD>";
-                        row += "<TD>" + "<button id=" + buttonId + " class=" + buttonClass + "onclick=" + oncl + ">" + "Send Request" + "</button>" + "</TD>";
-                        row += "</TR>"
-                        $('#searchTable').append(row);
-                    }
-                }});
-                return false;
-            });
-        });
-    </script>
+<title>Search</title>
 <link rel="stylesheet" type="text/css"
 	href="resources/css/daterangepicker-bs3.css">
 </head>
@@ -201,57 +146,30 @@
 			<div id="searchhosts"></div>
         	</form>
 	</div>
-		<table id="searchTable" class="table table-hover">
-            <thead>
-            <tr style="background-color: #f9f9f9">
-                <th>Country</th>
-                <th>Region</th>
-                <th>City</th>
-                <th>Address</th>
-                <th>Hoster</th>
-            </tr>
-            </thead>
-        </table>
+		<table id="searchTable" class="table table-hover" style="display:none">
+        <thead>
+        <tr style="background-color: #f9f9f9">
+            <th>Country</th>
+            <th>Region</th>
+            <th>City</th>
+            <th>Address</th>
+            <th>Hoster</th>
+        </tr>
+        </thead>
+    </table>
+
+    <div class="pagination inline" id="pagination">
+        <form id="myFormPagePrevious" method="get" action="/searchhosts" style="display: inline">
+            <input type="submit" id="previousPage" value="&laquo Previous page"
+                   style="display: none"/>
+        </form>
+        <form id="myFormPageNext" method="get" action="/searchhosts" style="display: inline">
+            <input type="submit" id="nextPage" value="Next Page &raquo"
+                   style="display: none"/>
+        </form>
+        <div id="currentPage" style="display: inline"></div>
     </div>
-	<div class="row">--%>
-        <%--<div class="col-md-8" style="margin-bottom: 30px; margin-top: 35px;">--%>
-            <%--<c:if test="${!empty hostsList}">--%>
-                <%--<table class="table table-hover">--%>
-                    <%--<thead>--%>
-                    <%--<tr style="background-color: #f9f9f9">--%>
-                        <%--<th>Country</th>--%>
-                        <%--<th>Region</th>--%>
-                        <%--<th>City</th>--%>
-                        <%--<th>Address</th>--%>
-                        <%--<th>Hoster</th>--%>
-                    <%--</tr>--%>
-                    <%--</thead>--%>
-                    <%--<c:forEach items="${hostsList}" var="hosting">--%>
-                        <%--<tr>--%>
-                            <%--<td>${hosting.country}</td>--%>
-                            <%--<td>${hosting.region}</td>--%>
-                            <%--<td>${hosting.city}</td>--%>
-
-                            <%--<td><a--%>
-                                    <%--href="<c:url value="hosting?hostingId=${hosting.hostingId}&&userId=${hosting.owner.userId}" />">${hosting.address}</a>--%>
-                            <%--</td>--%>
-                            <%--<td><a--%>
-                                    <%--href="<c:url value='hoster?hosterId=${hosting.owner.userId }' />">${hosting.owner.firstName}--%>
-                                    <%--${hosting.owner.lastName}</a></td>--%>
-                            <%--<td>--%>
-                                <%--<button id="a" class="btn btn-primary"--%>
-                                        <%--onclick="sendRequest(${hosting.hostingId},this)">Send--%>
-                                    <%--Request--%>
-                                <%--</button>--%>
-
-                            <%--</td>--%>
-                        <%--</tr>--%>
-                    <%--</c:forEach>--%>
-                <%--</table>--%>
-            <%--</c:if>--%>
-
-        <%--</div>--%>
-    <%--</div>--%>
+    </div>
 	</section>
 	<script src="jquery-2.1.1.js"></script>
 <script src="bootstrap.js"></script>
@@ -260,8 +178,6 @@
 </script>
 <script language="javascript">
     print_country("country");
-
-    <%--search_country("country_user", ${country});--%>
 </script>
 </body>
 </html>
