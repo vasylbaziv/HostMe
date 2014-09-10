@@ -19,14 +19,13 @@ public class SearchServiceImpl implements SearchService {
 
 	@Override
 	@Transactional
-	public List<Hosting> listAllHosts() {
-		return hostingDao.getAll();
+	public List<Hosting> getList(List<Search> listSearch, Integer page) {
+		return hostingDao.getList(listSearch, page);
 	}
 
-	@Override
-	@Transactional
-	public List<Hosting> getList(Search... parameters) {
-		return hostingDao.getList(parameters);
-	}
-
+    	@Override
+    	@Transactional
+    	public Integer getCountOfPages(List<Search> listSearch) {
+        	return hostingDao.getCountOfPages(listSearch);
+    }
 }
