@@ -1,5 +1,6 @@
 package com.softserve.edu.web;
 
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.LinkedList;
 import java.util.List;
@@ -46,7 +47,7 @@ public class SearchController {
 //            @RequestParam(value = "beginDate", required = false, defaultValue = "") String beginDate,
 //            @RequestParam(value = "endDate", required = false, defaultValue = "") String endDate,
             Map<String, Object> map) {
-        List<Search> searchList = new ArrayList<Search>();
+        List<Search> searchList = new ArrayList<>();
         searchList.add(new Search.SearchBuilder()
                 .setKey("country")
                 .setValue(country)
