@@ -10,8 +10,8 @@ import com.softserve.edu.utils.Search;
  */
 public interface SearchService {
 
-    public List<Hosting> listAllHosts();
+    public List<Hosting> getList(List<Search> listSearch, Integer page);
 
-    public List<Hosting> getList(Search... parameters);
+    public Integer getCountOfPages(List<Search> listSearch);
 
 }
