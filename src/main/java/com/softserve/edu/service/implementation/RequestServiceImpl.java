@@ -1,5 +1,7 @@
 package com.softserve.edu.service.implementation;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,5 +27,17 @@ public class RequestServiceImpl implements RequestService {
 	public void checkRequest(Request request)
 			throws RequestAlreadySentException {
 		requestDao.checkRequest(request);
+	}
+
+	@Override
+	@Transactional
+	public List<Request> getAll() {
+		return requestDao.getAll();
+	}
+
+	@Override
+	@Transactional
+	public List<Request> getMySentRequest(int userId) {
+		return requestDao.getMySentRequest(userId);
 	}
 }

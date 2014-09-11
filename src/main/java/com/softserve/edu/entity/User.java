@@ -24,6 +24,8 @@ import javax.persistence.UniqueConstraint;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * This claaa represents data for User object. It uses Hibernate to map java
  * class User to database table USER.
@@ -39,8 +41,10 @@ public class User {
 	@GeneratedValue
 	@Column(name = "user_id", unique = true, nullable = false)
 	private Integer userId;
+	@JsonIgnore
 	@Column(name = "login", length = 50, updatable = false, unique = true)
 	private String login;
+	@JsonIgnore
 	@Column(name = "password", length = 70)
 	private String password;
 	@Column(name = "firstName", length = 70)
@@ -64,12 +68,14 @@ public class User {
 	@Column(name = "region", length = 50)
 	private String region;
 	@ManyToOne
+	@JsonIgnore
 	@JoinColumn(name = "role_id")
 	private Role role;
 
 	/**
 	 * Contains languages owned by this user
 	 */
+	@JsonIgnore
 	@ManyToMany(fetch = FetchType.EAGER)
 	@Cascade({ CascadeType.DELETE, CascadeType.PERSIST })
 	@JoinTable(name = "user_languages", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "language_id"))
@@ -77,21 +83,25 @@ public class User {
 	/**
 	 * Contains images uploaded by this user
 	 */
+	@JsonIgnore 
 	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = true)
 	private Set<Image> images = new HashSet<Image>();
 	/**
 	 * Contains hosting apartments owned by this user
 	 */
+	@JsonIgnore
 	@OneToMany(mappedBy = "owner", orphanRemoval = true, fetch = FetchType.EAGER)
 	private Set<Hosting> hostings = new HashSet<Hosting>();
 	/**
 	 * Contains requests submitted by this user
 	 */
+	@JsonIgnore
 	@OneToMany(mappedBy = "author", orphanRemoval = true, fetch = FetchType.LAZY)
 	private Set<Request> requests = new HashSet<Request>();
 	/**
 	 * Contains feedbackas provided by this user to hosters
 	 */
+	@JsonIgnore
 	@OneToMany(mappedBy = "author", orphanRemoval = true, fetch = FetchType.LAZY)
 	private Set<Feedback> feedbacks = new HashSet<Feedback>();
 

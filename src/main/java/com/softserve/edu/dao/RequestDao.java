@@ -9,4 +9,5 @@ public interface RequestDao extends GenericDao<Request, Long> {
 	public boolean checkRequest(Request request) throws RequestAlreadySentException;
 	
 	public List<Request> getAllApprovedRequestsByHostingId(int hostingId);
+	public List<Request> getMySentRequest(int userId);
 }

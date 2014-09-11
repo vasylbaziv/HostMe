@@ -77,4 +77,13 @@ public class RequestDaoImpl extends AbstractGenericDao<Request, Long> implements
         
         return cr.list();
     }
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Request> getMySentRequest(int userId) {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(Request.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		criteria.add(Restrictions.eq("author.userId", userId));
+		return criteria.list();
+	}
 }

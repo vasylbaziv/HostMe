@@ -3,9 +3,11 @@ package com.softserve.edu.dao.impl;
 import java.io.Serializable;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.softserve.edu.dao.GenericDao;
@@ -23,7 +25,6 @@ public abstract class AbstractGenericDao<E, I extends Serializable> implements
 		this.entityClass = entityClass;
 	}
 
-
 	@Autowired
 	private SessionFactory sessionFactory;
 
@@ -31,12 +32,14 @@ public abstract class AbstractGenericDao<E, I extends Serializable> implements
 		return sessionFactory;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<E> getAll() {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
-		transaction.commit();
-		return null;
+		Criteria criteria = session.createCriteria(entityClass)
+				.setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+
+		return criteria.list();
 	}
 
 	@Override
