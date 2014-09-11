@@ -6,6 +6,9 @@
 <meta
     content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
     name='viewport'>
+
+<script type="text/javascript" src="resources/js/header.js"></script>
+
 <header class="header">
 
     <a href="index" class="logo"> <!-- Add the class icon to your logo image or logo icon to add the margining -->
@@ -23,11 +26,12 @@
         <div class="navbar-right">
             <ul class="nav navbar-nav">
                 <!-- Messages: style can be found in dropdown.less-->
+
                 <li><a href="#"><spring:message
                             code="label.title" /></a></li>
-                <li><a href="?lang=en">En</a></li>
-                <li><a href="?lang=de">De</a></li>
-                <li><a href="?lang=ua">Ua</a></li>
+                <li><a id="en" onclick="setLanguage('en');" href="#">En</a></li>
+                <li><a id="de" onclick="setLanguage('de');" href="#">De</a></li>
+                <li><a id="ua" onclick="setLanguage('ua');" href="#">Ua</a></li>
 
                 <li class="dropdown messages-menu"><a href="#"
                     class="dropdown-toggle" data-toggle="dropdown">
@@ -338,6 +342,7 @@
     </nav>
 
 </header>
+
 
 
 
