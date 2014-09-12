@@ -1,6 +1,7 @@
 package com.softserve.edu.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -34,10 +35,16 @@ public class ContactController {
         
         Authentication authentication = SecurityContextHolder.getContext()
                 .getAuthentication();
-        String currentPrincipalName = authentication.getName();
         
-        map.addAttribute("loggedUser",profileService.getUserByLogin(currentPrincipalName));
-        return "index";
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
+            String currentPrincipalName = authentication.getName();
+            
+            map.addAttribute("loggedUser",
+                    profileService.getUserByLogin(currentPrincipalName));
+            return "redirect:/profile";
+        } else {
+            return "index";
+        }
     }
     
     @RequestMapping("/")
