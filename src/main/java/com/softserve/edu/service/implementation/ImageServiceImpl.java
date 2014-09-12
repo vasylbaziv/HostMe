@@ -70,7 +70,7 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	private String buildPath(Hosting hosting) {
-		return File.separator + systemPropertiesService.getImagePath()
+		return systemPropertiesService.getImagePath()
 				+ File.separator + hosting.getHostingId();
 	}
 

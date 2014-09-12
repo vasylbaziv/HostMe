@@ -31,8 +31,6 @@ public class SystemPropertiesDaoImpl extends
 		@SuppressWarnings("unchecked")
 		Criteria cr = session.createCriteria(SystemProperties.class);
 		cr.add(Restrictions.eq("propKey", prop));
-		//String hq = "FROM SystemProperties S WHERE S.propKey = 'IMAGE_PATH'";
-		//Query query = session.createQuery(hq);
 		List<SystemProperties> path = cr.list();
 		return path;
 	}

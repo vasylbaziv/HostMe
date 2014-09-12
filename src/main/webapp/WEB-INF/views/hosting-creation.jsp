@@ -6,12 +6,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<!-- <script type="text/javascript" src="resources/js/jquery-2.1.1.js"></script> -->
+
 <script type="text/javascript" src="resources/js/countries3.js"></script>
 <script type="text/javascript" src="resources/js/jquery.MultiFile.js"></script>
 <script type="text/javascript" src="resources/js/jquery.validate.js"></script>
 <script type="text/javascript" src="resources/js/validation.js"></script>
-<!-- <link rel="stylesheet" type="text/css" href="resources/css/bootstrap.css"> -->
+
 </head>
 <body>
 	<div class="container">
@@ -165,8 +165,7 @@
 				style="margin-bottom: 30px; margin-top: 10px;">Create
 				hosting</button>
 		</form:form>
-
-
+	
 		<script language="javascript">
 			printCountry("country");
 			printState('region', 0);
