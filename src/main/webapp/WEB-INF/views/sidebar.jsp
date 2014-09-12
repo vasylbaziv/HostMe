@@ -28,7 +28,7 @@
                 <div class="pull-left info">
 
                     <p>
-                        <a href="profile">${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}</a>
+                        <a href="profile">${loggedUser.firstName}&thinsp;${loggedUser.lastName}</a>
                     </p>
 
                     <a href="#"><i class="fa fa-circle text-success"></i>
