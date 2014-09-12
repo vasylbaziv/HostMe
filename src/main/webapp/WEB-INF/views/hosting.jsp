@@ -31,7 +31,9 @@
 <body class="wysihtml5-supported">
 
     <section class="content-header">
-        <h1>Hosting information</h1>
+        <h1>
+            <spring:message code="label.hostingInfo" />
+        </h1>
     </section>
 
     <section class="content">
@@ -53,7 +55,11 @@
 
                                 <div class="row">
                                     <div class="col-md-3">
-                                        <h4>Address:</h4>
+                                        <h4>
+                                            <spring:message
+                                                code="label.address" />
+                                            :
+                                        </h4>
                                     </div>
 
                                     <div class="col-md-8">
@@ -64,7 +70,11 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-3">Hoster:</div>
+                                    <div class="col-md-3">
+                                        <spring:message
+                                            code="label.hoster" />
+                                        :
+                                    </div>
 
                                     <div class="col-md-8">
                                         <a
@@ -73,7 +83,11 @@
                                 </div>
 
                                 <div id="UL" class="row">
-                                    <div class="col-md-3">Languages:</div>
+                                    <div class="col-md-3">
+                                        <spring:message
+                                            code="label.languages" />
+                                        :
+                                    </div>
                                     <div class="col-md-9">
                                         <c:forEach
                                             items="${user.languages}"
@@ -90,15 +104,21 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-3">Number
-                                        of guests:</div>
+                                    <div class="col-md-3">
+                                        <spring:message
+                                            code="label.guestsNumber" />
+                                        :
+                                    </div>
 
                                     <div class="col-md-8">${hosting.minNumberOfGuests }-${hosting.maxNumberOfGuests }</div>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-3">Guests
-                                        allowed:</div>
+                                    <div class="col-md-3">
+                                        <spring:message
+                                            code="label.guestsType" />
+                                        :
+                                    </div>
                                     <div class="col-md-8">
                                         <c:choose>
                                             <c:when
@@ -114,7 +134,11 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-3">Smoking:</div>
+                                    <div class="col-md-3">
+                                        <spring:message
+                                            code="label.smoking" />
+                                        :
+                                    </div>
                                     <div class="col-md-8">
                                         <c:choose>
                                             <c:when
@@ -126,7 +150,11 @@
 
                                 <div class="row"
                                     style="padding-bottom: 0.5em">
-                                    <div class="col-md-3">E-mail:</div>
+                                    <div class="col-md-3">
+                                        <spring:message
+                                            code="label.email" />
+                                        :
+                                    </div>
                                     <div class="col-md-9">
                                         <a href="mailto:${user.email}">${user.email}</a>
                                     </div>
@@ -144,8 +172,13 @@
                                         id="dateNew" type="hidden"
                                         value="${dateNew}" />
                                     <h4>
-                                        Find guest reviews <a
-                                            href="<c:url value="feedbacks?hostingId=${hosting.hostingId}" />">here</a>
+                                        <spring:message
+                                            code="label.findGuestReviews" />
+                                        <a
+                                            href="<c:url value="feedbacks?hostingId=${hosting.hostingId}" />">
+                                            <spring:message
+                                                code="label.here" />
+                                        </a>
                                     </h4>
 
                                 </div>
@@ -156,22 +189,29 @@
                                     id="send_feedback_form">
                                     <div class="panel box box-warning">
                                         <div class="box-header">
-                                            <h4 class="box-title">
+                                            <h5 class="box-title">
                                                 <a
                                                     data-toggle="collapse"
                                                     data-parent="#accordion"
                                                     href="#collapseFeedbacks"
                                                     class="collapsed">
-                                                    Stayed at
-                                                    ${user.firstName}&thinsp;${user.lastName}'s?</a>
-                                            </h4>
+                                                    <spring:message
+                                                        code="label.stayedAt" />&thinsp;${user.firstName}&thinsp;${user.lastName}
+                                                    <spring:message
+                                                        code="label.stayedAtFin" />?
+                                                </a>
+                                            </h5>
 
                                         </div>
                                         <div style="margin-left: 0.7em">
-                                            Send us your <a
-                                                data-toggle="collapse"
+                                            <spring:message
+                                                code="label.sendUs" />
+                                            <a data-toggle="collapse"
                                                 data-parent="#accordion"
-                                                href="#collapseFeedbacks">feedback</a>!
+                                                href="#collapseFeedbacks">
+                                                <spring:message
+                                                    code="label.sendFeedback" />
+                                            </a>!
                                         </div>
                                         <div class="box-body">
                                             <input type="hidden"
@@ -183,16 +223,21 @@
                                                 style="height: 0px;">
                                                 <div class="form-group"
                                                     style="margin-bottom: 0">
+                                                    <spring:message
+                                                        code="label.stayOpinion"
+                                                        var="varStayOption" />
                                                     <form:textarea
                                                         id="description"
                                                         path="description"
                                                         class=" form-control"
-                                                        placeholder="Your opinion about the stay"
+                                                        placeholder="${varStayOption}"
                                                         style="margin-bottom:1em"></form:textarea>
 
                                                     <button
-                                                        class="btn btn-warning">Send
-                                                        feedback</button>
+                                                        class="btn btn-warning">
+                                                        <spring:message
+                                                            code="label.sendFeedbackButton" />
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -230,7 +275,9 @@
                                                             data-parent="#accordion"
                                                             href="#collapseCalendar"
                                                             class="collapsed">
-                                                            Availability</a>
+                                                            <spring:message
+                                                                code="label.availability" />
+                                                        </a>
                                                     </h4>
                                                 </div>
 
@@ -271,8 +318,8 @@
                                                             data-parent="#accordion"
                                                             href="#collapseOne"
                                                             class="collapsed">
-                                                            Select your
-                                                            travel dates</a>
+                                                            <spring:message
+                                                                code="label.selectTravelDates" /></a>
                                                     </h4>
                                                 </div>
 
@@ -284,9 +331,8 @@
                                                         class="box-body">
                                                         <div
                                                             class="form-group">
-                                                            <label>Date
-                                                                and time
-                                                                range:</label>
+                                                            <label><spring:message
+                                                                code="label.selectDateTime" />:</label>
                                                             <div
                                                                 class="input-group">
                                                                 <div
@@ -326,17 +372,16 @@
                                             <div
                                                 class="panel box box-success">
                                                 <div class="box-header">
-                                                    <h4
+                                                    <h5
                                                         class="box-title">
                                                         <a
                                                             data-toggle="collapse"
                                                             data-parent="#accordion"
                                                             href="#collapseTwo"
                                                             class="collapsed">
-                                                            Write a note
-                                                            to the
-                                                            hoster</a>
-                                                    </h4>
+                                                            <spring:message
+                                                                code="label.writeNoteHoster" /></a>
+                                                    </h5>
                                                 </div>
 
 
@@ -361,8 +406,8 @@
                                         <div class="col-md-1">
 
                                             <button onfocus="formDate()"
-                                                class="btn btn-primary">Send
-                                                request</button>
+                                                class="btn btn-primary"><spring:message
+                                                                code="label.sendRequest" /></button>
 
                                         </div>
 
@@ -430,7 +475,6 @@
 											}
 										});
 					});
-
 				</script>
 </body>
 </html>
