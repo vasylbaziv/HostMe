@@ -21,71 +21,72 @@ import com.softserve.edu.service.UserService;
 
 @Controller
 public class HostingController {
-	@Autowired
-	private HostingService hostingService;
-	@Autowired
-	private UserService userService;
-	@Autowired
-	private ImageService imageService;
 
-	@RequestMapping(value = "/hosting-creation", method = RequestMethod.GET)
-	public String hostingCreationShow(Model model) {
-		Hosting hosting = new Hosting();
-		hosting.setGender(Gender.UNSPECIFIED);
-		hosting.setChildren(true);
-		hosting.setFamily(true);
-		hosting.setSmoking(true);
-		hosting.setPets(true);
-		model.addAttribute("hosting", hosting);
-		return "hosting-creation";
-	}
-
-	@RequestMapping(value = "/hosting-creation", method = RequestMethod.POST)
-	public String addHosting(@ModelAttribute("hosting") Hosting hosting,
-			@RequestParam("file") MultipartFile[] files) {
-
-		hostingService.addHosting(hosting);
-		imageService.addImages(files, hosting);
-
-		return "redirect:/profile";
-	}
-
-	@RequestMapping(value = "/hosting", method = RequestMethod.GET)
-	public String hostelShow(@RequestParam(value = "hostingId") int hostingId,
-			Model model) {
-		Hosting hosting = hostingService.getHosting(hostingId);
-		model.addAttribute("hosting", hosting);
-		Request request = new Request();
-		model.addAttribute("request", request);
-		Feedback feedback = new Feedback();
-		model.addAttribute("feedback", feedback);
-
-		// steps to check the hosting availability
-
-		/*
-		 * Calendar cal = new GregorianCalendar(); SimpleDateFormat dateFormat =
-		 * new SimpleDateFormat("yyyy-M-d");
-		 * dateFormat.setTimeZone(cal.getTimeZone());
-		 * System.out.println(dateFormat.format(cal.getTime()));
-		 * 
-		 * String disabledDate = dateFormat.format(cal.getTime());
-		 * System.out.println(disabledDate);
-		 * 
-		 * model.addAttribute("disabledDate", disabledDate.toString());
-		 * 
-		 * Date today = new Date(); Date dateNew = new Date(today.getTime() + 24
-		 * * 60 * 60 * 1000); System.out.println(dateNew);
-		 * model.addAttribute("dateNew", dateNew);
-		 */
-
-		String nonAvailableDatesJson = new Gson().toJson(hostingService
-				.getNonAvailableDates(hostingId));
-		model.addAttribute("nonAvailableDatesJson", nonAvailableDatesJson);
-
-		// model.addAttribute("disabledDate",hostingService.getNonAvailableDates(hostingId));
-		System.out.println(hostingId);
-
-		return "hosting";
-	}
-
+    @Autowired
+    private HostingService hostingService;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private ImageService imageService;
+    
+    @RequestMapping(value = "/hosting-creation", method = RequestMethod.GET)
+    public String hostingCreationShow(Model model) {
+        Hosting hosting = new Hosting();
+        hosting.setGender(Gender.UNSPECIFIED);
+        hosting.setChildren(true);
+        hosting.setFamily(true);
+        hosting.setSmoking(true);
+        hosting.setPets(true);
+        model.addAttribute("hosting", hosting);
+        return "hosting-creation";
+    }
+    
+    @RequestMapping(value = "/hosting-creation", method = RequestMethod.POST)
+    public String addHosting(@ModelAttribute("hosting") Hosting hosting,
+            @RequestParam("file") MultipartFile[] files) {
+        hostingService.addHosting(hosting);
+        imageService.addImages(files, hosting);
+        return "redirect:/profile";
+    }
+    
+    @RequestMapping(value = "/hosting", method = RequestMethod.GET)
+    public String hostelShow(@RequestParam(value = "userId") int userId,
+            @RequestParam(value = "hostingId") int hostingId, Model model) {
+        User user = userService.getUser(userId);
+        model.addAttribute("user", user);
+        Hosting hosting = hostingService.getHosting(hostingId);
+        model.addAttribute("hosting", hosting);
+        Request request = new Request();
+        model.addAttribute("request", request);
+        Feedback feedback = new Feedback();
+        model.addAttribute("feedback", feedback);
+        
+        // steps to check the hosting availability
+        
+        /*
+        Calendar cal = new GregorianCalendar();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-M-d");
+        dateFormat.setTimeZone(cal.getTimeZone());
+        System.out.println(dateFormat.format(cal.getTime()));
+        
+        String disabledDate = dateFormat.format(cal.getTime());
+        System.out.println(disabledDate);
+        
+        model.addAttribute("disabledDate", disabledDate.toString());
+        
+        Date today = new Date();
+        Date dateNew = new Date(today.getTime() + 24 * 60 * 60 * 1000);
+        System.out.println(dateNew);
+        model.addAttribute("dateNew", dateNew);
+        */
+        
+        String nonAvailableDatesJson = new Gson().toJson(hostingService.getNonAvailableDates(hostingId));
+        model.addAttribute("nonAvailableDatesJson",nonAvailableDatesJson);
+        
+        
+        //model.addAttribute("disabledDate",hostingService.getNonAvailableDates(hostingId));        
+        
+        return "hosting";
+    }
+    
 }

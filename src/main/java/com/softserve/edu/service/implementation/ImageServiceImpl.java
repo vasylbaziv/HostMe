@@ -3,6 +3,9 @@ package com.softserve.edu.service.implementation;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.softserve.edu.dao.ImageDao;
-import com.softserve.edu.dao.SystemPropertiesDao;
 import com.softserve.edu.entity.Hosting;
 import com.softserve.edu.entity.Image;
 import com.softserve.edu.service.ImageService;
@@ -28,10 +30,9 @@ public class ImageServiceImpl implements ImageService {
 	@Override
 	@Transactional
 	public void addImages(MultipartFile[] files, Hosting hosting) {
-		String path = buildPath(hosting);
 		for (int i = 0; i < files.length; i++) {
-			saveImage(files[i], path);
-			addImage(files[i], path, hosting);
+			saveImage(files[i], buildPath(hosting));
+			addImage(files[i], hosting);
 		}
 	}
 
@@ -59,10 +60,9 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	@Transactional
-	private void addImage(MultipartFile multipartFile, String path,
-			Hosting hosting) {
+	private void addImage(MultipartFile multipartFile, Hosting hosting) {
 		Image image = new Image();
-		image.setLink(path + File.separator
+		image.setLink(hosting.getHostingId() + "/"
 				+ multipartFile.getOriginalFilename());
 		image.setHosting(hosting);
 		imageDao.create(image);
@@ -70,8 +70,21 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	private String buildPath(Hosting hosting) {
-		return systemPropertiesService.getImagePath()
-				+ File.separator + hosting.getHostingId();
+		return systemPropertiesService.getImagePath() + File.separator
+				+ hosting.getHostingId();
 	}
 
+	private String buildUrl(Image image) {
+		return systemPropertiesService.getImageUrl() + "/" + image.getLink();
+	}
+
+	@Override
+	public List<String> getImagesForHosting(Hosting hosting) {
+		List<String> images = new ArrayList<String>();
+		Iterator<Image> hostingImagesItr = hosting.getImages().iterator();
+		while(hostingImagesItr.hasNext()) {
+			images.add(buildUrl(hostingImagesItr.next()));
+		}
+		return images;
+	}
 }
