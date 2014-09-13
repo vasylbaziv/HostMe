@@ -1,7 +1,5 @@
 package com.softserve.edu.web.rest;
 
-import java.util.Calendar;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,13 +9,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.softserve.edu.DTO.RequestDtoUtil;
-import com.softserve.edu.entity.Hosting;
 import com.softserve.edu.entity.Request;
 import com.softserve.edu.entity.Status;
-import com.softserve.edu.entity.User;
 import com.softserve.edu.entity.exceptions.RequestAlreadySentException;
 import com.softserve.edu.entity.exceptions.RequestCannotSendException;
-import com.softserve.edu.service.ProfileService;
 import com.softserve.edu.service.RequestService;
 
 @RestController
@@ -28,7 +23,7 @@ public class RestRequestController {
 	private RequestDtoUtil requestDtoUtil;
 
 	@RequestMapping(value = "/response", method = RequestMethod.GET)
-	public String processUserRequest(
+	public Boolean processUserRequest(
 			@RequestParam(value = "beginDate") long beginDate,
 			@RequestParam(value = "endDate") long endDate,
 			@RequestParam(value = "hostingId") int hostingId) {
@@ -45,14 +40,14 @@ public class RestRequestController {
 		} catch (RequestCannotSendException e) {
 
 			e.printStackTrace();
-			return e.getMessage();
+			return false;
 		} catch (RequestAlreadySentException e) {
 			e.printStackTrace();
-			return e.getMessage();
+			return false;
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		return "Request send";
+		return true;
 
 	}
 

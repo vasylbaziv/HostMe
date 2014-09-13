@@ -28,15 +28,36 @@ public class RequestController {
     @Autowired
     private ProfileService profileService;
     
-    @RequestMapping(value="request",method=RequestMethod.GET)
+    @RequestMapping(value="/request",method=RequestMethod.GET)
     public String showRequest(){
     	return "request-history";
     }
+    @RequestMapping(value="/dismiss-request",method=RequestMethod.GET)
+    public @ResponseBody boolean removeRequest(){
+    	
+		return false;
+		
+    	
+    }
+    @RequestMapping(value="/request-update",method=RequestMethod.GET)
+    public void updateRequestStatus(){
+    	requestService.changeStatus(new Request());
+    	
+    }
     @RequestMapping(value = "/request-sent-history", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody List<Request> dataTableObtain() {
+	public @ResponseBody List<Request> dataTableSent() {
 		User user = profileService.getUserByLogin(SecurityContextHolder
 				.getContext().getAuthentication().getName());
 		List<Request> requests = requestService.getMySentRequest(user.getUserId());
+		System.out.println("Entered");
+		return requests;
+    }
+    @RequestMapping(value = "/request-obtain-history", method = RequestMethod.GET, produces = "application/json")
+	public @ResponseBody List<Request> dataTableObtain() {
+		User user = profileService.getUserByLogin(SecurityContextHolder
+				.getContext().getAuthentication().getName());
+		List<Request> requests = requestService.getAll();
+		System.out.println("Entered");
 		return requests;
     }
     @RequestMapping(value = "/request", method = RequestMethod.POST)

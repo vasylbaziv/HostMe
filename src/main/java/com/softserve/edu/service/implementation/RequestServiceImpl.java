@@ -40,4 +40,17 @@ public class RequestServiceImpl implements RequestService {
 	public List<Request> getMySentRequest(int userId) {
 		return requestDao.getMySentRequest(userId);
 	}
+
+	@Override
+	@Transactional
+	public boolean removeRequest() {
+		
+		return false;
+	}
+
+	@Override
+	@Transactional
+	public void changeStatus(Request request) {
+		requestDao.update(request);
+	}
 }

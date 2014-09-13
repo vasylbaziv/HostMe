@@ -78,7 +78,7 @@
 
                                     <div class="col-md-8">
                                         <a
-                                            href="<c:url value='hoster?hosterId=${user.userId}' />">${user.firstName}&thinsp;${user.lastName}</a>
+                                            href="<c:url value='hoster?hosterId=${hosting.owner.userId}' />">${hosting.owner.firstName}&thinsp;${hosting.owner.lastName}</a>
                                     </div>
                                 </div>
 
@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="col-md-9">
                                         <c:forEach
-                                            items="${user.languages}"
+                                            items="${hosting.owner.languages}"
                                             var="languages"
                                             varStatus="loop">
 

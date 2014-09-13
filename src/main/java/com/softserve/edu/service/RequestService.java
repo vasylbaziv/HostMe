@@ -6,6 +6,10 @@ import com.softserve.edu.entity.Request;
 import com.softserve.edu.entity.exceptions.RequestAlreadySentException;
 
 public interface RequestService {
+	public boolean removeRequest();
+
+	public void changeStatus(Request request);
+
 	public List<Request> getAll();
 
 	public List<Request> getMySentRequest(int userId);

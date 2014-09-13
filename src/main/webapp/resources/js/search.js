@@ -22,7 +22,7 @@ $(document).ready(function () {
         }
     });
     $("#tdHost").click(function () {
-        window.location = "http://localhost:8080/hosting?hostingId=${host.hostingId}&&userId=${host.owner.userId}";
+        window.location = "http://localhost:8080/hosting?hostingId=${host.hostingId}";
     });
     $('#myForm').submit(function (e) {
         page = 0;
@@ -59,7 +59,7 @@ $(document).ready(function () {
             var json = JSON.parse(result);
             for (var i = 1; i < json.length; i++) {
                 var obj = json[i];
-                var urlHost = "hosting?hostingId=" + obj.hostingId + "&&userId=" + obj.userId;
+                var urlHost = "hosting?hostingId=" + obj.hostingId;
                 var urlUser = "hoster?hosterId=" + obj.userId;
                 var row = "<TR>";
                 var buttonClass = "btn btn-primary";
@@ -117,7 +117,7 @@ $(document).ready(function () {
             var json = JSON.parse(result);
             for (var i = 1; i < json.length; i++) {
                 var obj = json[i];
-                var urlHost = "hosting?hostingId=" + obj.hostingId + "&&userId=" + obj.userId;
+                var urlHost = "hosting?hostingId=" + obj.hostingId;
                 var urlUser = "hoster?hosterId=" + obj.userId;
                 var row = "<TR>";
                 var buttonClass = "btn btn-primary";
@@ -175,7 +175,7 @@ $(document).ready(function () {
             var json = JSON.parse(result);
             for (var i = 1; i < json.length; i++) {
                 var obj = json[i];
-                var urlHost = "hosting?hostingId=" + obj.hostingId + "&&userId=" + obj.userId;
+                var urlHost = "hosting?hostingId=" + obj.hostingId;
                 var urlUser = "hoster?hosterId=" + obj.userId;
                 var row = "<TR>";
                 var buttonClass = "btn btn-primary";
