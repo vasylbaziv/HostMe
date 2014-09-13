@@ -1448,7 +1448,7 @@ body > .header .logo .icon {
   padding: 5px 10px 5px 5px;
 }
 .box .box-body {
-  padding: 10px;
+  padding: 0.5em 1.5em 1.5em 1.5em;
   -webkit-border-top-left-radius: 0;
   -webkit-border-top-right-radius: 0;
   -webkit-border-bottom-right-radius: 3px;
@@ -3564,5 +3564,8 @@ img.displayed {
 	color: #3c763d;
 }
 
+.optionsList {
+	padding-left:0.5em;
+}
 
 
