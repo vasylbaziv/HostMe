@@ -156,7 +156,7 @@
                                         :
                                     </div>
                                     <div class="col-md-9">
-                                        <a href="mailto:${user.email}">${user.email}</a>
+                                        <a href="mailto:${hosting.owner.email}">${hosting.owner.email}</a>
                                     </div>
                                 </div>
 
@@ -196,7 +196,7 @@
                                                     href="#collapseFeedbacks"
                                                     class="collapsed">
                                                     <spring:message
-                                                        code="label.stayedAt" />&thinsp;${user.firstName}&thinsp;${user.lastName}
+                                                        code="label.stayedAt" />&thinsp;${hosting.owner.firstName}&thinsp;${hosting.owner.lastName}
                                                     <spring:message
                                                         code="label.stayedAtFin" />?
                                                 </a>

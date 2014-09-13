@@ -1,12 +1,8 @@
 package com.softserve.edu.web;
 
-import java.util.Arrays;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,14 +21,13 @@ import com.softserve.edu.service.UserService;
 
 @Controller
 public class HostingController {
-
 	@Autowired
 	private HostingService hostingService;
 	@Autowired
 	private UserService userService;
 	@Autowired
 	private ImageService imageService;
-	
+
 	@RequestMapping(value = "/hosting-creation", method = RequestMethod.GET)
 	public String hostingCreationShow(Model model) {
 		Hosting hosting = new Hosting();
@@ -45,25 +40,19 @@ public class HostingController {
 		return "hosting-creation";
 	}
 
-	@InitBinder
-	public void init(WebDataBinder binder) {
-	    binder.setBindEmptyMultipartFiles(false);
-	}
-	
 	@RequestMapping(value = "/hosting-creation", method = RequestMethod.POST)
 	public String addHosting(@ModelAttribute("hosting") Hosting hosting,
 			@RequestParam("file") MultipartFile[] files) {
+
 		hostingService.addHosting(hosting);
-		if(files[0].getOriginalFilename()!="")
-			imageService.addImages(files, hosting);
+		imageService.addImages(files, hosting);
+
 		return "redirect:/profile";
 	}
 
 	@RequestMapping(value = "/hosting", method = RequestMethod.GET)
-	public String hostelShow(@RequestParam(value = "userId") int userId,
-			@RequestParam(value = "hostingId") int hostingId, Model model) {
-		User user = userService.getUser(userId);
-		model.addAttribute("user", user);
+	public String hostelShow(@RequestParam(value = "hostingId") int hostingId,
+			Model model) {
 		Hosting hosting = hostingService.getHosting(hostingId);
 		model.addAttribute("hosting", hosting);
 		Request request = new Request();
@@ -94,8 +83,9 @@ public class HostingController {
 		model.addAttribute("nonAvailableDatesJson", nonAvailableDatesJson);
 
 		// model.addAttribute("disabledDate",hostingService.getNonAvailableDates(hostingId));
+		System.out.println(hostingId);
 
 		return "hosting";
 	}
-	
+
 }
