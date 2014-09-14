@@ -19,7 +19,7 @@
 </head>
 <body>
     <section class="content-header">
-    <h1>Search for hosting</h1>
+    <h1><spring:message code="label.searchhosts" /></h1>
     </section>
 
     <section class="content">
