@@ -84,6 +84,7 @@ public class ImageServiceImpl implements ImageService {
 		Iterator<Image> hostingImagesItr = hosting.getImages().iterator();
 		while(hostingImagesItr.hasNext()) {
 			images.add(buildUrl(hostingImagesItr.next()));
+			//System.out.println("!!!!!!!!!!!!!\n\n"+buildUrl(hostingImagesItr.next())+"\n\n!!!!!!!");
 		}
 		return images;
 	}

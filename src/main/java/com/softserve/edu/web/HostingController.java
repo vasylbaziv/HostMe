@@ -59,6 +59,8 @@ public class HostingController {
 		model.addAttribute("request", request);
 		Feedback feedback = new Feedback();
 		model.addAttribute("feedback", feedback);
+		model.addAttribute("images", imageService.getImagesForHosting(hosting)); // here we add List with image urls
+
 
 		// steps to check the hosting availability
 
@@ -81,7 +83,7 @@ public class HostingController {
 		String nonAvailableDatesJson = new Gson().toJson(hostingService
 				.getNonAvailableDates(hostingId));
 		model.addAttribute("nonAvailableDatesJson", nonAvailableDatesJson);
-
+		
 		// model.addAttribute("disabledDate",hostingService.getNonAvailableDates(hostingId));
 		System.out.println(hostingId);
 

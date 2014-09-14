@@ -57,7 +57,7 @@ public class Hosting {
 	@JoinColumn(name = "user_id")
 	private User owner;
 	@JsonIgnore
-	@OneToMany(mappedBy = "hosting", fetch = FetchType.LAZY, orphanRemoval = true)
+	@OneToMany(mappedBy = "hosting", fetch = FetchType.EAGER, orphanRemoval = true)
 	@Cascade({ CascadeType.DELETE, CascadeType.PERSIST, CascadeType.SAVE_UPDATE })
 	private Set<Image> images = new HashSet<Image>();
 	@JsonIgnore

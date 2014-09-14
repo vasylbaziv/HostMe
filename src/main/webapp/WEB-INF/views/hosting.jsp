@@ -16,6 +16,8 @@
 <link rel="stylesheet" type="text/css"
     href="resources/css/bootstrap3-wysihtml5.css">
 
+<link href="resources/css/lightbox.css" rel="stylesheet" />
+
 <script type="text/javascript" src="resources/js/daterangepicker.js"></script>
 
 <script type="text/javascript"
@@ -25,6 +27,8 @@
     src="resources/js/bootstrap3-wysihtml5.all.min.js"></script>
 
 <script type="text/javascript" src="resources/js/hosting.js"></script>
+
+<script src="resources/js/lightbox.min.js"></script>
 
 </head>
 
@@ -46,13 +50,15 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="col-md-8">
-                                <img
-                                    src="resources/images/hostel1sm.jpg"
-                                    style="margin-top: 1em; margin-bottom: 1em;"></img>
-                                <img
-                                    src="resources/images/hostel2sm.jpg"
-                                    style="margin: 1em 0em 1em 2em;"></img>
-
+								<c:if test="${not empty images}">
+										<c:forEach var="image" items="${images}">
+											<a href="${image}" data-lightbox="images">
+											<img src="${image}" class="img-rounded"
+											class="img-responsive"
+											height="200" width="300"
+											style="margin: 1em 0em 1em 2em;"/></a>
+										</c:forEach>
+								</c:if>
                                 <div class="row">
                                     <div class="col-md-3">
                                         <h4>

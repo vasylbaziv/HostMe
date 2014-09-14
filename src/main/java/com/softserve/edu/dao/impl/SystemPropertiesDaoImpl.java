@@ -28,7 +28,6 @@ public class SystemPropertiesDaoImpl extends
 	@Override
 	public List<SystemProperties> getPropeties(String prop) {
 		Session session = sessionFactory.getCurrentSession();
-		@SuppressWarnings("unchecked")
 		Criteria cr = session.createCriteria(SystemProperties.class);
 		cr.add(Restrictions.eq("propKey", prop));
 		List<SystemProperties> path = cr.list();
