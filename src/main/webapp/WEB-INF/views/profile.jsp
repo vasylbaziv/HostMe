@@ -47,27 +47,39 @@
 
                         <div class="col-md-4" style="padding-left: 0em;">
                             <div class="panel box box-info col-md-12"
-                                style="margin-top: 3em;">
+                                style="margin-top: 3em; padding-left: 0.3em;">
                                 <div class="box-header">
-                                    <h4 class="box-title">General
-                                        Information:</h4>
+                                    <h4 class="box-title"
+                                        style="padding-top: 0.8em; padding-bottom: 0em;">
+                                        <spring:message
+                                            code="label.generalInformation" />
+                                        :
+                                    </h4>
                                 </div>
 
                                 <div id="collapseOne"
                                     class="panel-collapse in"
                                     style="height: auto;">
                                     <div class="box-body"
-                                        style="padding-bottom: 0.5em">
+                                        style="padding-bottom: 0.5em; padding-left: 1.5em;">
                                         <div class="row"
                                             style="padding-top: 0.3em; padding-bottom: 0.3em">
-                                            <div class="col-md-4">Login:</div>
+                                            <div class="col-md-4" style="padding-right: 0em;">
+                                                <spring:message
+                                                    code="label.loginNoun" />
+                                                :
+                                            </div>
                                             <div
                                                 class="col-md-8 selected">${user.login}</div>
                                         </div>
 
                                         <div class="row"
                                             style="padding-bottom: 0.3em">
-                                            <div class="col-md-4">Gender:</div>
+                                            <div class="col-md-4" style="padding-right: 0em;">
+                                                <spring:message
+                                                    code="label.gender" />
+                                                :
+                                            </div>
                                             <div
                                                 class="col-md-8 selected">
                                                 <c:out
@@ -77,21 +89,33 @@
 
                                         <div class="row"
                                             style="padding-bottom: 0.3em">
-                                            <div class="col-md-4">Age:</div>
+                                            <div class="col-md-4" style="padding-right: 0em;">
+                                                <spring:message
+                                                    code="label.age" />
+                                                :
+                                            </div>
                                             <div
                                                 class="col-md-8 selected">${age}</div>
                                         </div>
 
                                         <div class="row"
                                             style="padding-bottom: 0.3em">
-                                            <div class="col-md-4">Birthday:</div>
+                                            <div class="col-md-4" style="padding-right: 0em;">
+                                                <spring:message
+                                                    code="label.birthday" />
+                                                :
+                                            </div>
                                             <div
                                                 class="col-md-8 selected">${birth}</div>
                                         </div>
 
                                         <div class="row"
                                             style="padding-bottom: 0.3em">
-                                            <div class="col-md-4">Languages:</div>
+                                            <div class="col-md-4" style="padding-right: 0em;">
+                                                <spring:message
+                                                    code="label.languages" />
+                                                :
+                                            </div>
                                             <div
                                                 class="col-md-8 selected">
                                                 <c:forEach
@@ -111,7 +135,11 @@
 
                                         <div class="row"
                                             style="padding-bottom: 0.3em">
-                                            <div class="col-md-4">E-mail:</div>
+                                            <div class="col-md-4" style="padding-right: 0em;">
+                                                <spring:message
+                                                    code="label.email" />
+                                                :
+                                            </div>
                                             <div
                                                 class="col-md-8 selected">${user.email}</div>
                                         </div>
@@ -125,12 +153,20 @@
                                 style="padding-top: 3em;">
 
                                 <div class="callout callout-info">
-                                    <h4>Personal Description:</h4>
+                                    <h4>
+                                        <spring:message
+                                            code="label.personalDescription" />
+                                        :
+                                    </h4>
 
                                     <p>${user.description}</p>
                                 </div>
                                 <div class="callout callout-warning">
-                                    <h4>Hobby:</h4>
+                                    <h4>
+                                        <spring:message
+                                            code="label.hobby" />
+                                        :
+                                    </h4>
                                     <p>${user.hobby}</p>
                                 </div>
 
@@ -141,18 +177,27 @@
 
                     <div class="row">
                         <div class="col-md-12" style="margin-top: 1em;">
-                            <h4>Hosting addresses:</h4>
+                            <h4>
+                                <spring:message
+                                    code="label.hostingAddresses" />
+                                :
+                            </h4>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <table class="table table-bordered">
                                 <tr>
-                                    <th>Country</th>
-                                    <th>Region</th>
-                                    <th>City</th>
-                                    <th>Address</th>
-                                    <th>Manage</th>
+                                    <th><spring:message
+                                            code="label.country" /></th>
+                                    <th><spring:message
+                                            code="label.region" /></th>
+                                    <th><spring:message
+                                            code="label.city" /></th>
+                                    <th><spring:message
+                                            code="label.address" /></th>
+                                    <th><spring:message
+                                            code="label.manage" /></th>
                                 </tr>
                                 <c:forEach var="hosting"
                                     items="${user.hostings}">
@@ -162,12 +207,16 @@
                                         <td>${hosting.city}</td>
                                         <td><a
                                             href=<c:url value="hosting?hostingId=${hosting.hostingId}&&userId=${user.userId}"/>>${hosting.address}</a></td>
-                                        <td width="200px;"><div class="tools">
+                                        <td width="250px;"><div
+                                                class="tools">
                                                 <a href="#"
-                                                    class="text-green">Edit&nbsp;&nbsp;<span
-                                                    class="fa fa-edit" style="margin-right:3em"></span></a>
+                                                    class="text-green"><spring:message
+                                            code="label.edit" />&nbsp;&nbsp;<span
+                                                    class="fa fa-edit"
+                                                    style="margin-right: 1em"></span></a>
                                                 <a href="#"
-                                                    class="text-red">Delete&nbsp;&nbsp;<span
+                                                    class="text-red"><spring:message
+                                            code="label.delete" />&nbsp;&nbsp;<span
                                                     class="fa fa-trash-o"></span></a>
                                             </div></td>
                                     </tr>
@@ -179,8 +228,8 @@
 
                                 <a
                                     href="<c:url value='hosting-creation' />"
-                                    class="btn btn-primary button">Add
-                                    hosting</a> <br>
+                                    class="btn btn-primary button"><spring:message
+                                            code="label.addHosting" /></a> <br>
                             </div>
                         </div>
                     </div>
