@@ -1,6 +1,7 @@
 package com.softserve.edu.web;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -63,8 +64,35 @@ public class EditProfileController {
 	}
 
 	@RequestMapping(value = "/edited-languages", method = RequestMethod.POST)
-	public String editedLanguages(Model model) {
+	public String editedLanguages(
+			@RequestParam("newLanguages") List<String> languages) {
+
 		User user = getCurrentUser();
+
+		List<String> allLanguageNames = new ArrayList<String>();
+
+		for (Language language : languageService.getAllLanguages()) {
+			allLanguageNames.add(language.getLanguage());
+		}
+
+		allLanguageNames.retainAll(languages);
+		
+		List<String> userLanguageNames = new ArrayList<String>();
+
+		for (Language language : user.getLanguages()) {
+			userLanguageNames.add(language.getLanguage());
+		}
+		
+		allLanguageNames.removeAll(userLanguageNames);
+
+		for (String name : allLanguageNames) {
+			if (name != null) {
+				Language newLanguage = languageService.findLanguageByName(name); 
+				user.addLanguage(newLanguage);
+			}
+		}
+
+		userService.updateUser(user);
 
 		return "redirect:/profile";
 	}

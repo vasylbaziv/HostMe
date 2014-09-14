@@ -70,4 +70,10 @@ public abstract class AbstractGenericDao<E, I extends Serializable> implements
 		session.delete(entity);
 		transaction.commit();
 	}
+
+	@Override
+	public Session getSession() {
+		return sessionFactory.getCurrentSession();
+	}
+
 }

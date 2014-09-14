@@ -11,8 +11,7 @@
 <meta
     content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no'
     name='viewport'>
-<script type="text/javascript"
-    src="resources/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap-datepicker.js"></script>
 <script type="text/javascript" src="resources/js/jquery.validate.js"></script>
 <script type="text/javascript" src="resources/js/validation.js"></script>
 <script type="text/javascript" src="resources/js/registration.js"></script>

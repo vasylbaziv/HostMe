@@ -11,17 +11,22 @@ import com.softserve.edu.entity.Language;
 import com.softserve.edu.service.LanguageService;
 
 @Service
-public class LanguageServiceImpl implements LanguageService{
+public class LanguageServiceImpl implements LanguageService {
 
 	@Autowired
 	private LanguageDao languageDaoImpl;
-	
-	
+
 	@Override
 	@Transactional
 	public List<Language> getAllLanguages() {
 
 		return languageDaoImpl.getAll();
+	}
+
+	@Override
+	@Transactional
+	public Language findLanguageByName(String name) {
+		return languageDaoImpl.findLanguageByName(name);
 	}
 
 }

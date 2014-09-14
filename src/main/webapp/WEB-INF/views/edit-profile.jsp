@@ -7,11 +7,15 @@
 <html style="min-height: 682px;">
 <head>
 
+<link rel="stylesheet" type="text/css" href="resources/css/datepicker.css">
 <link rel="stylesheet" type="text/css" href="resources/css/AdminLTE.css">
 <link rel="stylesheet" type="text/css" href="resources/css/bootstrapValidator.css">
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"></script>
+
+<script type="text/javascript" src="resources/js/bootstrap-datepicker.js"></script>
+
 
 <!-- validate email -->
 <script>
@@ -163,10 +167,16 @@
 
 
 								<div class="form-group">
-									<label for="dateOfBirth">Date of birth:</label> <br> <select
-										id="days" name="days"></select> <select id="months"
-										name="months"></select> <select id="years" name="years"></select>
-								</div>
+                	                <div>
+                	                <label for="language">Date of Birth</label> 
+            	                        <form:input path="birthday"
+                	                                type="text"
+                    	                            class="datepicker form-control"
+                        	                        id="dateOfBirth"
+                            	                    placeholder="MM/dd/yyyy"
+                                	                pattern="MM/dd/yyyy" />
+                    	            </div>
+                                </div>
 
 
 								<div class="form-group">
@@ -304,9 +314,21 @@ $(document).ready(function() {
 									}
 							});
 });
-	
-	
 </script>
+
+
+  <script type="text/javascript">
+					$('.datepicker').datepicker();
+					(function($) {
+						$(
+								'input[type="checkbox"].flat-red, input[type="radio"].flat-red')
+								.iCheck({
+									checkboxClass : 'icheckbox_flat-red',
+									radioClass : 'iradio_flat-red'
+								});
+					});
+				</script>
+
 
 
 </html>

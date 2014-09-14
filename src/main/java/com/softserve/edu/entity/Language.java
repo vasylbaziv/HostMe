@@ -13,7 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "LANGUAGE", uniqueConstraints = { @UniqueConstraint(columnNames = { "language_id", "language" }) })
+@Table(name = "LANGUAGE", uniqueConstraints = { @UniqueConstraint(columnNames = {
+		"language_id", "language" }) })
 public class Language {
 	@Id
 	@GeneratedValue
@@ -60,7 +61,7 @@ public class Language {
 
 	@Override
 	public String toString() {
-		return "Language [languageId=" + languageId + ", language=" + language + "]";
+		return language;
 	}
 
 }

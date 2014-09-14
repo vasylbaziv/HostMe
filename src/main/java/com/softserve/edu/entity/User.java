@@ -1,7 +1,9 @@
 package com.softserve.edu.entity;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -79,7 +81,7 @@ public class User {
 	@ManyToMany(fetch = FetchType.EAGER)
 	@Cascade({ CascadeType.DELETE, CascadeType.PERSIST })
 	@JoinTable(name = "user_languages", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "language_id"))
-	private Set<Language> languages = new HashSet<Language>();
+	private List<Language> languages = new ArrayList<Language>();
 	/**
 	 * Contains images uploaded by this user
 	 */
@@ -211,8 +213,12 @@ public class User {
 		this.region = region;
 	}
 
-	public Set<Language> getLanguages() {
+	public List<Language> getLanguages() {
 		return languages;
+	}
+
+	public void setLanguages(List<Language> languages) {
+		this.languages = languages;
 	}
 
 	public Set<Hosting> getHostings() {

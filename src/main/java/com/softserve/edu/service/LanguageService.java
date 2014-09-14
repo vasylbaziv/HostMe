@@ -7,4 +7,5 @@ import com.softserve.edu.entity.Language;
 public interface LanguageService {
 	
 	public List<Language> getAllLanguages();
+	Language findLanguageByName(String name);
 }

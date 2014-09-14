@@ -16,6 +16,7 @@
 		<intercept-url pattern="/edit-profile" access="hasRole('USER')" />
 		<intercept-url pattern="/feedbacks" access="hasRole('USER')" />
 		<intercept-url pattern="/hosting-creation" access="hasRole('USER')" />
+		<intercept-url pattern="/edit-languages" access="hasRole('USER')" />
 		<intercept-url pattern="/search" access="hasRole('USER')" />
 		<intercept-url pattern="/profile" access="hasRole('USER')" />
 		<form-login login-page="/login" authentication-failure-url="/login?error=true" />
