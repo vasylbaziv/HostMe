@@ -1,6 +1,9 @@
 package com.softserve.edu.dao.impl;
 
+import com.softserve.edu.entity.Role;
+import com.softserve.edu.entity.UserState;
 import org.hibernate.Criteria;
+import org.hibernate.Session;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
