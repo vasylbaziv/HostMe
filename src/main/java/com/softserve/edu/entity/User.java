@@ -56,6 +56,9 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "gender", nullable = false)
 	private Gender gender;
+	@Enumerated(EnumType.STRING)
+ 	@Column(name = "user_state", nullable = false)
+ 	private UserState userState;
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "birth_date")
 	private Calendar birthday;
@@ -116,6 +119,14 @@ public class User {
 		this.lastName = lastName;
 		this.gender = gender;
 	}
+	
+	public UserState getUserState() {
+        	return userState;
+    	}
+
+    	public void setUserState(UserState userState) {
+        	this.userState = userState;
+    	}
 
 	public Integer getUserId() {
 		return userId;
