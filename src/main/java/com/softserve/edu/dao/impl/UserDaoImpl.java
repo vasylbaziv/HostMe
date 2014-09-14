@@ -13,6 +13,8 @@ public class UserDaoImpl extends AbstractGenericDao<User, Integer> implements
 	public UserDaoImpl() {
 		super(User.class);
 	}
+	
+	private final int USER = 1;
 
 	@Override
 	public User getUserByEmail(String email) {
@@ -31,5 +33,17 @@ public class UserDaoImpl extends AbstractGenericDao<User, Integer> implements
 		User user = (User) criteria.list().get(0);
 		return user;
 	}
+	
+	@Override
+    	public void activateAccount(Integer userId) {
+        	Session session = getSessionFactory().getCurrentSession();
+        	Criteria cr = session.createCriteria(User.class);
+        	cr.add(Restrictions.eq("userId", userId));
+        	User user = (User) cr.uniqueResult();
+        	user.setUserState(UserState.ACTIVE);
+        	Role registeredUser = new Role();
+        	registeredUser.setId(USER);
+        	user.setRole(registeredUser);
+    }
 
 }
