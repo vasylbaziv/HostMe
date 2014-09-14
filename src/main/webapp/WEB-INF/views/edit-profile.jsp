@@ -6,8 +6,35 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html style="min-height: 682px;">
 <head>
+
 <link rel="stylesheet" type="text/css" href="resources/css/AdminLTE.css">
-<script type="text/javascript" src="resources/js/birthday.js"></script>
+<link rel="stylesheet" type="text/css" href="resources/css/bootstrapValidator.css">
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"></script>
+
+<!-- validate email -->
+<script>
+	function ValidateEmail(inputText)  
+		{  
+		var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
+			if(inputText.value.match(mailformat))  
+			{  
+				document.form1.email.focus();  
+				return true;  
+			}  
+			else  
+			{  
+				alert("You have entered an invalid email address!");  
+				document.form1.email.focus();  
+			return false;  
+		}  
+	}  
+</script>
+
+
+
+
 
 </head>
 <body>
@@ -25,7 +52,7 @@
 			Dashboard <small>Control panel</small>
 		</h1>
 		<ol class="breadcrumb">
-			<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+			<li><a href="#"> <i class="fa fa-dashboard"></i> Home </a></li>
 			<li class="active">Dashboard</li>
 		</ol>
 		</section> <!-- Main content --> <section class="content">
@@ -39,44 +66,80 @@
 						<h3 class="box-title">Edit your profile</h3>
 					</div>
 					<!-- form start -->
-					<form:form role="form" method="POST" commandName="user"
-						action="edited-profile">
-						<form:hidden path="userId" />
+					<form:form 
+						role="form" 
+						method="POST" 
+						commandName="user"
+						action="edited-profile"
+						name ="form1"
+						onsubmit="return ValidateEmail(document.form1.email);">
+
 						<div class="box-body">
 							<div class="form-group">
+							
 								<label for="inputLogin">Login</label>
-								<form:input path="login" class="form-control" id="inputLogin"
-									disabled="true" />
+								
+								<form:input path="login" 
+											class="form-control" 
+											id="inputLogin"
+											disabled="true" />
 								<small> You can not change your login </small>
 							</div>
+							
 							<div class="form-group">
 								<label for="firstName">First name</label>
-								<form:input path="firstName" class="form-control" id="firstName"
-									value="${user.firstName}" />
+								
+								<form:input path="firstName" 
+											class="form-control" 
+											id="firstName"
+											value="${user.firstName}" />
 							</div>
+							
 							<div class="form-group">
 								<label for="lastName">Last name</label>
-								<form:input path="lastName" class="form-control" id="lastName"
-									value="${user.lastName}" />
+								<form:input path="lastName" 
+											class="form-control" 
+											id="lastName" />
 							</div>
 
 							<div class="form-group">
 								<label for="gender" style="display: block; float: none">Gender</label>
-								<label class="radio-inline"> <form:radiobutton
-										path="gender" id="male" value="MALE" /> Male
-								</label> <label class="radio-inline"> <form:radiobutton
-										path="gender" id="female" value="FEMALE" /> Female
+								<label class="radio-inline"> 
+									<form:radiobutton   path="gender" 
+														id="male" 
+														value="MALE" /> Male
+								</label> 
+								
+								<label class="radio-inline"> 
+									<form:radiobutton	path="gender" 
+														id="female" 
+														value="FEMALE" /> Female
 								</label>
-								<div class="form-group"></div>
-								<br>
+								
+							</div>	
+
+							<div class="form-group">
+								<label for="email">Password</label> 
+								<input 	class="form-control"
+										id="password" value="****" 
+										disabled /> 
+								<small> You can change your <a class="btn-small" href="#myModal" data-toggle="modal">password </a> here	</small>
+							</div>
+
+
+
+
 								<div class="form-group">
-									<label for="email">E-mail</label>
-									<form:input path="email" class="form-control" id="email"
-										value="${user.email}" disabled="true" />
-									<small> You can change your <a class="btn-small"
-										href="#myModal" data-toggle="modal">email address </a> here
-									</small>
+									<label for="email">Email</label>
+									
+									<form:input path="email" 
+												class="form-control" 
+												id="email"
+												value="${user.email}"
+												name="email" />
 								</div>
+
+							
 
 								<div class="form-group">
 									<label for="profilePicture">Profile picture</label> <input
@@ -84,11 +147,27 @@
 									<p class="help-block">Choose your profile picture</p>
 								</div>
 
+								<!-- 
 								<div class="form-group">
-									<label for="dateOfBirth">Date of birth:</label> </br> <select
-										path="birthday" id="days">
-									</select> <select id="months"></select> <select id="years"></select>
+									<label for="profilePicture"><h4>Profile picture</h4></label> <br>
+									<input type="file" name="file" id="profilePicture" multiple
+										accept="gif|jpg|png" data-maxfile="10000" data-maxsize="50000" />
 								</div>
+-->
+
+								<div class="form-group">
+									<label for="language">Languages</label> 
+									</br> 
+									<small> You can change your <a class="btn-small" href="<c:url value='edit-languages' />">languages </a> here	</small>
+								</div>
+
+
+								<div class="form-group">
+									<label for="dateOfBirth">Date of birth:</label> <br> <select
+										id="days" name="days"></select> <select id="months"
+										name="months"></select> <select id="years" name="years"></select>
+								</div>
+
 
 								<div class="form-group">
 									<label>Personal Description</label>
@@ -107,7 +186,7 @@
 									<button type="submit" class="btn btn-primary">Submit</button>
 								</div>
 							</div>
-						</div>
+						
 					</form:form>
 				</div>
 			</div>
@@ -116,5 +195,118 @@
 	</div>
 
 </body>
+
+
+								<!-- Modal form for Change PW-->
+
+									<form:form	cssClass="form-horizontal changePasswordForm"
+												action="change-password"
+												method="POST"
+												id="change-pasword-mf">
+												
+										<div 	class="modal fade" 
+												id="myModal" 
+												tabindex="-1" 
+												role="dialog"
+												aria-labelledby="myModalLabel" 
+												aria-hidden="true">
+												
+											<div class="modal-dialog">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal"
+															aria-hidden="true">&times;</button>
+														<h4 class="modal-title" id="myModalLabel">
+															Change password form
+														</h4>
+													</div>
+													<div class="modal-body">
+									
+														<div class="form-group">
+															<label for="oldPassword" class="col-sm-2 control-label">Password</label>
+															<div class="col-sm-10">
+																<input type="password" name="oldPassword" id="oldPassword"
+																	class="form-control" />
+															</div>
+														</div>
+									
+														<div class="form-group">
+															<label for="newPassword" class="col-sm-2 control-label">New password</label>
+															<div class="col-sm-10">
+																<input type="password" id="newPassword" name="newPassword"
+																	id="newPassword" class="form-control" />
+															</div>
+														</div>
+									
+														<div class="form-group">
+															<label for="newPassword" class="col-sm-2 control-label">Password again</label>
+															<div class="col-sm-10">
+																<input type="password" name="passwordAgain" id="passwordAgain"
+																	class="form-control" />
+															</div>
+														</div>
+													</div>
+													<div class="modal-footer">
+														<button type="button" class="btn btn-default" data-dismiss="modal">
+															Back
+														</button>
+														<input class="btn btn-large btn-primary" type="submit"
+															value="Submit">
+													</div>
+													</div>
+									
+												</div>
+											</div>
+									</form:form>
+
+								<!-- Modal form-->
+
+<script type="text/javascript">
+$(document).ready(function() {
+	
+					$("#change-pasword-mf").validate(
+							{
+									rules : {
+											oldPassword : {
+												required : true,
+												remote : {
+													url : "http://localhost:8080/hostme/change-password/correctOldPassword",
+													type : "POST",
+													data : {
+														oldPassword : function() {
+															return $("#oldPassword").val();
+														}
+													}
+												}
+											},
+											newPassword : {
+												minlength : 4,
+												required : true
+											},
+											passwordAgain : {
+												required : true,
+												equalTo : "#newPassword"
+											}
+									},
+									messages : {
+										oldPassword : {
+											remote : "Wrong password!",
+											required : "This field is required!"
+										},
+										newPassword : {
+											minlength : "Min length 4",
+											required : "This field is required!"
+										},
+										passwordAgain : {
+											equalTo : "Incorrectly filled!",
+											required : "This field is required!"
+										}
+									}
+							});
+});
+	
+	
+</script>
+
 
 </html>
