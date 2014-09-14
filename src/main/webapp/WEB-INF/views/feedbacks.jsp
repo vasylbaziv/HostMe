@@ -11,16 +11,11 @@
 <body>
 
     <section class="content-header">
-    <h1>
-        Feedbacks for <a
-            href="<c:url value='hoster?hosterId=${hosting.owner.userId}' />">${hosting.owner.firstName}&thinsp;${hosting.owner.lastName}</a>'s
-        place - <a
+    <h1><spring:message code="label.feedbacksFor" />&thinsp;<a
+            href="<c:url value='hoster?hosterId=${hosting.owner.userId}' />">${hosting.owner.firstName}&thinsp;${hosting.owner.lastName}</a><spring:message code="label.stayedAtFin" />
+        <spring:message code="label.place" /> - <a
             href="<c:url value="hosting?hostingId=${hosting.hostingId}&&userId=${hosting.owner.userId}" />">${hosting.address}</a>
     </h1>
-    <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-    </ol>
     </section>
 
     <section class="content"> <!-- general form elements -->
