@@ -80,18 +80,18 @@ public class EditProfileController {
 		}
 
 		allLanguageNames.retainAll(languages);
-		
+
 		List<String> userLanguageNames = new ArrayList<String>();
 
 		for (Language language : user.getLanguages()) {
 			userLanguageNames.add(language.getLanguage());
 		}
-		
+
 		allLanguageNames.removeAll(userLanguageNames);
 
 		for (String name : allLanguageNames) {
 			if (name != null) {
-				Language newLanguage = languageService.findLanguageByName(name); 
+				Language newLanguage = languageService.findLanguageByName(name);
 				user.addLanguage(newLanguage);
 			}
 		}
@@ -114,9 +114,9 @@ public class EditProfileController {
 		user.setEmail(editedUser.getEmail());
 
 		userService.updateUser(user);
-		
-		imageService.addImages(file, user);
-		
+		if (file.getSize() != 0) {
+			imageService.addImages(file, user);
+		}
 		return "redirect:/profile";
 	}
 

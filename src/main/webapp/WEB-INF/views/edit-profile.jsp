@@ -18,29 +18,6 @@
 <script type="text/javascript" src="resources/js/bootstrap-datepicker.js"></script>
 
 
-<!-- validate email -->
-<script>
-	function ValidateEmail(inputText)  
-		{  
-		var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
-			if(inputText.value.match(mailformat))  
-			{  
-				document.form1.email.focus();  
-				return true;  
-			}  
-			else  
-			{  
-				alert("You have entered an invalid email address!");  
-				document.form1.email.focus();  
-			return false;  
-		}  
-	}  
-</script>
-
-
-
-
-
 </head>
 <body>
 	<div class="wrapper row-offcanvas row-offcanvas-left"
@@ -272,7 +249,7 @@ $(document).ready(function() {
 											oldPassword : {
 												required : true,
 												remote : {
-													url : "http://localhost:8080/hostme/change-password/correctOldPassword",
+													url : "<c:url value='/change-password/correctOldPassword'/>",
 													type : "POST",
 													data : {
 														oldPassword : function() {
@@ -308,6 +285,25 @@ $(document).ready(function() {
 });
 </script>
 
+
+<!-- validate email -->
+<script>
+	function ValidateEmail(inputText)  
+		{  
+		var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
+			if(inputText.value.match(mailformat))  
+			{  
+				document.form1.email.focus();  
+				return true;  
+			}  
+			else  
+			{  
+				alert("You have entered an invalid email address!");  
+				document.form1.email.focus();  
+			return false;  
+		}  
+	}  
+</script>
 
   <script type="text/javascript">
 					$('.datepicker').datepicker();
