@@ -8,4 +8,6 @@ public interface SystemPropertiesDao extends
 		GenericDao<SystemProperties, Integer> {
 
 	List<SystemProperties> getPropeties(String prop);
+
+    	public String getMailProp(String value);
 }
