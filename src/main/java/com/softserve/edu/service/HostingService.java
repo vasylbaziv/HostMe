@@ -12,4 +12,6 @@ public interface HostingService {
 	
 	public ArrayList<String> getNonAvailableDates(int hostingId);
 
+	public void updateHosting(Hosting hosting);
+
 }
