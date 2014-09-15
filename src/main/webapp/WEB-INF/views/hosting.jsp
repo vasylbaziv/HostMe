@@ -53,7 +53,10 @@
 								<c:if test="${not empty images}">
 										<c:forEach var="image" items="${images}">
 											<a href="${image}" data-lightbox="images">
-											<img src="${image}"/></a>
+											<img src="${image}" class="img-rounded"
+											class="img-responsive"
+											width=180 height=120
+											style="margin: 1em 0em 0em 0em;"/></a>
 										</c:forEach>
 								</c:if>
                                 <div class="row">
