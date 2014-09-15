@@ -111,7 +111,10 @@ public class ImageServiceImpl implements ImageService {
 
 	@Override
 	public String getUserAvatar(User user) {
-		return systemPropertiesService.getImageUrl() + "/"
-				+ user.getImages().iterator().next().getLink();
+		Iterator<Image> imageItr = user.getImages().iterator();
+		if(imageItr.hasNext())
+			return systemPropertiesService.getImageUrl() + "/"
+					+ imageItr.next().getLink();
+		else return "";
 	}
 }
