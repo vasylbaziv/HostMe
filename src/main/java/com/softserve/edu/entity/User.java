@@ -225,6 +225,11 @@ public class User {
 	}
 
 	public List<Language> getLanguages() {
+		
+		HashSet <Language> langs = new HashSet<Language>(languages);
+	    languages.clear();
+	    languages.addAll(langs);
+		
 		return languages;
 	}
 

@@ -124,7 +124,7 @@
                                                     varStatus="loop">
 
                                                     <c:out
-                                                        value="${languages.language}">
+                                                        value="${languages}">
                                                     </c:out>
                                                     <c:if
                                                         test="${!loop.last}">, </c:if>
