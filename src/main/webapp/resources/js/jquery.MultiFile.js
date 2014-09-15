@@ -93,7 +93,7 @@ if (window.jQuery)(function ($) {
 				);
 				// limit number of files that can be selected?
 				if (!(o.max > 0) /*IsNull(MultiFile.max)*/ ) {
-					o.max = MultiFile.E.attr('maxlength');
+					o.max = MultiFile.E.attr('maxamount');
 				};
 				if (!(o.max > 0) /*IsNull(MultiFile.max)*/ ) {
 					o.max = (String(MultiFile.e.className.match(/\b(max|limit)\-([0-9]+)\b/gi) || ['']).match(/[0-9]+/gi) || [''])[0];
@@ -370,7 +370,7 @@ if (window.jQuery)(function ($) {
 							// Handle error
 							MultiFile.error(ERROR.join('\n\n'));
 
-							// 2007-06-24: BUG FIX - Thanks to Adrian Wróbel <adrian [dot] wrobel [at] gmail.com>
+							// 2007-06-24: BUG FIX - Thanks to Adrian Wrï¿½bel <adrian [dot] wrobel [at] gmail.com>
 							// Ditch the trouble maker and add a fresh new element
 							MultiFile.n--;
 							MultiFile.addSlave(newEle[0], slave_count);

@@ -11,6 +11,7 @@
 <link rel="stylesheet" type="text/css" href="resources/css/AdminLTE.css">
 <link rel="stylesheet" type="text/css" href="resources/css/bootstrapValidator.css">
 
+<script type="text/javascript" src="resources/js/jquery.MultiFile.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"></script>
 
@@ -76,7 +77,8 @@
 						commandName="user"
 						action="edited-profile"
 						name ="form1"
-						onsubmit="return ValidateEmail(document.form1.email);">
+						onsubmit="return ValidateEmail(document.form1.email);"
+						enctype="multipart/form-data">
 
 						<div class="box-body">
 							<div class="form-group">
@@ -143,21 +145,11 @@
 												name="email" />
 								</div>
 
-							
-
-								<div class="form-group">
-									<label for="profilePicture">Profile picture</label> <input
-										type="file" id="profilePicture">
-									<p class="help-block">Choose your profile picture</p>
-								</div>
-
-								<!-- 
 								<div class="form-group">
 									<label for="profilePicture"><h4>Profile picture</h4></label> <br>
-									<input type="file" name="file" id="profilePicture" multiple
+									<input type="file" name="file" id="profilePicture" maxamount="1" class="multi"
 										accept="gif|jpg|png" data-maxfile="10000" data-maxsize="50000" />
 								</div>
--->
 
 								<div class="form-group">
 									<label for="language">Languages</label> 
@@ -167,15 +159,15 @@
 
 
 								<div class="form-group">
-                	                <div>
-                	                <label for="language">Date of Birth</label> 
-            	                        <form:input path="birthday"
-                	                                type="text"
-                    	                            class="datepicker form-control"
-                        	                        id="dateOfBirth"
-                            	                    placeholder="MM/dd/yyyy"
-                                	                pattern="MM/dd/yyyy" />
-                    	            </div>
+<!--                 	                <div> -->
+<!--                 	                <label for="language">Date of Birth</label>  -->
+<%--             	                        <form:input path="birthday" --%>
+<%--                 	                                type="text" --%>
+<%--                     	                            class="datepicker form-control" --%>
+<%--                         	                        id="dateOfBirth" --%>
+<%--                             	                    placeholder="MM/dd/yyyy" --%>
+<%--                                 	                pattern="MM/dd/yyyy" /> --%>
+<!--                     	            </div> -->
                                 </div>
 
 

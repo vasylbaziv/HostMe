@@ -89,7 +89,7 @@ public class User {
 	 * Contains images uploaded by this user
 	 */
 	@JsonIgnore 
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = true)
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
 	private Set<Image> images = new HashSet<Image>();
 	/**
 	 * Contains hosting apartments owned by this user

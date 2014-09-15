@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.softserve.edu.entity.Language;
 import com.softserve.edu.entity.User;
+import com.softserve.edu.service.ImageService;
 import com.softserve.edu.service.LanguageService;
 import com.softserve.edu.service.ProfileService;
 import com.softserve.edu.service.UserService;
@@ -30,6 +32,8 @@ public class EditProfileController {
 	private LanguageService languageService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private ImageService imageService;
 
 	private User getCurrentUser() {
 
@@ -98,8 +102,8 @@ public class EditProfileController {
 	}
 
 	@RequestMapping(value = "/edited-profile", method = RequestMethod.POST)
-	public String editProfileShow(@ModelAttribute("user") User editedUser) {
-
+	public String editProfileShow(@ModelAttribute("user") User editedUser,
+			@RequestParam("file") MultipartFile file) {
 		User user = getCurrentUser();
 
 		user.setFirstName(editedUser.getFirstName());
@@ -110,7 +114,9 @@ public class EditProfileController {
 		user.setEmail(editedUser.getEmail());
 
 		userService.updateUser(user);
-
+		
+		imageService.addImages(file, user);
+		
 		return "redirect:/profile";
 	}
 
