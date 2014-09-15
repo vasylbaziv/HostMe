@@ -10,6 +10,7 @@ import com.softserve.edu.entity.User;
 public interface ImageService {
 	
 	String PROFILE_PIC_PATH = "profile_pics";
+	String NO_AVATAR = "noavatar/noavatar.png";
 	
 	void addImages(MultipartFile[] files, Hosting hosting);
 	

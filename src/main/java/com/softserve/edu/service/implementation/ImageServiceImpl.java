@@ -49,6 +49,11 @@ public class ImageServiceImpl implements ImageService {
 		image.setLink(PROFILE_PIC_PATH + "/" + user.getUserId() + "/"
 				+ multipartFile.getOriginalFilename());
 		image.setUser(user);
+		
+		for (Image im : user.getImages()) {
+			imageDao.delete(im);	
+		}
+			
 		imageDao.create(image);
 	}
 
@@ -112,9 +117,11 @@ public class ImageServiceImpl implements ImageService {
 	@Override
 	public String getUserAvatar(User user) {
 		Iterator<Image> imageItr = user.getImages().iterator();
-		if(imageItr.hasNext())
+		if (imageItr.hasNext())
 			return systemPropertiesService.getImageUrl() + "/"
 					+ imageItr.next().getLink();
-		else return "";
+		else
+			return systemPropertiesService.getImageUrl() + "/"
+					+ PROFILE_PIC_PATH + "/" + NO_AVATAR;
 	}
 }

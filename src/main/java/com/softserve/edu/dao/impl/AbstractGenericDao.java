@@ -66,9 +66,8 @@ public abstract class AbstractGenericDao<E, I extends Serializable> implements
 	@Override
 	public void delete(E entity) {
 		Session session = sessionFactory.getCurrentSession();
-		Transaction transaction = session.beginTransaction();
 		session.delete(entity);
-		transaction.commit();
+
 	}
 
 	@Override
