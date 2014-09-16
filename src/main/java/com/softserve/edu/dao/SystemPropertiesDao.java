@@ -9,5 +9,4 @@ public interface SystemPropertiesDao extends
 
 	String getPropeties(String prop);
 
-    	public String getMailProp(String value);
 }
