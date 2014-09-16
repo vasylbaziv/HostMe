@@ -24,7 +24,8 @@ public class UserDaoImpl extends AbstractGenericDao<User, Integer> implements
 		Criteria criteria = getSessionFactory().getCurrentSession()
 				.createCriteria(User.class);
 		criteria.add(Restrictions.eq("email", email));
-		User user = (User) criteria.list().get(0);
+	//	User user = (User) criteria.list().get(0);
+        	User user = (User) criteria.uniqueResult();
 		return user;
 	}
 
@@ -33,7 +34,8 @@ public class UserDaoImpl extends AbstractGenericDao<User, Integer> implements
 		Criteria criteria = getSessionFactory().getCurrentSession()
 				.createCriteria(User.class);
 		criteria.add(Restrictions.eq("login", login));
-		User user = (User) criteria.list().get(0);
+	//	User user = (User) criteria.list().get(0);
+        	User user = (User) criteria.uniqueResult();
 		return user;
 	}
 	
