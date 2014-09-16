@@ -445,10 +445,7 @@
 						$(".alert").alert('close');
 					}, 5000);
 
-					var dateDisabled = $
-					{
-						nonAvailableDatesJson
-					};
+					var dateDisabled = ${nonAvailableDatesJson};
 
 					$(function() {
 						$('#available div')
