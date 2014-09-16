@@ -33,9 +33,9 @@
                                 </h4>
                                 <c:forEach var="image"
                                     items="${user.images}">
-                                    <a href="${image_url}${image.link}"
-                                        data-lightbox="images"> <img
-                                        src="${image_url}${image.link}" style="width:200px; height:200px"/></a>
+                                    <img src="${image_url}${image.link}"
+                                        style="width: 200px; height: 200px" />
+                                    </a>
                                 </c:forEach>
                             </div>
                         </div>
@@ -152,7 +152,7 @@
 
                     </div>
 
-                    <div class="row" style="margin-top:1.5em">
+                    <div class="row" style="margin-top: 1.5em">
                         <h4 class="col-md-8">
                             <spring:message
                                 code="label.hostingAddresses" />

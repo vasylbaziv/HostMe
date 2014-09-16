@@ -48,7 +48,7 @@
                         </div>
 
                         <div class="col-md-4" style="padding-left: 0em;">
-                            <div class="panel box box-info col-md-12"
+                            <div class="panel box box-warning col-md-12"
                                 style="margin-top: 3em; padding-left: 0.3em;">
                                 <div class="box-header">
                                     <h4 class="box-title"
@@ -154,7 +154,7 @@
                             <div class="row col-md-12"
                                 style="padding-top: 3em;">
 
-                                <div class="callout callout-info">
+                                <div class="callout callout-danger">
                                     <h4>
                                         <spring:message
                                             code="label.personalDescription" />
