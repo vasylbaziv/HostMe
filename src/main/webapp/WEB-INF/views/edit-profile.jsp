@@ -50,7 +50,6 @@
 						commandName="user"
 						action="edited-profile"
 						name ="form1"
-						onsubmit="return ValidateEmail(document.form1.email);"
 						enctype="multipart/form-data"
 						id="edit-profile-form">
 
@@ -121,7 +120,7 @@
 								<div class="form-group">
 									<label for="profilePicture"><h4>Profile picture</h4></label> <br>
 									<input type="file" name="file" id="profilePicture" maxamount="1" class="multi"
-										accept="gif|jpg|png" data-maxfile="10000" data-maxsize="50000" />
+											data-maxfile="10000" data-maxsize="50000" />
 								</div>
 
 								<div class="form-group">
@@ -291,6 +290,7 @@ $(document).ready(function() {
 										email : {
 											required: "This field is required!",
 											email : "Not correct email!"
+											
 										}
 									}
 							});

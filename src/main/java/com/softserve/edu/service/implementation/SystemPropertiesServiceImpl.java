@@ -16,13 +16,13 @@ public class SystemPropertiesServiceImpl implements SystemPropertiesService {
 	@Override
 	@Transactional
 	public String getImagePath() {
-		return systemPropertiesDao.getPropeties(IMAGE_PATH_PROP).get(0).getValue();
+		return systemPropertiesDao.getPropeties(IMAGE_PATH_PROP);
 	}
 
 	@Override
 	@Transactional
 	public String getImageUrl() {
-		return systemPropertiesDao.getPropeties(IMAGE_URL_PROP).get(0).getValue();
+		return systemPropertiesDao.getPropeties(IMAGE_URL_PROP);
 	}
 	
 	@Override

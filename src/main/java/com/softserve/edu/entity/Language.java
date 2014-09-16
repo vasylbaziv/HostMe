@@ -1,6 +1,7 @@
 package com.softserve.edu.entity;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -23,7 +24,7 @@ public class Language {
 	@Column(name = "language", length = 50, nullable = false, unique = true)
 	private String language;
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy = "languages")
-	private Set<User> users = new HashSet<User>();
+	private List<User> users = new ArrayList<User>();
 
 	public Language() {
 	}
@@ -48,7 +49,7 @@ public class Language {
 		this.language = language;
 	}
 
-	public Set<User> getUsers() {
+	public List<User> getUsers() {
 		return users;
 	}
 

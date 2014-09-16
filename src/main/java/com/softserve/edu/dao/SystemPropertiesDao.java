@@ -7,7 +7,7 @@ import com.softserve.edu.entity.SystemProperties;
 public interface SystemPropertiesDao extends
 		GenericDao<SystemProperties, Integer> {
 
-	List<SystemProperties> getPropeties(String prop);
+	String getPropeties(String prop);
 
     	public String getMailProp(String value);
 }
