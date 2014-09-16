@@ -38,7 +38,7 @@ public class RegistrationSendMailImpl implements RegistrationSendMail {
             String html = "Thank you " + user.getFirstName()
                     + " for joining us!"
                     + "<br> Please, activate your account with the following link: <br>"
-                    + "<a href=\"http://localhost:8080/registration-confirm?id="
+                    + "<a href=\"http://localhost:8080/hostme/registration-confirm?id="
                     + user.getUserId() + "\">Activation Link</a>";
             helper.setText("UTF-8", html);
         } catch (MessagingException e) {
