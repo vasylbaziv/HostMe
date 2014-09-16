@@ -34,14 +34,14 @@
                     <ul class="dropdown-menu">
                         <li role="presentation"><a role="menuitem"
                             tabindex="-1" id="en"
-                            onclick="setLanguage('en');" href="#">En</a></li>
+                            onclick="setLanguage('en');" href="#">English</a></li>
                         <li role="presentation"><a role="menuitem"
                             tabindex="-1" id="de"
-                            onclick="setLanguage('de');" href="#">De</a>
+                            onclick="setLanguage('de');" href="#">Deutsch</a>
                         </li>
                         <li role="presentation"><a role="menuitem"
                             tabindex="-1" id="ua"
-                            onclick="setLanguage('ua');" href="#">Ua</a></li>
+                            onclick="setLanguage('ua');" href="#">Українська</a></li>
                     </ul></li>
 
                 <!-- User Account: style can be found in dropdown.less -->

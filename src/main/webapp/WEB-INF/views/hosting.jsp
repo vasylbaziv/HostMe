@@ -50,12 +50,15 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="col-md-8">
-									<c:forEach var="image" items="${hosting.images}">
-										<a href="${image_url}${image.link}" data-lightbox="images">
-										<img src="${image_url}${image.link}" class="img-rounded"
-										class="img-responsive"
-										style="width:200px; margin: 1em 0.5em 0em 0em;"/></a>
-									</c:forEach>
+                                <c:forEach var="image"
+                                    items="${hosting.images}">
+                                    <a href="${image_url}${image.link}"
+                                        data-lightbox="images"> <img
+                                        src="${image_url}${image.link}"
+                                        class="img-rounded"
+                                        class="img-responsive"
+                                        style="width: 200px; margin: 1em 0.5em 0em 0em;" /></a>
+                                </c:forEach>
                                 <div class="row">
                                     <div class="col-md-3">
                                         <h4>
@@ -159,7 +162,8 @@
                                         :
                                     </div>
                                     <div class="col-md-9">
-                                        <a href="mailto:${hosting.owner.email}">${hosting.owner.email}</a>
+                                        <a
+                                            href="mailto:${hosting.owner.email}">${hosting.owner.email}</a>
                                     </div>
                                 </div>
 
@@ -235,9 +239,10 @@
                                                         class=" form-control"
                                                         placeholder="${varStayOption}"
                                                         style="margin-bottom:1em"></form:textarea>
-
                                                     <button
-                                                        class="btn btn-warning">
+                                                        class="btn btn-warning"                                                     <c:if test="${hosting.owner.userId eq loggedUser.userId}">
+                                                    <c:out value="disabled='disabled'"/>
+                                                    </c:if>>
                                                         <spring:message
                                                             code="label.sendFeedbackButton" />
                                                     </button>
@@ -322,7 +327,8 @@
                                                             href="#collapseOne"
                                                             class="collapsed">
                                                             <spring:message
-                                                                code="label.selectTravelDates" /></a>
+                                                                code="label.selectTravelDates" />
+                                                        </a>
                                                     </h4>
                                                 </div>
 
@@ -335,7 +341,7 @@
                                                         <div
                                                             class="form-group">
                                                             <label><spring:message
-                                                                code="label.selectDateTime" />:</label>
+                                                                    code="label.selectDateTime" />:</label>
                                                             <div
                                                                 class="input-group">
                                                                 <div
@@ -383,7 +389,8 @@
                                                             href="#collapseTwo"
                                                             class="collapsed">
                                                             <spring:message
-                                                                code="label.writeNoteHoster" /></a>
+                                                                code="label.writeNoteHoster" />
+                                                        </a>
                                                     </h5>
                                                 </div>
 
@@ -409,32 +416,12 @@
                                         <div class="col-md-1">
 
                                             <button onfocus="formDate()"
-                                                class="btn btn-primary"><spring:message
-                                                                code="label.sendRequest" /></button>
+                                                class="btn btn-primary">
+                                                <spring:message
+                                                    code="label.sendRequest" />
+                                            </button>
 
                                         </div>
-
-                                        <c:if
-                                            test="${param.requestSent}">
-                                            <div id="myAlert"
-                                                class="col-md-4"
-                                                style="margin-left: 2em; padding-right: 3em">
-                                                <div
-                                                    class="alert alert-success alert-dismissable"
-                                                    style="margin-bottom: 0">
-                                                    <i
-                                                        class="fa fa-check"></i>
-                                                    <button
-                                                        type="button"
-                                                        class="close"
-                                                        data-dismiss="alert"
-                                                        aria-hidden="true"
-                                                        text-align="center"></button>
-                                                    Request is
-                                                    successfully sent!
-                                                </div>
-                                            </div>
-                                        </c:if>
 
                                     </div>
 
@@ -458,7 +445,10 @@
 						$(".alert").alert('close');
 					}, 5000);
 
-					var dateDisabled = ${nonAvailableDatesJson};
+					var dateDisabled = $
+					{
+						nonAvailableDatesJson
+					};
 
 					$(function() {
 						$('#available div')

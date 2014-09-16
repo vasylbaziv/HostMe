@@ -32,26 +32,27 @@
                     <c:forEach items="${hosting.feedbacks}" var="fback"
                         varStatus="loop">
                         <div class="callout callout-info">
-                            <h4>
-                                <a
-                                    href="<c:url value='hoster?hosterId=${fback.author.userId}' />">${fback.author.firstName}&nbsp;${fback.author.lastName}</a>
-                            </h4>
                             <form:form method="POST"
                                 action="feedbacks-delete">
-
                                 <input type="hidden" name="hostingId"
                                     id="hostingId"
                                     value="${hosting.hostingId}" />
                                 <input type="hidden" name="feedbackId"
                                     id="feedbackId"
                                     value="${fback.feedbackId}" />
-                                <q style="color: gray"><i><c:out
-                                            value="${fback.description}"></c:out></i></q>
                                 <c:if
                                     test="${loggedUser.login eq fback.author.login}">
-                                    <button class="btn btn-primary"
-                                        type="submit">Delete</button>
+                                    <div class="box-tools pull-right">
+                                        <button class="btn btn-primary btn-sm"
+                                            type="submit"><i class="fa fa-times"></i></button>
+                                    </div>
                                 </c:if>
+                                <h4>
+                                    <a
+                                        href="<c:url value='hoster?hosterId=${fback.author.userId}' />">${fback.author.firstName}&nbsp;${fback.author.lastName}</a>
+                                </h4>
+                                <q style="color: gray"><i><c:out
+                                            value="${fback.description}"></c:out></i></q>
                             </form:form>
                         </div>
 
