@@ -36,15 +36,5 @@ public class SystemPropertiesDaoImpl extends
 		String property = (String) cr.uniqueResult();
 		return property;
 	}
-	
-	@Override
-    	public String getMailProp(String value){
-        	Session session = getSessionFactory().getCurrentSession();
- 		Criteria cr = session.createCriteria(SystemProperties.class);
-        	cr.setProjection(Projections.property("value"));
-        	cr.add(Restrictions.eq("propKey", value));
-        	String password = (String) cr.uniqueResult();
-        	return password;
-    }
     
 }
