@@ -74,4 +74,11 @@ public class HostingServiceImpl implements HostingService {
 		hostingDao.update(hosting);
 	}
 
+	@Override
+	@Transactional
+	public void deleteHosting(Integer hostingId) {
+		hostingDao.delete(hostingDao.read(hostingId));
+		
+	}
+
 }

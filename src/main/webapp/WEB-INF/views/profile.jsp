@@ -218,7 +218,7 @@
                                             code="label.edit" />&nbsp;&nbsp;<span
                                                     class="fa fa-edit"
                                                     style="margin-right: 1em"></span></a>
-                                                <a href="#"
+                                                <a href=<c:url value="hosting-delete?hostingId=${hosting.hostingId}"/>
                                                     class="text-red"><spring:message
                                             code="label.delete" />&nbsp;&nbsp;<span
                                                     class="fa fa-trash-o"></span></a>

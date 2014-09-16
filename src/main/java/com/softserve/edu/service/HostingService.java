@@ -14,4 +14,7 @@ public interface HostingService {
 
 	public void updateHosting(Hosting hosting);
 
+
+	public void deleteHosting(Integer hostingId);
+
 }

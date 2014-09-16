@@ -78,6 +78,12 @@ public class HostingController {
 		return "redirect:/profile";
 	}
 
+	@RequestMapping(value = "/hosting-delete", method=RequestMethod.GET)
+	public String deleteHosting(@RequestParam(value="hostingId") Integer hostingId){
+		hostingService.deleteHosting(hostingId);
+		return "redirect:/profile";
+	}
+	
 	@RequestMapping(value = "/hosting", method = RequestMethod.GET)
 	public String hostelShow(@RequestParam(value = "hostingId") int hostingId,
 			Model model) {
@@ -114,15 +120,6 @@ public class HostingController {
 		System.out.println(hostingId);
 
 		return "hosting";
-	}
-	
-	private User getCurrentUser() {
-
-		Authentication authentication = SecurityContextHolder.getContext()
-				.getAuthentication();
-		String currentPrincipalName = authentication.getName();
-
-		return profileService.getUserByLogin(currentPrincipalName);
 	}
 
 }
