@@ -2,11 +2,9 @@ package com.softserve.edu.web;
 
 import java.util.ArrayList;
 import java.util.Map;
-import java.util.LinkedList;
 import java.util.List;
 
 import com.google.gson.Gson;
-import com.softserve.edu.DTO.HostingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -93,17 +91,16 @@ public class SearchController {
 //                .setValue(beginDate)
 //                .build());
         Integer pages = searchService.getCountOfPages(searchList);
-        map.put("host", new Hosting());
 
-        final List<Object> hostingDTOs = new LinkedList<>();
-        final List<Hosting> hostings = searchService.getList(searchList, page);
-        for (Hosting hosting : hostings) {
-            hostingDTOs.add(new HostingDTO(hosting, hosting.getOwner()));
-        }
-        hostingDTOs.add(0, pages);
+//        final List<Object> hostingDTOs = new LinkedList<>();
+        final List<Object> hostings = searchService.getList(searchList, page);
+//        for (Hosting hosting : hostings) {
+//            hostingDTOs.add(new HostingDTO(hosting, hosting.getOwner()));
+//        }
+        hostings.add(0, pages);
         Gson gson = new Gson();
 
-        return gson.toJson(hostingDTOs);
+        return gson.toJson(hostings);
     }
 
 }
