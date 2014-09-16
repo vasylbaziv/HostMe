@@ -39,7 +39,7 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	private boolean filesNotEmpty(MultipartFile[] files) {
-		if (files[0].getOriginalFilename() == "")
+		if (files[0].getOriginalFilename().isEmpty())
 			return false;
 		else
 			return true;
