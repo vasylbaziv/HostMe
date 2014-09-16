@@ -189,7 +189,7 @@
 
                                 </div>
 
-                                <form:form action="feedbacks"
+                                <form:form action="feedbacks-send"
                                     method="post"
                                     modelAttribute="feedback"
                                     id="send_feedback_form">

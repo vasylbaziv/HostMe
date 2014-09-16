@@ -62,7 +62,6 @@ public class Hosting {
 	private Set<Image> images = new HashSet<Image>();
 	@JsonIgnore
 	@OneToMany(mappedBy = "hosting", fetch = FetchType.EAGER, orphanRemoval = true)
-	@Cascade({ CascadeType.DELETE, CascadeType.PERSIST, CascadeType.SAVE_UPDATE })
 	private Set<Feedback> feedbacks = new HashSet<Feedback>();
 	@JsonIgnore
 	@OneToMany(mappedBy = "hosting", fetch = FetchType.LAZY)

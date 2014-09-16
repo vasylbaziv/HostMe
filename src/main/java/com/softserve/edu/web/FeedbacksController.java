@@ -5,6 +5,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,8 +36,18 @@ public class FeedbacksController {
         return "feedbacks";
     }
     
-    @RequestMapping(value = "/feedbacks", method = RequestMethod.POST)
-    public String sendFeedback(@ModelAttribute("feedback") Feedback feedback,
+    @RequestMapping(value = "/feedbacks-delete", method = RequestMethod.POST)
+    public String deleteFeedback(
+            @RequestParam(value = "feedbackId") int feedbackId,
+            @RequestParam(value = "hostingId") int hostingId, Model model) {
+        model.addAttribute("hostingId", hostingId);
+        feedbackService.deleteFeedbackById(feedbackId);
+        
+        return "redirect:/feedbacks";
+    }
+    
+    @RequestMapping(value = "/feedbacks-send", method = RequestMethod.POST)
+    public String sendFeedback(@ModelAttribute("feedbackId") Feedback feedback,
             Model model, @RequestParam(value = "hostingId") int hostingId) {
         
         Authentication authentication = SecurityContextHolder.getContext()

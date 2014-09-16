@@ -11,32 +11,56 @@
 <body>
 
     <section class="content-header">
-    <h1><spring:message code="label.feedbacksFor" />&thinsp;<a
-            href="<c:url value='hoster?hosterId=${hosting.owner.userId}' />">${hosting.owner.firstName}&thinsp;${hosting.owner.lastName}</a><spring:message code="label.stayedAtFin" />
-        <spring:message code="label.place" /> - <a
+    <h1>
+        <spring:message code="label.feedbacksFor" />
+        &thinsp;<a
+            href="<c:url value='hoster?hosterId=${hosting.owner.userId}' />">${hosting.owner.firstName}&thinsp;${hosting.owner.lastName}</a>
+        <spring:message code="label.stayedAtFin" />
+        <spring:message code="label.place" />
+        - <a
             href="<c:url value="hosting?hostingId=${hosting.hostingId}&&userId=${hosting.owner.userId}" />">${hosting.address}</a>
     </h1>
     </section>
 
     <section class="content"> <!-- general form elements -->
+
     <div class="box box-primary">
 
         <div class="box-body">
             <div class="row">
                 <div class="col-md-12" style="margin-top: 1em;">
-                    <c:forEach items="${hosting.feedbacks}"
-                        var="feedbacks" varStatus="loop">
+                    <c:forEach items="${hosting.feedbacks}" var="fback"
+                        varStatus="loop">
                         <div class="callout callout-info">
                             <h4>
-                                <a href="<c:url value='hoster?hosterId=${feedbacks.author.userId}' />">${feedbacks.author.firstName}&nbsp;${feedbacks.author.lastName}</a></h4>
-                            <q style="color: gray"><i><c:out
-                                        value="${feedbacks.description}"></c:out></i></q>
-                     </div>
+                                <a
+                                    href="<c:url value='hoster?hosterId=${fback.author.userId}' />">${fback.author.firstName}&nbsp;${fback.author.lastName}</a>
+                            </h4>
+                            <form:form method="POST"
+                                action="feedbacks-delete">
+
+                                <input type="hidden" name="hostingId"
+                                    id="hostingId"
+                                    value="${hosting.hostingId}" />
+                                <input type="hidden" name="feedbackId"
+                                    id="feedbackId"
+                                    value="${fback.feedbackId}" />
+                                <q style="color: gray"><i><c:out
+                                            value="${fback.description}"></c:out></i></q>
+                                <c:if
+                                    test="${loggedUser.login eq fback.author.login}">
+                                    <button class="btn btn-primary"
+                                        type="submit">Delete</button>
+                                </c:if>
+                            </form:form>
+                        </div>
+
                     </c:forEach>
                 </div>
             </div>
         </div>
     </div>
+
 
     </section>
 </body>
