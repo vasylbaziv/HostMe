@@ -161,9 +161,10 @@
 				</div>
 			</div>
 			<br>
+			<input type="hidden" value="${hosting.hostingId}" name="hostingId" />
+			<input type="hidden" value="${userId}" name="userId" />
 			<button type="submit" class="btn btn-primary"
-				style="margin-bottom: 30px; margin-top: 10px;">Create
-				hosting</button>
+				style="margin-bottom: 30px; margin-top: 10px;">Save</button>
 		</form:form>
 	
 		<script language="javascript">

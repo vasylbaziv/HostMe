@@ -1,6 +1,8 @@
 package com.softserve.edu.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +20,7 @@ import com.softserve.edu.entity.Request;
 import com.softserve.edu.entity.User;
 import com.softserve.edu.service.HostingService;
 import com.softserve.edu.service.ImageService;
+import com.softserve.edu.service.ProfileService;
 import com.softserve.edu.service.UserService;
 
 @Controller
@@ -28,6 +31,8 @@ public class HostingController {
 	private UserService userService;
 	@Autowired
 	private ImageService imageService;
+	@Autowired
+	private ProfileService profileService;
 
 	@RequestMapping(value = "/hosting-creation", method = RequestMethod.GET)
 	public String hostingCreationShow(Model model) {
@@ -53,15 +58,21 @@ public class HostingController {
 
 	@RequestMapping(value = "/hosting-editing", method = RequestMethod.GET)
 	public String hostingEditingShow(
-			@RequestParam(value = "hostingId") Integer hostingId, Model model) {
+			@RequestParam(value = "hostingId") Integer hostingId,
+			@RequestParam(value = "userId") Integer userId, Model model) {
 		Hosting hosting = hostingService.getHosting(hostingId);
 		model.addAttribute("hosting", hosting);
+		model.addAttribute("userId", userId);
 		return "hosting-editing";
 	}
 
 	@RequestMapping(value = "/hosting-editing", method = RequestMethod.POST)
 	public String editHosting(@ModelAttribute("hosting") Hosting hosting,
-			@RequestParam("file") MultipartFile[] files) {
+			@RequestParam("file") MultipartFile[] files,
+			@RequestParam("hostingId") Integer hostingId,
+			@RequestParam("userId") Integer userId) {
+		hosting.setHostingId(hostingId);
+		hosting.setOwner(userService.getUser(userId));
 		hostingService.updateHosting(hosting);
 		imageService.addImages(files, hosting);
 		return "redirect:/profile";
@@ -103,6 +114,15 @@ public class HostingController {
 		System.out.println(hostingId);
 
 		return "hosting";
+	}
+	
+	private User getCurrentUser() {
+
+		Authentication authentication = SecurityContextHolder.getContext()
+				.getAuthentication();
+		String currentPrincipalName = authentication.getName();
+
+		return profileService.getUserByLogin(currentPrincipalName);
 	}
 
 }

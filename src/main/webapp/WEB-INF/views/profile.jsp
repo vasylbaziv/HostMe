@@ -213,7 +213,7 @@
                                             href=<c:url value="hosting?hostingId=${hosting.hostingId}&&userId=${user.userId}"/>>${hosting.address}</a></td>
                                         <td width="250px;"><div
                                                 class="tools">
-                                                <a href=<c:url value="hosting-editing?hostingId=${hosting.hostingId}"/>
+                                                <a href=<c:url value="hosting-editing?hostingId=${hosting.hostingId}&&userId=${user.userId}"/>
                                                     class="text-green"><spring:message
                                             code="label.edit" />&nbsp;&nbsp;<span
                                                     class="fa fa-edit"

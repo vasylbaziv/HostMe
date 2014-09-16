@@ -31,10 +31,17 @@ public class ImageServiceImpl implements ImageService {
 	@Override
 	@Transactional
 	public void addImages(MultipartFile[] files, Hosting hosting) {
-		for (int i = 0; i < files.length; i++) {
-			saveImage(files[i], buildPath(hosting));
-			addImage(files[i], hosting);
-		}
+		if(filesNotEmpty(files))
+			for (int i = 0; i < files.length; i++) {
+				saveImage(files[i], buildPath(hosting));
+				addImage(files[i], hosting);
+			}
+	}
+
+	private boolean filesNotEmpty(MultipartFile[] files) {
+		if(files[0].getOriginalFilename()=="")
+			return false;
+		else return true;
 	}
 
 	@Override
