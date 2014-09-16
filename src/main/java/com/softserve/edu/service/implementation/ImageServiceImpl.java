@@ -3,8 +3,10 @@ package com.softserve.edu.service.implementation;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.Iterator;
 
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -127,6 +129,11 @@ public class ImageServiceImpl implements ImageService {
 	public void deleteImagesForHosting(Hosting hosting) {
 		for (Image im : hosting.getImages()) {
 			imageDao.delete(im);
+		}
+		try {
+			FileUtils.deleteDirectory(new File(buildPath(hosting)));
+		} catch (IOException ex) {
+			ex.printStackTrace();
 		}
 	}
 }
