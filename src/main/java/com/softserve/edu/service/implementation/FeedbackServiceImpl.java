@@ -10,13 +10,18 @@ import com.softserve.edu.service.FeedbackService;
 
 @Service
 public class FeedbackServiceImpl implements FeedbackService {
+    
     @Autowired
-    private FeedbackDao feedbackDao;
+    FeedbackDao feedbackDao;
+    
+    @Transactional
+    public void createFeedback(Feedback feedback) {
+        feedbackDao.createFeedback(feedback);
+    }
     
     @Override
     @Transactional
-    public void createFeedback(Feedback feedback) {
-        feedbackDao.create(feedback);
+    public void deleteFeedbackById(Integer feedbackId) {
+        feedbackDao.deleteFeedbackById(feedbackId);
     }
-    
 }

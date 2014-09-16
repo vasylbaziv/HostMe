@@ -14,6 +14,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 @Table(name = "FEEDBACK", uniqueConstraints = { @UniqueConstraint(columnNames = "feedback_id") })
 public class Feedback {
@@ -29,6 +32,8 @@ public class Feedback {
 	@ManyToOne
 	@JoinColumn(name = "author_id", nullable = false)
 	private User author;
+	
+	
 	@OneToMany(mappedBy = "feedback", fetch = FetchType.LAZY, orphanRemoval = true)
 	private Set<Image> images = new HashSet<Image>();
 
