@@ -21,4 +21,7 @@ public interface ImageService {
 	String getUserAvatar(User user);
 
 	void deleteImagesForHosting(Hosting hosting);
+
+	String getImagePath();
+
 }

@@ -50,15 +50,13 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="col-md-8">
-								<c:if test="${not empty images}">
-										<c:forEach var="image" items="${images}">
-											<a href="${image}" data-lightbox="images">
-											<img src="${image}" class="img-rounded"
-											class="img-responsive"
-											width=180 height=120
-											style="margin: 1em 0em 0em 0em;"/></a>
-										</c:forEach>
-								</c:if>
+									<c:forEach var="image" items="${hosting.images}">
+										<a href="${image_url}${image.link}" data-lightbox="images">
+										<img src="${image_url}${image.link}" class="img-rounded"
+										class="img-responsive"
+										width=180 height=120
+										style="margin: 1em 0em 0em 0em;"/></a>
+									</c:forEach>
                                 <div class="row">
                                     <div class="col-md-3">
                                         <h4>

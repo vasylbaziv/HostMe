@@ -44,7 +44,6 @@ public class ProfileController {
 		model.addAttribute("age", profileService.calcAge(user));
 		model.addAttribute("birth", profileService.receiveBirthday(user.getBirthday()));
 		model.addAttribute("user", user);
-		model.addAttribute("avatar", imageService.getUserAvatar(user));
 		return "profile";
 
 	}

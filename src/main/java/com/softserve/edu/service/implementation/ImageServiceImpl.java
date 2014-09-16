@@ -31,7 +31,7 @@ public class ImageServiceImpl implements ImageService {
 	@Override
 	@Transactional
 	public void addImages(MultipartFile[] files, Hosting hosting) {
-		if(filesNotEmpty(files))
+		if (filesNotEmpty(files))
 			for (int i = 0; i < files.length; i++) {
 				saveImage(files[i], buildPath(hosting));
 				addImage(files[i], hosting);
@@ -39,9 +39,10 @@ public class ImageServiceImpl implements ImageService {
 	}
 
 	private boolean filesNotEmpty(MultipartFile[] files) {
-		if(files[0].getOriginalFilename()=="")
+		if (files[0].getOriginalFilename() == "")
 			return false;
-		else return true;
+		else
+			return true;
 	}
 
 	@Override
@@ -56,12 +57,18 @@ public class ImageServiceImpl implements ImageService {
 		image.setLink(PROFILE_PIC_PATH + "/" + user.getUserId() + "/"
 				+ multipartFile.getOriginalFilename());
 		image.setUser(user);
-		
+
 		for (Image im : user.getImages()) {
-			imageDao.delete(im);	
+			imageDao.delete(im);
 		}
-			
+
 		imageDao.create(image);
+	}
+
+	@Override
+	@Transactional
+	public String getImagePath() {
+		return systemPropertiesService.getImageUrl() + "/";
 	}
 
 	private String buildPath(User user) {
@@ -135,7 +142,7 @@ public class ImageServiceImpl implements ImageService {
 	@Override
 	public void deleteImagesForHosting(Hosting hosting) {
 		for (Image im : hosting.getImages()) {
-			imageDao.delete(im);	
+			imageDao.delete(im);
 		}
 	}
 }

@@ -164,12 +164,17 @@
 			<button type="submit" class="btn btn-primary"
 				style="margin-bottom: 30px; margin-top: 10px;">Create
 				hosting</button>
+			<a href="${pageContext.request.contextPath}/profile"><button type="button" class="btn" 
+			style="margin-bottom: 30px; margin-top: 10px;"
+			>Cancel</button>
+			</a>
 		</form:form>
 	
 		<script language="javascript">
 			printCountry("country");
 			printState('region', 0);
 		</script>
+		
 		<script language="javascript">
 			window.onload = function() {
 				maxAmount = 20;

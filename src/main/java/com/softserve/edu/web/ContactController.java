@@ -16,10 +16,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.softserve.edu.entity.Contact;
 import com.softserve.edu.entity.User;
 import com.softserve.edu.service.ContactService;
+import com.softserve.edu.service.ImageService;
 import com.softserve.edu.service.ProfileService;
 
 @Controller
-@SessionAttributes("loggedUser")
+@SessionAttributes({"loggedUser", "image_url"})
 public class ContactController {
     
     @Autowired
@@ -27,6 +28,9 @@ public class ContactController {
     
     @Autowired
     private ProfileService profileService;
+    
+    @Autowired
+    private ImageService imageService;
     
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String listContacts(Model map) {
@@ -41,6 +45,7 @@ public class ContactController {
             
             map.addAttribute("loggedUser",
                     profileService.getUserByLogin(currentPrincipalName));
+            map.addAttribute("image_url", imageService.getImagePath());
             return "redirect:/profile";
         } else {
             return "index";

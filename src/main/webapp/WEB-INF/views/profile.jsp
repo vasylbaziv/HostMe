@@ -32,11 +32,11 @@
                                 <h4>
                                     <strong>${user.firstName}&nbsp;${user.lastName}</strong>
                                 </h4>
-<%-- 										<c:forEach var="image" items="${user.images}"> --%>
-<%-- 											<a href="${image}" data-lightbox="images"> --%>
-<%-- 											<img src="${image}"/></a> --%>
-<%-- 										</c:forEach> --%>
-                                <img src="${avatar}"
+										<c:forEach var="image" items="${user.images}">
+											<a href="${image_url}${image.link}" data-lightbox="images">
+											<img src="${image_url}${image.link}"/></a>
+										</c:forEach>
+                                <img src="${profile_image_url}${avatar}"
                                     style="width: 200px; margin-top: 0.5em; margin-bottom: 0.5em"></img>
                             </div>
 

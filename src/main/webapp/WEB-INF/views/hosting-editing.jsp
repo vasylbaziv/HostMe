@@ -164,12 +164,21 @@
 			<input type="hidden" value="${hosting.hostingId}" name="hostingId" />
 			<input type="hidden" value="${userId}" name="userId" />
 			<button type="submit" class="btn btn-primary"
-				style="margin-bottom: 30px; margin-top: 10px;">Save</button>
+				style="margin-bottom: 30px; margin-top: 10px;">Save changes</button>
+			<a href="${pageContext.request.contextPath}/profile"><button type="button" class="btn" 
+			style="margin-bottom: 30px; margin-top: 10px;"
+			>Cancel</button>
+			</a>
 		</form:form>
 	
 		<script language="javascript">
 			printCountry("country");
-			printState('region', 0);
+			$(function() {
+			    $("#country").val("${hosting.country}");
+			    printState('region', $("#country option:selected").index());
+			    $("#region").val("${hosting.region}")
+			});
+			
 		</script>
 		<script language="javascript">
 			window.onload = function() {
