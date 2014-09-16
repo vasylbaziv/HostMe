@@ -2,6 +2,8 @@ package com.softserve.edu.service.implementation;
 
 import com.softserve.edu.entity.User;
 import com.softserve.edu.service.RegistrationSendMail;
+import com.softserve.edu.service.SystemPropertiesService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailParseException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -14,6 +16,9 @@ import javax.mail.internet.MimeMessage;
  * Created by john_darkwood on 10.09.2014.
  */
 public class RegistrationSendMailImpl implements RegistrationSendMail {
+    
+    @Autowired
+    SystemPropertiesService systemPropertiesService;
 
     private JavaMailSender mailSender;
     private SimpleMailMessage simpleMailMessage;
@@ -28,6 +33,7 @@ public class RegistrationSendMailImpl implements RegistrationSendMail {
 
     @Override
     public void sendWelcomeMail(User user) {
+        String url = systemPropertiesService.getBaseUrl();
         MimeMessage message = mailSender.createMimeMessage();
         try{
             MimeMessageHelper helper = new MimeMessageHelper(message, true);
@@ -38,7 +44,7 @@ public class RegistrationSendMailImpl implements RegistrationSendMail {
             String html = "Thank you " + user.getFirstName()
                     + " for joining us!"
                     + "<br> Please, activate your account with the following link: <br>"
-                    + "<a href=\"http://localhost:8080/hostme/registration-confirm?id="
+                    + "<a href=\"" + url +
                     + user.getUserId() + "\">Activation Link</a>";
             helper.setText("UTF-8", html);
         } catch (MessagingException e) {
