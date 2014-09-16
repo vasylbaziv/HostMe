@@ -19,10 +19,10 @@
             <div class="user-panel">
 
                 <div class="pull-left image">
-
-                    <img src="resources/images/user-avatar.jpg"
-                        class="img-circle" alt="User Image">
-
+                
+                <c:forEach var="image" items="${loggedUser.images}">
+                                            <img src="http://localhost:8079/${image.link}" class="img-circle" alt="User Image"/>
+                                        </c:forEach>
                 </div>
 
                 <div class="pull-left info">
