@@ -35,38 +35,40 @@
                     </div>
                     <div class="modal-body">
                         <c:if test="${param.success eq true }">
-                        	<div class="row">
-                            		<div class="callout callout-info">Your account has been
-                                	activated successfully!
-                                	Congrats!Now you must log in!
-                            		</div>
-                                		<%--<h4 class="success_registration">Your account has been--%>
-                                		<%--activated successfully!--%>
-                        	</div>
-                    	</c:if>
-                    	<c:if test="${param.error eq true }">
-                        	<div class="row">
-                            	<div class="col-md-6 col-md-offset-2">
-                                	<h4 class="error">Wrong login or password! Try again!</h4>
-                            	</div>
-                        	</div>
-                    	</c:if>
-                    	<c:if test="${param.registration eq true }">
-                        	<div class="callout callout-warning" id=" alert">We send you the mail with the activation
-                            	link.
-                            	Please, check your mail and activate your account!
-                        	</div>
-                    	</c:if>
-                        <c:if test="${param.logout eq true }">
+                            <div class="row">
+                                <div class="callout callout-info">Your
+                                    account has been activated
+                                    successfully! Congrats!Now you must
+                                    log in!</div>
+                                <%--<h4 class="success_registration">Your account has been--%>
+                                <%--activated successfully!--%>
+                            </div>
+                        </c:if>
+                        <c:if test="${param.error eq true }">
                             <div class="row">
                                 <div class="col-md-6 col-md-offset-2">
-                                    <h4 class="error">You have
-                                        logged out! To veiw content
-                                        please log in!</h4>
+                                    <h4 class="error">Wrong login
+                                        or password! Try again!</h4>
                                 </div>
                             </div>
                         </c:if>
+                        <c:if test="${param.registration eq true }">
+                            <div class="callout callout-warning"
+                                id=" alert">We send you the mail
+                                with the activation link. Please, check
+                                your mail and activate your account!</div>
+                        </c:if>
 
+                        <c:if test="${param.logout eq true }">
+                            <div class="row">
+                                <div class="col-md-6"
+                                    style="margin-left: 1em; margin-bottom:1em;">
+                                    <label class="error"><code>You
+                                            have logged out. Please, log
+                                            in!</code></label>
+                                </div>
+                            </div>
+                        </c:if>
 
                         <div class="body bg-gray">
                             <div class="form-group">

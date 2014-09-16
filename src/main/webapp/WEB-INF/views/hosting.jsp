@@ -172,7 +172,7 @@
                             <div class="col-md-4"
                                 style="margin-top: 1em;">
 
-                                <div style="padding-bottom: 0.5em">
+                                <div style="padding-bottom: 0.5em" class="callout callout-warning">
                                     <input id="disabledDate"
                                         type="hidden"
                                         value="${disabledDate}" /> <input
