@@ -36,8 +36,6 @@
 											<a href="${image_url}${image.link}" data-lightbox="images">
 											<img src="${image_url}${image.link}"/></a>
 										</c:forEach>
-                                <img src="${profile_image_url}${avatar}"
-                                    style="width: 200px; margin-top: 0.5em; margin-bottom: 0.5em"></img>
                             </div>
 
                             <div class="row col-md-12">
