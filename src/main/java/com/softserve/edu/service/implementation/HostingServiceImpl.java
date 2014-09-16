@@ -17,6 +17,7 @@ import com.softserve.edu.dao.UserDao;
 import com.softserve.edu.entity.Hosting;
 import com.softserve.edu.entity.Request;
 import com.softserve.edu.service.HostingService;
+import com.softserve.edu.service.ImageService;
 
 @Service
 public class HostingServiceImpl implements HostingService {
@@ -29,6 +30,9 @@ public class HostingServiceImpl implements HostingService {
 	
 	@Autowired
         private RequestDao requestDao;
+	
+	@Autowired
+	private ImageService imageService;
 
 	@Override
 	@Transactional
@@ -77,8 +81,9 @@ public class HostingServiceImpl implements HostingService {
 	@Override
 	@Transactional
 	public void deleteHosting(Integer hostingId) {
-		hostingDao.delete(hostingDao.read(hostingId));
-		
+		Hosting hosting = hostingDao.read(hostingId);
+		hostingDao.delete(hosting);
+		imageService.deleteImagesForHosting(hosting);
 	}
 
 }

@@ -19,4 +19,6 @@ public interface ImageService {
 	void addImages(MultipartFile file, User user);
 
 	String getUserAvatar(User user);
+
+	void deleteImagesForHosting(Hosting hosting);
 }

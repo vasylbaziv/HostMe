@@ -131,4 +131,11 @@ public class ImageServiceImpl implements ImageService {
 			return systemPropertiesService.getImageUrl() + "/"
 					+ PROFILE_PIC_PATH + "/" + NO_AVATAR;
 	}
+
+	@Override
+	public void deleteImagesForHosting(Hosting hosting) {
+		for (Image im : hosting.getImages()) {
+			imageDao.delete(im);	
+		}
+	}
 }
