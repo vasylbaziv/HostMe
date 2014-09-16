@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.softserve.edu.dao.HostingDao;
-import com.softserve.edu.entity.Hosting;
 import com.softserve.edu.service.SearchService;
 import com.softserve.edu.utils.Search;
 
@@ -19,7 +18,7 @@ public class SearchServiceImpl implements SearchService {
 
 	@Override
 	@Transactional
-	public List<Hosting> getList(List<Search> listSearch, Integer page) {
+	public List<Object> getList(List<Search> listSearch, Integer page) {
 		return hostingDao.getList(listSearch, page);
 	}
 
