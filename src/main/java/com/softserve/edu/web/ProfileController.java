@@ -18,9 +18,10 @@ public class ProfileController {
 
 	@Autowired
 	private ProfileService profileService;
-
+	
 	@Autowired
 	private UserService userService;
+	
 	@Autowired
 	private ImageService imageService;
 
@@ -41,7 +42,7 @@ public class ProfileController {
 		// userService.initilizeUserLanguages(user);
 
 		model.addAttribute("age", profileService.calcAge(user));
-		model.addAttribute("birth", profileService.receiveBirthday(user));
+		model.addAttribute("birth", profileService.receiveBirthday(user.getBirthday()));
 		model.addAttribute("user", user);
 		model.addAttribute("avatar", imageService.getUserAvatar(user));
 		return "profile";

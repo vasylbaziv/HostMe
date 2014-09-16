@@ -1,5 +1,6 @@
 package com.softserve.edu.service.implementation;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -47,10 +48,26 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public String receiveBirthday(User user) {
+	public String receiveBirthday(Calendar birth) {
 
-		return new SimpleDateFormat("dd.MM.yyyy").format(user.getBirthday()
-				.getTime());
+		return new SimpleDateFormat("MM/dd/yyyy").format(birth.getTime());
 	}
 
+	
+	@Override
+	public Calendar birthToDateFormat(String birth) {
+		
+		Calendar birthday = null;
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			try {
+				sdf.getCalendar().setTime(new SimpleDateFormat("MM/dd/yyyy").parse(birth));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			birthday = sdf.getCalendar();
+
+		return birthday;
+	}
+
+	
 }

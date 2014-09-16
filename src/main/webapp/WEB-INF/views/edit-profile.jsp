@@ -22,10 +22,6 @@
 <body>
 	<div class="wrapper row-offcanvas row-offcanvas-left"
 		style="min-height: 682px;">
-		<!-- Left side column. contains the logo and sidebar -->
-		<aside class="left-side sidebar-offcanvas" style="min-height: 682px;">
-		<!-- sidebar: style can be found in sidebar.less --> </aside>
-
 
 		<aside class="right-side"> <!-- Content Header (Page header) -->
 
@@ -118,7 +114,6 @@
 									<form:input path="email" 
 												class="form-control" 
 												id="email"
-												value="${user.email}"
 												name="email" />
 								</div>
 
@@ -136,15 +131,15 @@
 
 
 								<div class="form-group">
-<!--                 	                <div> -->
-<!--                 	                <label for="language">Date of Birth</label>  -->
-<%--             	                        <form:input path="birthday" --%>
-<%--                 	                                type="text" --%>
-<%--                     	                            class="datepicker form-control" --%>
-<%--                         	                        id="dateOfBirth" --%>
-<%--                             	                    placeholder="MM/dd/yyyy" --%>
-<%--                                 	                pattern="MM/dd/yyyy" /> --%>
-<!--                     	            </div> -->
+                	                <div>
+                	                <label>Date of Birth</label> 
+            	                        <input 
+                 	                          type="text" 
+                 	                          value="${bd}"
+                     	                      class="datepicker form-control" 
+                         	                  id="dateOfBirth" 
+                                              name="birth"/> 
+                    	            </div>
                                 </div>
 
 
@@ -305,17 +300,9 @@ $(document).ready(function() {
 	}  
 </script>
 
-  <script type="text/javascript">
+<script type="text/javascript">
 					$('.datepicker').datepicker();
-					(function($) {
-						$(
-								'input[type="checkbox"].flat-red, input[type="radio"].flat-red')
-								.iCheck({
-									checkboxClass : 'icheckbox_flat-red',
-									radioClass : 'iradio_flat-red'
-								});
-					});
-				</script>
+</script>
 
 
 

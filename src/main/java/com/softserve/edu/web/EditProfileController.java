@@ -48,9 +48,13 @@ public class EditProfileController {
 	public String editProfileShow(Model model) {
 
 		User user = getCurrentUser();
-
+		
+		String bd = profileService.receiveBirthday(user.getBirthday());
+		
+		
+		
 		model.addAttribute("user", user);
-
+		model.addAttribute("bd", bd);
 		return "edit-profile";
 	}
 
@@ -103,7 +107,9 @@ public class EditProfileController {
 
 	@RequestMapping(value = "/edited-profile", method = RequestMethod.POST)
 	public String editProfileShow(@ModelAttribute("user") User editedUser,
-			@RequestParam("file") MultipartFile file) {
+			@RequestParam("file") MultipartFile file,
+			@RequestParam("birth") String birth) {
+
 		User user = getCurrentUser();
 
 		user.setFirstName(editedUser.getFirstName());
@@ -112,8 +118,10 @@ public class EditProfileController {
 		user.setHobby(editedUser.getHobby());
 		user.setDescription(editedUser.getDescription());
 		user.setEmail(editedUser.getEmail());
+		user.setBirthday(profileService.birthToDateFormat(birth));
 
 		userService.updateUser(user);
+
 		if (file.getSize() != 0) {
 			imageService.addImages(file, user);
 		}
