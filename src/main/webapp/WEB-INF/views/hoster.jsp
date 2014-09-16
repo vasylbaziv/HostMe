@@ -25,49 +25,134 @@
                 <div class="box-body">
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-3">
                             <div class="row col-md-12"
                                 style="padding-bottom: 5px">
                                 <h4>
                                     <strong>${user.firstName}&nbsp;${user.lastName}</strong>
                                 </h4>
+                                <c:forEach var="image"
+                                    items="${user.images}">
+                                    <a href="${image_url}${image.link}"
+                                        data-lightbox="images"> <img
+                                        src="${image_url}${image.link}" style="width:200px; height:200px"/></a>
+                                </c:forEach>
                             </div>
+                        </div>
 
-                            <div class="row" style="padding-bottom: 5px">
-                                <div class="col-md-2"
-                                    style="padding-right: 0em;">
-                                    <spring:message
-                                        code="label.languages" />
-                                    :
+                        <div class="col-md-4" style="padding-left: 0em;">
+                            <div class="panel box box-info col-md-12"
+                                style="margin-top: 3em; padding-left: 0.3em;">
+                                <div class="box-header">
+                                    <h4 class="box-title"
+                                        style="padding-top: 0.8em; padding-bottom: 0em;">
+                                        <spring:message
+                                            code="label.generalInformation" />
+                                        :
+                                    </h4>
                                 </div>
-                                <div class="col-md-10 selected">
-                                    <c:forEach items="${user.languages}"
-                                        var="languages" varStatus="loop">
 
+                                <div id="collapseOne"
+                                    class="panel-collapse in"
+                                    style="height: auto;">
+                                    <div class="box-body"
+                                        style="padding-bottom: 0.5em; padding-left: 1.5em;">
+                                        <div class="row"
+                                            style="padding-top: 0.3em; padding-bottom: 0.3em">
+                                            <div class="col-md-4"
+                                                style="padding-right: 0em;">
+                                                <spring:message
+                                                    code="label.loginNoun" />
+                                                :
+                                            </div>
+                                            <div
+                                                class="col-md-8 selected">${user.login}</div>
+                                        </div>
 
-                                        <c:out
-                                            value="${languages.language}">
-                                        </c:out>
-                                        <c:if test="${!loop.last}">, </c:if>
+                                        <div class="row"
+                                            style="padding-bottom: 0.3em">
+                                            <div class="col-md-4"
+                                                style="padding-right: 0em;">
+                                                <spring:message
+                                                    code="label.gender" />
+                                                :
+                                            </div>
+                                            <div
+                                                class="col-md-8 selected">
+                                                <c:out
+                                                    value="${user.gender == 'FEMALE' ? 'female': 'male'}" />
+                                            </div>
+                                        </div>
 
-                                    </c:forEach>
+                                        <div class="row"
+                                            style="padding-bottom: 0.3em">
+                                            <div class="col-md-4"
+                                                style="padding-right: 0em;">
+                                                <spring:message
+                                                    code="label.languages" />
+                                                :
+                                            </div>
+                                            <div
+                                                class="col-md-8 selected">
+                                                <c:forEach
+                                                    items="${user.languages}"
+                                                    var="languages"
+                                                    varStatus="loop">
+
+                                                    <c:out
+                                                        value="${languages}">
+                                                    </c:out>
+                                                    <c:if
+                                                        test="${!loop.last}">, </c:if>
+
+                                                </c:forEach>
+                                            </div>
+                                        </div>
+
+                                        <div class="row"
+                                            style="padding-bottom: 0.3em">
+                                            <div class="col-md-4"
+                                                style="padding-right: 0em;">
+                                                <spring:message
+                                                    code="label.email" />
+                                                :
+                                            </div>
+                                            <div
+                                                class="col-md-8 selected">${user.email}</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="row" style="padding-bottom: 5px">
-                                <div class="col-md-2"
-                                    style="padding-right: 0em;">
-                                    <spring:message code="label.email" />
-                                    :
+                        <div class="col-md-5">
+                            <div class="row col-md-12"
+                                style="padding-top: 3em;">
+
+                                <div class="callout callout-info">
+                                    <h4>
+                                        <spring:message
+                                            code="label.personalDescription" />
+                                        :
+                                    </h4>
+
+                                    <p>${user.description}</p>
                                 </div>
-                                <div class="col-md-10 selected">${user.email}</div>
-                            </div>
+                                <div class="callout callout-warning">
+                                    <h4>
+                                        <spring:message
+                                            code="label.hobby" />
+                                        :
+                                    </h4>
+                                    <p>${user.hobby}</p>
+                                </div>
 
+                            </div>
                         </div>
 
                     </div>
 
-                    <div class="row">
+                    <div class="row" style="margin-top:1.5em">
                         <h4 class="col-md-8">
                             <spring:message
                                 code="label.hostingAddresses" />

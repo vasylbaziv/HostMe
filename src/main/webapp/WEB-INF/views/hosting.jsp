@@ -54,8 +54,7 @@
 										<a href="${image_url}${image.link}" data-lightbox="images">
 										<img src="${image_url}${image.link}" class="img-rounded"
 										class="img-responsive"
-										width=180 height=120
-										style="margin: 1em 0em 0em 0em;"/></a>
+										style="width:200px; margin: 1em 0.5em 0em 0em;"/></a>
 									</c:forEach>
                                 <div class="row">
                                     <div class="col-md-3">
