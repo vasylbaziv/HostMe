@@ -27,14 +27,22 @@
             <ul class="nav navbar-nav">
                 <!-- Messages: style can be found in dropdown.less-->
 
-                <li><a href="#"><spring:message
-                            code="label.title" /></a></li>
-                <li><a id="en" onclick="setLanguage('en');"
-                    href="#">En</a></li>
-                <li><a id="de" onclick="setLanguage('de');"
-                    href="#">De</a></li>
-                <li><a id="ua" onclick="setLanguage('ua');"
-                    href="#">Ua</a></li>
+                <li class="dropdown"><a class="dropdown-toggle"
+                    data-toggle="dropdown" href="#"><spring:message
+                            code="label.title" /><span class="caret"></span></a>
+
+                    <ul class="dropdown-menu">
+                        <li role="presentation"><a role="menuitem"
+                            tabindex="-1" id="en"
+                            onclick="setLanguage('en');" href="#">En</a></li>
+                        <li role="presentation"><a role="menuitem"
+                            tabindex="-1" id="de"
+                            onclick="setLanguage('de');" href="#">De</a>
+                        </li>
+                        <li role="presentation"><a role="menuitem"
+                            tabindex="-1" id="ua"
+                            onclick="setLanguage('ua');" href="#">Ua</a></li>
+                    </ul></li>
 
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu"><a
