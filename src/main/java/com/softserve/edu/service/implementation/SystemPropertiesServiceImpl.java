@@ -28,12 +28,18 @@ public class SystemPropertiesServiceImpl implements SystemPropertiesService {
 	@Override
     	@Transactional
     	public String getMailPass() {
-        	return systemPropertiesDao.getMailProp(PASSWORD);
+        	return systemPropertiesDao.getPropeties(EMAIL_PASS_SEND);
     	}
 
     	@Override
     	@Transactional
     	public String getMailUsername() {
-        	return systemPropertiesDao.getMailProp(USERNAME);
+        	return systemPropertiesDao.getPropeties(EMAIL_LOGIN);
+    	}
+    	
+    	@Override
+    	@Transactional
+    	public String getBaseUrl() {
+        	return systemPropertiesDao.getPropeties(BASE_SEND_URL);
     	}
 }
