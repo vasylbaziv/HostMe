@@ -176,12 +176,17 @@
 			$(function() {
 			    $("#country").val("${hosting.country}");
 			    printState('region', $("#country option:selected").index());
-			    $("#region").val("${hosting.region}")
+			    $("#region").val("${hosting.region}");
+			});
+			$(function() {
+				populateMinMax();
+			    $("#min").val("${hosting. minNumberOfGuests}");
+			    $("#max").val("${hosting. maxNumberOfGuests}");
 			});
 			
 		</script>
 		<script language="javascript">
-			window.onload = function() {
+			function populateMinMax() {
 				maxAmount = 20;
 				minselect = document.getElementById("min"),
 						maxselect = document.getElementById("max")
@@ -194,7 +199,7 @@
 					maxoption.innerHTML = maxAmount - i + 1;
 					maxselect.appendChild(maxoption);
 				}
-			};
+			}
 			function removeOptions(selectbox) {
 				var i;
 				for (i = selectbox.options.length - 1; i >= 0; i--) {

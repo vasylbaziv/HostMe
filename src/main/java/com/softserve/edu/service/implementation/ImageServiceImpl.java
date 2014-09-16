@@ -3,9 +3,7 @@ package com.softserve.edu.service.implementation;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -112,20 +110,6 @@ public class ImageServiceImpl implements ImageService {
 	private String buildPath(Hosting hosting) {
 		return systemPropertiesService.getImagePath() + File.separator
 				+ hosting.getHostingId();
-	}
-
-	private String buildUrl(Image image) {
-		return systemPropertiesService.getImageUrl() + "/" + image.getLink();
-	}
-
-	@Override
-	public List<String> getImagesForHosting(Hosting hosting) {
-		List<String> images = new ArrayList<String>();
-		Iterator<Image> hostingImagesItr = hosting.getImages().iterator();
-		while (hostingImagesItr.hasNext()) {
-			images.add(buildUrl(hostingImagesItr.next()));
-		}
-		return images;
 	}
 
 	@Override

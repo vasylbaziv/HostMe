@@ -13,8 +13,6 @@ public interface ImageService {
 	String NO_AVATAR = "noavatar/noavatar.png";
 	
 	void addImages(MultipartFile[] files, Hosting hosting);
-	
-	List<String> getImagesForHosting(Hosting hosting);
 
 	void addImages(MultipartFile file, User user);
 
