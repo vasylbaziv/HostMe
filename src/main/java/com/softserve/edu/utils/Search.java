@@ -10,7 +10,7 @@ public class Search {
 
     //Constructors
 
-    public Search() {
+    private Search() {
 
     }
 
