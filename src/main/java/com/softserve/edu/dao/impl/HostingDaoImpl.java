@@ -2,11 +2,11 @@ package com.softserve.edu.dao.impl;
 
 import java.util.List;
 import com.softserve.edu.entity.Gender;
-import org.hibernate.Criteria;
-import org.hibernate.FetchMode;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
+import org.hibernate.criterion.ProjectionList;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -28,11 +28,22 @@ public class HostingDaoImpl extends AbstractGenericDao<Hosting, Integer> impleme
     /*
     Get list of the hostels that are required criterias
      */
-    public List<Hosting> getList(List<Search> listSearch, Integer page) {
+    public List<Object> getList(List<Search> listSearch, Integer page) {
         Session session = sessionFactory.getCurrentSession();
-        Criteria cr = session.createCriteria(Hosting.class, "hosting").setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
-        cr.setFetchMode("hosting.user", FetchMode.JOIN);
-        cr.setFetchMode("hosting.request", FetchMode.JOIN);
+        ProjectionList projs = Projections.projectionList();
+        projs.add(Projections.property("h.hostingId"), "hostingId")
+            .add(Projections.property("h.address"), "address")
+            .add(Projections.property("h.country"), "country")
+            .add(Projections.property("h.region"), "region")
+            .add(Projections.property("h.city"), "city")
+            .add(Projections.property("u.firstName"), "firstName")
+            .add(Projections.property("u.lastName"), "lastName")
+            .add(Projections.property("u.userId"), "userId");
+
+        Criteria cr = session.createCriteria(Hosting.class, "h")
+                .createAlias("h.owner", "u")
+                .setProjection(projs)
+                .setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
 
         cr.setMaxResults(ROWS);
         cr.setFirstResult(page * ROWS);
@@ -100,16 +111,6 @@ public class HostingDaoImpl extends AbstractGenericDao<Hosting, Integer> impleme
             if (parameter.getName().equals("gender")) {
                 cr.add(Restrictions.eq(parameter.getName(), parsingGender(parameter.getValue())));
             }
-//            if (parameter.getName().equals("begin_date") && !parameter.getValue().isEmpty()) {
-//                Calendar cal = Calendar.getInstance();
-//                cal.setTimeInMillis(Integer.parseInt(parameter.getValue()));
-//                cr.add(Restrictions.gt(parameter.getName(), cal));
-//            }
-//            if (parameter.getName().equals("end_date") && !parameter.getValue().isEmpty()) {
-//                Calendar cal = Calendar.getInstance();
-//                cal.setTimeInMillis(Integer.parseInt(parameter.getValue()));
-//                cr.add(Restrictions.lt(parameter.getName(), cal));
-//            }
         }
         return cr;
     }
