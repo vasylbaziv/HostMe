@@ -5,8 +5,10 @@ public interface SystemPropertiesService {
 	public static final String IMAGE_URL_PROP = "IMAGE_URL";
 	public static final String PASSWORD = "password";
     	public static final String USERNAME = "username";
+    	public static final String BASE_SEND_URL = "url";
 	String getImagePath();
 	String getImageUrl();
 	public String getMailPass();
     	public String getMailUsername();
+    	public String getBaseUrl();
 }
