@@ -51,7 +51,8 @@
 						action="edited-profile"
 						name ="form1"
 						onsubmit="return ValidateEmail(document.form1.email);"
-						enctype="multipart/form-data">
+						enctype="multipart/form-data"
+						id="edit-profile-form">
 
 						<div class="box-body">
 							<div class="form-group">
@@ -277,28 +278,25 @@ $(document).ready(function() {
 										}
 									}
 							});
+					
+					$("#edit-profile-form").validate(
+							{
+									rules : {
+										email : {
+											required : true,
+											email : true
+										}
+									},
+									messages : {
+										email : {
+											required: "This field is required!",
+											email : "Not correct email!"
+										}
+									}
+							});
 });
 </script>
 
-
-<!-- validate email -->
-<script>
-	function ValidateEmail(inputText)  
-		{  
-		var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;  
-			if(inputText.value.match(mailformat))  
-			{  
-				document.form1.email.focus();  
-				return true;  
-			}  
-			else  
-			{  
-				alert("You have entered an invalid email address!");  
-				document.form1.email.focus();  
-			return false;  
-		}  
-	}  
-</script>
 
 <script type="text/javascript">
 					$('.datepicker').datepicker();
