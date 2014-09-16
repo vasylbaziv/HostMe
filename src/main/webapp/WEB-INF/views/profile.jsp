@@ -32,7 +32,11 @@
                                 <h4>
                                     <strong>${user.firstName}&nbsp;${user.lastName}</strong>
                                 </h4>
-                                <img src="resources/images/nina.jpg"
+<%-- 										<c:forEach var="image" items="${user.images}"> --%>
+<%-- 											<a href="${image}" data-lightbox="images"> --%>
+<%-- 											<img src="${image}"/></a> --%>
+<%-- 										</c:forEach> --%>
+                                <img src="${avatar}"
                                     style="width: 200px; margin-top: 0.5em; margin-bottom: 0.5em"></img>
                             </div>
 
@@ -124,7 +128,7 @@
                                                     varStatus="loop">
 
                                                     <c:out
-                                                        value="${languages.language}">
+                                                        value="${languages}">
                                                     </c:out>
                                                     <c:if
                                                         test="${!loop.last}">, </c:if>
@@ -209,7 +213,7 @@
                                             href=<c:url value="hosting?hostingId=${hosting.hostingId}&&userId=${user.userId}"/>>${hosting.address}</a></td>
                                         <td width="250px;"><div
                                                 class="tools">
-                                                <a href="#"
+                                                <a href=<c:url value="hosting-editing?hostingId=${hosting.hostingId}"/>
                                                     class="text-green"><spring:message
                                             code="label.edit" />&nbsp;&nbsp;<span
                                                     class="fa fa-edit"

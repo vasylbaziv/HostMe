@@ -56,6 +56,9 @@ public class User {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "gender", nullable = false)
 	private Gender gender;
+	@Enumerated(EnumType.STRING)
+ 	@Column(name = "user_state", nullable = false)
+ 	private UserState userState;
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "birth_date")
 	private Calendar birthday;
@@ -86,7 +89,7 @@ public class User {
 	 * Contains images uploaded by this user
 	 */
 	@JsonIgnore 
-	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = true)
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, orphanRemoval = true)
 	private Set<Image> images = new HashSet<Image>();
 	/**
 	 * Contains hosting apartments owned by this user
@@ -116,6 +119,14 @@ public class User {
 		this.lastName = lastName;
 		this.gender = gender;
 	}
+	
+	public UserState getUserState() {
+        	return userState;
+    	}
+
+    	public void setUserState(UserState userState) {
+        	this.userState = userState;
+    	}
 
 	public Integer getUserId() {
 		return userId;
@@ -214,6 +225,11 @@ public class User {
 	}
 
 	public List<Language> getLanguages() {
+		
+		HashSet <Language> langs = new HashSet<Language>(languages);
+	    languages.clear();
+	    languages.addAll(langs);
+		
 		return languages;
 	}
 

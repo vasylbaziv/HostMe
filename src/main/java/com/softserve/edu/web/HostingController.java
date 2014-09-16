@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,6 +51,22 @@ public class HostingController {
 		return "redirect:/profile";
 	}
 
+	@RequestMapping(value = "/hosting-editing", method = RequestMethod.GET)
+	public String hostingEditingShow(
+			@RequestParam(value = "hostingId") Integer hostingId, Model model) {
+		Hosting hosting = hostingService.getHosting(hostingId);
+		model.addAttribute("hosting", hosting);
+		return "hosting-editing";
+	}
+
+	@RequestMapping(value = "/hosting-editing", method = RequestMethod.POST)
+	public String editHosting(@ModelAttribute("hosting") Hosting hosting,
+			@RequestParam("file") MultipartFile[] files) {
+		hostingService.updateHosting(hosting);
+		imageService.addImages(files, hosting);
+		return "redirect:/profile";
+	}
+
 	@RequestMapping(value = "/hosting", method = RequestMethod.GET)
 	public String hostelShow(@RequestParam(value = "hostingId") int hostingId,
 			Model model) {
@@ -59,9 +76,7 @@ public class HostingController {
 		model.addAttribute("request", request);
 		Feedback feedback = new Feedback();
 		model.addAttribute("feedback", feedback);
-		model.addAttribute("images", imageService.getImagesForHosting(hosting)); // here we add List with image urls
-
-
+		model.addAttribute("images", imageService.getImagesForHosting(hosting));
 		// steps to check the hosting availability
 
 		/*
@@ -83,7 +98,7 @@ public class HostingController {
 		String nonAvailableDatesJson = new Gson().toJson(hostingService
 				.getNonAvailableDates(hostingId));
 		model.addAttribute("nonAvailableDatesJson", nonAvailableDatesJson);
-		
+
 		// model.addAttribute("disabledDate",hostingService.getNonAvailableDates(hostingId));
 		System.out.println(hostingId);
 

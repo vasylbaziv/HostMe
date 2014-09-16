@@ -46,7 +46,7 @@ public class HostingServiceImpl implements HostingService {
 	}
 	
 	@Override
-        @Transactional
+    @Transactional
 	public ArrayList<String> getNonAvailableDates(int hostingId) {
 	    List<Request> requests = requestDao.getAllApprovedRequestsByHostingId(hostingId);
 	    
@@ -66,6 +66,12 @@ public class HostingServiceImpl implements HostingService {
             }
 	    
 	    return nonAvailableDates;
+	}
+
+	@Override
+	@Transactional
+	public void updateHosting(Hosting hosting) {
+		hostingDao.update(hosting);
 	}
 
 }

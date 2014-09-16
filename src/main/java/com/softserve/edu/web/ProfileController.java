@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.softserve.edu.entity.User;
+import com.softserve.edu.service.ImageService;
 import com.softserve.edu.service.ProfileService;
 import com.softserve.edu.service.UserService;
 
@@ -20,6 +21,8 @@ public class ProfileController {
 
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private ImageService imageService;
 
 	private User getCurrentUser() {
 
@@ -40,7 +43,7 @@ public class ProfileController {
 		model.addAttribute("age", profileService.calcAge(user));
 		model.addAttribute("birth", profileService.receiveBirthday(user));
 		model.addAttribute("user", user);
-
+		model.addAttribute("avatar", imageService.getUserAvatar(user));
 		return "profile";
 
 	}

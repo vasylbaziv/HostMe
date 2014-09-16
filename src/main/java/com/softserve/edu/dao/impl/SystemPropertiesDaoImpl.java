@@ -6,6 +6,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -33,4 +34,15 @@ public class SystemPropertiesDaoImpl extends
 		List<SystemProperties> path = cr.list();
 		return path;
 	}
+	
+	@Override
+    	public String getMailProp(String value){
+        	Session session = getSessionFactory().getCurrentSession();
+ 		Criteria cr = session.createCriteria(SystemProperties.class);
+        	cr.setProjection(Projections.property("value"));
+        	cr.add(Restrictions.eq("propKey", value));
+        	String password = (String) cr.uniqueResult();
+        	return password;
+    }
+    
 }

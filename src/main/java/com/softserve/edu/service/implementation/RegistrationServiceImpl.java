@@ -14,11 +14,12 @@ import com.softserve.edu.entity.Gender;
 import com.softserve.edu.entity.Role;
 import com.softserve.edu.entity.User;
 import com.softserve.edu.entity.UserRole;
+import com.softserve.edu.entity.UserState;
 import com.softserve.edu.service.RegistrationService;
 
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
-	private final int USER = 1;
+	private final int USERINACTIVE = 3;
 
 	@Autowired
 	private UserDao userDao;
@@ -55,14 +56,15 @@ public class RegistrationServiceImpl implements RegistrationService {
 
 	@Override
 	@Transactional
-	public void register(User user, String date, String gender) {
+	public void register(User user, String date, String gender, UserState userState) {
 		user.setGender(getGender(gender));
 		user.setBirthday(toDateFormat(date));
 		Role registeredUser = new Role();
-		registeredUser.setId(USER);
+		registeredUser.setId(USERINACTIVE);
 		user.setRole(registeredUser);
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setPassword(encoder.encode(user.getPassword()));
+		user.setUserState(userState);
 		register(user);
 
 	}
@@ -92,5 +94,11 @@ public class RegistrationServiceImpl implements RegistrationService {
 		}
 		return user;
 	}
+	
+	@Override
+    	@Transactional
+    	public void activateAccount(Integer userId) {
+        	userDao.activateAccount(userId);
+    	}
 
 }

@@ -24,4 +24,16 @@ public class SystemPropertiesServiceImpl implements SystemPropertiesService {
 	public String getImageUrl() {
 		return systemPropertiesDao.getPropeties(IMAGE_URL_PROP).get(0).getValue();
 	}
+	
+	@Override
+    	@Transactional
+    	public String getMailPass() {
+        	return systemPropertiesDao.getMailProp(PASSWORD);
+    	}
+
+    	@Override
+    	@Transactional
+    	public String getMailUsername() {
+        	return systemPropertiesDao.getMailProp(USERNAME);
+    	}
 }
