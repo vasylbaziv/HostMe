@@ -35,7 +35,7 @@
 									<c:forEach var="image"
                                   			  items="${user.images}">
                                    		<img src="${image_url}${image.link}"
-                                       	 style="width: 200px; height: 200px" />
+                                       	 style="width: 200px" />
                                 </c:forEach>
                             </div>
 
