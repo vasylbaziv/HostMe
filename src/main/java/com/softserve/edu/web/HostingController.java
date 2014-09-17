@@ -89,6 +89,10 @@ public class HostingController {
 		model.addAttribute("request", request);
 		Feedback feedback = new Feedback();
 		model.addAttribute("feedback", feedback);
+		StringBuilder address=new StringBuilder(hosting.getCountry());
+		address.append(",").append(hosting.getCity()).append(",").append(hosting.getAddress());
+		model.addAttribute("address", address);
+		
 		// steps to check the hosting availability
 
 		/*
