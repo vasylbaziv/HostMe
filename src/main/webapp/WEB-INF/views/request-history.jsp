@@ -54,9 +54,9 @@
 								<th>Till</th>
 								<th>Notes</th>
 								<th>Author</th>
-								<th>Start Date</th>
+								<th>Status</th>
 								<th>Hosting</th>
-								<th>Action</th>
+								<th>Manage Request</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -74,9 +74,9 @@
 								<th>Till</th>
 								<th>Notes</th>
 								<th>Author</th>
-								<th>Start Date</th>
+								<th>Status</th>
 								<th>Hosting</th>
-								<th>Action</th>
+								<th>Manage Request</th>
 							</tr>
 						</tfoot>
 					</table>

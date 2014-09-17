@@ -193,16 +193,32 @@ $(document)
 													"mData" : "notes",
 												},
 												{
-													"mData" : "hosting",
+													"mData" : function ( source, type, val ) {
+												          return source;
+													},
 													"mRender" : function(data,
 															type, full) {
-														return '<a href=${pageContext.request.contextPath}/hoster?hosterId='
-																+ data.owner.userId
+													
+														if($("#request_from_me").attr('class')!='active'){
+															return '<a href=hoster?hosterId='
+															+ data.author.userId
+															+ '>'
+															+ data.author.firstName
+															+ ' '
+															+ data.author.lastName
+															+ '</a>';
+														}else{
+														
+														
+														return '<a href=hoster?hosterId='
+																+ data.hosting.owner.userId
 																+ '>'
-																+ data.owner.firstName
+																+ data.hosting.owner.firstName
 																+ ' '
-																+ data.owner.lastName
+																+ data.hosting.owner.lastName
 																+ '</a>';
+														}
+														
 													}
 												},
 												{

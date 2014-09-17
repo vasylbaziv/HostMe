@@ -210,7 +210,7 @@
                                         <td>${hosting.region}</td>
                                         <td>${hosting.city}</td>
                                         <td><a
-                                            href=<c:url value="hosting?hostingId=${hosting.hostingId}&&userId=${user.userId}"/>>${hosting.address}</a></td>
+                                            href=<c:url value="hosting?hostingId=${hosting.hostingId}"/>>${hosting.address}</a></td>
                                         <td width="250px;"><div
                                                 class="tools">
                                                 <a href=<c:url value="hosting-editing?hostingId=${hosting.hostingId}&&userId=${user.userId}"/>
