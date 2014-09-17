@@ -32,11 +32,13 @@
                                 <h4>
                                     <strong>${user.firstName}&nbsp;${user.lastName}</strong>
                                 </h4>
-										<c:forEach var="image" items="${user.images}">
-											<a href="${image_url}${image.link}" data-lightbox="images">
-											<img src="${image_url}${image.link}"/></a>
-										</c:forEach>
+									<c:forEach var="image"
+                                  			  items="${user.images}">
+                                   		<img src="${image_url}${image.link}"
+                                       	 style="width: 200px; height: 200px" />
+                                </c:forEach>
                             </div>
+
 
                             <div class="row col-md-12">
                                 <a href="<c:url value='edit-profile' />"

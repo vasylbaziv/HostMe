@@ -9,7 +9,7 @@
 
 <link rel="stylesheet" type="text/css" href="resources/css/datepicker.css">
 <link rel="stylesheet" type="text/css" href="resources/css/AdminLTE.css">
-<link rel="stylesheet" type="text/css" href="resources/css/bootstrapValidator.css">
+
 
 <script type="text/javascript" src="resources/js/jquery.MultiFile.js"></script>
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -299,12 +299,8 @@ $(document).ready(function() {
 });
 </script>
 
-
-
 <script type="text/javascript">
 					$('.datepicker').datepicker();
 </script>
-
-
 
 </html>
