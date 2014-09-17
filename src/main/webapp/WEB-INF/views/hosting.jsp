@@ -7,6 +7,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+   <style type="text/css">
+      html, body, #map-canvas { height: 100%; margin: 0; padding: 0;}
+    </style>
 <link rel="stylesheet" type="text/css"
 	href="resources/css/daterangepicker-bs3.css">
 
@@ -35,7 +38,8 @@
 
 </head>
 
-<body onload="initialize();codeAddress()" class="wysihtml5-supported">
+<body onload="initialize()" class="wysihtml5-supported">
+      
 
 	<section class="content-header">
 		<h1>
@@ -45,6 +49,7 @@
 
 	<section class="content">
 		<div>
+		
 			<!-- general form elements -->
 			<div class="box box-primary">
 
@@ -60,20 +65,7 @@
 										style="width: 200px; margin: 1em 0.5em 0em 0em;" />
 									</a>
 								</c:forEach>
-<!-- 								<div class="modal fade bs-example-modal-lg" tabindex="-1" -->
-<!-- 									role="dialog" aria-labelledby="myLargeModalLabel" -->
-<!-- 									aria-hidden="true"> -->
-<!-- 									<div class="modal-dialog modal-lg"> -->
-<!-- 										<div class="modal-content"> -->
-<!-- 										<h4>GOOGLE API</h4> -->
-										<div>
-				<input id="address" type="hidden" value="${address}">
-			</div>
-										
-										<div id="map-canvas"></div>
-<!-- 										</div> -->
-<!-- 									</div> -->
-<!-- 								</div> -->
+
 								<div class="row">
 									<div class="col-md-3">
 										<h4>
@@ -84,9 +76,10 @@
 
 									<div class="col-md-8">
 										<h4>
-											<a href="#" data-toggle="modal"
-												data-target=".bs-example-modal-lg">${address}</a>
-										</h4>
+           <a onclick="codeAddress()" href="#" data-toggle="modal"
+            data-target="#modal">${address}</a>
+            
+          </h4>
 									</div>
 								</div>
 
@@ -367,9 +360,50 @@
 			</div>
 
 		</div>
+		<div id="modal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+                   <div>
+    <input id="address" type="hidden" value="${address}">
+   </div>
+   <div id="map-canvas"/>
+    </div>
+  </div>
+</div>
 	</section>
 
 	<script>
+	
+	var geocoder;
+	 var map;
+	 function initialize() {
+	   geocoder = new google.maps.Geocoder();
+	   var latlng = new google.maps.LatLng(-34.397, 150.644);
+	   var mapOptions = {
+	     zoom: 8,
+	     center: latlng
+	   }
+	   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+	 }
+
+	 function codeAddress() {
+	   var address = document.getElementById("address").value;
+	   geocoder.geocode( { 'address': address}, function(results, status) {
+	     if (status == google.maps.GeocoderStatus.OK) {
+	       map.setCenter(results[0].geometry.location);
+	       var marker = new google.maps.Marker({
+	           map: map,
+	           position: results[0].geometry.location
+	       });
+	     } else {
+	       alert("Geocode was not successful for the following reason: " + status);
+	     }
+	   });
+	 }
+	 $('#modal').on('shown.bs.modal', function () {
+		 console.log('entered');
+		    google.maps.event.trigger(map, "resize");
+		});
 		$(".alert").alert();
 		window.setTimeout(function() {
 			$(".alert").alert('close');
