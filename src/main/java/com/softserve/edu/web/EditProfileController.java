@@ -59,7 +59,7 @@ public class EditProfileController {
 
 	@RequestMapping("/change-password/correctOldPassword")
 	@ResponseBody
-	public String availablePassword(@RequestParam String oldPassword) {
+	public String availablePassword(@RequestParam("oldPassword") String oldPassword) {
 		User user = getCurrentUser();
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		Boolean correct = encoder.matches(oldPassword, user.getPassword());

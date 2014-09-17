@@ -39,10 +39,10 @@ public class ProfileController {
 
 		User user = getCurrentUser();
 
-
+		model.addAttribute("user", user);
 		model.addAttribute("age", profileService.calcAge(user));
 		model.addAttribute("birth", profileService.receiveBirthday(user.getBirthday()));
-		model.addAttribute("user", user);
+		
 		return "profile";
 
 	}
