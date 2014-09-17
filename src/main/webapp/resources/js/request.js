@@ -40,6 +40,7 @@ function sendRequest(id, element) {
 			loader.insertAfter(element);
 
 		},
+		
 		data : {
 			'beginDate' : beginDate,
 			'endDate' : endDate,

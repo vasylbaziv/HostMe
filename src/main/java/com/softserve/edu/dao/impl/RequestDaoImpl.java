@@ -22,7 +22,7 @@ import com.softserve.edu.entity.Status;
 import com.softserve.edu.entity.exceptions.RequestAlreadySentException;
 
 @Repository
-public class RequestDaoImpl extends AbstractGenericDao<Request, Long> implements
+public class RequestDaoImpl extends AbstractGenericDao<Request, Integer> implements
         RequestDao {
     public RequestDaoImpl() {
         super(Request.class);

@@ -7,13 +7,14 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.softserve.edu.dao.GenericDao;
 
 public abstract class AbstractGenericDao<E, I extends Serializable> implements
 		GenericDao<E, I> {
+
+
 
 	private Class<E> entityClass;
 
@@ -31,6 +32,7 @@ public abstract class AbstractGenericDao<E, I extends Serializable> implements
 	protected SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
+	
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -41,6 +43,7 @@ public abstract class AbstractGenericDao<E, I extends Serializable> implements
 
 		return criteria.list();
 	}
+
 
 	@Override
 	public Integer create(E entity) {

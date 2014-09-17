@@ -50,7 +50,13 @@ public class RequestServiceImpl implements RequestService {
 
 	@Override
 	@Transactional
-	public void changeStatus(Request request) {
+	public void update(Request request) {
 		requestDao.update(request);
+	}
+
+	@Override
+	@Transactional
+	public Request getRequest(int id) {
+		return requestDao.read(id);
 	}
 }

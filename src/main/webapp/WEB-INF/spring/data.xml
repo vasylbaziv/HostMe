@@ -40,14 +40,15 @@ http://www.springframework.org/schema/util/spring-util.xsd">
 			</property> -->
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">false</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 				<prop key="hibernate.connection.charSet">UTF-8</prop>
 			</props>
 		</property>
 	</bean>
+
 	<!-- Configure to plugin JSON as request and response in method handler -->
 	<bean
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
@@ -61,5 +62,7 @@ http://www.springframework.org/schema/util/spring-util.xsd">
 	<!-- Configure bean to convert JSON to POJO and vice versa -->
 	<bean id="jsonMessageConverter"
 		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+<!-- 		 <property name="prefixJson" value="false"/> -->
+<!--         <property name="supportedMediaTypes" value="application/json"/> -->
 	</bean>
 </beans>

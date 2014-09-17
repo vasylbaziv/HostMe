@@ -36,13 +36,13 @@
 					<h3 class="box-title">
 						<i class="fa fa-th"></i> Manage your request, it's important
 					</h3>
-					<div class="col-lg-offset-11" style="margin-top: 10px;" ><button class="btn btn-default btn-sm"><i class="fa fa-fw fa-refresh"></i> fa-refresh</button></div>
+					<div class="col-lg-offset-11" style="margin-top: 10px;" ><button onclick="refresh()" class="btn btn-default btn-sm"><i class="fa fa-fw fa-refresh"></i> fa-refresh</button></div>
 				</div>
 				<!-- /.box-header -->
 				<ul class="nav nav-tabs">
-					<li class="active" onclick="request_obtain_old()"><a href="#" data-toggle="tab"
+					<li id="request_from_me" class="active" onclick="initialize_request_from_me(this)"><a href="#" data-toggle="tab"
 						>Request from me</a></li>
-					<li class=""><a href="#" data-toggle="tab" onclick="initializeRequestToMe()">Request from me</a></li>
+					<li class="" onclick="initialize_request_to_me(this)"><a href="#" data-toggle="tab" >Request to me</a></li>
 				</ul>
 				
 				<div class="box-body table-responsive">
@@ -85,6 +85,7 @@
 
 
 				</div>
+			
 
 			</div>
 			<!-- /.box-body -->
