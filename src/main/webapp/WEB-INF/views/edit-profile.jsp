@@ -118,7 +118,7 @@
 
 								<div class="form-group">
 									<label for="profilePicture"><h4>Profile picture</h4></label> <br>
-									<input type="file" name="file" id="profilePicture" maxamount="1" class="multi"
+									<input type="file" name="file" id="profilePicture" maxamount="1" 
 											data-maxfile="10000" data-maxsize="50000" />
 								</div>
 
