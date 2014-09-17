@@ -39,7 +39,6 @@ public class ProfileController {
 
 		User user = getCurrentUser();
 
-		// userService.initilizeUserLanguages(user);
 
 		model.addAttribute("age", profileService.calcAge(user));
 		model.addAttribute("birth", profileService.receiveBirthday(user.getBirthday()));

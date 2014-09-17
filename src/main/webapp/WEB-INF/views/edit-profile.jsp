@@ -12,37 +12,36 @@
 <link rel="stylesheet" type="text/css" href="resources/css/bootstrapValidator.css">
 
 <script type="text/javascript" src="resources/js/jquery.MultiFile.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.12.0/jquery.validate.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
 
 <script type="text/javascript" src="resources/js/bootstrap-datepicker.js"></script>
 
 
 </head>
 <body>
+
+ 	<section class="content-header">
+        <h1>
+            Edit user profile
+        </h1>
+    </section>
+
 	<div class="wrapper row-offcanvas row-offcanvas-left"
 		style="min-height: 682px;">
 
 		<aside class="right-side"> <!-- Content Header (Page header) -->
 
-		<section class="content-header">
-		<h1>
-			Dashboard <small>Control panel</small>
-		</h1>
-		<ol class="breadcrumb">
-			<li><a href="#"> <i class="fa fa-dashboard"></i> Home </a></li>
-			<li class="active">Dashboard</li>
-		</ol>
-		</section> <!-- Main content --> <section class="content">
+	 <!-- Main content --> 
+	 <section class="content">
 
 		<div class="container">
 
 			<div class="col-md-6">
 				<!-- general form elements -->
 				<div class="box box-primary">
-					<div class="box-header">
-						<h3 class="box-title">Edit your profile</h3>
-					</div>
+				
 					<!-- form start -->
 					<form:form 
 						role="form" 
@@ -56,6 +55,7 @@
 						<div class="box-body">
 							<div class="form-group">
 							
+							<br>
 								<label for="inputLogin">Login</label>
 								
 								<form:input path="login" 
@@ -70,8 +70,7 @@
 								
 								<form:input path="firstName" 
 											class="form-control" 
-											id="firstName"
-											value="${user.firstName}" />
+											id="firstName"/>
 							</div>
 							
 							<div class="form-group">
@@ -284,7 +283,10 @@ $(document).ready(function() {
 										email : {
 											required : true,
 											email : true
-										}
+										},
+										file: {
+									             extension: "jpg|bmp|png|jpeg"
+									        }
 									},
 									messages : {
 										email : {
@@ -296,6 +298,7 @@ $(document).ready(function() {
 							});
 });
 </script>
+
 
 
 <script type="text/javascript">

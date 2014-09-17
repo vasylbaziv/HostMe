@@ -42,24 +42,27 @@
 						<hr
 							style="color: #c00; background-color: #c00; height: 1px; border: none;" />
 						
-						
-						
-						<c:forEach var="i" begin="0" end="8" step="1" varStatus="loop">
-    
-
-						
-							<div class="form-group">
-								<label for="language">Language ${1+i}</label>
-								<form:select path="" name="newLanguages">								
-							
-									 <form:option value="${(user.languages[i] == null)?'': user.languages[i]}" />  
-							
-   									 <form:options items="${langs}" />
-								</form:select>
+						<div class="row">
+							<div class=col-md-2>
+								<div class="form-group">
+									<label for="language">Languages </label>
+								</div>
 							</div>
-							
-						</c:forEach>
-						
+							<div class=col-md-3>
+								<c:forEach var="i" begin="0" end="4" step="1" varStatus="loop">
+									<div class="form-group">
+										
+										<form:select path="" name="newLanguages">								
+									
+											 <form:option value="${(user.languages[i] == null)?'': user.languages[i]}" />  
+									
+		   									 <form:options items="${langs}" />
+										</form:select>
+									</div>
+									
+								</c:forEach>
+							</div>
+						</div>
 						<div class="box-footer">
 							<button type="submit" class="btn btn-primary">Submit</button>
 						</div>

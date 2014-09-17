@@ -48,14 +48,64 @@ public class EditProfileController {
 	public String editProfileShow(Model model) {
 
 		User user = getCurrentUser();
-		
+
 		String bd = profileService.receiveBirthday(user.getBirthday());
-		
-		
-		
+
 		model.addAttribute("user", user);
 		model.addAttribute("bd", bd);
+
 		return "edit-profile";
+	}
+
+	@RequestMapping("/change-password/correctOldPassword")
+	@ResponseBody
+	public String availablePassword(@RequestParam String oldPassword) {
+		User user = getCurrentUser();
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		Boolean correct = encoder.matches(oldPassword, user.getPassword());
+		return correct.toString();
+	}
+
+	@RequestMapping(value = "/change-password", method = RequestMethod.POST)
+	public String changePassword(
+			@RequestParam("newPassword") String newPassword,
+			@RequestParam("oldPassword") String oldPassword) {
+
+		User user = getCurrentUser();
+		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+		if (encoder.matches(newPassword, encoder.encode(oldPassword))) {
+			return "redirect:/edit-profile";
+		} else {
+			user.setPassword(encoder.encode(newPassword));
+			userService.updateUser(user);
+			return "redirect:/edit-profile";
+		}
+
+	}
+
+	@RequestMapping(value = "/edited-profile", method = RequestMethod.POST)
+	public String editProfileShow(@ModelAttribute("user") User editedUser,
+			@RequestParam("file") MultipartFile file,
+			@RequestParam("birth") String birth) {
+
+		User user = getCurrentUser();
+
+		user.setFirstName(editedUser.getFirstName());
+		user.setLastName(editedUser.getLastName());
+		user.setGender(editedUser.getGender());
+		user.setHobby(editedUser.getHobby());
+		user.setDescription(editedUser.getDescription());
+		user.setEmail(editedUser.getEmail());
+		user.setBirthday(profileService.birthToDateFormat(birth));
+
+		userService.updateUser(user);
+
+		if (file.getSize() != 0) {
+			imageService.addImages(file, user);
+		}
+		return "redirect:/profile";
 	}
 
 	@RequestMapping(value = "/edit-languages", method = RequestMethod.GET)
@@ -103,54 +153,6 @@ public class EditProfileController {
 		userService.updateUser(user);
 
 		return "redirect:/profile";
-	}
-
-	@RequestMapping(value = "/edited-profile", method = RequestMethod.POST)
-	public String editProfileShow(@ModelAttribute("user") User editedUser,
-			@RequestParam("file") MultipartFile file,
-			@RequestParam("birth") String birth) {
-
-		User user = getCurrentUser();
-
-		user.setFirstName(editedUser.getFirstName());
-		user.setLastName(editedUser.getLastName());
-		user.setGender(editedUser.getGender());
-		user.setHobby(editedUser.getHobby());
-		user.setDescription(editedUser.getDescription());
-		user.setEmail(editedUser.getEmail());
-		user.setBirthday(profileService.birthToDateFormat(birth));
-
-		userService.updateUser(user);
-
-		if (file.getSize() != 0) {
-			imageService.addImages(file, user);
-		}
-		return "redirect:/profile";
-	}
-
-	@RequestMapping(value = "/change-password", method = RequestMethod.POST)
-	public String changePassword(@RequestParam("newPassword") String newPassword) {
-
-		User user = getCurrentUser();
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-
-		if (encoder.matches(newPassword, user.getPassword())) {
-			return "redirect:/edit-profile";
-		} else {
-			user.setPassword(encoder.encode(newPassword));
-			userService.updateUser(user);
-			return "redirect:/edit-profile";
-		}
-
-	}
-
-	@RequestMapping("/change-password/correctOldPassword")
-	@ResponseBody
-	public String availablePassword(@RequestParam String oldPassword) {
-		User user = getCurrentUser();
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		Boolean correct = encoder.matches(oldPassword, user.getPassword());
-		return correct.toString();
 	}
 
 }
