@@ -31,29 +31,18 @@ public class RequestDaoImpl extends AbstractGenericDao<Request, Integer> impleme
     @Autowired
     private SessionFactory sessionFactory;
     
-    private String FROM_REQUEST = "From Request   WHERE ";
     
     @Override
     public boolean checkRequest(Request request)
             throws RequestAlreadySentException {
-        StringBuilder builder = new StringBuilder();
-        builder.append(FROM_REQUEST);
-        Timestamp timestamp = new Timestamp(request.getEndDate()
-                .getTimeInMillis());
-        builder.append("end_date='").append(timestamp);
-        builder.append("' AND ");
-        builder.append("begin_date='").append(
-                new Timestamp(request.getBeginDate().getTimeInMillis()));
-        builder.append("' AND ");
-        builder.append("hosting_id='").append(
-                request.getHosting().getHostingId());
-        builder.append("' AND ");
-        builder.append("user_id='");
-        builder.append(request.getAuthor().getUserId());
-        builder.append("'");
-        Query query = getSessionFactory().getCurrentSession().createQuery(
-                builder.toString());
-        ArrayList<Request> existingRequests = (ArrayList<Request>) query.list();
+    	Session session = sessionFactory.getCurrentSession();
+    	Criteria criteria = session.createCriteria(Request.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+    	criteria.add(Restrictions.eq("author.userId", request.getAuthor().getUserId()));
+    	criteria.add(Restrictions.eq("receiver.userId", request.getReceiver().getUserId()));
+    	criteria.add(Restrictions.eq("beginDate", request.getBeginDate()));
+    	criteria.add(Restrictions.eq("endDate", request.getEndDate()));
+        @SuppressWarnings("unchecked")
+		ArrayList<Request> existingRequests = (ArrayList<Request>) criteria.list();
         //
         // Criteria criteria = getSessionFactory().getCurrentSession()
         // .createCriteria(Request.class);
@@ -84,6 +73,14 @@ public class RequestDaoImpl extends AbstractGenericDao<Request, Integer> impleme
 		Session session = sessionFactory.getCurrentSession();
 		Criteria criteria = session.createCriteria(Request.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
 		criteria.add(Restrictions.eq("author.userId", userId));
+		return criteria.list();
+	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Request> getMyReceivedRequest(int userId) {
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(Request.class).setResultTransformer(Criteria.DISTINCT_ROOT_ENTITY);
+		criteria.add(Restrictions.eq("receiver.userId", userId));
 		return criteria.list();
 	}
 }

@@ -14,6 +14,7 @@ public interface RequestService {
 	public List<Request> getAll();
 
 	public List<Request> getMySentRequest(int userId);
+	public List<Request> getMyReceivedRequest(int userId);
 
 	public void createRequest(Request request);
 

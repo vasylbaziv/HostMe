@@ -51,12 +51,14 @@ $(document).ready(function () {
             + count + "&pets=" + pets + "&family=" + family + "&smoking=" + smoking + "&children=" + children
             + "&gender=" + gender + "&page=" + page + "&beginDate=" + beginDate + "&endDate=" + endDate;
         $.ajax({url: url, success: function (result) {
+        	
             $('#searchTable tr').each(function (i, row) {
                 if (i != 0) {
                     $(row).remove();
                 }
             });
             var json = JSON.parse(result);
+            console.log(json);
             for (var i = 1; i < json.length; i++) {
                 var obj = json[i];
                 var urlHost = "hosting?hostingId=" + obj.hostingId;
@@ -69,7 +71,7 @@ $(document).ready(function () {
                 row += "<TD>" + obj.region + "</TD>";
                 row += "<TD>" + obj.city + "</TD>";
                 row += "<TD>" + "<a href=" + urlHost + ">" + obj.address + "</A></TD>";
-                row += "<TD>" + "<a href=" + urlUser + ">" + obj.firstAndLastName + "</A></TD>";
+                row += "<TD>" + "<a href=" + urlUser + ">" +obj.firstName+" "+obj.lastName + "</A></TD>";
                 row += "<TD>" + "<button id=\"" + buttonId + "\" class=\"" + buttonClass + "\" onclick=\"" + oncl + "\">Send Request</button>" + "</TD>";
                 row += "</TR>"
                 $('#searchTable').append(row);
@@ -127,7 +129,7 @@ $(document).ready(function () {
                 row += "<TD>" + obj.region + "</TD>";
                 row += "<TD>" + obj.city + "</TD>";
                 row += "<TD>" + "<a href=" + urlHost + ">" + obj.address + "</A></TD>";
-                row += "<TD>" + "<a href=" + urlUser + ">" + obj.firstAndLastName + "</A></TD>";
+                row += "<TD>" + "<a href=" + urlUser + ">" + obj.firstName+" "+obj.lastName + "</A></TD>";
                 row += "<TD>" + "<button id=\"" + buttonId + "\" class=\"" + buttonClass + "\" onclick=\"" + oncl + "\">Send Request</button>" + "</TD>";
                 row += "</TR>"
                 $('#searchTable').append(row);
@@ -185,7 +187,7 @@ $(document).ready(function () {
                 row += "<TD>" + obj.region + "</TD>";
                 row += "<TD>" + obj.city + "</TD>";
                 row += "<TD>" + "<a href=" + urlHost + ">" + obj.address + "</A></TD>";
-                row += "<TD>" + "<a href=" + urlUser + ">" + obj.firstAndLastName + "</A></TD>";
+                row += "<TD>" + "<a href=" + urlUser + ">" + obj.firstName+" "+obj.lastName + "</A></TD>";
                 row += "<TD>" + "<button id=\"" + buttonId + "\" class=\"" + buttonClass + "\" onclick=\"" + oncl + "\">Send Request</button>" + "</TD>";
                 row += "</TR>"
                 $('#searchTable').append(row);

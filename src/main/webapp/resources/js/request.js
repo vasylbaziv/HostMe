@@ -31,6 +31,15 @@ function sendRequest(id, element) {
 		html : "Duplicate Request",
 		"class" : "text-red"
 	});
+	var json={
+			'beginDate' : beginDate,
+			'endDate' : endDate,
+			"hosting" : {
+				"hostingId":id
+			},
+			"status":"PENDING"
+			
+	};
 
 	$.ajax({
 		url : 'response',
@@ -40,16 +49,16 @@ function sendRequest(id, element) {
 			loader.insertAfter(element);
 
 		},
+		'dataType': 'json',
+		contentType: "application/json",
+		"type": "POST",
 		
-		data : {
-			'beginDate' : beginDate,
-			'endDate' : endDate,
-			hostingId : id,
-		},
+		data :JSON.stringify(json) ,
 
 		success : function(response) {
+			console.log(response);
 			element.nextSibling.style.display = "none";
-			if (response == "Request send") {
+			if (response) {
 				successRequest.insertAfter(element);
 
 			} else {

@@ -40,6 +40,11 @@ public class RequestServiceImpl implements RequestService {
 	public List<Request> getMySentRequest(int userId) {
 		return requestDao.getMySentRequest(userId);
 	}
+	@Override
+	@Transactional
+	public List<Request> getMyReceivedRequest(int userId) {
+		return requestDao.getMyReceivedRequest(userId);
+	}
 
 	@Override
 	@Transactional

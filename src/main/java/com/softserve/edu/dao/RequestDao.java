@@ -10,4 +10,5 @@ public interface RequestDao extends GenericDao<Request, Integer> {
 	
 	public List<Request> getAllApprovedRequestsByHostingId(int hostingId);
 	public List<Request> getMySentRequest(int userId);
+	public List<Request> getMyReceivedRequest(int userId);
 }
